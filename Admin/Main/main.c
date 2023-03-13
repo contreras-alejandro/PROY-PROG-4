@@ -7,18 +7,19 @@ int main() {
     int opcion;
     
     do {
-        printf("________\n");
         printf("||MENU||\n");
-        printf("________\n");
-        printf("**Bienvenido al programe de administración del servidor**\n");
-        printf("1. Inicar sesión\n");
+        printf("_________________________________________________________\n");
+        printf("**Bienvenido al programa de administracion del servidor**\n");
+        printf("1. Inicar sesion\n");
         printf("2. Salir\n");
-        printf("Seleccione una opción: ");
+        printf("_________________________________________________________\n");
+        printf("Seleccione una opcion: ");
+        printf("_________________________________________________________\n");
         scanf("%d", &opcion);
         
         switch (opcion) {
             case 1:
-                printf("Has seleccionado la opción 1: INICIAR SESIÓN.\n");
+                printf("Has seleccionado la opcion 1: INICIAR SESION.\n");
                 break;
             case 2:
                 printf("Saliendo del programa\n");

@@ -72,24 +72,21 @@ int printGestionAct(){
 
 void menuAdmin(){
     int salir=0;   
-    while (!salir)
+    while (salir==0)
     {
         int opcion=selectOpcion(printMenuAdmin()); 
-        switch (opcion) {
-            case 1:{
+        if(opcion==1) {
+
                 printf("Has seleccionado la opcion 1: INICIAR SESION.\n");
                 printMenuPrincipal();
-                break;
-                } 
-            case 2:
+                salir=1;
+        }else if(opcion==2) {
+                        
                 printf("Saliendo del programa\n");
                 salir=1;
-                break;
-            default:
-                printf("¡ERROR, SELECCIONE UN NUMERO!\n");
+        } 
+        else {
+            printf("¡ERROR, SELECCIONE UN NUMERO!\n");
+        }
         }
     }
-    
-}
-
-

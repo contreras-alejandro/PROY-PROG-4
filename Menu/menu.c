@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "menu.h"
+#include "../Modulos/gestionAdmin.h"
+#include <unistd.h>
 
 int selectOpcion(int numOpciones){
     int opcion;
@@ -43,6 +45,10 @@ int printMenuAdmin(){
 
 int printMenuPrincipal(){
     int numOpciones=4;
+
+    //log(0,"aitor","Acceso a el menu de administrador");
+
+
     printf("||MENU ADMINISTRADOR||\n");
     printf("_________________________________________________________\n");
     printf("**Bienvenido**\n");

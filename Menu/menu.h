@@ -3,5 +3,6 @@
 
 int selectOpcion();
 int printMenuAdmin();
+void menuAdmin();
 
 #endif

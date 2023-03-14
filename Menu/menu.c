@@ -24,3 +24,22 @@ int printMenuAdmin(){
     return numOpciones;
 }
 
+void menuAdmin(){
+    int salir=0;   
+    while (!salir)
+    {
+        int opcion=selectOpcion(printMenuAdmin());    
+        switch (opcion) {
+            case 1:
+                printf("Has seleccionado la opcion 1: INICIAR SESION.\n");
+                break;
+            case 2:
+                printf("Saliendo del programa\n");
+                salir=1;
+                break;
+            default:
+                printf("¡ERROR, SELECCIONE UN NUMERO!\n");
+        }
+    }
+    
+}

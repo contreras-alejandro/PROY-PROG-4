@@ -1,16 +1,32 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "menu.h"
 
 int selectOpcion(int numOpciones){
     int opcion;
     do
     {
+        
         printf("Seleccione una opcion: ");
         printf("_________________________________________________________\n");
-        scanf("%d", &opcion);
-    } while (opcion!=numOpciones);
+        char str[MAX_CHARACTERS_FOR_OPTIONS];
+		fflush(stdout);
+		fgets(str, MAX_CHARACTERS_FOR_OPTIONS, stdin);
+		sscanf(str, "%d", &opcion);
+		
+    } while (!comprobarOpcionValida(opcion,numOpciones));
     return opcion;   
 }
 
+int comprobarOpcionValida(int opcion, int numOpciones){
+	if (opcion > 0 && opcion <= numOpciones){
+		return 1;
+	}else{
+		printf("\nError, opci�n introducida no v�lida.\n\n");
+		return 0;
+	}
+}
 
 
 int printMenuAdmin(){
@@ -58,14 +74,16 @@ void menuAdmin(){
     int salir=0;   
     while (!salir)
     {
-        int opcion=selectOpcion(printMenuAdmin());    
+        int opcion=selectOpcion(printMenuAdmin()); 
         switch (opcion) {
-            case 1:
+            case 1:{
                 printf("Has seleccionado la opcion 1: INICIAR SESION.\n");
                 printMenuPrincipal();
+                break;
+                } 
             case 2:
                 printf("Saliendo del programa\n");
-                salir=0;
+                salir=1;
                 break;
             default:
                 printf("¡ERROR, SELECCIONE UN NUMERO!\n");

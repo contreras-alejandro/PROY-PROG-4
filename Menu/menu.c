@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "menu.h"
-#include "../Modulos/gestionAdmin.h"
-#include <unistd.h>
+//#include "../Modulos/gestionAdmin.h"
+//#include <unistd.h>
 
 int selectOpcion(int numOpciones){
     int opcion;
@@ -25,13 +25,13 @@ int comprobarOpcionValida(int opcion, int numOpciones){
 	if (opcion > 0 && opcion <= numOpciones){
 		return 1;
 	}else{
-		printf("\nError, opci�n introducida no v�lida.\n\n");
+		printf("\nError, introduce una opcion valida.\n\n");
 		return 0;
 	}
 }
 
 
-int printMenuAdmin(){
+int printMenuInicio(){
     int numOpciones=2;
     printf("||MENU||\n");
     printf("_________________________________________________________\n");
@@ -76,21 +76,88 @@ int printGestionAct(){
     return numOpciones;
 }
 
-void menuAdmin(){
+
+void menuInicio(){
     int salir=0;   
     while (salir==0)
     {
-        int opcion=selectOpcion(printMenuAdmin()); 
+        int opcion=selectOpcion(printMenuInicio()); 
         if(opcion==1) {
 
                 printf("Has seleccionado la opcion 1: INICIAR SESION.\n");
-                printMenuPrincipal();
+                menuPrincipal();
                 salir=1;
         }else if(opcion==2) {
                         
                 printf("Saliendo del programa\n");
                 salir=1;
         } 
+        else {
+            printf("¡ERROR, SELECCIONE UN NUMERO!\n");
+        }
+        }
+    }
+
+
+
+void menuPrincipal(){
+    int salir=0;   
+    while (salir==0)
+    {
+        int opcion=selectOpcion(printMenuPrincipal()); 
+        if(opcion==1) {
+
+                printf("Has seleccionado la opcion 1: Gestionar ACTIVIDADES.\n");
+                menuGestionAct();
+                salir=1;
+        }else if(opcion==2) {
+                        
+                printf("Has seleccionado la opcion 2: Gestionar PROPUESTAS.\n");
+                salir=1;
+        }else if(opcion==3) {
+                        
+                printf("Has seleccionado la opcion 3: 3. Crear ADMINISTRADOR.\n");
+                salir=1;
+        }else if(opcion==4) {
+                        
+                printf("CERRANDO SESION\n");
+                menuInicio();
+                salir=1;
+        }else {
+            printf("¡ERROR, SELECCIONE UN NUMERO!\n");
+        }
+        }
+    }
+
+
+
+void menuGestionAct(){
+    int salir=0;   
+    while (salir==0)
+    {
+        int opcion=selectOpcion(printGestionAct()); 
+        if(opcion==1) {
+
+                printf("Has seleccionado la opcion 1: Visualizar ACTIVIDADES.\n");
+                salir=1;
+        }else if(opcion==2) {
+                        
+                printf("Has seleccionado la opcion 2: Añadir ACTIVIDADES.\n");
+                salir=1;
+        }else if(opcion==3) {
+                        
+                printf("Has seleccionado la opcion 3: Modificar ACTIVIDADES.\n");
+                salir=1;
+        }else if(opcion==4) {
+                        
+                printf("Has seleccionado la opcion 4: 4. Eliminar ACTIVIDADES.\n");
+                salir=1;
+        }else if(opcion==5) {
+                        
+                printf("Volviendo al MENU PRINCIPAL\n");
+                menuPrincipal();
+                salir=1;
+        }
         else {
             printf("¡ERROR, SELECCIONE UN NUMERO!\n");
         }

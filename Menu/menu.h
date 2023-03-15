@@ -4,10 +4,13 @@
 #define MAX_CHARACTERS_FOR_OPTIONS 3
 
 int selectOpcion();
-int printMenuAdmin();
+int printMenuInicio();
 int printMenuPrincipal();
 int printGestionAct();
-void menuAdmin();
+void menuInicio();
+void menuPrincipal();
+void menuGestionAct();
+int comprobarOpcionValida(int opcion, int numOpciones);
 
 
 #endif

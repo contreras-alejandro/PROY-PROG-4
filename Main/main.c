@@ -5,7 +5,7 @@
 int main() {
 //    HANDLE hConsole = GetStdHandle( STD_OUTPUT_HANDLE );
 //    SetConsoleTextAttribute(hConsole, 1);   
-    menuAdmin();
+    menuInicio();
 
     
     return 0;

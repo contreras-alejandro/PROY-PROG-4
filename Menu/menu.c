@@ -156,7 +156,6 @@ void menuGestionAct(){
                         
                 printf("Volviendo al MENU PRINCIPAL\n");
                 menuPrincipal();
-                salir=1;
         }
         else {
             printf("¡ERROR, SELECCIONE UN NUMERO!\n");

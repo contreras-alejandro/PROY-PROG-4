@@ -66,12 +66,45 @@ void logger(int severity, char* usuario, char* info) {
         } else if (severity == ERROR) {
             fprintf(ficheroLog, "[ERROR] Usuario:%s -> %s \n", usuario,info);
         }
-        printf("log bien!");
+        printf("log bien!\n");
         fclose(ficheroLog);
     }
     else{
        printf("Error al intentar abir el fichero LOG"); 
     }
+}
+
+
+
+char *leerProperties( int num) {
+    char **lines = (char **) malloc(100 * sizeof(char *));
+    char buffer[100];
+    int i = 0;
+    FILE *fichero = fopen("Ficheros/ficheroConfig.txt", "r");
+
+    if (fichero == NULL) {
+        printf("Error al abrir el archivo.\n");
+    }
+
+    else {
+
+    while (fgets(buffer, 100, fichero) != NULL) {
+        lines[i] = (char *) malloc((strlen(buffer) + 1) * sizeof(char));
+        strcpy(lines[i], buffer);
+        i++;
+    }
+
+
+    fclose(fichero);
+    }
+
+    if(num==1) {
+        return (lines[0]);
+    }else if(num==2) {
+        return (lines[1]);
+    }else{
+        return "sin ruta";
+    };
 }
 
 

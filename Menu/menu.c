@@ -46,7 +46,7 @@ int printMenuInicio(){
 int printMenuPrincipal(){
     int numOpciones=4;
 
-    //log(0,"aitor","Acceso a el menu de administrador");
+    logger(0,"aitor","Acceso a el menu de administrador");
 
 
     printf("||MENU ADMINISTRADOR||\n");

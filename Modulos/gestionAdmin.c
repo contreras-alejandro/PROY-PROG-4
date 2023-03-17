@@ -56,8 +56,8 @@
 //FUNCION LOG PARA ESCRIBIR EN EL FICHERO LOG LAS OPERACIONES REALIZADAS 
 
 
-void log(int severity, char* usuario, char* info) {
-    FILE* ficheroLog = fopen("ficheroLog.txt", "a");
+void logger(int severity, char* usuario, char* info) {
+    FILE* ficheroLog = fopen("Ficheros/ficheroLog.txt", "a");
     if (ficheroLog != NULL) {
         if (severity == INFO) {
             fprintf(ficheroLog, "[INFO] Usuario:%s -> %s \n", usuario,info);

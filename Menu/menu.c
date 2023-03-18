@@ -3,7 +3,7 @@
 #include <string.h>
 #include "menu.h"
 #include "../Modulos/gestionAdmin.h"
-//#include "../Modulos/gestionAdmin.h"
+#include "../sqlite/sqlite3.h"
 //#include <unistd.h>
 
 int selectOpcion(int numOpciones){
@@ -48,6 +48,8 @@ int printMenuPrincipal(){
     int numOpciones=4;
 
     logger(0,"aitor","Acceso a el menu de administrador");
+    abrirConexion();
+
 
     printf("||MENU ADMINISTRADOR||\n");
     printf("_________________________________________________________\n");

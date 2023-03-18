@@ -3,6 +3,7 @@
 //#include <openssl/md5.h>                //Esta libreria sera para hacer el hash
 #include <string.h>
 #include "gestionAdmin.h"
+#include "../sqlite/sqlite3.h"
 
 //HACEMOS LA DEFINICION DE LAS CONSTANTES PARA LOS LOG
 
@@ -10,24 +11,27 @@
 #define WARNING 1
 #define ERROR 2
 
-//sqlite3* abrirConexion(char* nombre_base) {
-    //sqlite3 *db;
-    //char *error_message = 0;
-    //int resultado_apertura;
+sqlite3* db;
 
-    //resultado_apertura = sqlite3_open(nombre_base, &db);
+void abrirConexion() {
+   
+    int resultado_apertura;
+
+    char *nombre_base = leerProperties(2);
+
+    resultado_apertura = sqlite3_open(nombre_base, &db);
 
     //si el valor es 0, todo bien! sino, error en apertura
 
-   // if (resultado_apertura != SQLITE_OK) {
-       // printf("Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
-        //sqlite3_close(db);
-       // return NULL;
-    //} else {
-       // printf("Conexión a la base de datos establecida correctamente.\n");
-        //return db;
-    //}
-//}
+    if (resultado_apertura != SQLITE_OK) {
+       printf("Error al abrir la base de datos");
+        sqlite3_close(db);
+        return;
+    } else {
+        printf("Conexión a la base de datos establecida correctamente.\n");
+        return;
+    }
+}
 
 //METODO PARA HASHEAR CONTRANENYA
 
@@ -58,8 +62,7 @@
 
 void logger(int severity, char* usuario, char* info) {
     char *ruta =leerProperties(3);
-    char *rutaLimpiada = strtok(ruta, "\n\r ");
-    FILE* ficheroLog = fopen(rutaLimpiada, "a");
+    FILE* ficheroLog = fopen(ruta, "a");
     if (ficheroLog != NULL) {
         if (severity == INFO) {
             fprintf(ficheroLog, "[INFO] Usuario:%s -> %s \n", usuario,info);
@@ -101,15 +104,22 @@ char *leerProperties( int num) {
     fclose(fichero);
     }
 
+    char *ruta;
+    char *rutaLimpiada;
+
     if(num==1) {
-        return (lines[0]);
+        ruta = lines[0];
+        
     }else if(num==2) {
-        return (lines[1]);
+        ruta = lines[1];
     }else if(num==3) {
-        return (lines[2]);
+        ruta = lines[2];
     }else{
-        return "sin ruta";
+       ruta = "Sin ruta";
     }
+
+    rutaLimpiada = strtok(ruta, "\n\r ");
+    return (rutaLimpiada);
 }
 
 

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "menu.h"
-//#include "../Modulos/gestionAdmin.h"
+#include "../Modulos/gestionAdmin.h"
 //#include "../Modulos/gestionAdmin.h"
 //#include <unistd.h>
 
@@ -48,8 +48,6 @@ int printMenuPrincipal(){
     int numOpciones=4;
 
     logger(0,"aitor","Acceso a el menu de administrador");
-    char *ruta =leerProperties(1);
-    printf("LA RUTA ES: %s\n", ruta);
 
     printf("||MENU ADMINISTRADOR||\n");
     printf("_________________________________________________________\n");

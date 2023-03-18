@@ -57,7 +57,9 @@
 
 
 void logger(int severity, char* usuario, char* info) {
-    FILE* ficheroLog = fopen("Ficheros/ficheroLog.txt", "a");
+    char *ruta =leerProperties(3);
+    char *rutaLimpiada = strtok(ruta, "\n\r ");
+    FILE* ficheroLog = fopen(rutaLimpiada, "a");
     if (ficheroLog != NULL) {
         if (severity == INFO) {
             fprintf(ficheroLog, "[INFO] Usuario:%s -> %s \n", usuario,info);
@@ -66,12 +68,13 @@ void logger(int severity, char* usuario, char* info) {
         } else if (severity == ERROR) {
             fprintf(ficheroLog, "[ERROR] Usuario:%s -> %s \n", usuario,info);
         }
-        printf("log bien!\n");
         fclose(ficheroLog);
     }
     else{
        printf("Error al intentar abir el fichero LOG"); 
     }
+
+    return;
 }
 
 
@@ -102,9 +105,11 @@ char *leerProperties( int num) {
         return (lines[0]);
     }else if(num==2) {
         return (lines[1]);
+    }else if(num==3) {
+        return (lines[2]);
     }else{
         return "sin ruta";
-    };
+    }
 }
 
 

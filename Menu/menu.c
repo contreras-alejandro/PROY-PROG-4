@@ -87,7 +87,8 @@ void menuInicio(){
         if(opcion==1) {
 
                 printf("Has seleccionado la opcion 1: INICIAR SESION.\n");
-                menuPrincipal();
+                salir=1;
+                menuLogin();
                 salir=1;
         }else if(opcion==2) {
                         
@@ -164,3 +165,27 @@ void menuGestionAct(){
         }
         }
     }
+
+
+
+
+
+void menuLogin() {
+    char usuario[50];
+    char contrasena[50];
+
+    printf("Ingrese su nombre de usuario: ");
+    scanf("%s", usuario);
+
+    printf("Ingrese su contraseña: ");
+    scanf("%s", contrasena);
+
+    int resultado = login(usuario, contrasena);
+
+    if (resultado == 1) {
+        printf("Inicio de sesión exitoso.\n");
+        //menuPrincipal();
+    } else {
+        printf("Credenciales incorrectas.\n");
+    }
+}

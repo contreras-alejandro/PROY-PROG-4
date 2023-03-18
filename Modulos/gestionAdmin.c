@@ -13,7 +13,7 @@
 
 sqlite3* db;
 
-void abrirConexion() {
+int abrirConexion() {
    
     int resultado_apertura;
 
@@ -26,10 +26,10 @@ void abrirConexion() {
     if (resultado_apertura != SQLITE_OK) {
        printf("Error al abrir la base de datos");
         sqlite3_close(db);
-        return;
+        return 1;
     } else {
         printf("Conexión a la base de datos establecida correctamente.\n");
-        return;
+        return 0;
     }
 }
 
@@ -122,5 +122,34 @@ char *leerProperties( int num) {
     return (rutaLimpiada);
 }
 
+
+int login(char* usuario, char* contrasena) {
+   
+    int resultado_consulta;
+    char *error;
+    sqlite3_stmt *stmt;
+
+    char* consulta = "SELECT * FROM ADMIN WHERE USUARIO_ADMIN = ? AND CONTRASENYA_ADMIN = ?;";
+
+    resultado_consulta = sqlite3_prepare_v2(db, consulta, -1, &stmt, 0);
+
+    if (resultado_consulta != SQLITE_OK) {
+        printf("Error al preparar la consulta\n");
+        return -1;
+    }
+
+    sqlite3_bind_text(stmt, 1, usuario, strlen(usuario), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, contrasena, strlen(contrasena), SQLITE_STATIC);
+
+    resultado_consulta = sqlite3_step(stmt);
+
+    if (resultado_consulta == SQLITE_ROW) {
+        printf("Inicio de sesión exitoso\n");
+        return 0;
+    } else {
+        printf("Credenciales incorrectas\n");
+        return 1;
+    }
+}
 
 

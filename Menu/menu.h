@@ -10,6 +10,7 @@ int printGestionAct();
 void menuInicio();
 void menuPrincipal();
 void menuGestionAct();
+void menuLogin();
 int comprobarOpcionValida(int opcion, int numOpciones);
 
 

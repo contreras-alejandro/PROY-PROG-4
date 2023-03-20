@@ -7,20 +7,30 @@
 //#include <unistd.h>
 
 int selectOpcion(int numOpciones){
-    int opcion;
-    do
-    {
-        
+   int opcion = 0;
+    char str[MAX_CHARACTERS_FOR_OPTIONS];
+    printf("Numero de opciones %i\n", numOpciones);
+    printf("Seleccione una opcion: ");
+    printf("_________________________________________________________\n");
+    fflush(stdin);
+    while (fgets(str, MAX_CHARACTERS_FOR_OPTIONS, stdin) != NULL) {
+        if (sscanf(str, "%d", &opcion) == 1) {
+            if (comprobarOpcionValida(opcion, numOpciones)) {
+                printf("La opcion seleccionada es %i\n", opcion);
+                return opcion;
+            }
+        }
+        if (strlen(str) == 1) {
+            printf("Error, no se ha introducido ningun valor.\n");
+        } else {
+            printf("Error, introduce una opcion valida.\n");
+        }
         printf("Seleccione una opcion: ");
-        printf("_________________________________________________________\n");
-        char str[MAX_CHARACTERS_FOR_OPTIONS];
-		fflush(stdout);
-		fgets(str, MAX_CHARACTERS_FOR_OPTIONS, stdin);
-		sscanf(str, "%d", &opcion);
-		
-    } while (!comprobarOpcionValida(opcion,numOpciones));
-    return opcion;   
+    }
+
+    return opcion;
 }
+
 
 int comprobarOpcionValida(int opcion, int numOpciones){
 	if (opcion > 0 && opcion <= numOpciones){
@@ -83,7 +93,8 @@ void menuInicio(){
     int salir=0;   
     while (salir==0)
     {
-        int opcion=selectOpcion(printMenuInicio()); 
+        int opcionesPosibles=printMenuInicio (); 
+        int opcion = selectOpcion(opcionesPosibles);
         if(opcion==1) {
 
                 printf("Has seleccionado la opcion 1: INICIAR SESION.\n");
@@ -105,33 +116,29 @@ void menuInicio(){
 
 
 void menuPrincipal(){
-    int salir=0;   
+      int salir=0;   
     while (salir==0)
     {
-        int opcion=selectOpcion(printMenuPrincipal()); 
+        int opcion = selectOpcion(printMenuPrincipal()); 
         if(opcion==1) {
-
-                printf("Has seleccionado la opcion 1: Gestionar ACTIVIDADES.\n");
-                menuGestionAct();
-                salir=1;
-        }else if(opcion==2) {
-                        
-                printf("Has seleccionado la opcion 2: Gestionar PROPUESTAS.\n");
-                salir=1;
-        }else if(opcion==3) {
-                        
-                printf("Has seleccionado la opcion 3: 3. Crear ADMINISTRADOR.\n");
-                salir=1;
-        }else if(opcion==4) {
-                        
-                printf("CERRANDO SESION\n");
-                menuInicio();
-                salir=1;
-        }else {
-            printf("¡ERROR, SELECCIONE UN NUMERO!\n");
-        }
+            printf("Has seleccionado la opcion 1: Gestionar ACTIVIDADES.\n");
+            menuGestionAct();
+            salir=1;
+        } else if(opcion==2) {
+            printf("Has seleccionado la opcion 2: Gestionar PROPUESTAS.\n");
+            salir=1;
+        } else if(opcion==3) {
+            printf("Has seleccionado la opcion 3: Crear ADMINISTRADOR.\n");
+            salir=1;
+        } else if(opcion==4) {
+            printf("CERRANDO SESION\n");
+            menuInicio();
+            salir=1;
+        } else {
+            printf("¡ERROR, SELECCIONE UN NUMERO VALIDO!\n");
         }
     }
+}
 
 
 

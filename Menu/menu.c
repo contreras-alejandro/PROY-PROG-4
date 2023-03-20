@@ -115,14 +115,16 @@ void menuInicio(){
 
 
 
-void menuPrincipal(){
+void menuPrincipal(char *usuario){
       int salir=0;   
+      printf("Sesion iniciada por: %s\n", usuario);
+      logger(0,usuario,"SESION INICIADA");
     while (salir==0)
     {
         int opcion = selectOpcion(printMenuPrincipal()); 
         if(opcion==1) {
             printf("Has seleccionado la opcion 1: Gestionar ACTIVIDADES.\n");
-            menuGestionAct();
+            menuGestionAct(usuario);
             salir=1;
         } else if(opcion==2) {
             printf("Has seleccionado la opcion 2: Gestionar PROPUESTAS.\n");
@@ -142,7 +144,7 @@ void menuPrincipal(){
 
 
 
-void menuGestionAct(){
+void menuGestionAct(char *usuario){
     int salir=0;   
     while (salir==0)
     {
@@ -166,7 +168,7 @@ void menuGestionAct(){
         }else if(opcion==5) {
                         
                 printf("Volviendo al MENU PRINCIPAL\n");
-                menuPrincipal();
+                menuPrincipal(usuario);
         }
         else {
             printf("¡ERROR, SELECCIONE UN NUMERO!\n");
@@ -177,10 +179,9 @@ void menuGestionAct(){
 
 
 
-
-void menuLogin() {
-    char usuario[50];
-    char contrasena[50];
+ void menuLogin() {
+    char *usuario = malloc(20 * sizeof(char));
+    char *contrasena = malloc(20 * sizeof(char));
     abrirConexion();
 
     printf("Ingrese su nombre de usuario: ");
@@ -193,8 +194,9 @@ void menuLogin() {
 
     if (resultado == 1) {
         printf("Iniciando sesion.\n");
-        menuPrincipal();
+        menuPrincipal(usuario);
     } else {
         printf("Credenciales incorrectas.\n");
     }
+    
 }

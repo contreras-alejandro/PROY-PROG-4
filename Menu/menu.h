@@ -8,8 +8,8 @@ int printMenuInicio();
 int printMenuPrincipal();
 int printGestionAct();
 void menuInicio();
-void menuPrincipal();
-void menuGestionAct();
+void menuPrincipal(char *usuario);
+void menuGestionAct(char *usuario);
 void menuLogin();
 int comprobarOpcionValida(int opcion, int numOpciones);
 

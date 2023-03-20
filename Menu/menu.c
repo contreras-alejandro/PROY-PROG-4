@@ -90,6 +90,7 @@ void menuInicio(){
                 salir=1;
                 menuLogin();
                 salir=1;
+                break;
         }else if(opcion==2) {
                         
                 printf("Saliendo del programa\n");
@@ -173,18 +174,19 @@ void menuGestionAct(){
 void menuLogin() {
     char usuario[50];
     char contrasena[50];
+    abrirConexion();
 
     printf("Ingrese su nombre de usuario: ");
     scanf("%s", usuario);
 
-    printf("Ingrese su contraseña: ");
+    printf("Ingrese su contrasena: ");
     scanf("%s", contrasena);
 
     int resultado = login(usuario, contrasena);
 
     if (resultado == 1) {
-        printf("Inicio de sesión exitoso.\n");
-        //menuPrincipal();
+        printf("Iniciando sesion.\n");
+        menuPrincipal();
     } else {
         printf("Credenciales incorrectas.\n");
     }

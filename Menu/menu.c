@@ -3,6 +3,7 @@
 #include <string.h>
 #include "menu.h"
 #include "../Modulos/gestionAdmin.h"
+#include "../Modulos/gestionBD.h"
 #include "../sqlite/sqlite3.h"
 //#include <unistd.h>
 

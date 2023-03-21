@@ -56,19 +56,16 @@ int printMenuInicio(){
 
 
 int printMenuPrincipal(){
-    int numOpciones=4;
-
-    logger(0,"aitor","Acceso a el menu de administrador");
-    abrirConexion();
-
+    int numOpciones=5;
 
     printf("||MENU ADMINISTRADOR||\n");
     printf("_________________________________________________________\n");
     printf("**Bienvenido**\n");
-    printf("1. Gestionar ACTIVIDADES\n");
-    printf("2. Gestionar PROPUESTAS\n");
-    printf("3. Crear ADMINISTRADOR\n");
-    printf("4. Volver\n");
+    printf("1. Importar csv en BD\n");
+    printf("2. Gestionar ACTIVIDADES\n");
+    printf("3. Gestionar PROPUESTAS\n");
+    printf("4. Crear ADMINISTRADOR\n");
+    printf("5. Volver\n");
     printf("_________________________________________________________\n");
     return numOpciones;
 }
@@ -107,6 +104,7 @@ void menuInicio(){
                         
                 printf("Saliendo del programa\n");
                 salir=1;
+                break;
         } 
         else {
             printf("¡ERROR, SELECCIONE UN NUMERO!\n");
@@ -123,22 +121,35 @@ void menuPrincipal(char *usuario){
     while (salir==0)
     {
         int opcion = selectOpcion(printMenuPrincipal()); 
+
         if(opcion==1) {
-            printf("Has seleccionado la opcion 1: Gestionar ACTIVIDADES.\n");
+            printf("Has seleccionado la opcion 1: Importar csv a BD.\n");
+            salir=1;
+            //LLAMAMOS A FUNCION
+            break;
+        }
+        else if(opcion==2) {
+            printf("Has seleccionado la opcion 2: Gestionar ACTIVIDADES.\n");
             menuGestionAct(usuario);
             salir=1;
-        } else if(opcion==2) {
-            printf("Has seleccionado la opcion 2: Gestionar PROPUESTAS.\n");
-            salir=1;
+            break;
         } else if(opcion==3) {
-            printf("Has seleccionado la opcion 3: Crear ADMINISTRADOR.\n");
+            printf("Has seleccionado la opcion 3: Gestionar PROPUESTAS.\n");
             salir=1;
+             break;
         } else if(opcion==4) {
-            printf("CERRANDO SESION\n");
-            menuInicio();
+            printf("Has seleccionado la opcion 4: Crear ADMINISTRADOR.\n");
+            logger(0,usuario,"ACCEDIENDO A CREAR ADMINISTRADOR");
+            crearAdmin(usuario);        
             salir=1;
+            break;
+        } else if(opcion==5) {
+            printf("CERRANDO SESION\n");
+            salir=1;
+            break;
         } else {
             printf("¡ERROR, SELECCIONE UN NUMERO VALIDO!\n");
+            break;
         }
     }
 }
@@ -170,6 +181,8 @@ void menuGestionAct(char *usuario){
                         
                 printf("Volviendo al MENU PRINCIPAL\n");
                 menuPrincipal(usuario);
+                salir=1;
+
         }
         else {
             printf("¡ERROR, SELECCIONE UN NUMERO!\n");

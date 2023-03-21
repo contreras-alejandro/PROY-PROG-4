@@ -4,17 +4,14 @@
 #include <string.h>
 #include "gestionAdmin.h"
 #include "../sqlite/sqlite3.h"
+#include "gestionBD.h"
+
 
 //HACEMOS LA DEFINICION DE LAS CONSTANTES PARA LOS LOG
 
 #define INFO 0
 #define WARNING 1
 #define ERROR 2
-
-
-
-
-
 
 void logger(int severity, char* usuario, char* info) {
     char *ruta =leerProperties(3);
@@ -76,6 +73,92 @@ char *leerProperties( int num) {
 
     rutaLimpiada = strtok(ruta, "\n\r ");
     return (rutaLimpiada);
+}
+
+
+int comprobarLongitud(char *palabra, int minimo){
+    if(strlen(palabra)>=minimo){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
+
+
+
+void crearAdmin(char*usuario){
+
+    //QUE ATRIBUTOS SON NECESARIOS?
+    // nombre, apellido nombreUsuario, contraseña
+     char nombre[50], apellido[50], n_usuario[50], contrasena[50], contrasena2[50];
+    int contrasenas_coinciden = 0;
+    int usuarioValido=0;
+
+    printf("Introduzca su nombre: ");
+    fgets(nombre, 50, stdin);
+    //FINALMENTE LE AÑADE UN \0
+    nombre[strcspn(nombre, "\n")] = '\0';
+
+    printf("Introduzca su apellido: ");
+    fgets(apellido, 50, stdin);
+    apellido[strcspn(apellido, "\n")] = '\0';
+    
+    while(usuarioValido==0){
+    printf("Introduzca su nombre de usuario: ");
+    fgets(n_usuario, 50, stdin);
+    n_usuario[strcspn(n_usuario, "\n")] = '\0';
+    if(comprobarLongitud(n_usuario,7)==0){
+         printf("La longitud tiene que ser minimo de 7 caracteres\n");
+         continue;
+        
+    }
+    else {
+        usuarioValido=1;
+        break;
+    }
+    }
+
+    while(contrasenas_coinciden==0){
+        printf("Introduzca su contraseña: ");
+        fgets(contrasena, 50, stdin);
+        contrasena[strcspn(contrasena, "\n")] = '\0';
+        
+        if(comprobarLongitud(contrasena,7)==0){
+            printf("La longitud tiene que ser minimo de 7 caracteres\n");
+            continue;
+        }
+
+        printf("Confirme su contraseña: ");
+        fgets(contrasena2, 50, stdin);
+        contrasena2[strcspn(contrasena2, "\n")] = '\0';
+
+        if(strcmp(contrasena, contrasena2)!=0){
+            printf("Las contraseñas no coinciden. Vuelva a intentarlo.\n");
+            
+        }
+        else{
+            contrasenas_coinciden = 1;
+        }
+    }
+
+
+    printf("\nDatos introducido del NUEVO ADMINs:\n");
+    printf("Nombre: %s\n", nombre);
+    printf("Apellido: %s\n", apellido);
+    printf("Nombre de usuario: %s\n", n_usuario);
+    printf("Contraseña: %s\n", contrasena);
+
+    Administrador admin;
+    strcpy(admin.nombre, nombre);
+    strcpy(admin.apellido, apellido);
+    strcpy(admin.nusuario, n_usuario);
+    strcpy(admin.contrasenya, contrasena);
+
+
+    //LLAMAMOS A METODO DE BD, QUE INTRODUCE UN ADMIN EN BD
+    insertarAdmin(usuario,admin);
+    return;
 }
 
 

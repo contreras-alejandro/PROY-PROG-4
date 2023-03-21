@@ -5,3 +5,13 @@
 [INFO] Usuario:aitor -> Acceso a el menu de administrador 
 [INFO] Usuario:admin -> SESION INICIADA 
 [INFO] Usuario:aitor -> Acceso a el menu de administrador 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:aitor -> Acceso a el menu de administrador 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:aitor -> Acceso a el menu de administrador 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:aitor -> Acceso a el menu de administrador 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:aitor -> Acceso a el menu de administrador 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:aitor -> Acceso a el menu de administrador 

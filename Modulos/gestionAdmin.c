@@ -126,7 +126,6 @@ char *leerProperties( int num) {
 
 int login(char* usuario, char* contrasena) {
     int resultado_consulta;
-    char *error;
     sqlite3_stmt *stmt;
     char* consulta = "SELECT * FROM ADMIN WHERE USUARIO_ADMIN = ? AND CONTRASENYA_ADMIN = ?;";
 
@@ -152,6 +151,9 @@ int login(char* usuario, char* contrasena) {
         printf("Credenciales incorrectas\n");
         return 0;
     }
+
+
+
 
 }
 

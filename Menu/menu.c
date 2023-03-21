@@ -183,20 +183,33 @@ void menuGestionAct(char *usuario){
     char *usuario = malloc(20 * sizeof(char));
     char *contrasena = malloc(20 * sizeof(char));
     abrirConexion();
+    int resultado;
 
-    printf("Ingrese su nombre de usuario: ");
-    scanf("%s", usuario);
 
-    printf("Ingrese su contrasena: ");
-    scanf("%s", contrasena);
+    int salir=0;
 
-    int resultado = login(usuario, contrasena);
 
-    if (resultado == 1) {
-        printf("Iniciando sesion.\n");
-        menuPrincipal(usuario);
-    } else {
-        printf("Credenciales incorrectas.\n");
-    }
+    while (salir==0)
+    {
+
+        printf("Ingrese su nombre de usuario: ");
+        scanf("%s", usuario);
+
+        printf("Ingrese su contrasena: ");
+        scanf("%s", contrasena);
+
+        resultado = login(usuario, contrasena);
+
+        if (resultado == 1) {
+            printf("Iniciando sesion.\n");
+            salir=1;
+            menuPrincipal(usuario);
+        } else {
+            printf("Introduce un usuario y contrasena correctos\n");
+        }
+        }
     
+
 }
+
+

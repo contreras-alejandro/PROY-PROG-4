@@ -174,7 +174,7 @@ void crearActividad(char*usuario){
     fgets(descripcion, 250, stdin);
     descripcion[strcspn(descripcion, "\n")] = '\0';
     
-    printf("Introduzca su contraseña: ");
+    printf("Introduzca el tipo de actividad: ");
     fgets(tipo, 50, stdin);
     tipo[strcspn(tipo, "\n")] = '\0';
     
@@ -221,8 +221,7 @@ void crearActividad(char*usuario){
     strcpy(act.fecha, fecha);
 
 
-    //LLAMAMOS A METODO DE BD, QUE INTRODUCE UN ADMIN EN BD
-    //insertarActividad(usuario,act);
+    insertarActividad(usuario,act);
     return;
 }
 

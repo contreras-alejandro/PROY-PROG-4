@@ -78,7 +78,7 @@ int printGestionAct(){
     printf("_________________________________________________________\n");
     printf("**Bienvenido al programa de administracion del servidor**\n");
     printf("1. Visualizar ACTIVIDADES\n");
-    printf("2. Añadir ACTIVIDADES\n");
+    printf("2. Anadir ACTIVIDADES\n");
     printf("3. Modificar ACTIVIDADES\n");
     printf("4. Eliminar ACTIVIDADES\n");
     printf("5. Volver\n");
@@ -164,11 +164,16 @@ void menuGestionAct(char *usuario){
         if(opcion==1) {
 
                 printf("Has seleccionado la opcion 1: Visualizar ACTIVIDADES.\n");
+                verActividades();
                 salir=1;
         }else if(opcion==2) {
                         
-                printf("Has seleccionado la opcion 2: Añadir ACTIVIDADES.\n");
+                printf("Has seleccionado la opcion 2: Anadir ACTIVIDADES.\n");
+                logger(0,usuario,"ACCEDIENDO A CREAR ADMINISTRADOR");
+                crearActividad(usuario);
+                menuGestionAct(usuario);
                 salir=1;
+                break;
         }else if(opcion==3) {
                         
                 printf("Has seleccionado la opcion 3: Modificar ACTIVIDADES.\n");

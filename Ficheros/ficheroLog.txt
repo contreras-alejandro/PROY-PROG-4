@@ -2,3 +2,23 @@
 [INFO] Usuario:aitor -> Acceso a el menu de administrador 
 [INFO] Usuario:admin -> SESION INICIADA 
 [INFO] Usuario:admin -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[WARNING] Usuario:admin -> HA INSERTADO UN NUEVO ACTIVIDAD! 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[WARNING] Usuario:admin -> HA INSERTADO UN NUEVO ACTIVIDAD! 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[WARNING] Usuario:admin -> HA INSERTADO UN NUEVO ACTIVIDAD! 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> SESION INICIADA 

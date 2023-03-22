@@ -158,14 +158,11 @@ void insertarAdmin(char *usuario,Administrador admin) {
 }
 
 
-void insertarActividad(char *usuario,Administrador admin) {
+void insertarActividad(char *usuario,Actividad act) {
     int rc;
-
-    printf("El nombre del admin a insertar:%s\n", admin.nombre);
-
     abrirConexion();
     sqlite3_stmt *stmt;
-    char* sql = "INSERT INTO ADMIN (NOMBRE_ADMIN, APELLIDO_ADMIN, USUARIO_ADMIN, CONTRASENYA_ADMIN) VALUES (?, ?, ?, ?)";
+    char* sql = "INSERT INTO ACTIVIDAD (NOMBRE_ACT, DESCRIPCION, TIPO_DE_ACTIVIDAD,PUBLICO,MUNICIPIO,DIRECCION,ENCARGADO,FECHA_ACT) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     
     rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
@@ -175,10 +172,15 @@ void insertarActividad(char *usuario,Administrador admin) {
         return;
     }
 
-    sqlite3_bind_text(stmt, 1, admin.nombre, strlen(admin.nombre), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 2, admin.apellido, strlen(admin.apellido), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 3, admin.nusuario, strlen(admin.nusuario), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 4, admin.contrasenya, strlen(admin.contrasenya), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 1, act.nombre, strlen(act.nombre), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, act.descripcion, strlen(act.descripcion), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, act.tipo, strlen(act.tipo), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 4, act.publico, strlen(act.publico), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 5, act.municipio, strlen(act.municipio), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 6, act.direccion, strlen(act.direccion), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 7, act.encargado, strlen(act.encargado), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 8, act.fecha, strlen(act.fecha), SQLITE_STATIC);
+
 
      rc = sqlite3_step(stmt);
     
@@ -188,10 +190,57 @@ void insertarActividad(char *usuario,Administrador admin) {
         sqlite3_close(db);
         return;
     }
-
-    //VA TODO BIEN 
+ 
     printf("VALORES INSERTADOS!!\n");
-    logger(1,usuario, "HA INSERTADO UN NUEVO ADMIN!");
+    logger(1,usuario, "HA INSERTADO UNA NUEVA ACTIVIDAD!");
+    sqlite3_finalize(stmt);
+    cerrarConexion();
+    return;
+}
+
+
+
+void verActividades(){
+
+    int rc;
+    abrirConexion();
+    sqlite3_stmt *stmt;
+    char* sql = "SELECT * FROM ACTIVIDAD";
+    
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+
+    if (rc != SQLITE_OK) {
+        printf("Error al preparar la consulta\n");
+        return;
+    }
+
+    printf("%-7s %-20s %-30s %-20s %-10s %-20s %-40s %-30s %-12s\n", "ID_ACT", "NOMBRE_ACT", "DESCRIPCION", "TIPO_DE_ACTIVIDAD", "PUBLICO", "MUNICIPIO", "DIRECCION", "ENCARGADO", "FECHA_ACT");
+    printf("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+
+
+    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+        int id_act = sqlite3_column_int(stmt, 0);
+        const unsigned char* nombre_act = sqlite3_column_text(stmt, 1);
+        const unsigned char* descripcion = sqlite3_column_text(stmt, 2);
+        const unsigned char* tipo_de_actividad = sqlite3_column_text(stmt, 3);
+        const unsigned char* publico = sqlite3_column_text(stmt, 4);
+        const unsigned char* municipio = sqlite3_column_text(stmt, 5);
+        const unsigned char* direccion = sqlite3_column_text(stmt, 6);
+        const unsigned char* encargado = sqlite3_column_text(stmt, 7);
+        const unsigned char* fecha_act = sqlite3_column_text(stmt, 8);
+
+        printf("%-7d %-20s %-30s %-20s %-10s %-20s %-40s %-30s %-12s\n", id_act, nombre_act, descripcion, tipo_de_actividad, publico, municipio, direccion, encargado, fecha_act);
+    }
+    
+    if (rc != SQLITE_DONE) {
+        printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
+        sqlite3_finalize(stmt);
+        sqlite3_close(db);
+        return;
+    }
+
+
+
     sqlite3_finalize(stmt);
     cerrarConexion();
     return;

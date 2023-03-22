@@ -156,3 +156,43 @@ void insertarAdmin(char *usuario,Administrador admin) {
     cerrarConexion();
     return;
 }
+
+
+void insertarActividad(char *usuario,Administrador admin) {
+    int rc;
+
+    printf("El nombre del admin a insertar:%s\n", admin.nombre);
+
+    abrirConexion();
+    sqlite3_stmt *stmt;
+    char* sql = "INSERT INTO ADMIN (NOMBRE_ADMIN, APELLIDO_ADMIN, USUARIO_ADMIN, CONTRASENYA_ADMIN) VALUES (?, ?, ?, ?)";
+
+    
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+
+    if (rc != SQLITE_OK) {
+        printf("Error al preparar la consulta\n");
+        return;
+    }
+
+    sqlite3_bind_text(stmt, 1, admin.nombre, strlen(admin.nombre), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, admin.apellido, strlen(admin.apellido), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, admin.nusuario, strlen(admin.nusuario), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 4, admin.contrasenya, strlen(admin.contrasenya), SQLITE_STATIC);
+
+     rc = sqlite3_step(stmt);
+    
+    if (rc != SQLITE_DONE) {
+        printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
+        sqlite3_finalize(stmt);
+        sqlite3_close(db);
+        return;
+    }
+
+    //VA TODO BIEN 
+    printf("VALORES INSERTADOS!!\n");
+    logger(1,usuario, "HA INSERTADO UN NUEVO ADMIN!");
+    sqlite3_finalize(stmt);
+    cerrarConexion();
+    return;
+}

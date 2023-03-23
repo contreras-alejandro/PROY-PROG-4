@@ -185,10 +185,7 @@ void menuGestionAct(char *usuario){
         }else if(opcion==4) {
                         
                 printf("Has seleccionado la opcion 4: 4. Eliminar ACTIVIDADES.\n");
-                int id;
-                printf("Ingrese el id de la actividad que quiera eliminar: ");
-                scanf("%d", &id);
-                eliminarAct(id);
+                eliminarTablaActividades();
                 salir=1;
         }else if(opcion==5) {
                         

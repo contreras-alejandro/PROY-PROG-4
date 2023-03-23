@@ -13,5 +13,6 @@ void insertarActividad(char *usuario, Actividad act);
 void verActividades();
 void eliminarAct(int id);
 void subirActModificada(int id, Actividad act);
+void eliminarTablaActividades();
 
 #endif

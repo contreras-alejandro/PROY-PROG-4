@@ -366,3 +366,20 @@ void subirActModificada(int id, Actividad act){
     cerrarConexion();
     return;
 }
+
+
+void eliminarTablaActividades(){
+    int rc;
+    abrirConexion();
+    sqlite3_stmt *stmt;
+    char* sql = "DELETE FROM ACTIVIDAD;";
+
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+    rc = sqlite3_step(stmt);
+
+    sqlite3_finalize(stmt);
+    sqlite3_close(db);
+    cerrarConexion();
+
+
+}

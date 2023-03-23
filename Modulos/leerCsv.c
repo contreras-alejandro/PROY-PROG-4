@@ -5,48 +5,53 @@
 #include "../Modulos/gestionAdmin.h"
 
 
+#define MAX_LINE_LENGTH 1024
 
 
-void cargarCsv(char* archivoCSV, char* usuario) {
-    FILE* archivo_csv = fopen(archivoCSV, "r");
-
-    if (archivo_csv == NULL) {
-        printf("Error al abrir el archivo CSV\n");
-        return;
-    }
-
+void cargarCsv(char* usuario) {
+    FILE* file = fopen("./Modulos/actividades.csv", "r");
     char linea[1024];
-    int contador_linea = 0;
-
-    while (fgets(linea, 1024, archivo_csv)) {
-        if (contador_linea > 0) {
-            char* token;
-            char* valores[9];
-            int indice_valor = 0;
-            Actividad act;
-
-            token = strtok(linea, ";");
-            while (token != NULL) {
-                valores[indice_valor++] = token;
-                token = strtok(NULL, ";");
-            }
-
-            strcpy(act.nombre, valores[1]);
-            strcpy(act.descripcion, valores[2]);
-            strcpy(act.tipo, valores[3]);
-            strcpy(act.publico, valores[4]);
-            strcpy(act.municipio, valores[5]);
-            strcpy(act.direccion, valores[6]);
-            strcpy(act.encargado, valores[7]);
-            strcpy(act.fecha, valores[8]);
-
-            insertarActividad(usuario, act);
-        }
-
-        contador_linea++;
+    if (!file) {
+        printf("No se ha podido abrir el archivo CSV\n");
+    }else{
+        printf("CSV ABIERTO\n");
     }
 
-    fclose(archivo_csv);
+    char line[MAX_LINE_LENGTH];
+    while (fgets(line, MAX_LINE_LENGTH, file)) {
+
+        line[strcspn(line, "\n")] = '\0';
+
+
+        char* id_str = strtok(line, ";");
+        char* nombre = strtok(NULL, ";");
+        char* descripcion = strtok(NULL, ";");
+        char* tipo = strtok(NULL, ";");
+        char* publico = strtok(NULL, ";");
+        char* municipio = strtok(NULL, ";");
+        char* direccion = strtok(NULL, ";");
+        char* encargado = strtok(NULL, ";");
+        char* fecha = strtok(NULL, ";");
+
+
+        int id = atoi(id_str);
+
+
+        Actividad actividad;
+        snprintf(actividad.nombre, sizeof(actividad.nombre), "%s", nombre);
+        snprintf(actividad.descripcion, sizeof(actividad.descripcion), "%s", descripcion);
+        snprintf(actividad.tipo, sizeof(actividad.tipo), "%s", tipo);
+        snprintf(actividad.publico, sizeof(actividad.publico), "%s", publico);
+        snprintf(actividad.municipio, sizeof(actividad.municipio), "%s", municipio);
+        snprintf(actividad.direccion, sizeof(actividad.direccion), "%s", direccion);
+        snprintf(actividad.encargado, sizeof(actividad.encargado), "%s", encargado);
+        snprintf(actividad.fecha, sizeof(actividad.fecha), "%s", fecha);
+
+
+        insertarActividad(usuario, actividad);
+    }
+
+    fclose(file);
 }
    
 

@@ -124,10 +124,8 @@ void menuPrincipal(char *usuario){
         int opcion = selectOpcion(printMenuPrincipal()); 
 
         if(opcion==1) {
-            printf("Has seleccionado la opcion 1: Importar csv a BD.\n");
-            
-            char* csv="actividades.csv";
-            cargarCsv(csv,usuario);
+            printf("Has seleccionado la opcion 1: Importar csv a BD.\n");       
+            cargarCsv(usuario);
             salir=1;
             break;
         }

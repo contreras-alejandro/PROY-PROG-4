@@ -2,7 +2,7 @@
 #define LEER_CSV
 
 
-void cargarCsv(char* archivoCSV, char* usuario);
+void cargarCsv(char* usuario);
 
 
 #endif

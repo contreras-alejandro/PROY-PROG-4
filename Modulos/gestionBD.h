@@ -8,9 +8,10 @@ int abrirConexion();
 int cerrarConexion();
 int login(char* usuario, char* contrasena);
 void insertarAdmin(char *usuario,Administrador admin);
+Actividad buscarActividadPorId(int id);
 void insertarActividad(char *usuario,Actividad act);
 void verActividades();
 void eliminarAct(int id);
-void subirCambio(int id,Actividad act);
+void subirActModificada(int id,Actividad act);
 
 #endif

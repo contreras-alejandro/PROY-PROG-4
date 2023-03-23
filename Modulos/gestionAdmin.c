@@ -161,6 +161,19 @@ void crearAdmin(char*usuario){
     return;
 }
 
+void imprimirActividad(Actividad act) {
+    printf("Nombre: %s\n", act.nombre);
+    printf("Descripción: %s\n", act.descripcion);
+    printf("Tipo: %s\n", act.tipo);
+    printf("Publico: %s\n", act.publico);
+    printf("Municipio: %s\n", act.municipio);
+    printf("Direccion: %s\n", act.direccion);
+    printf("Encargado: %s\n", act.encargado);
+    printf("Fecha: %s\n", act.fecha);
+}
+
+
+
 
 
 void crearActividad(char*usuario){
@@ -201,14 +214,7 @@ void crearActividad(char*usuario){
 
 
     printf("\nDatos introducido de la NUEVA ACTIVIDAD:\n");
-    printf("Nombre: %s\n", nombre);
-    printf("Descripcion: %s\n", descripcion);
-    printf("Tipo de actividad: %s\n", tipo);
-    printf("Publico dirigido: %s\n", publico);
-    printf("Municipio: %s\n", municipio);
-    printf("Direccion: %s\n", direccion);
-    printf("Encargado: %s\n", encargado);
-    printf("Fecha: %s\n", fecha);
+
 
     Actividad act;
     strcpy(act.nombre, nombre);
@@ -220,6 +226,8 @@ void crearActividad(char*usuario){
     strcpy(act.encargado, encargado);
     strcpy(act.fecha, fecha);
 
+    imprimirActividad(act);
+
 
     insertarActividad(usuario,act);
     return;
@@ -227,16 +235,18 @@ void crearActividad(char*usuario){
 
 
 
-void modActividad(int id){
-
+void modificarActividad(int id){
+    fflush(stdin);
     char nombre[50], descripcion[250], tipo[50], publico[50], municipio[50], direccion[50], encargado[50], fecha[50];
     printf("Introduzca el nombre de la actividad: ");
     fgets(nombre, 50, stdin);
     nombre[strcspn(nombre, "\n")] = '\0';
+    fflush(stdin);
 
     printf("Introduzca una descrpcion: ");
     fgets(descripcion, 250, stdin);
     descripcion[strcspn(descripcion, "\n")] = '\0';
+    fflush(stdin);
     
     printf("Introduzca el tipo de actividad: ");
     fgets(tipo, 50, stdin);
@@ -265,14 +275,6 @@ void modActividad(int id){
 
 
     printf("\nMODIFICACION de la ACTIVIDAD:\n");
-    printf("Nombre: %s\n", nombre);
-    printf("Descripcion: %s\n", descripcion);
-    printf("Tipo de actividad: %s\n", tipo);
-    printf("Publico dirigido: %s\n", publico);
-    printf("Municipio: %s\n", municipio);
-    printf("Direccion: %s\n", direccion);
-    printf("Encargado: %s\n", encargado);
-    printf("Fecha: %s\n", fecha);
 
     Actividad act;
     strcpy(act.nombre, nombre);
@@ -284,23 +286,9 @@ void modActividad(int id){
     strcpy(act.encargado, encargado);
     strcpy(act.fecha, fecha);
 
+    imprimirActividad(act);
 
-    subirCambio(id,act);
+
+    subirActModificada(id,act);
     return;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

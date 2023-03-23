@@ -44,6 +44,9 @@ int cerrarConexion()  {
 }
 
 
+
+
+
 //METODO PARA HASHEAR CONTRANENYA
 
 //Utilizaremos el metodo de hash: SHA-256 
@@ -110,6 +113,45 @@ int login(char* usuario, char* contrasena) {
     //CERRAMOS LA BASE DE DATOS
 
 
+}
+
+Actividad buscarActividadPorId(int id) {
+    abrirConexion();
+    sqlite3_stmt *stmt;
+    char sql[100];
+    int rc;
+
+    Actividad actividad = {0};
+
+    abrirConexion();
+
+    sprintf(sql, "SELECT * FROM ACTIVIDAD WHERE ID_ACT=%d", id);
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+
+    if (rc != SQLITE_OK) {
+        printf("Error al preparar la consulta\n");
+        return actividad;
+    }
+
+    rc = sqlite3_step(stmt);
+
+    if (rc == SQLITE_ROW) {
+        strcpy(actividad.nombre, sqlite3_column_text(stmt, 1));
+        strcpy(actividad.descripcion, sqlite3_column_text(stmt, 2));
+        strcpy(actividad.tipo, sqlite3_column_text(stmt, 3));
+        strcpy(actividad.publico, sqlite3_column_text(stmt, 4));
+        strcpy(actividad.municipio, sqlite3_column_text(stmt, 5));
+        strcpy(actividad.direccion, sqlite3_column_text(stmt, 6));
+        strcpy(actividad.encargado, sqlite3_column_text(stmt, 7));
+        strcpy(actividad.fecha, sqlite3_column_text(stmt, 8));
+    }
+
+    sqlite3_finalize(stmt);
+    cerrarConexion();
+
+    printf("La actividad buscada es:\n");
+    imprimirActividad(actividad);
+    return actividad;
 }
 
 
@@ -283,7 +325,7 @@ void eliminarAct(int id){
 }
 
 
-void subirCambio(int id, Actividad act){
+void subirActModificada(int id, Actividad act){
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;

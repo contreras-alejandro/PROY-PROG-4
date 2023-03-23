@@ -24,8 +24,9 @@ char* string_hash(char *str);
 void logger(int severity, char* usuario, char* info);
 char * leerProperties(int);
 void crearAdmin();
+void imprimirActividad(Actividad act);
 void crearActividad(char*usuario);
-void modActividad(int id);
+void modificarActividad(int id);
 
 
 

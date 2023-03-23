@@ -179,7 +179,7 @@ void menuGestionAct(char *usuario){
                 printf("Has seleccionado la opcion 3: Modificar ACTIVIDADES.\n");
                 printf("Ingrese el id de la actividad que quiera modificar: ");
                 scanf("%d", &id);
-                modActividad(id);
+                modificarActividad(id);
                 salir=1;
         }else if(opcion==4) {
                         

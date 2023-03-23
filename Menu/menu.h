@@ -1,6 +1,5 @@
 #ifndef MENU_H
 #define MENU_H
-
 #define MAX_CHARACTERS_FOR_OPTIONS 3
 
 int selectOpcion();

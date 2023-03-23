@@ -5,7 +5,7 @@
 #include "../Modulos/gestionAdmin.h"
 #include "../Modulos/gestionBD.h"
 #include "../sqlite/sqlite3.h"
-#include "../CSV/importarCsv.h"
+#include "../Modulos/leerCsv.h"
 //#include <unistd.h>
 
 int selectOpcion(int numOpciones){
@@ -125,8 +125,10 @@ void menuPrincipal(char *usuario){
 
         if(opcion==1) {
             printf("Has seleccionado la opcion 1: Importar csv a BD.\n");
+            
+            char* csv="actividades.csv";
+            cargarCsv(csv,usuario);
             salir=1;
-            cargarDatosDesdeCSV(usuario);
             break;
         }
         else if(opcion==2) {

@@ -22,7 +22,7 @@ int main() {
     Actividad actividades[300]; 
     int i = 0;
 
-    csv = fopen("actividades.csv", "r");
+    csv = fopen("../Ficheros/actividades.csv", "r");
     if (!csv) {
         printf("No se ha podido abrir el CSV\n");
         return 1;

@@ -340,14 +340,14 @@ void subirActModificada(int id, Actividad act){
         return;
     }
 
-    sqlite3_bind_text(stmt, 1, act.nombre, strlen(act.nombre), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 2, act.descripcion, strlen(act.descripcion), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 3, act.tipo, strlen(act.tipo), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 4, act.publico, strlen(act.publico), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 5, act.municipio, strlen(act.municipio), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 6, act.direccion, strlen(act.direccion), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 7, act.encargado, strlen(act.encargado), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 8, act.fecha, strlen(act.fecha), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 1, act.nombre, strlen(act.nombre), SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 2, act.descripcion, strlen(act.descripcion), SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 3, act.tipo, strlen(act.tipo), SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 4, act.publico, strlen(act.publico), SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 5, act.municipio, strlen(act.municipio), SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 6, act.direccion, strlen(act.direccion), SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 7, act.encargado, strlen(act.encargado), SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 8, act.fecha, strlen(act.fecha), SQLITE_TRANSIENT);
 
     rc = sqlite3_step(stmt);
 

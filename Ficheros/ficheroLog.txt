@@ -44,3 +44,6 @@
 [INFO] Usuario:admin -> SESION INICIADA 
 [INFO] Usuario:admin -> SESION INICIADA 
 [INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> SESION INICIADA 
+[INFO] Usuario:admin -> SESION INICIADA 

@@ -25,6 +25,7 @@ void logger(int severity, char* usuario, char* info);
 char * leerProperties(int);
 void crearAdmin();
 void crearActividad(char*usuario);
+void modActividad(int id);
 
 
 

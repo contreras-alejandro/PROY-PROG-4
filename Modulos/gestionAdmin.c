@@ -200,7 +200,7 @@ void crearActividad(char*usuario){
 
 
 
-    printf("\nDatos introducido del NUEVO ADMINs:\n");
+    printf("\nDatos introducido de la NUEVA ACTIVIDAD:\n");
     printf("Nombre: %s\n", nombre);
     printf("Descripcion: %s\n", descripcion);
     printf("Tipo de actividad: %s\n", tipo);
@@ -224,6 +224,78 @@ void crearActividad(char*usuario){
     insertarActividad(usuario,act);
     return;
 }
+
+
+
+void modActividad(int id){
+
+    char nombre[50], descripcion[250], tipo[50], publico[50], municipio[50], direccion[50], encargado[50], fecha[50];
+    printf("Introduzca el nombre de la actividad: ");
+    fgets(nombre, 50, stdin);
+    nombre[strcspn(nombre, "\n")] = '\0';
+
+    printf("Introduzca una descrpcion: ");
+    fgets(descripcion, 250, stdin);
+    descripcion[strcspn(descripcion, "\n")] = '\0';
+    
+    printf("Introduzca el tipo de actividad: ");
+    fgets(tipo, 50, stdin);
+    tipo[strcspn(tipo, "\n")] = '\0';
+    
+    printf("Introduzca a que publico esta dirigido: ");
+    fgets(publico, 50, stdin);
+    publico[strcspn(publico, "\n")] = '\0';
+
+    printf("Introduzca el municipio: ");
+    fgets(municipio, 50, stdin);
+    municipio[strcspn(municipio, "\n")] = '\0';
+
+    printf("Introduzca la direccion: ");
+    fgets(direccion, 50, stdin);
+    direccion[strcspn(direccion, "\n")] = '\0';
+
+    printf("Introduzca el encargado: ");
+    fgets(encargado, 50, stdin);
+    encargado[strcspn(encargado, "\n")] = '\0';
+
+    printf("Introduzca la fecha: ");
+    fgets(fecha, 50, stdin);
+    fecha[strcspn(fecha, "\n")] = '\0';
+
+
+
+    printf("\nMODIFICACION de la ACTIVIDAD:\n");
+    printf("Nombre: %s\n", nombre);
+    printf("Descripcion: %s\n", descripcion);
+    printf("Tipo de actividad: %s\n", tipo);
+    printf("Publico dirigido: %s\n", publico);
+    printf("Municipio: %s\n", municipio);
+    printf("Direccion: %s\n", direccion);
+    printf("Encargado: %s\n", encargado);
+    printf("Fecha: %s\n", fecha);
+
+    Actividad act;
+    strcpy(act.nombre, nombre);
+    strcpy(act.descripcion, descripcion);
+    strcpy(act.tipo, tipo);
+    strcpy(act.publico, publico);
+    strcpy(act.municipio, municipio);
+    strcpy(act.direccion, direccion);
+    strcpy(act.encargado, encargado);
+    strcpy(act.fecha, fecha);
+
+
+    subirCambio(id,act);
+    return;
+}
+
+
+
+
+
+
+
+
 
 
 

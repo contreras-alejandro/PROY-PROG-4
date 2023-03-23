@@ -245,3 +245,82 @@ void verActividades(){
     cerrarConexion();
     return;
 }
+
+
+void eliminarAct(int id){
+
+    int rc;
+    abrirConexion();
+    sqlite3_stmt *stmt;
+    char sql[100];
+
+
+    sprintf(sql, "DELETE FROM ACTIVIDAD WHERE ID_ACT = %d", id);
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+
+    if (rc != SQLITE_OK) {
+        printf("Error al preparar la consulta\n");
+        sqlite3_finalize(stmt);
+        sqlite3_close(db);
+    }
+
+    rc = sqlite3_step(stmt);
+
+
+    if (rc == SQLITE_DONE) {
+        printf("Actividad eliminada con exito\n");
+    } else {
+        printf("No se encontro ninguna actividad con ese ID\n");
+    }
+
+
+
+
+    sqlite3_finalize(stmt);
+    sqlite3_close(db);
+    cerrarConexion();
+    return;
+}
+
+
+void subirCambio(int id, Actividad act){
+    int rc;
+    abrirConexion();
+    sqlite3_stmt *stmt;
+    char sql[100];
+    sprintf(sql,"UPDATE ACTIVIDAD SET NOMBRE_ACT=?, DESCRIPCION=?, TIPO_DE_ACTIVIDAD=?, PUBLICO=?, MUNICIPIO=?, DIRECCION=?, ENCARGADO=?, FECHA_ACT=? WHERE ID_ACT=%d", id);
+
+
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+
+    if (rc != SQLITE_OK) {
+        printf("Error al preparar la consulta\n");
+        return;
+    }
+
+    sqlite3_bind_text(stmt, 1, act.nombre, strlen(act.nombre), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, act.descripcion, strlen(act.descripcion), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, act.tipo, strlen(act.tipo), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 4, act.publico, strlen(act.publico), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 5, act.municipio, strlen(act.municipio), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 6, act.direccion, strlen(act.direccion), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 7, act.encargado, strlen(act.encargado), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 8, act.fecha, strlen(act.fecha), SQLITE_STATIC);
+
+    rc = sqlite3_step(stmt);
+
+
+
+    if (rc == SQLITE_DONE) {
+        printf("Actividad modificada con exito\n");
+    } else {
+        printf("No se encontro ninguna actividad con ese ID\n");
+    }
+
+
+
+    sqlite3_finalize(stmt);
+    sqlite3_close(db);
+    cerrarConexion();
+    return;
+}

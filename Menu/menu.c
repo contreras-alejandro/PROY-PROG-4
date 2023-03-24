@@ -176,11 +176,21 @@ void menuGestionAct(char *usuario){
                 salir=1;
                 break;
         }else if(opcion==3) {
-                int id;        
+                int id;
+                int confirmar;      
                 printf("Has seleccionado la opcion 3: Modificar ACTIVIDADES.\n");
                 printf("Ingrese el id de la actividad que quiera modificar: ");
                 scanf("%d", &id);
-                modificarActividad(id);
+                printf("Estas seguro que quieres modificar esta activiad?\n");
+                buscarActividadPorId(id);
+                printf("1.Si\n2.No\nseleccione opcion:");
+                scanf("%d", &confirmar);
+                if(confirmar==1){
+                    modificarActividad(id);
+                }else if (confirmar==2)
+                {
+                    menuGestionAct(usuario);
+                }
                 salir=1;
         }else if(opcion==4) {
                         

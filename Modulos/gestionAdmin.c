@@ -163,7 +163,7 @@ void crearAdmin(char*usuario){
 
 void imprimirActividad(Actividad act) {
     printf("Nombre: %s\n", act.nombre);
-    printf("Descripción: %s\n", act.descripcion);
+    printf("Descripcion: %s\n", act.descripcion);
     printf("Tipo: %s\n", act.tipo);
     printf("Publico: %s\n", act.publico);
     printf("Municipio: %s\n", act.municipio);

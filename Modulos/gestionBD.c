@@ -329,7 +329,7 @@ void subirActModificada(int id, Actividad act){
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;
-    char sql[100];
+    char sql[200];
     sprintf(sql,"UPDATE ACTIVIDAD SET NOMBRE_ACT=?, DESCRIPCION=?, TIPO_DE_ACTIVIDAD=?, PUBLICO=?, MUNICIPIO=?, DIRECCION=?, ENCARGADO=?, FECHA_ACT=? WHERE ID_ACT=%d", id);
 
 

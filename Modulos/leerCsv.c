@@ -36,6 +36,8 @@ void cargarCsv(char* usuario) {
 
         int id = atoi(id_str);
 
+        //PASAMOS LOS VALORES OBTENIDOS A LOS ATRIBUTOS DE UNA ACTIVIDADD Y DESPUES INSERTAMOS LA ACTIVIDAD EN BD
+        
 
         Actividad actividad;
         snprintf(actividad.nombre, sizeof(actividad.nombre), "%s", nombre);

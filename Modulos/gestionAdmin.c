@@ -112,7 +112,9 @@ void crearAdmin(char*usuario){
          printf("La longitud tiene que ser minimo de 7 caracteres\n");
          continue;
         
-    }
+    } else if((comprobarUsuario(n_usuario)==1)){
+            printf("NOMBRE DE USUARIO YA EXISTE, NO VALIDO");
+        }
     else {
         usuarioValido=1;
         break;
@@ -137,7 +139,7 @@ void crearAdmin(char*usuario){
             printf("Las contraseñas no coinciden. Vuelva a intentarlo.\n");
             
         }
-        else{
+        else {
             contrasenas_coinciden = 1;
         }
     }
@@ -227,8 +229,6 @@ void crearActividad(char*usuario){
     strcpy(act.fecha, fecha);
 
     imprimirActividad(act);
-
-
     insertarActividad(usuario,act);
     return;
 }
@@ -287,8 +287,6 @@ void modificarActividad(int id){
     strcpy(act.fecha, fecha);
 
     imprimirActividad(act);
-
-
     subirActModificada(id,act);
     return;
 }

@@ -146,6 +146,7 @@ Actividad buscarActividadPorId(int id) {
         strcpy(actividad.fecha, sqlite3_column_text(stmt, 8));
     }
 
+    //logger(0,usuario,"ACTIVIDAD ENCONTRDA CON ID %i", id);
     sqlite3_finalize(stmt);
     cerrarConexion();
 
@@ -155,6 +156,45 @@ Actividad buscarActividadPorId(int id) {
 }
 
 
+
+
+//METODO PARA COMPROBAR SI UN NOMBRE DE USUARIO ESTA YA UTILIZADO,
+
+int comprobarUsuario(char * nombreUsuario) {
+    int resultado_consulta;
+    abrirConexion();
+    sqlite3_stmt *stmt;
+    char* consulta = "SELECT * FROM ADMIN WHERE USUARIO_ADMIN = ?";
+
+    resultado_consulta = sqlite3_prepare_v2(db, consulta, -1, &stmt, 0);
+
+    if (resultado_consulta != SQLITE_OK) {
+        printf("Error al preparar la consulta\n");
+        cerrarConexion();
+        return -1;
+    }
+
+    sqlite3_bind_text(stmt, 1, nombreUsuario, strlen(nombreUsuario), SQLITE_STATIC);
+    resultado_consulta = sqlite3_step(stmt);
+
+    if (resultado_consulta == SQLITE_ROW) {
+        //EXISTE ESTE USUARIO
+        sqlite3_finalize(stmt);
+        cerrarConexion();
+        return 1;
+    
+    } else if (resultado_consulta == SQLITE_ERROR) {
+        printf("Error en la consulta: %s\n", sqlite3_errmsg(db));
+        sqlite3_finalize(stmt);
+        cerrarConexion();
+        return -1;
+    } else {
+        sqlite3_finalize(stmt);
+        cerrarConexion();
+        return 0;
+}
+
+}
 
 
 //METODO PARA INSERTAR ADMINISTRADOR EN BD
@@ -193,11 +233,15 @@ void insertarAdmin(char *usuario,Administrador admin) {
 
     //VA TODO BIEN 
     printf("VALORES INSERTADOS!!\n");
-    logger(1,usuario, "HA INSERTADO UN NUEVO ADMIN!");
+    //logger(1,usuario, "HA INSERTADO UN NUEVO ADMIN CON NOMBRE DE USUARIO %s!",admin.nombre);
     sqlite3_finalize(stmt);
     cerrarConexion();
     return;
 }
+
+
+
+
 
 
 void insertarActividad(char *usuario,Actividad act) {
@@ -234,7 +278,7 @@ void insertarActividad(char *usuario,Actividad act) {
     }
  
     printf("VALORES INSERTADOS!!\n");
-    logger(1,usuario, "HA INSERTADO UNA NUEVA ACTIVIDAD!");
+    //logger(1,usuario, "HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE = %s", act.nombre);
     sqlite3_finalize(stmt);
     cerrarConexion();
     return;
@@ -243,6 +287,7 @@ void insertarActividad(char *usuario,Actividad act) {
 
 
 void verActividades(){
+
 
     int rc;
     abrirConexion();
@@ -311,6 +356,7 @@ void eliminarAct(int id){
 
     if (rc == SQLITE_DONE) {
         printf("Actividad eliminada con exito\n");
+       // logger(1, "","Eliminada la actividad con ID %i ", id);
     } else {
         printf("No se encontro ninguna actividad con ese ID\n");
     }

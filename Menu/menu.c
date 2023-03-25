@@ -124,6 +124,7 @@ void menuPrincipal(char *usuario){
         int opcion = selectOpcion(printMenuPrincipal()); 
 
         if(opcion==1) {
+            logger(1,usuario,"ACCEDIENDO A IMPORTAR CSV A BASE DE DATOS");   
             printf("Has seleccionado la opcion 1: Importar csv a BD.\n");       
             cargarCsv(usuario);
             salir=1;
@@ -136,12 +137,15 @@ void menuPrincipal(char *usuario){
             break;
         } else if(opcion==3) {
             printf("Has seleccionado la opcion 3: Gestionar PROPUESTAS.\n");
+            printf("ESTA SECCION AUN NO ESTA DISPONIBLE, ESTARA HABILITADA CUANDO REALICEMOS EL CLIENTE");
+            menuPrincipal(usuario);
             salir=1;
              break;
         } else if(opcion==4) {
             printf("Has seleccionado la opcion 4: Crear ADMINISTRADOR.\n");
             logger(0,usuario,"ACCEDIENDO A CREAR ADMINISTRADOR");
-            crearAdmin(usuario);        
+            crearAdmin(usuario); 
+            menuPrincipal(usuario);       
             salir=1;
             break;
         } else if(opcion==5) {
@@ -170,14 +174,15 @@ void menuGestionAct(char *usuario){
         }else if(opcion==2) {
                         
                 printf("Has seleccionado la opcion 2: Anadir ACTIVIDADES.\n");
-                logger(0,usuario,"ACCEDIENDO A CREAR ADMINISTRADOR");
+                logger(0,usuario,"ACCEDIENDO A AÑADIR ACTIVIDADES");
                 crearActividad(usuario);
                 menuGestionAct(usuario);
                 salir=1;
                 break;
         }else if(opcion==3) {
                 int id;
-                int confirmar;      
+                int confirmar; 
+                logger(1,usuario,"ACCEDIENDO A MODIFICAR ACTIVIDADES");        
                 printf("Has seleccionado la opcion 3: Modificar ACTIVIDADES.\n");
                 printf("Ingrese el id de la actividad que quiera modificar: ");
                 scanf("%d", &id);
@@ -193,7 +198,7 @@ void menuGestionAct(char *usuario){
                 }
                 salir=1;
         }else if(opcion==4) {
-                        
+                logger(1,usuario,"ACCEDIENDO A ELIMINAR ACTIVIDADES");       
                 printf("Has seleccionado la opcion 4: 4. Eliminar ACTIVIDADES.\n");
                 eliminarTablaActividades();
                 salir=1;
@@ -216,7 +221,6 @@ void menuGestionAct(char *usuario){
  void menuLogin() {
     char *usuario = malloc(20 * sizeof(char));
     char *contrasena = malloc(20 * sizeof(char));
-    abrirConexion();
     int resultado;
 
 

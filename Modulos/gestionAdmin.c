@@ -120,7 +120,7 @@ void crearAdmin(char*usuario){
     }
 
     while(contrasenas_coinciden==0){
-        printf("Introduzca su contraseña: ");
+        printf("Introduzca su contrasena: ");
         fgets(contrasena, 50, stdin);
         contrasena[strcspn(contrasena, "\n")] = '\0';
         
@@ -129,7 +129,7 @@ void crearAdmin(char*usuario){
             continue;
         }
 
-        printf("Confirme su contraseña: ");
+        printf("Confirme su contrasena: ");
         fgets(contrasena2, 50, stdin);
         contrasena2[strcspn(contrasena2, "\n")] = '\0';
 
@@ -147,7 +147,7 @@ void crearAdmin(char*usuario){
     printf("Nombre: %s\n", nombre);
     printf("Apellido: %s\n", apellido);
     printf("Nombre de usuario: %s\n", n_usuario);
-    printf("Contraseña: %s\n", contrasena);
+    printf("Contrasena: %s\n", contrasena);
 
     Administrador admin;
     strcpy(admin.nombre, nombre);

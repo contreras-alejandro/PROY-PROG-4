@@ -11,7 +11,6 @@
 int selectOpcion(int numOpciones){
    int opcion = 0;
     char str[MAX_CHARACTERS_FOR_OPTIONS];
-    printf("Numero de opciones %i\n", numOpciones);
     printf("Seleccione una opcion: ");
     printf("_________________________________________________________\n");
     fflush(stdin);
@@ -119,7 +118,6 @@ void menuInicio(){
 void menuPrincipal(char *usuario){
       int salir=0;   
       printf("Sesion iniciada por: %s\n", usuario);
-      logger(0,usuario,"SESION INICIADA");
     while (salir==0)
     {
         int opcion = selectOpcion(printMenuPrincipal()); 
@@ -186,6 +184,7 @@ void menuGestionAct(char *usuario){
                 printf("1.Si\n2.No\nseleccione opcion:");
                 scanf("%d", &confirmar);
                 if(confirmar==1){
+                    logger(0,usuario,"HA PASADO A MODIFICAR LA ACTIVIDAD CON ID %i",id);  
                     modificarActividad(id);
                     menuGestionAct(usuario);
                 }else if (confirmar==2)
@@ -204,6 +203,7 @@ void menuGestionAct(char *usuario){
                 printf("1.Si\n2.No\nseleccione opcion:");
                 scanf("%d", &confirmar);
                 if(confirmar==1){
+                     logger(0,usuario,"HA PASADO A ELIMINAR LA ACTIVIDAD CON ID %i",id);  
                     eliminarAct(id);
                     menuGestionAct(usuario);
                 }else if (confirmar==2)
@@ -271,6 +271,7 @@ void menuGestionAct(char *usuario){
             printf("Introduce un usuario y contrasena correctos\n");
         }
         }
+    logger(0,usuario,"SESION INICIADA");
     
 
 }

@@ -26,7 +26,6 @@ int abrirConexion() {
         sqlite3_close(db);
         return 1;
     } else {
-        printf("Conexion a la base de datos establecida correctamente.\n");
         return 0;
     }
 }
@@ -123,8 +122,6 @@ Actividad buscarActividadPorId(int id) {
 
     Actividad actividad = {0};
 
-    abrirConexion();
-
     sprintf(sql, "SELECT * FROM ACTIVIDAD WHERE ID_ACT=%d", id);
     rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
 
@@ -214,6 +211,7 @@ void insertarAdmin(char *usuario,Administrador admin) {
 
     if (rc != SQLITE_OK) {
         printf("Error al preparar la consulta\n");
+        logger(2,usuario,"ERROR AL PREPARAR CONSULTA");  
         return;
     }
 
@@ -226,6 +224,7 @@ void insertarAdmin(char *usuario,Administrador admin) {
     
     if (rc != SQLITE_DONE) {
         printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
+        logger(2,usuario,"ERROR AL PREPARAR CONSULTA");  
         sqlite3_finalize(stmt);
         sqlite3_close(db);
         return;
@@ -255,6 +254,7 @@ void insertarActividad(char *usuario,Actividad act) {
 
     if (rc != SQLITE_OK) {
         printf("Error al preparar la consulta\n");
+        logger(2,usuario,"ERROR AL PREPARAR CONSULTA");  
         return;
     }
 
@@ -272,12 +272,11 @@ void insertarActividad(char *usuario,Actividad act) {
     
     if (rc != SQLITE_DONE) {
         printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
+        logger(2,usuario,"ERROR AL EJECUTAR CONSULTA");  
         sqlite3_finalize(stmt);
         sqlite3_close(db);
         return;
     }
- 
-    printf("VALORES INSERTADOS!!\n");
     //logger(1,usuario, "HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE = %s", act.nombre);
     sqlite3_finalize(stmt);
     cerrarConexion();
@@ -365,7 +364,6 @@ void eliminarAct(int id){
 
 
     sqlite3_finalize(stmt);
-    sqlite3_close(db);
     cerrarConexion();
     return;
 }
@@ -405,8 +403,6 @@ void subirActModificada(int id, Actividad act){
         printf("No se encontro ninguna actividad con ese ID\n");
     }
 
-
-
     sqlite3_finalize(stmt);
     sqlite3_close(db);
     cerrarConexion();
@@ -418,13 +414,15 @@ void eliminarTablaActividades(){
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;
-    char* sql = "DELETE FROM ACTIVIDAD;";
-
+    char* sql = "DELETE FROM ACTIVIDAD";
     rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
     rc = sqlite3_step(stmt);
+    printf("...........................\n");
+    printf("ELIMINANDO ACTIVIDADES DE BASE DE DATOS........\n");
+    printf("ELIMINADAS CON EXITO!\n");
+     logger(1,usuario,"ELIMINADO TODAS LAS ACTIVIDADES DE LA BD ");  
 
     sqlite3_finalize(stmt);
-    sqlite3_close(db);
     cerrarConexion();
 
 

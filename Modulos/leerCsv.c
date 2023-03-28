@@ -9,13 +9,17 @@
 
 
 void cargarCsv(char* usuario) {
-    FILE* file = fopen("./Modulos/actividades.csv", "r");
+    char *ruta = leerProperties(1);
+    FILE* file = fopen(ruta, "r");
     char linea[1024];
     if (!file) {
         printf("No se ha podido abrir el archivo CSV\n");
     }else{
         printf("CSV ABIERTO\n");
+        printf("CARGANDO A BASE DE DATOS DESDE CSV....\n");
     }
+
+
 
     char line[MAX_LINE_LENGTH];
     while (fgets(line, MAX_LINE_LENGTH, file)) {
@@ -51,7 +55,11 @@ void cargarCsv(char* usuario) {
 
 
         insertarActividad(usuario, actividad);
+        //AQUI HACEMOS EL LOG
+        logger(1,usuario,"CARGADA LA BASE DE DATOS CON CSV");
     }
+
+    printf("ACTIVIDADES CARGADAS CON EXITO!!");
 
     fclose(file);
 }

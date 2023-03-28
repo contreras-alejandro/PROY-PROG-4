@@ -82,7 +82,7 @@ int printGestionAct(){
     printf("3. Visualizar ACTIVIDADES\n");
     printf("4. Anadir ACTIVIDADES\n");
     printf("5. Modificar ACTIVIDADES\n");
-    printf("6. Eliminar ACTIVIDADES\n");
+    printf("6. Eliminar una ACTIVIDAD\n");
     printf("7. Volver\n");
     printf("_________________________________________________________\n");
     return numOpciones;

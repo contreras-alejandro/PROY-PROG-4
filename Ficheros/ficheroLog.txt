@@ -14,3 +14,10 @@
 [INFO] Usuario:administrador -> SESION INICIADA 
 [WARNING] Usuario:administrador -> ACCEDIENDO A IMPORTAR CSV A BASE DE DATOS 
 [INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[WARNING] Usuario:administrador -> ACCEDIENDO A ELIMINAR ACTIVIDADES 
+[WARNING] Usuario:administrador -> ACCEDIENDO A IMPORTAR CSV A BASE DE DATOS 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> SESION INICIADA 

@@ -57,16 +57,15 @@ int printMenuInicio(){
 
 
 int printMenuPrincipal(){
-    int numOpciones=5;
+    int numOpciones=4;
 
     printf("||MENU ADMINISTRADOR||\n");
     printf("_________________________________________________________\n");
     printf("**Bienvenido**\n");
-    printf("1. Importar csv en BD\n");
-    printf("2. Gestionar ACTIVIDADES\n");
-    printf("3. Gestionar PROPUESTAS\n");
-    printf("4. Crear ADMINISTRADOR\n");
-    printf("5. Cerrar sesion\n");
+    printf("1. Gestionar ACTIVIDADES\n");
+    printf("2. Gestionar PROPUESTAS\n");
+    printf("3. Crear ADMINISTRADOR\n");
+    printf("4. Cerrar sesion\n");
     printf("_________________________________________________________\n");
     return numOpciones;
 }
@@ -74,15 +73,17 @@ int printMenuPrincipal(){
 
 
 int printGestionAct(){
-    int numOpciones=5;
+    int numOpciones=7;
     printf("||GESTION DE ACTIVIDADES AL AIRE LIBRE||\n");
     printf("_________________________________________________________\n");
     printf("**Bienvenido al programa de administracion del servidor**\n");
-    printf("1. Visualizar ACTIVIDADES\n");
-    printf("2. Anadir ACTIVIDADES\n");
-    printf("3. Modificar ACTIVIDADES\n");
-    printf("4. Eliminar ACTIVIDADES\n");
-    printf("5. Volver\n");
+    printf("1. Cargar actividades del CSV a BD\n");
+    printf("2. Vaciar tabla ACTIVIDADES de la BD\n");
+    printf("3. Visualizar ACTIVIDADES\n");
+    printf("4. Anadir ACTIVIDADES\n");
+    printf("5. Modificar ACTIVIDADES\n");
+    printf("6. Eliminar ACTIVIDADES\n");
+    printf("7. Volver\n");
     printf("_________________________________________________________\n");
     return numOpciones;
 }
@@ -124,32 +125,24 @@ void menuPrincipal(char *usuario){
         int opcion = selectOpcion(printMenuPrincipal()); 
 
         if(opcion==1) {
-            logger(1,usuario,"ACCEDIENDO A IMPORTAR CSV A BASE DE DATOS");   
-            printf("Has seleccionado la opcion 1: Importar csv a BD.\n");       
-            cargarCsv(usuario);
-            menuPrincipal(usuario);
-            salir=1;
-            break;
-        }
-        else if(opcion==2) {
-            printf("Has seleccionado la opcion 2: Gestionar ACTIVIDADES.\n");
+            printf("Has seleccionado la opcion 1: Gestionar ACTIVIDADES.\n");
             menuGestionAct(usuario);
             salir=1;
             break;
-        } else if(opcion==3) {
-            printf("Has seleccionado la opcion 3: Gestionar PROPUESTAS.\n");
+        } else if(opcion==2) {
+            printf("Has seleccionado la opcion 2: Gestionar PROPUESTAS.\n");
             printf("ESTA SECCION AUN NO ESTA DISPONIBLE, ESTARA HABILITADA CUANDO REALICEMOS EL CLIENTE");
             menuPrincipal(usuario);
             salir=1;
              break;
-        } else if(opcion==4) {
-            printf("Has seleccionado la opcion 4: Crear ADMINISTRADOR.\n");
+        } else if(opcion==3) {
+            printf("Has seleccionado la opcion 3: Crear ADMINISTRADOR.\n");
             logger(0,usuario,"ACCEDIENDO A CREAR ADMINISTRADOR");
             crearAdmin(usuario); 
             menuPrincipal(usuario);       
             salir=1;
             break;
-        } else if(opcion==5) {
+        } else if(opcion==4) {
             printf("CERRANDO SESION\n");
             salir=1;
             break;
@@ -167,12 +160,13 @@ void menuGestionAct(char *usuario){
     while (salir==0)
     {
         int opcion=selectOpcion(printGestionAct()); 
-        if(opcion==1) {
+        if(opcion==3) {
 
                 printf("Has seleccionado la opcion 1: Visualizar ACTIVIDADES.\n");
                 verActividades();
+                menuGestionAct(usuario);
                 salir=1;
-        }else if(opcion==2) {
+        }else if(opcion==4) {
                         
                 printf("Has seleccionado la opcion 2: Anadir ACTIVIDADES.\n");
                 logger(0,usuario,"ACCEDIENDO A AÑADIR ACTIVIDADES");
@@ -180,7 +174,7 @@ void menuGestionAct(char *usuario){
                 menuGestionAct(usuario);
                 salir=1;
                 break;
-        }else if(opcion==3) {
+        }else if(opcion==5) {
                 int id;
                 int confirmar; 
                 logger(1,usuario,"ACCEDIENDO A MODIFICAR ACTIVIDADES");        
@@ -199,13 +193,41 @@ void menuGestionAct(char *usuario){
                     menuGestionAct(usuario);
                 }
                 salir=1;
-        }else if(opcion==4) {
+        }else if(opcion==6) { 
+                int id;
+                int confirmar;     
+                printf("Has seleccionado la opcion 6: 6. Eliminar una ACTIVIDAD.\n");
+                printf("Ingrese el id de la actividad que quieras eliminar: ");
+                scanf("%d", &id);
+                printf("Estas seguro que quieres eliminar esta activiad?\n");
+                buscarActividadPorId(id);
+                printf("1.Si\n2.No\nseleccione opcion:");
+                scanf("%d", &confirmar);
+                if(confirmar==1){
+                    eliminarAct(id);
+                    menuGestionAct(usuario);
+                }else if (confirmar==2)
+                {
+                    menuGestionAct(usuario);
+                }
+                salir=1;
+        }else if(opcion==1) {
+                        
+                logger(1,usuario,"ACCEDIENDO A IMPORTAR CSV A BASE DE DATOS");   
+                printf("Has seleccionado la opcion 1: Importar csv a BD.\n");       
+                cargarCsv(usuario);
+                menuGestionAct(usuario);
+                salir=1;
+                break;
+
+        }else if(opcion==2) {
+                        
                 logger(1,usuario,"ACCEDIENDO A ELIMINAR ACTIVIDADES");       
                 printf("Has seleccionado la opcion 4: 4. Eliminar ACTIVIDADES.\n");
                 eliminarTablaActividades();
                 menuGestionAct(usuario);
                 salir=1;
-        }else if(opcion==5) {
+        }else if(opcion==7) {
                         
                 printf("Volviendo al MENU PRINCIPAL\n");
                 menuPrincipal(usuario);

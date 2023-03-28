@@ -66,7 +66,7 @@ int printMenuPrincipal(){
     printf("2. Gestionar ACTIVIDADES\n");
     printf("3. Gestionar PROPUESTAS\n");
     printf("4. Crear ADMINISTRADOR\n");
-    printf("5. Volver\n");
+    printf("5. Cerrar sesion\n");
     printf("_________________________________________________________\n");
     return numOpciones;
 }
@@ -127,6 +127,7 @@ void menuPrincipal(char *usuario){
             logger(1,usuario,"ACCEDIENDO A IMPORTAR CSV A BASE DE DATOS");   
             printf("Has seleccionado la opcion 1: Importar csv a BD.\n");       
             cargarCsv(usuario);
+            menuPrincipal(usuario);
             salir=1;
             break;
         }
@@ -192,6 +193,7 @@ void menuGestionAct(char *usuario){
                 scanf("%d", &confirmar);
                 if(confirmar==1){
                     modificarActividad(id);
+                    menuGestionAct(usuario);
                 }else if (confirmar==2)
                 {
                     menuGestionAct(usuario);
@@ -201,6 +203,7 @@ void menuGestionAct(char *usuario){
                 logger(1,usuario,"ACCEDIENDO A ELIMINAR ACTIVIDADES");       
                 printf("Has seleccionado la opcion 4: 4. Eliminar ACTIVIDADES.\n");
                 eliminarTablaActividades();
+                menuGestionAct(usuario);
                 salir=1;
         }else if(opcion==5) {
                         

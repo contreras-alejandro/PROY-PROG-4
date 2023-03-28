@@ -23,3 +23,13 @@
 [INFO] Usuario:administrador -> SESION INICIADA 
 [INFO] Usuario:administrador -> SESION INICIADA 
 [INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[WARNING] Usuario:administrador -> ACCEDIENDO A ELIMINAR ACTIVIDADES 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[WARNING] Usuario:administrador -> ACCEDIENDO A ELIMINAR ACTIVIDADES 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[WARNING] Usuario:administrador -> ACCEDIENDO A ELIMINAR ACTIVIDADES 

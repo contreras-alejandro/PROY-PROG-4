@@ -223,7 +223,7 @@ void menuGestionAct(char *usuario){
         }else if(opcion==2) {
                         
                 logger(1,usuario,"ACCEDIENDO A ELIMINAR ACTIVIDADES");       
-                printf("Has seleccionado la opcion 4: 4. Eliminar ACTIVIDADES.\n");
+                printf("Has seleccionado la opcion 2: 2. Eliminar ACTIVIDADES.\n");
                 eliminarTablaActividades();
                 menuGestionAct(usuario);
                 salir=1;

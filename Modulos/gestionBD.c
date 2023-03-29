@@ -114,7 +114,7 @@ int login(char* usuario, char* contrasena) {
 
 }
 
-Actividad buscarActividadPorId(int id) {
+Actividad buscarActividadPorId(int id,char *usuario) {
     abrirConexion();
     sqlite3_stmt *stmt;
     char sql[100];
@@ -285,7 +285,7 @@ void insertarActividad(char *usuario,Actividad act) {
 
 
 
-void verActividades(){
+void verActividades(char *usuario){
 
 
     int rc;
@@ -307,7 +307,7 @@ void verActividades(){
     while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         int id_act = sqlite3_column_int(stmt, 0);
         const unsigned char* nombre_act = sqlite3_column_text(stmt, 1);
-        const unsigned char* descripcion = sqlite3_column_text(stmt, 2);
+        //const unsigned char* descripcion = sqlite3_column_text(stmt, 2);
         const unsigned char* tipo_de_actividad = sqlite3_column_text(stmt, 3);
         const unsigned char* publico = sqlite3_column_text(stmt, 4);
         const unsigned char* municipio = sqlite3_column_text(stmt, 5);
@@ -315,7 +315,7 @@ void verActividades(){
         const unsigned char* encargado = sqlite3_column_text(stmt, 7);
         const unsigned char* fecha_act = sqlite3_column_text(stmt, 8);
 
-        printf("%-7d %-20s %-30s %-20s %-10s %-20s %-40s %-30s %-12s\n", id_act, nombre_act, descripcion, tipo_de_actividad, publico, municipio, direccion, encargado, fecha_act);
+        printf("%-7d %-20s %-20s %-10s %-20s %-40s %-30s %-12s\n", id_act, nombre_act, tipo_de_actividad, publico, municipio, direccion, encargado, fecha_act);
     }
     
     if (rc != SQLITE_DONE) {
@@ -333,7 +333,7 @@ void verActividades(){
 }
 
 
-void eliminarAct(int id){
+void eliminarAct(int id,char *usuario){
 
     int rc;
     abrirConexion();
@@ -369,7 +369,7 @@ void eliminarAct(int id){
 }
 
 
-void subirActModificada(int id, Actividad act){
+void subirActModificada(int id, Actividad act,char *usuario){
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;
@@ -410,7 +410,7 @@ void subirActModificada(int id, Actividad act){
 }
 
 
-void eliminarTablaActividades(){
+void eliminarTablaActividades(char *usuario){
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;
@@ -420,7 +420,7 @@ void eliminarTablaActividades(){
     printf("...........................\n");
     printf("ELIMINANDO ACTIVIDADES DE BASE DE DATOS........\n");
     printf("ELIMINADAS CON EXITO!\n");
-     logger(1,usuario,"ELIMINADO TODAS LAS ACTIVIDADES DE LA BD ");  
+    logger(1,usuario,"ELIMINADO TODAS LAS ACTIVIDADES DE LA BD ");  
 
     sqlite3_finalize(stmt);
     cerrarConexion();

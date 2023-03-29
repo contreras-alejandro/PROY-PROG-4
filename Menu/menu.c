@@ -161,7 +161,7 @@ void menuGestionAct(char *usuario){
         if(opcion==3) {
 
                 printf("Has seleccionado la opcion 1: Visualizar ACTIVIDADES.\n");
-                verActividades();
+                verActividades(usuario);
                 menuGestionAct(usuario);
                 salir=1;
         }else if(opcion==4) {
@@ -180,12 +180,12 @@ void menuGestionAct(char *usuario){
                 printf("Ingrese el id de la actividad que quiera modificar: ");
                 scanf("%d", &id);
                 printf("Estas seguro que quieres modificar esta activiad?\n");
-                buscarActividadPorId(id);
+                buscarActividadPorId(id,usuario);
                 printf("1.Si\n2.No\nseleccione opcion:");
                 scanf("%d", &confirmar);
                 if(confirmar==1){
-                    logger(0,usuario,"HA PASADO A MODIFICAR LA ACTIVIDAD CON ID %i",id);  
-                    modificarActividad(id);
+                    //logger(0,usuario,"HA PASADO A MODIFICAR LA ACTIVIDAD CON ID %i",id);  
+                    modificarActividad(id,usuario);
                     menuGestionAct(usuario);
                 }else if (confirmar==2)
                 {
@@ -199,12 +199,12 @@ void menuGestionAct(char *usuario){
                 printf("Ingrese el id de la actividad que quieras eliminar: ");
                 scanf("%d", &id);
                 printf("Estas seguro que quieres eliminar esta activiad?\n");
-                buscarActividadPorId(id);
+                buscarActividadPorId(id,usuario);
                 printf("1.Si\n2.No\nseleccione opcion:");
                 scanf("%d", &confirmar);
                 if(confirmar==1){
-                     logger(0,usuario,"HA PASADO A ELIMINAR LA ACTIVIDAD CON ID %i",id);  
-                    eliminarAct(id);
+                    //logger(0,usuario,"HA PASADO A ELIMINAR LA ACTIVIDAD CON ID %i",id);  
+                    eliminarAct(id,usuario);
                     menuGestionAct(usuario);
                 }else if (confirmar==2)
                 {
@@ -224,7 +224,7 @@ void menuGestionAct(char *usuario){
                         
                 logger(1,usuario,"ACCEDIENDO A ELIMINAR ACTIVIDADES");       
                 printf("Has seleccionado la opcion 2: 2. Eliminar ACTIVIDADES.\n");
-                eliminarTablaActividades();
+                eliminarTablaActividades(usuario);
                 menuGestionAct(usuario);
                 salir=1;
         }else if(opcion==7) {

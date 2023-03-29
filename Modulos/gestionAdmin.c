@@ -235,7 +235,7 @@ void crearActividad(char*usuario){
 
 
 
-void modificarActividad(int id){
+void modificarActividad(int id,char *usuario){
     fflush(stdin);
     char nombre[50], descripcion[250], tipo[50], publico[50], municipio[50], direccion[50], encargado[50], fecha[50];
     printf("Introduzca el nombre de la actividad: ");
@@ -287,6 +287,6 @@ void modificarActividad(int id){
     strcpy(act.fecha, fecha);
 
     imprimirActividad(act);
-    subirActModificada(id,act);
+    subirActModificada(id,act,usuario);
     return;
 }

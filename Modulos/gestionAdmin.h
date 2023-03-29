@@ -26,7 +26,7 @@ char * leerProperties(int);
 void crearAdmin();
 void imprimirActividad(Actividad act);
 void crearActividad(char*usuario);
-void modificarActividad(int id);
+void modificarActividad(int id,char *usuario);
 
 
 

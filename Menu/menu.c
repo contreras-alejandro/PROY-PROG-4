@@ -142,6 +142,7 @@ void menuPrincipal(char *usuario){
             break;
         } else if(opcion==4) {
             printf("CERRANDO SESION\n");
+            menuInicio(usuario);
             salir=1;
             break;
         } else {
@@ -260,7 +261,7 @@ void menuGestionAct(char *usuario){
 
         printf("Ingrese su contrasena: ");
         scanf("%s", contrasena);
-
+        
         resultado = login(usuario, contrasena);
 
         if (resultado == 1) {

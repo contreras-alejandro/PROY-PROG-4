@@ -20,7 +20,7 @@ typedef struct{
 }Actividad;
 
 
-char* string_hash(char *str);
+char* hash_string(char* str);
 void logger(int severity, char* usuario, char* info);
 char * leerProperties(int);
 void crearAdmin();

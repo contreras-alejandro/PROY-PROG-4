@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include <openssl/md5.h>                //Esta libreria sera para hacer el hash
 #include <string.h>
 #include "gestionAdmin.h"
 #include "../sqlite/sqlite3.h"
@@ -144,18 +143,21 @@ void crearAdmin(char*usuario){
         }
     }
 
+    //UNA VEZ COFIRMADO QUE LAS CONTRASEÑAS COINCIDEN HASHEAMOS LA CONTRASEÑA ANTES DE PASARLA A LA BD
+
+    char* contrasenya_hasheada = hash_string(contrasena);
 
     printf("\nDatos introducido del NUEVO ADMINs:\n");
     printf("Nombre: %s\n", nombre);
     printf("Apellido: %s\n", apellido);
     printf("Nombre de usuario: %s\n", n_usuario);
-    printf("Contrasena: %s\n", contrasena);
+    printf("Contrasena hasheada: %s\n", contrasenya_hasheada);
 
     Administrador admin;
     strcpy(admin.nombre, nombre);
     strcpy(admin.apellido, apellido);
     strcpy(admin.nusuario, n_usuario);
-    strcpy(admin.contrasenya, contrasena);
+    strcpy(admin.contrasenya, contrasenya_hasheada);
 
 
     //LLAMAMOS A METODO DE BD, QUE INTRODUCE UN ADMIN EN BD
@@ -289,4 +291,19 @@ void modificarActividad(int id,char *usuario){
     imprimirActividad(act);
     subirActModificada(id,act,usuario);
     return;
+}
+
+char* hash_string(char* str) {
+    int hash = 0;
+    int len = strlen(str);
+    char* hash_str = malloc(len * 2 + 1); // Reservamos suficiente espacio para almacenar el hash en formato hexadecimal
+
+    for (int i = 0; i < len; i++) {
+        hash = (hash * 31 + str[i]) % 127;  //DIVIDIMOS POR NUMEROS PRIMOS
+        char hex_str[3]; 
+        snprintf(hex_str, 3, "%02x", hash); // Convertimos el valor del hash a formato hexadecimal
+        strcat(hash_str, hex_str); // Concatenamos 
+    }
+
+    return hash_str; 
 }

@@ -2517,3 +2517,38 @@
 [WARNING] Usuario:administrador -> CARGADA LA BASE DE DATOS CON CSV 
 [WARNING] Usuario:administrador -> CARGADA LA BASE DE DATOS CON CSV 
 [INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:adminlasa -> SESION INICIADA 
+[INFO] Usuario:administrador -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:administrador -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:adminhash -> SESION INICIADA 
+[INFO] Usuario:adminhash -> SESION INICIADA 
+[INFO] Usuario:administrador1 -> SESION INICIADA 
+[INFO] Usuario:administrador1 -> SESION INICIADA 
+[INFO] Usuario:administrador1 -> SESION INICIADA 
+[INFO] Usuario:administrador1 -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:ikerrues -> SESION INICIADA 
+[INFO] Usuario:administrador1 -> SESION INICIADA 
+[INFO] Usuario:administrador -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:administrador -> ACCEDIENDO A CREAR ADMINISTRADOR 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:administrador -> SESION INICIADA 
+[INFO] Usuario:jonlasa -> SESION INICIADA 
+[INFO] Usuario:jonlasa -> SESION INICIADA 
+[INFO] Usuario:jonlasa -> SESION INICIADA 
+[INFO] Usuario:jonlasa -> SESION INICIADA 
+[INFO] Usuario:jonlasa -> SESION INICIADA 

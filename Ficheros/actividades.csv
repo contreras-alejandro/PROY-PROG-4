@@ -1,4 +1,9 @@
 Id;Nombre;Breve resumen;Temas;Edad;Municipio;Direccion;Contacto;Fecha 
+1;Yoga en el parque;Clase de yoga al aire libre;Yoga;Adultos;Bilbao;Parque de Dona Casilda;Ana Garcia;2024-06-15
+2;Running en la playa;Carrera de 10km por la costa;Running;Jovenes y adultos;Getxo;Playa de Ereaga;Juan Perez;2024-07-22
+3;Natacion en la piscina;Clases de natacion para principiantes;Natacion;Ninos y jovenes;Barakaldo;Piscinas Municipales de Gorostiza;Laura Martinez;2024-08-05
+4;Paseo en bicicleta;Ruta en bici por el campo;Ciclismo;Adultos;Durango;Camino de Santa Ana;Pedro Gomez;2024-09-13
+5;Entrenamiento funcional;Sesion de ejercicios variados;Entrenamiento;Jovenes y adultos;Ermua;Polideportivo Municipal de Ermua;Sara Fernandez;2024-10-01
 4684;Taller de suelo p�lvico;Taller te�rico -pr�ctico para sensibilizar sobre la importancia del suelo p�lvico cuyo objetivo es prevenir,asistir y paliar problemas de incontinencia;Mujeres | Actividad f�sica;Poblaci�n Adulta (Mayores de 15 a�os);Vitoria-Gasteiz;Calle Olagibel, 31;"M� jes�s Pinedo
 Arantza Ahedo";19/08/2020 23:45
 5226;TOLOSALDEA TABAKO-KERIK ETA ZIGARROKINIK GABE. ?EZ ERRETZEKO ARRAZOIAK? ARGAZKI-LEHIAKETA;"Erre edo ez erre? erretzen hasi edo utzi? hauek dira ehundaka nerabe eta helduen buruetan dabiltzan galderak. Ez erretzeko arrazoiak ikustaraztea da lehiaketa honen helburu.
@@ -484,3 +489,8 @@ Su objeto es convertir el patio del Colegio p�blico de Romo en un espacio con 
 16470;ERRUKI ISTORIOAK liburuxkaren aurkezpena;Bizitzaren amaieran heriotzari modu naturalean begiratzeko istorioak.;Personas mayores;Poblaci�n General;Zarautz;Calle Zigordia, 1;Zarauzko Udala  - Gizarte Zerbitzuak;30/11/2020 0:00
 16471;60+ ASTAREN BARRUAN HITZALDIA: ADINEKO PERTSONEN ELIKADURA;ADINEKO PERTSONEN ELIKADURA HITZALDIA;Personas mayores | Alimentaci�n saludable;Mayores de 65 a�os;Zarautz;Calle Gipuzkoa, 3;Zarauzko Udala - Gizarte Zerbitzuak;01/10/2020 0:00
 16479;Dinamizaci�n de patios en Zazpilanda Herri Ikastetxea;Dinamizaci�n de patios, en horario de recreo;Infancia | Actividad f�sica;Poblaci�n Infantil (0-11 a�os);Bilbao;Calle Grupo Pinadia, 6;Virginia Cuevas;12/02/2022 16:01
+6;Clase de Pilates;Entrenamiento de Pilates para mejorar la flexibilidad y la postura;Pilates;Adultos;Lekeitio;Polideportivo de Lekeitio;Maria Lopez;2024-11-11
+7;Escalada en rocódromo;Prueba tu fuerza en el rocódromo;Escalada;Jovenes y adultos;Sopela;Rocodromo de Sopela;David Garcia;2024-12-02
+8;Zumba en el parque;Divertida sesion de baile con musica latina;Zumba;Jovenes y adultos;Barrika;Parque de Barrika;Luisa Ruiz;2024-12-18
+9;Entrenamiento de fuerza;Sesion de entrenamiento de fuerza con pesas;Entrenamiento;Adultos;Mungia;Gimnasio Municipal de Mungia;Jorge Perez;2025-01-15
+10;Clases de boxeo;Aprende a boxear y mejora tu forma fisica;Boxeo;Jovenes y adultos;Bermeo;Polideportivo Municipal de Bermeo;Carlos Martinez;2025-02-02

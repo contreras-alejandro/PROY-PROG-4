@@ -300,7 +300,7 @@ void verActividades(char *usuario){
         return;
     }
 
-    printf("%-7s %-20s %-30s %-20s %-10s %-20s %-40s %-30s %-12s\n", "ID_ACT", "NOMBRE_ACT", "DESCRIPCION", "TIPO_DE_ACTIVIDAD", "PUBLICO", "MUNICIPIO", "DIRECCION", "ENCARGADO", "FECHA_ACT");
+    printf("%-7s %-30s %-30s %-30s %-30s %-40s %-30s %-30s\n", "ID_ACT", "NOMBRE_ACT", "TIPO_DE_ACTIVIDAD", "PUBLICO", "MUNICIPIO", "DIRECCION", "ENCARGADO", "FECHA_ACT");
     printf("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
 
 
@@ -315,7 +315,7 @@ void verActividades(char *usuario){
         const unsigned char* encargado = sqlite3_column_text(stmt, 7);
         const unsigned char* fecha_act = sqlite3_column_text(stmt, 8);
 
-        printf("%-7d %-20s %-20s %-10s %-20s %-40s %-30s %-12s\n", id_act, nombre_act, tipo_de_actividad, publico, municipio, direccion, encargado, fecha_act);
+        printf("%-7d %-30s %-30s %-30s %-30s %-40s %-30s %-30s\n", id_act, nombre_act, tipo_de_actividad, publico, municipio, direccion, encargado, fecha_act);
     }
     
     if (rc != SQLITE_DONE) {

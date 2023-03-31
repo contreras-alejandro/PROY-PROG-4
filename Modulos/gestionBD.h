@@ -15,5 +15,6 @@ void eliminarAct(int id,char *usuario);
 void subirActModificada(int id, Actividad act,char *usuario);
 void eliminarTablaActividades(char *usuario);
 int comprobarUsuario(char * nombreUsuario);
+int comprobarActividadEliminar(int id,char * nombreUsuario);
 
 #endif

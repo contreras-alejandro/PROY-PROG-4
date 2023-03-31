@@ -3,8 +3,7 @@
 #include "../Menu/menu.h"
 
 int main() {
-//    HANDLE hConsole = GetStdHandle( STD_OUTPUT_HANDLE );
-//    SetConsoleTextAttribute(hConsole, 1);   
+    //INICIAMOS LA EJECUCION DEL PROGRAMA
     menuInicio();
 
     

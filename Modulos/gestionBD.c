@@ -402,3 +402,27 @@ void eliminarTablaActividades(char *usuario){
 
 
 }
+
+int comprobarActividadEliminar(int id, char * nombreUsuario){
+    abrirConexion();
+    sqlite3_stmt *stmt;
+    int resulQ;
+    int result = 0;
+
+    char* sql =  "SELECT ID_ACT FROM ACTIVIDAD WHERE ID_ACT = ?";
+    resulQ = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+     if (resulQ != SQLITE_OK) {
+        printf("No se puede preparar la consulta");
+        cerrarConexion();
+        return 0;
+     }
+
+    sqlite3_bind_int(stmt, 1, id);
+    resulQ=sqlite3_step(stmt);
+    if (resulQ == SQLITE_ROW) { // se ha encontrado una fila con el id
+        result = 1;
+    }
+    sqlite3_finalize(stmt);
+    cerrarConexion();
+    return result;
+}

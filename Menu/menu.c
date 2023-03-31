@@ -8,22 +8,28 @@
 #include "../Modulos/leerCsv.h"
 //#include <unistd.h>
 
+//FUNCION PARA DEVOLVER LA OPCION SELECCIONADA
 int selectOpcion(int numOpciones){
    int opcion = 0;
     char str[MAX_CHARACTERS_FOR_OPTIONS];
     printf("Seleccione una opcion: ");
     printf("_________________________________________________________\n");
     fflush(stdin);
+    //PEDIMOS POR TECLADO LA OPCION
     while (fgets(str, MAX_CHARACTERS_FOR_OPTIONS, stdin) != NULL) {
         if (sscanf(str, "%d", &opcion) == 1) {
+            //SI ES VALIDA LA DEVOLVEMOS
             if (comprobarOpcionValida(opcion, numOpciones)) {
                 printf("La opcion seleccionada es %i\n", opcion);
                 return opcion;
             }
+        //SI NO SE INTRODUCE NINGUN VALOR, ERROR
         }
         if (strlen(str) == 1) {
             printf("Error, no se ha introducido ningun valor.\n");
-        } else {
+        } 
+         //SI NO ES VALIDA, ERROR
+        else {
             printf("Error, introduce una opcion valida.\n");
         }
         printf("Seleccione una opcion: ");
@@ -32,8 +38,9 @@ int selectOpcion(int numOpciones){
     return opcion;
 }
 
-
+//FUNCION PARA COMPROBAR SI LA OPCION INTRODUCIDA ES VALIDA
 int comprobarOpcionValida(int opcion, int numOpciones){
+    //TIENE QUE SER MAYOR QUE CERO, Y MENOR O IGUAL AL TOTAL DE NUMERO DE OPCIONES
 	if (opcion > 0 && opcion <= numOpciones){
 		return 1;
 	}else{
@@ -42,6 +49,8 @@ int comprobarOpcionValida(int opcion, int numOpciones){
 	}
 }
 
+
+//FUNCION PARA IMPRIMIR EL MENU DE INICIO
 
 int printMenuInicio(){
     int numOpciones=2;
@@ -54,7 +63,7 @@ int printMenuInicio(){
     return numOpciones;
 }
 
-
+//FUNCION PARA IMPRIMIR EL MENU PRINCIPAL
 int printMenuPrincipal(){
     int numOpciones=4;
 
@@ -70,7 +79,7 @@ int printMenuPrincipal(){
 }
 
 
-
+//FUNCION PARA IMPRIMIR EL MENU DE GESTION DE ACTIVIDAD
 int printGestionAct(){
     int numOpciones=7;
     printf("||GESTION DE ACTIVIDADES AL AIRE LIBRE||\n");
@@ -87,13 +96,15 @@ int printGestionAct(){
     return numOpciones;
 }
 
-
+//FUNCION PARA GESTION DEL MENU DE INICIO
 void menuInicio(){
     int salir=0;   
     while (salir==0)
     {
         int opcionesPosibles=printMenuInicio (); 
+        //obtenemos la opcion seleccionada
         int opcion = selectOpcion(opcionesPosibles);
+        //dependiendo la seleccionada, entramos en INICIO DE SESION o SALIMOS
         if(opcion==1) {
 
                 printf("Has seleccionado la opcion 1: INICIAR SESION.\n");
@@ -114,13 +125,15 @@ void menuInicio(){
     }
 
 
-
+//FUNCION PARA GESTION DEL MENU PRINCIPAL
 void menuPrincipal(char *usuario){
       int salir=0;   
       printf("Sesion iniciada por: %s\n", usuario);
     while (salir==0)
     {
+        //OBTENEMOS LA OPCION SELECIONADA
         int opcion = selectOpcion(printMenuPrincipal()); 
+        //DEPENDIENDO LA OPCION, ENTRAMOS EN LA FUNCION CORRESPONDIENTE.
 
         if(opcion==1) {
             printf("Has seleccionado la opcion 1: Gestionar ACTIVIDADES.\n");
@@ -146,6 +159,7 @@ void menuPrincipal(char *usuario){
             salir=1;
             break;
         } else {
+            //SI LA OPCION NO ES VALIDA, ERROR.
             printf("¡ERROR, SELECCIONE UN NUMERO VALIDO!\n");
             break;
         }
@@ -153,12 +167,15 @@ void menuPrincipal(char *usuario){
 }
 
 
-
+//FUNCION PARA GESTION DEL MENU DE GESTION DE ACTIVIDADES
 void menuGestionAct(char *usuario){
     int salir=0;   
     while (salir==0)
     {
+        //OBTENEMOS LA OPCION
         int opcion=selectOpcion(printGestionAct()); 
+         //DEPENDIENDO LA OPCION, ENTRAMOS EN LA FUNCION CORRESPONDIENTE.
+
         if(opcion==3) {
 
                 printf("Has seleccionado la opcion 1: Visualizar ACTIVIDADES.\n");
@@ -195,14 +212,28 @@ void menuGestionAct(char *usuario){
                 salir=1;
         }else if(opcion==6) { 
                 int id;
-                int confirmar;     
+                int confirmar; 
+                int existe; 
+                char resultado[10];  
                 printf("Has seleccionado la opcion 6: 6. Eliminar una ACTIVIDAD.\n");
-                printf("Ingrese el id de la actividad que quieras eliminar: ");
-                scanf("%d", &id);
+                 //lo buscamos, Y SI EXISTE?!!! Y SE CONFIRMA, SE ELIMINA
+                 do {
+                    printf("Ingrese el id de la actividad que quieras eliminar: ");
+                    fflush(stdout);
+                    //PEDIMOS EL ID POR TECLADO
+                    fgets(resultado,10,stdin);
+                    sscanf(resultado,"%i", &id);
+                    existe= comprobarActividadEliminar(id,usuario);
+                     if (existe == 0) {
+                         printf("No existe una actividad con ese id\n");
+                         }
+                 }while(existe==0);
+
+
                 printf("Estas seguro que quieres eliminar esta activiad?\n");
-                buscarActividadPorId(id,usuario);
                 printf("1.Si\n2.No\nseleccione opcion:");
                 scanf("%d", &confirmar);
+                //SI CONFIRMAMOSS
                 if(confirmar==1){
                     //logger(0,usuario,"HA PASADO A ELIMINAR LA ACTIVIDAD CON ID %i",id);  
                     eliminarAct(id,usuario);
@@ -243,8 +274,9 @@ void menuGestionAct(char *usuario){
 
 
 
-
+//FUNCION PARA GESTION DEL MENU DE LOGIN
  void menuLogin() {
+    //guardamos espacio en memoria, ya que el usuario lo pasaremos por las funciones para el log
     char *usuario = malloc(20 * sizeof(char));
     char *contrasena = malloc(20 * sizeof(char));
     int resultado;
@@ -252,6 +284,7 @@ void menuGestionAct(char *usuario){
 
     int salir=0;
 
+    //PEDIMOS LOS VALORES MIENTRAS NO SEAN CORRECTO
 
     while (salir==0)
     {
@@ -265,6 +298,7 @@ void menuGestionAct(char *usuario){
         resultado = login(usuario, contrasena);
 
         if (resultado == 1) {
+            //si son correctos, se inicia sesion
             printf("Iniciando sesion.\n");
             salir=1;
             menuPrincipal(usuario);
@@ -272,6 +306,8 @@ void menuGestionAct(char *usuario){
             printf("Introduce un usuario y contrasena correctos\n");
         }
         }
+    //liberamos la contrasenya
+    free(contrasena);
     logger(0,usuario,"SESION INICIADA");
     
 

@@ -207,7 +207,7 @@ void insertarAdmin(char *usuario,Administrador admin) {
 
     //VA TODO BIEN 
     printf("VALORES INSERTADOS!!\n");
-    //logger(1,usuario, "HA INSERTADO UN NUEVO ADMIN CON NOMBRE DE USUARIO %s!",admin.nombre);
+    logger(1,usuario, "HA INSERTADO UN NUEVO ADMIN");
     sqlite3_finalize(stmt);
     cerrarConexion();
     return;

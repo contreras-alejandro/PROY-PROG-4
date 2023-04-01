@@ -7,8 +7,11 @@
 
 #define MAX_LINE_LENGTH 1024
 
+//FUNCION PARA CARGAR DESDE CSV A BASE DE DATOS
+
 
 void cargarCsv(char* usuario) {
+    //APERTURA DE FICHERO
     char *ruta = leerProperties(1);
     FILE* file = fopen(ruta, "r");
     char linea[1024];
@@ -21,6 +24,7 @@ void cargarCsv(char* usuario) {
 
 
 
+    //POR CADA LINEA, CREAMOS UNA ACTIVIDAD
     char line[MAX_LINE_LENGTH];
     while (fgets(line, MAX_LINE_LENGTH, file)) {
 
@@ -54,10 +58,13 @@ void cargarCsv(char* usuario) {
         snprintf(actividad.fecha, sizeof(actividad.fecha), "%s", fecha);
 
 
+        //LA INSERTAMOS EN BD
+
+
         insertarActividad(usuario, actividad);
-        //AQUI HACEMOS EL LOG
-        logger(1,usuario,"CARGADA LA BASE DE DATOS CON CSV");
+       
     }
+     logger(1,usuario,"CARGADA LA BASE DE DATOS CON CSV");
 
     printf("ACTIVIDADES CARGADAS CON EXITO!!");
 

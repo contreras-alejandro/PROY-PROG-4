@@ -4,6 +4,7 @@
 #include "gestionAdmin.h"
 #include "../sqlite/sqlite3.h"
 #include "gestionBD.h"
+#include <time.h>
 
 
 //HACEMOS LA DEFINICION DE LAS CONSTANTES PARA LOS LOG
@@ -11,17 +12,22 @@
 #define INFO 0
 #define WARNING 1
 #define ERROR 2
-
+//funcion para realizar el log
 void logger(int severity, char* usuario, char* info) {
+    //APERTURA
     char *ruta =leerProperties(3);
+     //time_t tiempo = time(NULL);
+     //OBTENEMOS LA HORA ACTUAL
+     //struct tm tm = *localtime(&tiempo);
     FILE* ficheroLog = fopen(ruta, "a");
     if (ficheroLog != NULL) {
+        //DEPENDIENDO DE LA SEVERIDAD INTRODUCIDA, SE ESCRIBE UN MENSAJE O OTRO
         if (severity == INFO) {
             fprintf(ficheroLog, "[INFO] Usuario:%s -> %s \n", usuario,info);
         } else if (severity == WARNING) {
-               fprintf(ficheroLog, "[WARNING] Usuario:%s -> %s \n", usuario,info);
+               fprintf(ficheroLog, " [WARNING] Usuario:%s -> %s \n", usuario,info);
         } else if (severity == ERROR) {
-            fprintf(ficheroLog, "[ERROR] Usuario:%s -> %s \n", usuario,info);
+            fprintf(ficheroLog, "  [ERROR] Usuario:%s -> %s \n", usuario,info);
         }
         fclose(ficheroLog);
     }
@@ -33,8 +39,10 @@ void logger(int severity, char* usuario, char* info) {
 }
 
 
+//FUNCION PARA OBTENER LA RUTA DEL FICHERO PROPERTIES
 
 char *leerProperties( int num) {
+    //creamos una lista de char y dependiendo el num, obtendremos uno o otro.
     char **lines = (char **) malloc(100 * sizeof(char *));
     char buffer[100];
     int i = 0;
@@ -46,6 +54,8 @@ char *leerProperties( int num) {
 
     else {
 
+        //la llenamos con las ruta.
+
     while (fgets(buffer, 100, fichero) != NULL) {
         lines[i] = (char *) malloc((strlen(buffer) + 1) * sizeof(char));
         strcpy(lines[i], buffer);
@@ -55,6 +65,8 @@ char *leerProperties( int num) {
 
     fclose(fichero);
     }
+
+    //LIMPIAMOS LA RUTA, ELIMINAR \N, y devolvemos
 
     char *ruta;
     char *rutaLimpiada;
@@ -74,7 +86,8 @@ char *leerProperties( int num) {
     return (rutaLimpiada);
 }
 
-
+//funcion para comprobar si una palabra cumple con el minimo de longitud
+//LO USAREMOS PARA INTRODUCIR EL NOMBRE DE USUARIO O CONTRASENYA
 int comprobarLongitud(char *palabra, int minimo){
     if(strlen(palabra)>=minimo){
         return 1;
@@ -85,7 +98,7 @@ int comprobarLongitud(char *palabra, int minimo){
 
 
 
-
+//FUNCION PARA CREAR ADMINISTRADOR
 void crearAdmin(char*usuario){
 
     //QUE ATRIBUTOS SON NECESARIOS?
@@ -94,6 +107,7 @@ void crearAdmin(char*usuario){
     int contrasenas_coinciden = 0;
     int usuarioValido=0;
 
+    //los pedimos y almacenamos
     printf("Introduzca su nombre: ");
     fgets(nombre, 50, stdin);
     //FINALMENTE LE AÑADE UN \0
@@ -102,6 +116,8 @@ void crearAdmin(char*usuario){
     printf("Introduzca su apellido: ");
     fgets(apellido, 50, stdin);
     apellido[strcspn(apellido, "\n")] = '\0';
+
+    //ESTABLECEMOS QUE EL NOMBRE DE USUARIO Y CONTRANSEYA, MINIMO 7 CARACTERES
     
     while(usuarioValido==0){
     printf("Introduzca su nombre de usuario: ");
@@ -165,6 +181,7 @@ void crearAdmin(char*usuario){
     return;
 }
 
+//FUNCION PARA IMPRIMIR POR CONSOLA UNA ACTIVIDAD
 void imprimirActividad(Actividad act) {
     printf("Nombre: %s\n", act.nombre);
     printf("Descripcion: %s\n", act.descripcion);
@@ -178,11 +195,16 @@ void imprimirActividad(Actividad act) {
 
 
 
-
+//FUNCION PARA CREAR UNA ACTIVIDAD
 
 void crearActividad(char*usuario){
 
+    //CREAMOS LOS CHAR [] PARA ALMACENAR LOS RESULTADOS
+
     char nombre[50], descripcion[250], tipo[50], publico[50], municipio[50], direccion[50], encargado[50], fecha[50];
+    
+    //PEDIMOS POR TECLADO LOS VALORES.
+    
     printf("Introduzca el nombre de la actividad: ");
     fgets(nombre, 50, stdin);
     nombre[strcspn(nombre, "\n")] = '\0';
@@ -220,6 +242,8 @@ void crearActividad(char*usuario){
     printf("\nDatos introducido de la NUEVA ACTIVIDAD:\n");
 
 
+    //CREAMOS LA ACTIVIDAD Y ASIGNAMOS LOS VALORES DE CADA ATRIBUTO
+
     Actividad act;
     strcpy(act.nombre, nombre);
     strcpy(act.descripcion, descripcion);
@@ -230,14 +254,19 @@ void crearActividad(char*usuario){
     strcpy(act.encargado, encargado);
     strcpy(act.fecha, fecha);
 
+    //SACAMOS POR CONSOLA, A MODO DE RESUMEN,
+
     imprimirActividad(act);
+
+    //INSERTAMOS ACTIVIDAD EN BD
     insertarActividad(usuario,act);
     return;
 }
 
 
-
+//FUNCION PARA MODIFICAR UNA ACTIVIDAD
 void modificarActividad(int id,char *usuario){
+    //PEDIMOS LOS VALORES DE ESA ACTIVIDAD
     fflush(stdin);
     char nombre[50], descripcion[250], tipo[50], publico[50], municipio[50], direccion[50], encargado[50], fecha[50];
     printf("Introduzca el nombre de la actividad: ");
@@ -289,6 +318,7 @@ void modificarActividad(int id,char *usuario){
     strcpy(act.fecha, fecha);
 
     imprimirActividad(act);
+    //MODIFICAMOS ACTIVIDAD, DADO UN ID
     subirActModificada(id,act,usuario);
     return;
 }

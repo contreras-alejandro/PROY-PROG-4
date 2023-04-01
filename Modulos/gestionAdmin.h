@@ -1,12 +1,23 @@
 #ifndef GESTION_ADMIN
 #define GESTION_ADMIN
 
+//creamos la estrucutra para almacenar los datos del administrador
+//la usaremos para  la funcion crearAdmin, de modo que insertara un admin en VD
+
+//ESTA ACORDE CON LA BASE DE DATOS, CON LOS ATRIBUTOS
+// NOMBRE
+// APELLIDO
+// NOMBRE DE USUARIO
+// CONTRASENYA
+
 typedef struct{
     char nombre[50];
     char apellido[50];
     char nusuario[50];
     char contrasenya[50];
 }Administrador;
+
+//LO MISMO CON LA ACTIVIDAD
 
 typedef struct{
     char nombre[50];
@@ -19,13 +30,19 @@ typedef struct{
     char fecha[50];
 }Actividad;
 
-
+//FUNCION QUE DEVUELVE EL VALOR INTRODUCIDO HASHEADO! (PARA LA CONTRASENYA)
 char* hash_string(char* str);
+//funcion para realizar el log
 void logger(int severity, char* usuario, char* info);
+//FUNCION PARA OBTENER LA RUTA DEL FICHERO PROPERTIES
 char * leerProperties(int);
+//FUNCION PARA CREAR ADMINISTRADOR
 void crearAdmin();
+//FUNCION PARA IMPRIMIR POR CONSOLA UNA ACTIVIDAD
 void imprimirActividad(Actividad act);
+//FUNCION PARA CREAR UNA ACTIVIDAD
 void crearActividad(char*usuario);
+//FUNCION PARA MODIFICAR UNA ACTIVIDAD
 void modificarActividad(int id,char *usuario);
 
 

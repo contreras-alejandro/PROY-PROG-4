@@ -16,18 +16,22 @@
 void logger(int severity, char* usuario, char* info) {
     //APERTURA
     char *ruta =leerProperties(3);
-     //time_t tiempo = time(NULL);
+    time_t tiempo = time(NULL);
+    struct tm *tm = localtime(&tiempo);
      //OBTENEMOS LA HORA ACTUAL
-     //struct tm tm = *localtime(&tiempo);
     FILE* ficheroLog = fopen(ruta, "a");
     if (ficheroLog != NULL) {
         //DEPENDIENDO DE LA SEVERIDAD INTRODUCIDA, SE ESCRIBE UN MENSAJE O OTRO
         if (severity == INFO) {
-            fprintf(ficheroLog, "[INFO] Usuario:%s -> %s \n", usuario,info);
+            fprintf(ficheroLog, "{ %02d:%02d:%02d} [INFO] Usuario:%s -> %s \n",
+             tm->tm_hour, tm->tm_min, tm->tm_sec,usuario,info);
+
         } else if (severity == WARNING) {
-               fprintf(ficheroLog, " [WARNING] Usuario:%s -> %s \n", usuario,info);
+               fprintf(ficheroLog, "{ %02d:%02d:%02d} [WARNING] Usuario:%s -> %s \n",
+               tm->tm_hour, tm->tm_min, tm->tm_sec,usuario,info);
         } else if (severity == ERROR) {
-            fprintf(ficheroLog, "  [ERROR] Usuario:%s -> %s \n", usuario,info);
+            fprintf(ficheroLog, "{%02d:%02d:%02d} [ERROR] Usuario:%s -> %s \n", tm->tm_hour, tm->tm_min, tm->tm_sec,
+            usuario,info);
         }
         fclose(ficheroLog);
     }
@@ -326,7 +330,9 @@ void modificarActividad(int id,char *usuario){
 char* hash_string(char* str) {
     int hash = 0;
     int len = strlen(str);
-    char* hash_str = malloc(len * 2 + 1); // Reservamos suficiente espacio para almacenar el hash en formato hexadecimal
+     // Reservamos suficiente espacio para almacenar el hash en formato hexadecimal
+    char* hash_str = malloc(len * 2 + 1);
+    hash_str[0] = '\0';
 
     for (int i = 0; i < len; i++) {
         hash = (hash * 31 + str[i]) % 127;  //DIVIDIMOS POR NUMEROS PRIMOS
@@ -334,6 +340,7 @@ char* hash_string(char* str) {
         snprintf(hex_str, 3, "%02x", hash); // Convertimos el valor del hash a formato hexadecimal
         strcat(hash_str, hex_str); // Concatenamos 
     }
-
-    return hash_str; 
-}
+    
+    return hash_str;
+    
+     }

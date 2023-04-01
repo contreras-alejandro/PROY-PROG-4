@@ -53,6 +53,7 @@ int login(char* usuario, char* contrasena) {
 
     //OBTENEMOS EL VALOR DE LA CONTRASENYA HASHEADA
     char* contrasenya_hasheada = hash_string(contrasena);
+   
 
     resultado_consulta = sqlite3_prepare_v2(db, consulta, -1, &stmt, 0);
 
@@ -83,8 +84,6 @@ int login(char* usuario, char* contrasena) {
         cerrarConexion();
         return 0;
     }
-
-    //CERRAMOS LA BASE DE DATOS
 
 
 }

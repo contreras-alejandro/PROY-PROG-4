@@ -289,19 +289,28 @@ void menuGestionAct(char *usuario){
     while (salir==0)
     {
 
-        printf("Ingrese su nombre de usuario: ");
-        scanf("%s", usuario);
+        char nombre_usu [20];
+        char usu_contra [20];
 
+        fflush(stdin);
+        printf("Ingrese su nombre de usuario: ");
+        fgets(nombre_usu,20,stdin);
+        nombre_usu[strcspn(nombre_usu, "\n")] = 0;
+
+
+        fflush(stdin);
         printf("Ingrese su contrasena: ");
-        scanf("%s", contrasena);
+        fgets(usu_contra,20,stdin);
+        usu_contra[strcspn(usu_contra, "\n")] = 0;
+
         
-        resultado = login(usuario, contrasena);
+        resultado = login(nombre_usu, usu_contra);
 
         if (resultado == 1) {
             //si son correctos, se inicia sesion
             printf("Iniciando sesion.\n");
             salir=1;
-            menuPrincipal(usuario);
+            menuPrincipal(nombre_usu);
         } else {
             printf("Introduce un usuario y contrasena correctos\n");
         }

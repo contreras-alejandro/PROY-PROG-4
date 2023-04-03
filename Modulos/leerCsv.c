@@ -58,6 +58,7 @@ void cargarCsv(char* usuario) {
         snprintf(actividad.fecha, sizeof(actividad.fecha), "%s", fecha);
 
 
+
         //LA INSERTAMOS EN BD
 
 

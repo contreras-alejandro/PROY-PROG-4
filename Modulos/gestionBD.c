@@ -231,7 +231,7 @@ void insertarAdmin(char *usuario,Administrador admin) {
 void insertarActividad(char *usuario,Actividad act) {
     int rc;
     abrirConexion();
-    sqlite3_stmt *stmt;S
+    sqlite3_stmt *stmt;
     char* sql = "INSERT INTO ACTIVIDAD (NOMBRE_ACT, DESCRIPCION, TIPO_DE_ACTIVIDAD,PUBLICO,MUNICIPIO,DIRECCION,ENCARGADO,FECHA_ACT) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     
@@ -303,8 +303,12 @@ void verActividades(char *usuario){
         const unsigned char* encargado = sqlite3_column_text(stmt, 7);
         const unsigned char* fecha_act = sqlite3_column_text(stmt, 8);
         //MOSTRAMOS LOS ATRIBUTOS DE CADA ACTIVIDAD
-        printf("%-7d %-30s %-30s %-30s %-30s %-40s %-30s %-30s\n", id_act, nombre_act, tipo_de_actividad, publico, municipio, direccion, encargado, fecha_act);
-    }
+  
+      printf("%-7d %-30s %-30s %-30s %-30s %-40s %-30s %-30s\n", id_act, nombre_act, tipo_de_actividad, publico, municipio, direccion, encargado, fecha_act);
+      printf("\n\n");
+    
+    }   
+
     
     if (rc != SQLITE_DONE) {
         printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));

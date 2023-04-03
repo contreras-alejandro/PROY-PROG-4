@@ -26,6 +26,10 @@ void cargarCsv(char* usuario) {
 
     //POR CADA LINEA, CREAMOS UNA ACTIVIDAD
     char line[MAX_LINE_LENGTH];
+
+    //OMITIMOS LA PRIMERA LINEA
+    fgets(line, MAX_LINE_LENGTH, file);
+
     while (fgets(line, MAX_LINE_LENGTH, file)) {
 
         line[strcspn(line, "\n")] = '\0';
@@ -67,7 +71,7 @@ void cargarCsv(char* usuario) {
     }
      logger(1,usuario,"CARGADA LA BASE DE DATOS CON CSV");
 
-    printf("ACTIVIDADES CARGADAS CON EXITO!!");
+    printf("ACTIVIDADES CARGADAS CON EXITO!!\n");
 
     fclose(file);
 }

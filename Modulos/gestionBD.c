@@ -288,7 +288,7 @@ void verActividades(char *usuario){
         return;
     }
 
-    //NOMBRES DE COLUMNAS
+    //NOMBRES DE COLUMNAS CON ESPACIOS
     printf("%-7s %-30s %-30s %-30s %-30s %-40s %-30s %-30s\n", "ID_ACT", "NOMBRE_ACT", "TIPO_DE_ACTIVIDAD", "PUBLICO", "MUNICIPIO", "DIRECCION", "ENCARGADO", "FECHA_ACT");
     printf("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
 
@@ -417,7 +417,7 @@ void eliminarTablaActividades(char *usuario){
 
 }
 
-int comprobarActividadEliminar(int id, char * nombreUsuario){
+int comprobarActividad(int id, char * nombreUsuario){
     abrirConexion();
     sqlite3_stmt *stmt;
     int resulQ;

@@ -57,7 +57,6 @@ char *leerProperties( int num) {
     }
 
     else {
-
         //la llenamos con las ruta.
 
     while (fgets(buffer, 100, fichero) != NULL) {
@@ -87,6 +86,16 @@ char *leerProperties( int num) {
     }
 
     rutaLimpiada = strtok(ruta, "\n\r ");
+
+
+    //LIBERAMOS LA MEMORIA RESERVADA
+    for(int i =0; i<3;i++) {
+        free(lines[i]);
+    }
+
+    free(lines);
+
+    
     return (rutaLimpiada);
 }
 
@@ -171,7 +180,7 @@ void crearAdmin(char*usuario){
     printf("Nombre: %s\n", nombre);
     printf("Apellido: %s\n", apellido);
     printf("Nombre de usuario: %s\n", n_usuario);
-    printf("Contrasena hasheada: %s\n", contrasenya_hasheada);
+
 
     Administrador admin;
     strcpy(admin.nombre, nombre);
@@ -187,7 +196,7 @@ void crearAdmin(char*usuario){
 
 //FUNCION PARA IMPRIMIR POR CONSOLA UNA ACTIVIDAD
 void imprimirActividad(Actividad act) {
-    printf("Nombre: %s\n", act.nombre);
+    printf("\nNombre: %s\n", act.nombre);
     printf("Descripcion: %s\n", act.descripcion);
     printf("Tipo: %s\n", act.tipo);
     printf("Publico: %s\n", act.publico);

@@ -12,8 +12,7 @@
 int selectOpcion(int numOpciones){
    int opcion = 0;
     char str[MAX_CHARACTERS_FOR_OPTIONS];
-    printf("Seleccione una opcion: ");
-    printf("_________________________________________________________\n");
+    printf("Seleccione una opcion:\n ");
     fflush(stdin);
     //PEDIMOS POR TECLADO LA OPCION
     while (fgets(str, MAX_CHARACTERS_FOR_OPTIONS, stdin) != NULL) {
@@ -54,10 +53,10 @@ int comprobarOpcionValida(int opcion, int numOpciones){
 
 int printMenuInicio(){
     int numOpciones=2;
-    printf("||MENU||\n");
+    printf("\n||MENU||\n");
     printf("_________________________________________________________\n");
     printf("**Bienvenido al programa de administracion del servidor**\n");
-    printf("1. Inicar sesion\n");
+    printf("1. Iniciar sesion\n");
     printf("2. Salir\n");
     printf("_________________________________________________________\n");
     return numOpciones;
@@ -67,7 +66,7 @@ int printMenuInicio(){
 int printMenuPrincipal(){
     int numOpciones=4;
 
-    printf("||MENU ADMINISTRADOR||\n");
+    printf("\n||MENU ADMINISTRADOR||\n");
     printf("_________________________________________________________\n");
     printf("**Bienvenido**\n");
     printf("1. Gestionar ACTIVIDADES\n");
@@ -82,7 +81,7 @@ int printMenuPrincipal(){
 //FUNCION PARA IMPRIMIR EL MENU DE GESTION DE ACTIVIDAD
 int printGestionAct(){
     int numOpciones=7;
-    printf("||GESTION DE ACTIVIDADES AL AIRE LIBRE||\n");
+    printf("\n||GESTION DE ACTIVIDADES AL AIRE LIBRE||\n");
     printf("_________________________________________________________\n");
     printf("**Bienvenido al programa de administracion del servidor**\n");
     printf("1. Cargar actividades del CSV a BD\n");
@@ -142,7 +141,7 @@ void menuPrincipal(char *usuario){
             break;
         } else if(opcion==2) {
             printf("Has seleccionado la opcion 2: Gestionar PROPUESTAS.\n");
-            printf("ESTA SECCION AUN NO ESTA DISPONIBLE, ESTARA HABILITADA CUANDO REALICEMOS EL CLIENTE");
+            printf("ESTA SECCION AUN NO ESTA DISPONIBLE, ESTARA HABILITADA CUANDO REALICEMOS EL CLIENTE\n");
             menuPrincipal(usuario);
             salir=1;
              break;
@@ -192,15 +191,30 @@ void menuGestionAct(char *usuario){
                 break;
         }else if(opcion==5) {
                 int id;
+                int existe=0;
                 int confirmar; 
+                char linea[10];
                 logger(1,usuario,"ACCEDIENDO A MODIFICAR ACTIVIDADES");        
                 printf("Has seleccionado la opcion 3: Modificar ACTIVIDADES.\n");
-                printf("Ingrese el id de la actividad que quiera modificar: ");
-                scanf("%d", &id);
-                printf("Estas seguro que quieres modificar esta activiad?\n");
+                //COMPROBAR SI EXISTE LA ACTIVIDAD
+                do {
+                    printf("Ingrese el id de la actividad que quieras modificar:\n");
+                    fflush(stdout);
+                    //PEDIMOS EL ID POR TECLADO
+                     fgets(linea,10,stdin);
+                     sscanf(linea,"%i",&id);
+                    existe= comprobarActividad(id,usuario);
+                     if (existe == 0) {
+                         printf("No existe una actividad con ese id\n");
+                         }
+                 }while(existe==0);
+                printf("Estas seguro que quieres modificar esta actividad?\n");
                 buscarActividadPorId(id,usuario);
-                printf("1.Si\n2.No\nseleccione opcion:");
-                scanf("%d", &confirmar);
+                printf("\n1.Si\n2.No\nSeleccione opcion:\n");
+                 fflush(stdout);
+                 //PEDIMOS EL ID POR TECLADO
+                 fgets(linea,10,stdin);
+                 sscanf(linea,"%i",&confirmar);
                 if(confirmar==1){
                     //logger(0,usuario,"HA PASADO A MODIFICAR LA ACTIVIDAD CON ID %i",id);  
                     modificarActividad(id,usuario);
@@ -223,16 +237,18 @@ void menuGestionAct(char *usuario){
                     //PEDIMOS EL ID POR TECLADO
                     fgets(resultado,10,stdin);
                     sscanf(resultado,"%i", &id);
-                    existe= comprobarActividadEliminar(id,usuario);
+                    existe= comprobarActividad(id,usuario);
                      if (existe == 0) {
                          printf("No existe una actividad con ese id\n");
                          }
                  }while(existe==0);
 
 
-                printf("Estas seguro que quieres eliminar esta activiad?\n");
+                printf("Estas seguro que quieres eliminar esta actividad?\n");
                 printf("1.Si\n2.No\nseleccione opcion:");
-                scanf("%d", &confirmar);
+                fflush(stdout);
+                fgets(resultado,10,stdin);
+                sscanf(resultado,"%i",&confirmar);
                 //SI CONFIRMAMOSS
                 if(confirmar==1){
                     //logger(0,usuario,"HA PASADO A ELIMINAR LA ACTIVIDAD CON ID %i",id);  
@@ -277,11 +293,8 @@ void menuGestionAct(char *usuario){
 //FUNCION PARA GESTION DEL MENU DE LOGIN
  void menuLogin() {
     //guardamos espacio en memoria, ya que el usuario lo pasaremos por las funciones para el log
-    char *usuario = malloc(20 * sizeof(char));
-    char *contrasena = malloc(20 * sizeof(char));
+
     int resultado;
-
-
     int salir=0;
 
     //PEDIMOS LOS VALORES MIENTRAS NO SEAN CORRECTO
@@ -310,14 +323,13 @@ void menuGestionAct(char *usuario){
             //si son correctos, se inicia sesion
             printf("Iniciando sesion.\n");
             salir=1;
+            logger(0,nombre_usu,"SESION INICIADA");
             menuPrincipal(nombre_usu);
         } else {
             printf("Introduce un usuario y contrasena correctos\n");
         }
         }
-    //liberamos la contrasenya
-    free(contrasena);
-    logger(0,usuario,"SESION INICIADA");
+    
     
 
 }

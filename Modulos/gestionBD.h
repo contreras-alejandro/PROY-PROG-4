@@ -26,6 +26,6 @@ void eliminarTablaActividades(char *usuario);
 //FUNCION PARA COMBROBAR QUE UN NOMBRE DE USUARIO NO EXISTE EN BASE DE DATOS (EVITAR REPETIDOS)
 int comprobarUsuario(char * nombreUsuario);
 //FUNCION PARA COMPROBAR QUE LA ACTIVIDAD A ELIMINAR EXISTE EN BASE DE DATOS
-int comprobarActividadEliminar(int id,char * nombreUsuario);
+int comprobarActividad(int id,char * nombreUsuario);
 
 #endif

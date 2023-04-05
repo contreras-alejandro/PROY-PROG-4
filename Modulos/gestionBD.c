@@ -124,7 +124,7 @@ Actividad buscarActividadPorId(int id,char *usuario) {
         strcpy(actividad.fecha, sqlite3_column_text(stmt, 8));
     }
 
-    //logger(0,usuario,"ACTIVIDAD ENCONTRDA CON ID %i", id);
+    logger(0,usuario,"ACTIVIDAD ENCONTRDA CON ID:%i", id);
     sqlite3_finalize(stmt);
     cerrarConexion();
 
@@ -262,6 +262,8 @@ void insertarActividad(char *usuario,Actividad act) {
         sqlite3_finalize(stmt);
         sqlite3_close(db);
         return;
+    }else{
+        logger(1,usuario, "HA INSERTADO UNA NUEVA ACTIVIDAD");
     }
 
     //SI LLEGAMOS AQUI, SE HA INSERTADO CORRECTAMENTE
@@ -312,9 +314,12 @@ void verActividades(char *usuario){
     
     if (rc != SQLITE_DONE) {
         printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
+        logger(2,usuario, "NO HA VISUALIZADO LAS ACTIVIDADES");
         sqlite3_finalize(stmt);
         sqlite3_close(db);
         return;
+    }else{
+        logger(0,usuario, "HA VISUALIZADO LAS ACTIVIDADES");
     }
 
 
@@ -348,7 +353,7 @@ void eliminarAct(int id,char *usuario){
      //ELIMINADA CON EXITO
     if (rc == SQLITE_DONE) {
         printf("Actividad eliminada con exito\n");
-       // logger(1, "","Eliminada la actividad con ID %i ", id);
+        logger(1, usuario,"HA ELIMINADO LA ACTIVIDAD CON ID:%i ", id);
     } else {
         printf("No se encontro ninguna actividad con ese ID\n");
     }
@@ -388,6 +393,7 @@ void subirActModificada(int id, Actividad act,char *usuario){
 
     if (rc == SQLITE_DONE) {
         printf("Actividad modificada con exito\n");
+        logger(1,usuario, "HA MODIFICADO LA ACTIVIDAD CON ID:%d",id);
     } else {
         printf("No se encontro ninguna actividad con ese ID\n");
     }

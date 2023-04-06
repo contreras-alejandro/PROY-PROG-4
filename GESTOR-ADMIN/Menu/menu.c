@@ -16,7 +16,7 @@ int selectOpcion(int numOpciones){
     fflush(stdin);
     do {
         fflush(stdout);
-        printf("Seleccione una opcion:\n ");
+        printf("Seleccione una opcion: (CTRL + C para salir)\n ");
         fgets(str, MAX_CHARACTERS_FOR_OPTIONS, stdin);
          if (sscanf(str, "%d", &opcion) == 1) {
             //SI ES VALIDA LA DEVOLVEMOS
@@ -53,7 +53,7 @@ int comprobarOpcionValida(int opcion, int numOpciones){
 
 int printMenuInicio(){
     int numOpciones=2;
-    printf("||MENU||\n");
+    printf("\n||MENU||\n");
     printf("_________________________________________________________\n");
     printf("**Bienvenido al programa de administracion del servidor**\n");
     printf("1. Iniciar sesion\n");
@@ -68,7 +68,7 @@ int printMenuPrincipal(){
 
     printf("\n||MENU ADMINISTRADOR||\n");
     printf("_________________________________________________________\n");
-    printf("**Bienvenido**\n");
+    printf("**Bienvenido al menu de administrador**\n");
     printf("1. Gestionar ACTIVIDADES\n");
     printf("2. Gestionar PROPUESTAS\n");
     printf("3. Crear ADMINISTRADOR\n");
@@ -113,7 +113,7 @@ void menuInicio(){
                 break;
         }else if(opcion==2) {
                         
-                printf("Saliendo del programa\n");
+                printf("Saliendo del programa...GRACIAS POR USAR NUESTRO PROGRAMA!\n");
                 salir=1;
                 break;
         } 
@@ -176,14 +176,12 @@ void menuGestionAct(char *usuario){
          //DEPENDIENDO LA OPCION, ENTRAMOS EN LA FUNCION CORRESPONDIENTE.
 
         if(opcion==3) {
-
-                printf("Has seleccionado la opcion 1: Visualizar ACTIVIDADES.\n");
+                printf("Has seleccionado la opcion 3: Visualizar ACTIVIDADES.\n");
                 verActividades(usuario);
                 menuGestionAct(usuario);
                 salir=1;
-        }else if(opcion==4) {
-                        
-                printf("Has seleccionado la opcion 2: Anadir ACTIVIDADES.\n");
+        }else if(opcion==4) {     
+                printf("Has seleccionado la opcion 4: Anadir ACTIVIDADES.\n");
                 logger(0,usuario,"ACCEDIENDO A AÑADIR ACTIVIDADES");
                 crearActividad(usuario);
                 menuGestionAct(usuario);
@@ -195,7 +193,7 @@ void menuGestionAct(char *usuario){
                 int existe;
                 char resultado[10]; 
                 logger(1,usuario,"ACCEDIENDO A MODIFICAR ACTIVIDADES");        
-                printf("Has seleccionado la opcion 3: Modificar ACTIVIDADES.\n");
+                printf("Has seleccionado la opcion 5: Modificar ACTIVIDADES.\n");
                  do {
                     printf("Ingrese el id de la actividad que quieras eliminar: ");
                     fflush(stdout);
@@ -207,13 +205,12 @@ void menuGestionAct(char *usuario){
                          printf("No existe una actividad con ese id\n");
                          }
                  }while(existe==0);
-                printf("Estas seguro que quieres modificar esta activiad?\n");
+                printf("Estas seguro que quieres modificar esta actividad?\n");
                 buscarActividadPorId(id,usuario);
-                printf("1.Si\n2.No\nseleccione opcion:\n");
+                printf("1.Si\n2.No\nSeleccione una opcion:\n");
                 fgets(resultado,10,stdin);
                 sscanf(resultado,"%i", &confirmar);
-                if(confirmar==1){
-                    //logger(0,usuario,"HA PASADO A MODIFICAR LA ACTIVIDAD CON ID %i",id);  
+                if(confirmar==1){  
                     modificarActividad(id,usuario);
                     menuGestionAct(usuario);
                 }else if (confirmar==2)
@@ -241,13 +238,12 @@ void menuGestionAct(char *usuario){
                  }while(existe==0);
 
 
-                printf("Estas seguro que quieres eliminar esta activiad?\n");
-                printf("1.Si\n2.No\nseleccione opcion:");
+                printf("Estas seguro que quieres eliminar esta actividad?\n");
+                printf("1.Si\n2.No\nSeleccione una opcion:");
                 fgets(resultado,10,stdin);
                 sscanf(resultado,"%i", &confirmar);
-                //SI CONFIRMAMOSS
-                if(confirmar==1){
-                    //logger(0,usuario,"HA PASADO A ELIMINAR LA ACTIVIDAD CON ID %i",id);  
+                //SI CONFIRMAMOS
+                if(confirmar==1){  
                     eliminarAct(id,usuario);
                     menuGestionAct(usuario);
                 }else if (confirmar==2)
@@ -323,7 +319,7 @@ void menuGestionAct(char *usuario){
         } else {
             printf("Introduce un usuario y contrasena correctos\n");
         }
-        }
+    }
     
 
 }

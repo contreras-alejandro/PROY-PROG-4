@@ -1,0 +1,356 @@
+{2023-04-06} {09:57:15} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:33:54} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:33:55} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {10:40:01} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:40:03} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {10:41:40} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:41:43} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {10:43:18} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:43:24} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {10:44:17} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:44:19} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {10:46:14} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:46:17} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {10:47:53} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:47:55} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {10:51:19} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:51:20} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {10:52:13} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:52:15} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {10:53:16} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:53:17} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {10:55:10} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:55:12} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {10:56:37} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:56:40} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+{2023-04-06} {10:56:51} [ERROR] Usuario:jonlasa -> ERROR AL PREPARAR CONSULTA 
+ {2023-04-06} {10:59:16} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {10:59:17} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {10:59:25} [WARNING] Usuario:jonlasa -> HA INSERTADO UN NUEVO ADMIN 
+ {2023-04-06} {11:02:34} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {11:02:49} [INFO] Usuario:jonlasa -> SESION INICIADA 
+ {2023-04-06} {11:02:51} [INFO] Usuario:jonlasa -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {11:03:07} [WARNING] Usuario:jonlasa -> HA INSERTADO UN NUEVO ADMIN 
+ {2023-04-06} {11:11:15} [INFO] Usuario:administrador -> SESION INICIADA 
+ {2023-04-06} {11:11:24} [INFO] Usuario:administrador -> ACCEDIENDO A AÑADIR ACTIVIDADES 
+{2023-04-06} {11:12:12} [ERROR] Usuario:administrador -> ERROR AL EJECUTAR CONSULTA 
+ {2023-04-06} {11:12:41} [INFO] Usuario:administrador -> SESION INICIADA 
+ {2023-04-06} {11:12:44} [INFO] Usuario:administrador -> ACCEDIENDO A AÑADIR ACTIVIDADES 
+ {2023-04-06} {11:13:24} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Skate 
+ {2023-04-06} {11:31:19} [INFO] Usuario:administrador -> SESION INICIADA 
+ {2023-04-06} {11:31:29} [INFO] Usuario:administrador -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {11:31:39} [WARNING] Usuario:administrador -> HA INSERTADO UN NUEVO ADMIN 
+ {2023-04-06} {12:14:21} [INFO] Usuario:administrador -> SESION INICIADA 
+ {2023-04-06} {12:14:56} [WARNING] Usuario:administrador -> ACCEDIENDO A ELIMINAR ACTIVIDADES 
+ {2023-04-06} {12:14:56} [WARNING] Usuario:administrador -> ELIMINADO TODAS LAS ACTIVIDADES DE LA BD  
+ {2023-04-06} {12:15:03} [WARNING] Usuario:administrador -> ACCEDIENDO A IMPORTAR CSV A BASE DE DATOS 
+ {2023-04-06} {12:15:03} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Alcoholicos Anonimos 
+ {2023-04-06} {12:16:06} [INFO] Usuario:administrador -> SESION INICIADA 
+ {2023-04-06} {12:26:07} [INFO] Usuario:administrador -> SESION INICIADA 
+ {2023-04-06} {12:26:15} [WARNING] Usuario:administrador -> ACCEDIENDO A ELIMINAR ACTIVIDADES 
+ {2023-04-06} {12:26:15} [WARNING] Usuario:administrador -> ELIMINADO TODAS LAS ACTIVIDADES DE LA BD  
+ {2023-04-06} {12:26:18} [WARNING] Usuario:administrador -> ACCEDIENDO A IMPORTAR CSV A BASE DE DATOS 
+ {2023-04-06} {12:26:18} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Alcoholicos Anonimos 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Ibarra Martxan 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Taller preparacion al parto 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Deshabituacion Tabaco 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Taller sobre Diabetes 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Bienestar Emocional 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Lehen Sorospenak -RCP 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Charla sobre Artritis 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Aprender a jugar 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Apnabi autismo Bizkaia 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Paseos saludables 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Ibili Andoain 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  DESHABITUACION TABAQUICA GRUPAL 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Tertulia abierta Ediren 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Marcha Popular Ediren-Juan Luis Zunzunegui 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Eskolako Bidea proiektua 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ATXURIKO ESKOLA BIDEAK 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  IBARBI EDO ERREZIL SAGARRAREN IBILBIDEA 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  LegazTipi-Tapa 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Oin Alai 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Alimentacion saludable vs procesados 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Yoga 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Taller motivacional para una vida saludable 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Elikadura tailerra 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Kirola familian  
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Salidas de Marcha Nordica 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Dia internacional Nordic Walking 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Kirol Jaia 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Dia mundial sin tabaco 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Salidas de Marcha Nordica 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Taller sobre hemofilia 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Agurra ahoan,osasuna auzoan 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Parkour - Bekobenta BHI 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Inazio Zubizarreta Igorreko Eskola bideak 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  IGORREKO ESKOLARAKO BIDEAK 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Patio del colegio de Romo activo, igualitario y d 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Patios divertidos y saludables 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  PROYECTO EL PATIO 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ERRUKI ISTORIOAK liburuxkaren aurkezpena 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  60+ ASTAREN BARRUAN HITZALDIA: ADINEKO PERTSONEN  
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Dinamizacion de patios en Zazpilanda Herri Ikaste 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Tipi-Tapa Zarautz 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Umeen Bizikleta Festa 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Marcha conmemoracion dïa de la mujer 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Marcha de conmemoracion dïa de la salud 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Kirol-Jaia 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Mugi Txorierri 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Uribe Kostako Osasun Jaia 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Salidas de Marcha Nordica Gratuitas en Gorliz 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Terapia grupal 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  gipuzkoako epilepsia elkartea /elkar ezagutzen 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Elorrioko Kirol Mahaia 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  gipuzkoako epilepsia elkartea /24 de MAYO dï¿½ 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Elorrioko Ibilbide Osasungarriak 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ACCU Gipuzkoa, Asociacion de enfermos de crohn y  
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  DESHABITUACION TABAQUICA GRUPAL 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Txiri Txiri 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  GENE atencion sicosocial a afectados por Enfermed 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Talleres funcionales - Asociacion Parkinson Araba 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  talleres de promocion de estilos de vida activos  
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Paseos saludables 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  One Billion Rising 2019 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Oinezko trena Jakintza ikastolan 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ESKOLARA OINEZ - URDULIZ 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Oinezbusa 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  intxixubideak 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Egibide Bidean III 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Asociacion ELA 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Red de Caminantes Basauri Oinez 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Reto malmasin365 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  promocion de movilidad en bici de alumnado y prof 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Osasun Sarea 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ESKOLARA OINEZ 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  GOSARI OSASUNTSUA 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  PONTE EN MI LUGAR 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  IREKI BEGIAK 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  DIA A MUNDIAL DE LA RETINOSIS PIGMENTARIA 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  DIA MUNDIAL DE LA VISION 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  TIPI-TAPA PASEO OSASUNGARRIAK  
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Servicio de orientacion fisica 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  POZ orientazio zerbitzua 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  V Jornada de Epilepsia  
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Agurra ahoan ,osasuna auzoan 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Auzo osasungarria,auzo bizia 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Red de Caminantes 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =   Parques Biosaludables 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Gym Berdea Zamudio  
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Gym Berdea Larrabetzu 2019 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  60+ astea 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  TALLER ENVEJECIMIENTO SALUDABLE 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Formacion sobre baja vision 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Formacion sobre baja vision 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Formacion sobre baja vision 
+ {2023-04-06} {12:26:19} [WARNING] Usuario:administrador -> CARGADA LA BASE DE DATOS CON CSV 
+ {2023-04-06} {12:26:34} [INFO] Usuario:administrador -> ACCEDIENDO A AÑADIR ACTIVIDADES 
+ {2023-04-06} {12:28:50} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Quedada nocturna social para leida de libros 
+ {2023-04-06} {12:29:59} [WARNING] Usuario:administrador -> Eliminada la actividad con ID 94 
+ {2023-04-06} {12:30:44} [INFO] Usuario:administrador -> ACCEDIENDO A CREAR ADMINISTRADOR 
+ {2023-04-06} {12:32:00} [WARNING] Usuario:administrador -> HA INSERTADO UN NUEVO ADMIN 
+ {2023-04-06} {12:32:25} [INFO] Usuario:Casa_de_Maria -> SESION INICIADA 
+ {2023-04-06} {12:32:54} [WARNING] Usuario:Casa_de_Maria -> ACCEDIENDO A MODIFICAR ACTIVIDADES 
+ {2023-04-06} {12:33:08} [INFO] Usuario:Casa_de_Maria -> ACTIVIDAD ENCONTRDA CON ID 93 
+ {2023-04-06} {13:04:04} [INFO] Usuario:administrador -> SESION INICIADA 
+ {2023-04-06} {13:04:36} [INFO] Usuario:administrador -> SESION INICIADA 
+ {2023-04-06} {13:04:45} [WARNING] Usuario:administrador -> ACCEDIENDO A ELIMINAR ACTIVIDADES 
+ {2023-04-06} {13:04:45} [WARNING] Usuario:administrador -> ELIMINADO TODAS LAS ACTIVIDADES DE LA BD  
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> ACCEDIENDO A IMPORTAR CSV A BASE DE DATOS 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Alcoholicos Anonimos 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Ibarra Martxan 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Taller preparacion al parto 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Deshabituacion Tabaco 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Taller sobre Diabetes 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Bienestar Emocional 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Lehen Sorospenak -RCP 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Charla sobre Artritis 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Aprender a jugar 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Apnabi autismo Bizkaia 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Paseos saludables 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Ibili Andoain 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  DESHABITUACION TABAQUICA GRUPAL 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Tertulia abierta Ediren 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Marcha Popular Ediren-Juan Luis Zunzunegui 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Eskolako Bidea proiektua 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ATXURIKO ESKOLA BIDEAK 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  IBARBI EDO ERREZIL SAGARRAREN IBILBIDEA 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  LegazTipi-Tapa 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Oin Alai 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Alimentacion saludable vs procesados 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Yoga 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Taller motivacional para una vida saludable 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Elikadura tailerra 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Kirola familian  
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Salidas de Marcha Nordica 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Dia internacional Nordic Walking 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Kirol Jaia 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Dia mundial sin tabaco 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Salidas de Marcha Nordica 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Taller sobre hemofilia 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Agurra ahoan,osasuna auzoan 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Parkour - Bekobenta BHI 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Inazio Zubizarreta Igorreko Eskola bideak 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  IGORREKO ESKOLARAKO BIDEAK 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Patio del colegio de Romo activo, igualitario y d 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Patios divertidos y saludables 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  PROYECTO EL PATIO 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ERRUKI ISTORIOAK liburuxkaren aurkezpena 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  60+ ASTAREN BARRUAN HITZALDIA: ADINEKO PERTSONEN  
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Dinamizacion de patios en Zazpilanda Herri Ikaste 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Tipi-Tapa Zarautz 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Umeen Bizikleta Festa 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Marcha conmemoracion dïa de la mujer 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Marcha de conmemoracion dïa de la salud 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Kirol-Jaia 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Mugi Txorierri 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Uribe Kostako Osasun Jaia 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Salidas de Marcha Nordica Gratuitas en Gorliz 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Terapia grupal 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  gipuzkoako epilepsia elkartea /elkar ezagutzen 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Elorrioko Kirol Mahaia 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  gipuzkoako epilepsia elkartea /24 de MAYO dï¿½ 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Elorrioko Ibilbide Osasungarriak 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ACCU Gipuzkoa, Asociacion de enfermos de crohn y  
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  DESHABITUACION TABAQUICA GRUPAL 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Txiri Txiri 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  GENE atencion sicosocial a afectados por Enfermed 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Talleres funcionales - Asociacion Parkinson Araba 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  talleres de promocion de estilos de vida activos  
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Paseos saludables 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  One Billion Rising 2019 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Oinezko trena Jakintza ikastolan 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ESKOLARA OINEZ - URDULIZ 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Oinezbusa 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  intxixubideak 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Egibide Bidean III 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Asociacion ELA 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Red de Caminantes Basauri Oinez 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Reto malmasin365 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  promocion de movilidad en bici de alumnado y prof 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Osasun Sarea 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ESKOLARA OINEZ 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  GOSARI OSASUNTSUA 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  PONTE EN MI LUGAR 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  IREKI BEGIAK 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  DIA A MUNDIAL DE LA RETINOSIS PIGMENTARIA 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  DIA MUNDIAL DE LA VISION 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  TIPI-TAPA PASEO OSASUNGARRIAK  
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Servicio de orientacion fisica 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  POZ orientazio zerbitzua 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  V Jornada de Epilepsia  
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Agurra ahoan ,osasuna auzoan 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Auzo osasungarria,auzo bizia 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Red de Caminantes 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =   Parques Biosaludables 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Gym Berdea Zamudio  
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Gym Berdea Larrabetzu 2019 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  60+ astea 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  TALLER ENVEJECIMIENTO SALUDABLE 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Formacion sobre baja vision 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Formacion sobre baja vision 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Formacion sobre baja vision 
+ {2023-04-06} {13:05:05} [WARNING] Usuario:administrador -> CARGADA LA BASE DE DATOS CON CSV 
+ {2023-04-06} {13:05:36} [INFO] Usuario:administrador -> ACCEDIENDO A AÑADIR ACTIVIDADES 
+ {2023-04-06} {13:05:46} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  sdfsdfs 
+ {2023-04-06} {13:05:54} [WARNING] Usuario:administrador -> ACCEDIENDO A MODIFICAR ACTIVIDADES 
+ {2023-04-06} {13:06:00} [INFO] Usuario:administrador -> ACTIVIDAD ENCONTRDA CON ID 65 
+ {2023-04-06} {13:06:27} [WARNING] Usuario:administrador -> Eliminada la actividad con ID 94 
+ {2023-04-06} {13:24:23} [INFO] Usuario:administrador -> SESION INICIADA 
+ {2023-04-06} {13:24:34} [WARNING] Usuario:administrador -> ACCEDIENDO A ELIMINAR ACTIVIDADES 
+ {2023-04-06} {13:24:34} [WARNING] Usuario:administrador -> ELIMINADO TODAS LAS ACTIVIDADES DE LA BD  
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> ACCEDIENDO A IMPORTAR CSV A BASE DE DATOS 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Alcoholicos Anonimos 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Ibarra Martxan 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Taller preparacion al parto 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Deshabituacion Tabaco 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Taller sobre Diabetes 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Bienestar Emocional 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Lehen Sorospenak -RCP 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Charla sobre Artritis 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Aprender a jugar 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Apnabi autismo Bizkaia 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Paseos saludables 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Ibili Andoain 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  DESHABITUACION TABAQUICA GRUPAL 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Tertulia abierta Ediren 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Marcha Popular Ediren-Juan Luis Zunzunegui 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Eskolako Bidea proiektua 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ATXURIKO ESKOLA BIDEAK 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  IBARBI EDO ERREZIL SAGARRAREN IBILBIDEA 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  LegazTipi-Tapa 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Oin Alai 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Alimentacion saludable vs procesados 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Yoga 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Taller motivacional para una vida saludable 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Elikadura tailerra 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Kirola familian  
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Salidas de Marcha Nordica 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Dia internacional Nordic Walking 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Kirol Jaia 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Dia mundial sin tabaco 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Salidas de Marcha Nordica 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Taller sobre hemofilia 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Agurra ahoan,osasuna auzoan 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Parkour - Bekobenta BHI 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Inazio Zubizarreta Igorreko Eskola bideak 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  IGORREKO ESKOLARAKO BIDEAK 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Patio del colegio de Romo activo, igualitario y d 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Patios divertidos y saludables 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  PROYECTO EL PATIO 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ERRUKI ISTORIOAK liburuxkaren aurkezpena 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  60+ ASTAREN BARRUAN HITZALDIA: ADINEKO PERTSONEN  
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Dinamizacion de patios en Zazpilanda Herri Ikaste 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Tipi-Tapa Zarautz 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Umeen Bizikleta Festa 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Marcha conmemoracion dïa de la mujer 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Marcha de conmemoracion dïa de la salud 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Kirol-Jaia 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Mugi Txorierri 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Uribe Kostako Osasun Jaia 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Salidas de Marcha Nordica Gratuitas en Gorliz 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Terapia grupal 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  gipuzkoako epilepsia elkartea /elkar ezagutzen 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Elorrioko Kirol Mahaia 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  gipuzkoako epilepsia elkartea /24 de MAYO dï¿½ 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Elorrioko Ibilbide Osasungarriak 
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ACCU Gipuzkoa, Asociacion de enfermos de crohn y  
+ {2023-04-06} {13:24:38} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  DESHABITUACION TABAQUICA GRUPAL 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Txiri Txiri 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  GENE atencion sicosocial a afectados por Enfermed 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Talleres funcionales - Asociacion Parkinson Araba 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  talleres de promocion de estilos de vida activos  
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Paseos saludables 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  One Billion Rising 2019 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Oinezko trena Jakintza ikastolan 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ESKOLARA OINEZ - URDULIZ 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Oinezbusa 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  intxixubideak 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Egibide Bidean III 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Asociacion ELA 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Red de Caminantes Basauri Oinez 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Reto malmasin365 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  promocion de movilidad en bici de alumnado y prof 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Osasun Sarea 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  ESKOLARA OINEZ 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  GOSARI OSASUNTSUA 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  PONTE EN MI LUGAR 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  IREKI BEGIAK 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  DIA A MUNDIAL DE LA RETINOSIS PIGMENTARIA 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  DIA MUNDIAL DE LA VISION 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  TIPI-TAPA PASEO OSASUNGARRIAK  
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Servicio de orientacion fisica 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  POZ orientazio zerbitzua 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  V Jornada de Epilepsia  
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Agurra ahoan ,osasuna auzoan 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Auzo osasungarria,auzo bizia 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Red de Caminantes 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =   Parques Biosaludables 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Gym Berdea Zamudio  
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Gym Berdea Larrabetzu 2019 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  60+ astea 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  TALLER ENVEJECIMIENTO SALUDABLE 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Formacion sobre baja vision 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Formacion sobre baja vision 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  Formacion sobre baja vision 
+ {2023-04-06} {13:24:39} [WARNING] Usuario:administrador -> CARGADA LA BASE DE DATOS CON CSV 

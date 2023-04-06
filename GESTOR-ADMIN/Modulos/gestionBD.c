@@ -6,8 +6,6 @@
 #include "gestionBD.h"
 #include "gestionAdmin.h"
 
-
-
 sqlite3* db;
 
 //FUNCION PARA ABRIR BASE DE DATOS
@@ -411,8 +409,7 @@ void eliminarTablaActividades(char *usuario){
     char* sql = "DELETE FROM ACTIVIDAD";
     rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
     rc = sqlite3_step(stmt);
-    printf("...........................\n");
-    printf("ELIMINANDO ACTIVIDADES DE BASE DE DATOS........\n");
+    printf("\nELIMINANDO ACTIVIDADES DE BASE DE DATOS...\n");
     printf("ELIMINADAS CON EXITO!\n");
     logger(1,usuario,"ELIMINADO TODAS LAS ACTIVIDADES DE LA BD ");  
 

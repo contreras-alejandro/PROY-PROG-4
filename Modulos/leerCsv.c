@@ -32,11 +32,8 @@ void cargarCsv(char* usuario) {
 
     while (fgets(line, MAX_LINE_LENGTH, file)) {
 
-        //LIMPIAMOS LA LINEA
-
         line[strcspn(line, "\n")] = '\0';
 
-        //SEPARAMOS POR ;
 
         char* id_str = strtok(line, ";");
         char* nombre = strtok(NULL, ";");

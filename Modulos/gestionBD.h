@@ -10,7 +10,7 @@ int cerrarConexion();
 //FUNCION PARA LOGIN DEL USUARIO
 int login(char* usuario, char* contrasena);
 //FUNCION PARA INSERTAR ADMIN EN BASE DE DATOS
-void insertarAdmin(char *usuario,Administrador admin);
+void insertarAdmin(char *usuario,Administrador* admin);
 //FUNCION PARA BUSCAR ACTIVIDD POR ID EN BASE DE DATOS
 Actividad buscarActividadPorId(int id,char *usuario);
 //FUNCION PARA INSERTAR ACTIVIDAD EN BASE DE DATOS

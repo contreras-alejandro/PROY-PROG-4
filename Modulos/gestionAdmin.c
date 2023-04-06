@@ -12,25 +12,29 @@
 #define INFO 0
 #define WARNING 1
 #define ERROR 2
+
+#define MAX_LINE_ADMIN 50
 //funcion para realizar el log
 void logger(int severity, char* usuario, char* info) {
     //APERTURA
     char *ruta =leerProperties(3);
     time_t tiempo = time(NULL);
     struct tm *tm = localtime(&tiempo);
+    char fecha[20];
+    strftime(fecha, sizeof(fecha), "%Y-%m-%d", tm);
      //OBTENEMOS LA HORA ACTUAL
     FILE* ficheroLog = fopen(ruta, "a");
     if (ficheroLog != NULL) {
         //DEPENDIENDO DE LA SEVERIDAD INTRODUCIDA, SE ESCRIBE UN MENSAJE O OTRO
         if (severity == INFO) {
-            fprintf(ficheroLog, "{ %02d:%02d:%02d} [INFO] Usuario:%s -> %s \n",
+            fprintf(ficheroLog, " {%s} {%02d:%02d:%02d} [INFO] Usuario:%s -> %s \n",fecha,
              tm->tm_hour, tm->tm_min, tm->tm_sec,usuario,info);
 
         } else if (severity == WARNING) {
-               fprintf(ficheroLog, "{ %02d:%02d:%02d} [WARNING] Usuario:%s -> %s \n",
+               fprintf(ficheroLog, " {%s} {%02d:%02d:%02d} [WARNING] Usuario:%s -> %s \n",fecha,
                tm->tm_hour, tm->tm_min, tm->tm_sec,usuario,info);
         } else if (severity == ERROR) {
-            fprintf(ficheroLog, "{%02d:%02d:%02d} [ERROR] Usuario:%s -> %s \n", tm->tm_hour, tm->tm_min, tm->tm_sec,
+            fprintf(ficheroLog, "{%s} {%02d:%02d:%02d} [ERROR] Usuario:%s -> %s \n",fecha, tm->tm_hour, tm->tm_min, tm->tm_sec,
             usuario,info);
         }
         fclose(ficheroLog);
@@ -57,6 +61,7 @@ char *leerProperties( int num) {
     }
 
     else {
+
         //la llenamos con las ruta.
 
     while (fgets(buffer, 100, fichero) != NULL) {
@@ -86,16 +91,6 @@ char *leerProperties( int num) {
     }
 
     rutaLimpiada = strtok(ruta, "\n\r ");
-
-
-    //LIBERAMOS LA MEMORIA RESERVADA
-    for(int i =0; i<3;i++) {
-        free(lines[i]);
-    }
-
-    free(lines);
-
-    
     return (rutaLimpiada);
 }
 
@@ -114,21 +109,44 @@ int comprobarLongitud(char *palabra, int minimo){
 //FUNCION PARA CREAR ADMINISTRADOR
 void crearAdmin(char*usuario){
 
+    Administrador* admin;
+    admin = (Administrador*) malloc(sizeof(Administrador));
     //QUE ATRIBUTOS SON NECESARIOS?
     // nombre, apellido nombreUsuario, contraseña
-     char nombre[50], apellido[50], n_usuario[50], contrasena[50], contrasena2[50];
+     char nombre[MAX_LINE_ADMIN], apellido[MAX_LINE_ADMIN], n_usuario[MAX_LINE_ADMIN],
+      contrasena[MAX_LINE_ADMIN], contrasena2[MAX_LINE_ADMIN];
     int contrasenas_coinciden = 0;
     int usuarioValido=0;
 
     //los pedimos y almacenamos
     printf("Introduzca su nombre: ");
-    fgets(nombre, 50, stdin);
+    fgets(nombre, MAX_LINE_ADMIN, stdin);
     //FINALMENTE LE AÑADE UN \0
     nombre[strcspn(nombre, "\n")] = '\0';
+
+    //NOMBRE
+
+	char *nombre_aux = malloc((MAX_LINE_ADMIN) * sizeof(char));
+	sscanf(nombre, "%s", nombre_aux); 
+	int tamanyo = strlen(nombre_aux);
+	admin->nombre = malloc((tamanyo + 1) * sizeof(char));
+	strcpy(admin->nombre, nombre_aux);
+	free(nombre_aux);
+
+    //APELLIDO
 
     printf("Introduzca su apellido: ");
     fgets(apellido, 50, stdin);
     apellido[strcspn(apellido, "\n")] = '\0';
+
+    char *apellido_aux = malloc((MAX_LINE_ADMIN) * sizeof(char));
+	sscanf(apellido, "%s", apellido_aux); 
+	 tamanyo = strlen(apellido_aux);
+	admin->apellido = malloc((tamanyo + 1) * sizeof(char));
+	strcpy(admin->apellido, apellido_aux);
+	free(apellido_aux);
+
+
 
     //ESTABLECEMOS QUE EL NOMBRE DE USUARIO Y CONTRANSEYA, MINIMO 7 CARACTERES
     
@@ -145,6 +163,14 @@ void crearAdmin(char*usuario){
         }
     else {
         usuarioValido=1;
+        //METEMOS EL NOMBRE DE USUARIO EN EL ADMIN
+         char *nombre_usu_aux = malloc((MAX_LINE_ADMIN) * sizeof(char));
+         sscanf(n_usuario, "%s", nombre_usu_aux); 
+        tamanyo = strlen(nombre_usu_aux);
+	    admin->nusuario = malloc((tamanyo + 1) * sizeof(char));
+	    strcpy(admin->nusuario, nombre_usu_aux);
+	    free(nombre_usu_aux);
+
         break;
     }
     }
@@ -173,20 +199,21 @@ void crearAdmin(char*usuario){
     }
 
     //UNA VEZ COFIRMADO QUE LAS CONTRASEÑAS COINCIDEN HASHEAMOS LA CONTRASEÑA ANTES DE PASARLA A LA BD
-
     char* contrasenya_hasheada = hash_string(contrasena);
+    tamanyo = strlen(contrasenya_hasheada);
+    admin->contrasenya = malloc((tamanyo + 1) * sizeof(char));
+    strcpy(admin->contrasenya, contrasenya_hasheada);
 
+  
     printf("\nDatos introducido del NUEVO ADMINs:\n");
-    printf("Nombre: %s\n", nombre);
-    printf("Apellido: %s\n", apellido);
-    printf("Nombre de usuario: %s\n", n_usuario);
+    printf("Nombre: %s\n", admin->nombre);
+    printf("Apellido: %s\n", admin->apellido);
+    printf("Nombre de usuario: %s\n",  admin->nusuario);
 
-
-    Administrador admin;
-    strcpy(admin.nombre, nombre);
-    strcpy(admin.apellido, apellido);
-    strcpy(admin.nusuario, n_usuario);
-    strcpy(admin.contrasenya, contrasenya_hasheada);
+     //strcpy(admin.nombre, nombre);
+     //strcpy(admin.apellido, apellido);
+    // strcpy(admin.nusuario, n_usuario);
+    // strcpy(admin.contrasenya, contrasenya_hasheada);
 
 
     //LLAMAMOS A METODO DE BD, QUE INTRODUCE UN ADMIN EN BD
@@ -196,7 +223,7 @@ void crearAdmin(char*usuario){
 
 //FUNCION PARA IMPRIMIR POR CONSOLA UNA ACTIVIDAD
 void imprimirActividad(Actividad act) {
-    printf("\nNombre: %s\n", act.nombre);
+    printf("Nombre: %s\n", act.nombre);
     printf("Descripcion: %s\n", act.descripcion);
     printf("Tipo: %s\n", act.tipo);
     printf("Publico: %s\n", act.publico);
@@ -353,3 +380,19 @@ char* hash_string(char* str) {
     return hash_str;
     
      }
+
+//FUNCION PARA LIBERAR ESPACIO DE MEMORIA PARA ADMINISTRADOR
+void liberarAdmin(Administrador* admin) {
+
+    //LIBERAMOS LOS DIFERENTES ATRIBUTOS
+    free(admin->nombre);
+    free(admin->apellido);
+    free(admin->nusuario);
+    free(admin->contrasenya);
+
+    //FINALMENTE EL ADMIN
+    free(admin);
+
+}
+
+

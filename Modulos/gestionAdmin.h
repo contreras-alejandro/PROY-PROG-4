@@ -11,10 +11,10 @@
 // CONTRASENYA
 
 typedef struct{
-    char nombre[50];
-    char apellido[50];
-    char nusuario[50];
-    char contrasenya[50];
+    char* nombre;
+    char* apellido;
+    char* nusuario;
+    char* contrasenya;
 }Administrador;
 
 //LO MISMO CON LA ACTIVIDAD
@@ -44,6 +44,9 @@ void imprimirActividad(Actividad act);
 void crearActividad(char*usuario);
 //FUNCION PARA MODIFICAR UNA ACTIVIDAD
 void modificarActividad(int id,char *usuario);
+//FUNCION PARA LIBERAR ESPACIO DE MEMORIA PARA ADMINISTRADOR
+void liberarAdmin(Administrador* admin);
+
 
 
 

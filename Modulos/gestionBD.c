@@ -266,7 +266,7 @@ void insertarActividad(char *usuario,Actividad act) {
     }
 
     //SI LLEGAMOS AQUI, SE HA INSERTADO CORRECTAMENTE
-     char mensaje[50];
+     char mensaje[100];
     sprintf(mensaje, "HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  %s", act.nombre);
     logger(1,usuario, mensaje);
     sqlite3_finalize(stmt);

@@ -28,4 +28,6 @@ int comprobarUsuario(char * nombreUsuario);
 //FUNCION PARA COMPROBAR QUE LA ACTIVIDAD A ELIMINAR EXISTE EN BASE DE DATOS
 int comprobarActividad(int id,char * nombreUsuario);
 
+////////////////////////////////////// CLIENTES /////////////////////////////////////////////////////////////
+
 #endif

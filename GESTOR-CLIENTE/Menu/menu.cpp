@@ -239,6 +239,43 @@ void menuPerfil() {
 
 //FUNCION PARA GESTION DEL MENU DE LOGIN
 void menuLogin() {
+    //guardamos espacio en memoria, ya que el usuario lo pasaremos por las funciones para el log
+    int resultado;
+    int salir=0;
+
+    //PEDIMOS LOS VALORES MIENTRAS NO SEAN CORRECTO
+
+    while (salir==0)
+    {
+
+        char nombre_usu [20];
+        char usu_contra [20];
+
+        fflush(stdin);
+        printf("Ingrese su nombre de usuario: ");
+        fgets(nombre_usu,20,stdin);
+        nombre_usu[strcspn(nombre_usu, "\n")] = 0;
+
+
+        fflush(stdin);
+        printf("Ingrese su contrasena: ");
+        fgets(usu_contra,20,stdin);
+        usu_contra[strcspn(usu_contra, "\n")] = 0;
+
+        
+        //resultado = login(nombre_usu, usu_contra);
+
+        if (resultado == 1) {
+            //si son correctos, se inicia sesion
+            printf("Iniciando sesion...\n");
+            salir=1;
+            menuPrincipal(nombre_usu);
+        } else {
+            printf("Introduce un usuario y contrasena correctos\n");
+        }
+    }
+    
+
 
 
 

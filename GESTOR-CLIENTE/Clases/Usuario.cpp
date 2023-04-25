@@ -1,6 +1,7 @@
 #include "Usuario.h"
 #include <stdio.h>
 #include  <string.h>
+#include <stdlib.h>
 
 Usuario::Usuario()
 {
@@ -42,6 +43,32 @@ char* Usuario::getApellido()
 char* Usuario::getNombreUsuario()
 {
     return this->nombre_usu;
+}
+Usuario Usuario::convertirEstructuraAClase(Estructuras::Usuario u)
+{
+    return Usuario(u.nombre, u.apellido, u.nombre_usu, u.email, u.contrasenya);
+}
+
+Estructuras::Usuario Usuario::convertirClaseAEstructura(Usuario u)
+{
+    Estructuras::Usuario us;
+
+    us.nombre = (char*) malloc(strlen(u.nombre)+1);
+    strcpy(us.nombre, u.nombre);
+
+    us.apellido = (char*) malloc(strlen(u.apellido)+1);
+    strcpy(us.apellido, u.apellido);
+
+    us.nombre_usu = (char*) malloc(strlen(u.nombre_usu)+1);
+    strcpy(us.nombre_usu, u.nombre_usu);
+
+    us.email = (char*) malloc(strlen(u.email)+1);
+    strcpy(us.email, u.email);
+
+    us.contrasenya = (char*) malloc(strlen(u.contrasenya)+1);
+    strcpy(us.contrasenya, u.contrasenya);
+
+    return us;
 }
 
 Usuario::~Usuario()

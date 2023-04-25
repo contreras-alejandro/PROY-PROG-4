@@ -6,7 +6,8 @@ namespace Estructuras
     typedef struct{
         char* nombre;
         char* apellido;
-        char* nusuario;
+        char* nombre_usu;
+        char* email;
         char* contrasenya;
     }Usuario;
 }

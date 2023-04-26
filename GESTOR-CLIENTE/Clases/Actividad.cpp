@@ -48,38 +48,38 @@ char* Actividad::getNombreAct()
     return this->nombre;
 }
 
-Actividad Actividad::convertirEstructuraAClase(Estructuras::Actividad a)
+Actividad Actividad::convertirEstructuraAClase(Estructura_Actividad::Actividad a)
 {
     return Actividad(a.nombre,a.descripcion,a.tipo,a.publico,a.municipio,a.direccion,a.encargado,a.fecha);
 }
 
-Estructuras::Actividad Actividad::convertirClaseAEstructura(Actividad a)
+Estructura_Actividad::Actividad Actividad::convertirClaseAEstructura()
 {
-    Estructuras::Actividad ac;
+    Estructura_Actividad::Actividad ac;
 
-    ac.nombre = (char*) malloc(strlen(a.nombre)+1);
-    strcpy(ac.nombre, a.nombre);
+    ac.nombre = (char*) malloc(strlen(this->nombre)+1);
+    strcpy(ac.nombre,this->nombre);
 
-    ac.descripcion = (char*) malloc(strlen(a.descripcion)+1);
-    strcpy(ac.descripcion, a.descripcion);
+    ac.descripcion = (char*) malloc(strlen(this->descripcion)+1);
+    strcpy(ac.descripcion, this->descripcion);
 
-    ac.tipo = (char*) malloc(strlen(a.tipo)+1);
-    strcpy(ac.tipo, a.tipo);
+    ac.tipo = (char*) malloc(strlen(this->tipo)+1);
+    strcpy(ac.tipo, this->tipo);
 
-    ac.publico = (char*) malloc(strlen(a.publico)+1);
-    strcpy(ac.publico, a.publico);
+    ac.publico = (char*) malloc(strlen(this->publico)+1);
+    strcpy(ac.publico, this->publico);
 
-    ac.municipio = (char*) malloc(strlen(a.municipio)+1);
-    strcpy(ac.municipio, a.municipio);
+    ac.municipio = (char*) malloc(strlen(this->municipio)+1);
+    strcpy(ac.municipio, this->municipio);
 
-    ac.direccion = (char*) malloc(strlen(a.direccion)+1);
-    strcpy(ac.direccion, a.direccion);
+    ac.direccion = (char*) malloc(strlen(this->direccion)+1);
+    strcpy(ac.direccion, this->direccion);
 
-    ac.encargado = (char*) malloc(strlen(a.encargado)+1);
-    strcpy(ac.encargado, a.encargado);
+    ac.encargado = (char*) malloc(strlen(this->encargado)+1);
+    strcpy(ac.encargado, this->encargado);
 
-    ac.fecha = (char*) malloc(strlen(a.fecha)+1);
-    strcpy(ac.fecha, a.fecha);
+    ac.fecha = (char*) malloc(strlen(this->fecha)+1);
+    strcpy(ac.fecha, this->fecha);
 
     return ac;
 }

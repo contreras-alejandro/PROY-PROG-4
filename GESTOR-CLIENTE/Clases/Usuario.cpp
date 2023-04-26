@@ -8,11 +8,10 @@ Usuario::Usuario()
     this->nombre=NULL;
     this->apellido=NULL;
     this->nombre_usu=NULL;
-    this->email=NULL;
     this->contrasenya=NULL;
 }
 
-Usuario::Usuario(char* nombre, char* apellido, char* nombre_usu, char* email, char* contrasenya)
+Usuario::Usuario(char* nombre, char* apellido, char* nombre_usu, char* contrasenya)
 {
     this->nombre= new char[strlen(nombre)+1];
     strcpy(this->nombre, nombre);
@@ -23,8 +22,6 @@ Usuario::Usuario(char* nombre, char* apellido, char* nombre_usu, char* email, ch
     this->nombre_usu= new char[strlen(nombre_usu)+1];
     strcpy(this->nombre_usu, nombre_usu);
 
-    this->email= new char[strlen(email)+1];
-    strcpy(this->email, email);
 
     this->contrasenya= new char[strlen(contrasenya)+1];
     strcpy(this->contrasenya, contrasenya);
@@ -44,29 +41,27 @@ char* Usuario::getNombreUsuario()
 {
     return this->nombre_usu;
 }
-Usuario Usuario::convertirEstructuraAClase(Estructuras::Usuario u)
+Usuario Usuario::convertirEstructuraAClase(Estructura_Usuario::Usuario u)
 {
-    return Usuario(u.nombre, u.apellido, u.nombre_usu, u.email, u.contrasenya);
+    return Usuario(u.nombre, u.apellido, u.nombre_usu, u.contrasenya);
 }
 
-Estructuras::Usuario Usuario::convertirClaseAEstructura(Usuario u)
+Estructura_Usuario::Usuario Usuario::convertirClaseAEstructura()
 {
-    Estructuras::Usuario us;
+    Estructura_Usuario::Usuario us;
 
-    us.nombre = (char*) malloc(strlen(u.nombre)+1);
-    strcpy(us.nombre, u.nombre);
+    us.nombre = (char*) malloc(strlen(this->nombre)+1);
+    strcpy(us.nombre, this->nombre);
 
-    us.apellido = (char*) malloc(strlen(u.apellido)+1);
-    strcpy(us.apellido, u.apellido);
+    us.apellido = (char*) malloc(strlen(this->apellido)+1);
+    strcpy(us.apellido, this->apellido);
 
-    us.nombre_usu = (char*) malloc(strlen(u.nombre_usu)+1);
-    strcpy(us.nombre_usu, u.nombre_usu);
+    us.nombre_usu = (char*) malloc(strlen(this->nombre_usu)+1);
+    strcpy(us.nombre_usu, this->nombre_usu);
 
-    us.email = (char*) malloc(strlen(u.email)+1);
-    strcpy(us.email, u.email);
 
-    us.contrasenya = (char*) malloc(strlen(u.contrasenya)+1);
-    strcpy(us.contrasenya, u.contrasenya);
+    us.contrasenya = (char*) malloc(strlen(this->contrasenya)+1);
+    strcpy(us.contrasenya, this->contrasenya);
 
     return us;
 }
@@ -76,6 +71,6 @@ Usuario::~Usuario()
     delete [] nombre;
     delete [] apellido;
     delete [] nombre_usu;
-    delete [] email;
+   
     delete [] contrasenya;
 }

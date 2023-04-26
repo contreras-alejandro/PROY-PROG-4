@@ -1,7 +1,7 @@
 #ifndef _USUARIO_H
 #define _USUARIO_H
 
-namespace Estructuras
+namespace Estructura_Usuario
 {
     typedef struct{
         char* nombre;
@@ -17,17 +17,16 @@ private:
     char* nombre;
     char* apellido;
     char* nombre_usu;  // CLAVE UNICA NO SE PODRA REPETIR
-    char* email;
     char* contrasenya;
     
 public:
     Usuario();
-    Usuario(char* nombre, char* apellido, char* nombre_usu, char* email, char* contrasenya);
+    Usuario(char* nombre, char* apellido, char* nombre_usu, char* contrasenya);
     char* getNombre();
     char* getApellido();
     char* getNombreUsuario();
-    Usuario convertirEstructuraAClase(Estructuras::Usuario u);
-    Estructuras::Usuario convertirClaseAEstructura(Usuario u);
+    Usuario convertirEstructuraAClase(Estructura_Usuario::Usuario u);
+    Estructura_Usuario::Usuario convertirClaseAEstructura();
     ~Usuario();
 
 };

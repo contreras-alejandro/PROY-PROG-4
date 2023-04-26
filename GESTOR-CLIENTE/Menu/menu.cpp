@@ -103,7 +103,7 @@ void menuInicio() {
 
 //FUNCION PARA IMPRIMIR EL MENU PRINCIPAL
 int printMenuPrincipal(){
-    int numOpciones=7;
+    int numOpciones=6;
 
     printf("\n||MENU USUARIO||\n");
     printf("_________________________________________________________\n");
@@ -111,10 +111,9 @@ int printMenuPrincipal(){
     printf("1. Ver ACTIVIDADES\n");
     printf("2. Inscribirse\n");
     printf("3. Borrar inscripcion\n");
-    printf("4. Crear Propuesta\n");
-    printf("5. VALORAR ACTIVIDAD\n");
-    printf("6. Perfil\n");
-    printf("7. Volver\n");
+    printf("4. VALORAR ACTIVIDAD\n");
+    printf("5. Perfil\n");
+    printf("6. Volver\n");
 
     printf("_________________________________________________________\n");
     return numOpciones;
@@ -132,17 +131,17 @@ void menuPrincipal(char *usuario) {
         //DEPENDIENDO LA OPCION, ENTRAMOS EN LA FUNCION CORRESPONDIENTE.
 
         if(opcion==1) {
-            printf("Has seleccionado la opcion 1: Inscribirse a actividad.\n");
+            printf("Has seleccionado la opcion 1: Ver actividades.\n");
             //menuGestionAct(usuario);
             salir=1;
             break;
         } else if(opcion==2) {
-            printf("Has seleccionado la opcion 2: Borrar INSCRIPCION.\n");
+            printf("Has seleccionado la opcion 2:  INSCRIBIR a ACTICIDAD.\n");
             //menuPrincipal(usuario);
             salir=1;
              break;
         } else if(opcion==3) {
-            printf("Has seleccionado la opcion 3: Crear PROPUESTA.\n");
+            printf("Has seleccionado la opcion 3: BORRAR INSCRIPCION a ACTICIDAD.\n");
             //logger(0,usuario,"ACCEDIENDO A CREAR ADMINISTRADOR");
             //crearAdmin(usuario); 
             menuPrincipal(usuario);       
@@ -156,7 +155,7 @@ void menuPrincipal(char *usuario) {
         
         } 
         else if(opcion==5) {
-            printf("Has seleccionado la opcion 5:  Ver ACTIVIDADES MEJOR VALORADAS.\n");
+            printf("Has seleccionado la opcion 5:  PERFIL.\n");
             //menuInicio(usuario);
             salir=1;
             break;
@@ -164,7 +163,7 @@ void menuPrincipal(char *usuario) {
         } 
         
           else if(opcion==6) {
-            printf("Has seleccionado la opcion 6: PERFIL\n");
+            printf("Has seleccionado la opcion 6: VOLVER\n");
             //menuInicio(usuario);
             salir=1;
             break;
@@ -186,6 +185,7 @@ void menuPrincipal(char *usuario) {
     }
 }
 
+//falta
 void printMenuVerAct();
 
 

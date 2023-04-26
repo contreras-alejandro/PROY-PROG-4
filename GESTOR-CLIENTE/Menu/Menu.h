@@ -20,6 +20,8 @@ int printMenuPerfil();
 //FUNCION PARA GESTION DEL MENU DE PERFIL
 void menuPerfil();
 
+void printMenuVerAct();
+
 
 //FUNCION PARA MOSTRAR OPCIONES DE PERFIL
 int printMenuLogin();

@@ -108,11 +108,11 @@ int printMenuPrincipal(){
     printf("\n||MENU USUARIO||\n");
     printf("_________________________________________________________\n");
     printf("**Bienvenido al menu del usuario**\n");
-    printf("1. Inscribirse a actividad\n");
-    printf("2. Borrar inscripcion\n");
-    printf("3. Crear Propuesta\n");
-    printf("4. VALORAR ACTIVIDAD\n");
-    printf("5. Ver ACTIVIDADES MEJOR VALORADAS\n");
+    printf("1. Ver ACTIVIDADES\n");
+    printf("2. Inscribirse\n");
+    printf("3. Borrar inscripcion\n");
+    printf("4. Crear Propuesta\n");
+    printf("5. VALORAR ACTIVIDAD\n");
     printf("6. Perfil\n");
     printf("7. Volver\n");
 
@@ -185,6 +185,17 @@ void menuPrincipal(char *usuario) {
         }
     }
 }
+
+void printMenuVerAct();
+
+
+
+
+
+
+
+
+
 
 //FUNCION PARA MOSTRAR OPCIONES DE PERFIL
 int printMenuPerfil() {

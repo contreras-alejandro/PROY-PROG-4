@@ -7,6 +7,7 @@
 
 sqlite3* db;
 
+
 //FUNCION PARA ABRIR BASE DE DATOS
 int abrirConexion() {
    
@@ -41,7 +42,7 @@ int cerrarConexion()  {
 }
 
 
-//FUNCION PARA LOGIN DEL USUARIO
+//FUNCION PARA LOGIN DEL ADMIN
 int login(char* usuario, char* contrasena) {
     abrirConexion();
     int resultado_consulta;
@@ -440,4 +441,65 @@ int comprobarActividad(int id, char * nombreUsuario){
     sqlite3_finalize(stmt);
     cerrarConexion();
     return result;
+}
+
+
+//NUEVOS METODOS
+
+Usuario* loginUsuario(char* usuario, char* contrasena){
+    abrirConexion();
+    int resultado_consulta;
+    sqlite3_stmt *stmt;
+    char* consulta = "SELECT * FROM USUARIO WHERE USUARIO_USU = ? AND CONTRASENYA_USU = ?;";
+
+    //OBTENEMOS EL VALOR DE LA CONTRASENYA HASHEADA
+    char* contrasenya_hasheada = hash_string(contrasena);
+   
+
+    resultado_consulta = sqlite3_prepare_v2(db, consulta, -1, &stmt, 0);
+
+    if (resultado_consulta != SQLITE_OK) {
+        printf("Error al preparar la consulta\n");
+        cerrarConexion();
+        return NULL;
+    }
+
+    sqlite3_bind_text(stmt, 1, usuario, strlen(usuario), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, contrasenya_hasheada, strlen(contrasenya_hasheada), SQLITE_STATIC);
+
+    //EJECUTAMOS SENTENCIA SQL
+
+    resultado_consulta = sqlite3_step(stmt);
+
+    //SI EL USUARIO EXISTE, DEVOLVEMOS UN 1, SINO, OTRO VALOR
+
+    Usuario usr = {0};
+
+    if (resultado_consulta == SQLITE_ROW) {
+        printf("Nombre de usuario y contrasena correctas\n");
+        
+        strcpy(usr.nombre, sqlite3_column_text(stmt, 2));
+        strcpy(usr.apellido, sqlite3_column_text(stmt, 3));
+        strcpy(usr.nombre_usu, sqlite3_column_text(stmt, 4));
+        strcpy(usr.contrasenya, sqlite3_column_text(stmt, 5));
+
+        
+        sqlite3_finalize(stmt);
+        cerrarConexion();
+        return &usr;
+    } else if (resultado_consulta == SQLITE_ERROR) {
+        //EN CASO DE ERROR, DEVUELVE -1
+        printf("Error en la consulta: %s\n", sqlite3_errmsg(db));
+        sqlite3_finalize(stmt);
+        cerrarConexion();
+        return NULL;
+    } else {
+        printf("Credenciales incorrectas\n");
+        sqlite3_finalize(stmt);
+        cerrarConexion();
+        return NULL;
+    }
+
+
+
 }

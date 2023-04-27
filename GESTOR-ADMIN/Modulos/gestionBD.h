@@ -7,7 +7,7 @@
 int abrirConexion();
 //FUNCION PARA CERRAR LA BASE DE DATOS
 int cerrarConexion();
-//FUNCION PARA LOGIN DEL USUARIO
+//FUNCION PARA LOGIN DEL ADMIN
 int login(char* usuario, char* contrasena);
 //FUNCION PARA INSERTAR ADMIN EN BASE DE DATOS
 void insertarAdmin(char *usuario,Administrador* admin);

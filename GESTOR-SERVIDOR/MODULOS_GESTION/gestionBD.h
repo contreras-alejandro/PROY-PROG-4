@@ -7,7 +7,7 @@
 int abrirConexion();
 //FUNCION PARA CERRAR LA BASE DE DATOS
 int cerrarConexion();
-//FUNCION PARA LOGIN DEL USUARIO
+//FUNCION PARA LOGIN DEL ADMIN
 int login(char* usuario, char* contrasena);
 //FUNCION PARA INSERTAR ADMIN EN BASE DE DATOS
 void insertarAdmin(char *usuario,Administrador* admin);
@@ -32,6 +32,7 @@ int comprobarActividad(int id,char * nombreUsuario);
 
 //REGISTRAR USUARIO
 //LOG IN DE USUARIO (QUE DEVUELVA EL USUARIO COMO OBJETO)
+Usuario* loginUsuario(char* usuario, char* contrasena);
 
 //VER ACTIVIDADES CON FILTR0 (RECIBE UN INT, QUE DEPENDE CUAL SEA SERA UNA CONSULTA O OTRA)
 

@@ -43,7 +43,7 @@ int cerrarConexion()  {
 
 
 //FUNCION PARA LOGIN DEL ADMIN
-int login(char* usuario, char* contrasena) {
+int loginAdmin(char* admin, char* contrasena) {
     abrirConexion();
     int resultado_consulta;
     sqlite3_stmt *stmt;
@@ -61,7 +61,7 @@ int login(char* usuario, char* contrasena) {
         return -1;
     }
 
-    sqlite3_bind_text(stmt, 1, usuario, strlen(usuario), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 1, admin, strlen(admin), SQLITE_STATIC);
     sqlite3_bind_text(stmt, 2, contrasenya_hasheada, strlen(contrasenya_hasheada), SQLITE_STATIC);
 
     //EJECUTAMOS SENTENCIA SQL
@@ -92,7 +92,7 @@ int login(char* usuario, char* contrasena) {
 }
 
 //FUNCION PARA BUSCAR ACTIVIDD POR ID EN BASE DE DATOS
-Actividad buscarActividadPorId(int id,char *usuario) {
+Actividad buscarActividadPorId(int id,char *admin) {
     abrirConexion();
     sqlite3_stmt *stmt;
     char sql[100];
@@ -124,7 +124,7 @@ Actividad buscarActividadPorId(int id,char *usuario) {
 
     char mensaje[50];
     sprintf(mensaje, "ACTIVIDAD ENCONTRDA CON ID %i", id);
-    logger(0,usuario,mensaje);
+    logger(0,admin,mensaje);
     sqlite3_finalize(stmt);
     cerrarConexion();
 
@@ -139,7 +139,7 @@ Actividad buscarActividadPorId(int id,char *usuario) {
 
 //METODO PARA COMPROBAR SI UN NOMBRE DE USUARIO ESTA YA UTILIZADO
 
-int comprobarUsuario(char * nombreUsuario) {
+int comprobarUsuarioAdmin(char * usrAdmin) {
     int resultado_consulta;
     abrirConexion();
     sqlite3_stmt *stmt;
@@ -153,7 +153,7 @@ int comprobarUsuario(char * nombreUsuario) {
         return -1;
     }
 
-    sqlite3_bind_text(stmt, 1, nombreUsuario, strlen(nombreUsuario), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 1, usrAdmin, strlen(usrAdmin), SQLITE_STATIC);
     //EJECUTAMOS CONSULTA
     resultado_consulta = sqlite3_step(stmt);
 
@@ -181,7 +181,7 @@ int comprobarUsuario(char * nombreUsuario) {
 
 
 //METODO PARA INSERTAR ADMINISTRADOR EN BD
-void insertarAdmin(char *usuario,Administrador* admin) {
+void insertarAdmin(char *admin,Administrador* admininistrador) {
     int rc;
 
     abrirConexion();
@@ -192,21 +192,21 @@ void insertarAdmin(char *usuario,Administrador* admin) {
 
     if (rc != SQLITE_OK) {
         printf("Error al preparar la consulta\n");
-        logger(2,usuario,"ERROR AL PREPARAR CONSULTA");  
+        logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
         return;
     }
 
-    sqlite3_bind_text(stmt, 1, admin->nombre, strlen(admin->nombre), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 2, admin->apellido, strlen(admin->apellido), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 3, admin->nusuario, strlen(admin->nusuario), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 4, admin->contrasenya, strlen(admin->contrasenya), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 1, admininistrador->nombre, strlen(admininistrador->nombre), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, admininistrador->apellido, strlen(admininistrador->apellido), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, admininistrador->nusuario, strlen(admininistrador->nusuario), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 4, admininistrador->contrasenya, strlen(admininistrador->contrasenya), SQLITE_STATIC);
     
     //EJECUTAMOS SENTENCIA.
      rc = sqlite3_step(stmt);
     //ERROR AL INSERTAR
     if (rc != SQLITE_DONE) {
         printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
-        logger(2,usuario,"ERROR AL PREPARAR CONSULTA");  
+        logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
         sqlite3_finalize(stmt);
         sqlite3_close(db);
         return;
@@ -214,9 +214,9 @@ void insertarAdmin(char *usuario,Administrador* admin) {
      //TODO HA IDO BIEN, INSERTADO.
     //VA TODO BIEN 
     printf("VALORES INSERTADOS!!\n");
-    logger(1,usuario, "HA INSERTADO UN NUEVO ADMIN");
+    logger(1,admin, "HA INSERTADO UN NUEVO ADMIN");
     //LIBERAMOS ESPACIO EN MEMORIA DEL ADMIN!
-    liberarAdmin(admin);
+    liberarAdmin(admininistrador);
     sqlite3_finalize(stmt);
     cerrarConexion();
     return;
@@ -227,7 +227,7 @@ void insertarAdmin(char *usuario,Administrador* admin) {
 
 
 //FUNCION PARA INSERTAR ACTIVIDAD EN BASE DE DATOS
-void insertarActividad(char *usuario,Actividad act) {
+void insertarActividad(char *admin,Actividad act) {
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;
@@ -238,7 +238,7 @@ void insertarActividad(char *usuario,Actividad act) {
 
     if (rc != SQLITE_OK) {
         printf("Error al preparar la consulta\n");
-        logger(2,usuario,"ERROR AL PREPARAR CONSULTA");  
+        logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
         return;
     }
 
@@ -257,7 +257,7 @@ void insertarActividad(char *usuario,Actividad act) {
     //ERROR A LA HORA DE INSERTAR
     if (rc != SQLITE_DONE) {
         printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
-        logger(2,usuario,"ERROR AL EJECUTAR CONSULTA");  
+        logger(2,admin,"ERROR AL EJECUTAR CONSULTA");  
         sqlite3_finalize(stmt);
         sqlite3_close(db);
         return;
@@ -266,7 +266,7 @@ void insertarActividad(char *usuario,Actividad act) {
     //SI LLEGAMOS AQUI, SE HA INSERTADO CORRECTAMENTE
      char mensaje[100];
     sprintf(mensaje, "HA INSERTADO UNA NUEVA ACTIVIDAD! NOMBRE =  %s", act.nombre);
-    logger(1,usuario, mensaje);
+    logger(1,admin, mensaje);
     sqlite3_finalize(stmt);
     cerrarConexion();
     return;
@@ -274,7 +274,7 @@ void insertarActividad(char *usuario,Actividad act) {
 
 
 //FUNCION PARA MOSTRAR LAS ACTIVIDADES DE LA BASE DE DATOS
-void verActividades(char *usuario){
+void verActividades(char *admin){
 
 
     int rc;
@@ -326,7 +326,7 @@ void verActividades(char *usuario){
 }
 
 //FUNCION PARA ELIMINAR ACTIVIDAD DE BASE DE DATOS
-void eliminarAct(int id,char *usuario){
+void eliminarAct(int id,char *admin){
 
     int rc;
     abrirConexion();
@@ -351,7 +351,7 @@ void eliminarAct(int id,char *usuario){
         printf("Actividad eliminada con exito\n");
         char mensaje[50];
         sprintf(mensaje, "Eliminada la actividad con ID %i", id);
-        logger(1, usuario,mensaje);
+        logger(1, admin,mensaje);
     } else {
         printf("No se encontro ninguna actividad con ese ID\n");
     }
@@ -361,7 +361,7 @@ void eliminarAct(int id,char *usuario){
 }
 
 
-void subirActModificada(int id, Actividad act,char *usuario){
+void subirActModificada(int id, Actividad act,char *admin){
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;
@@ -402,7 +402,7 @@ void subirActModificada(int id, Actividad act,char *usuario){
 }
 
 
-void eliminarTablaActividades(char *usuario){
+void eliminarTablaActividades(char *admin){
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;
@@ -411,7 +411,7 @@ void eliminarTablaActividades(char *usuario){
     rc = sqlite3_step(stmt);
     printf("\nELIMINANDO ACTIVIDADES DE BASE DE DATOS...\n");
     printf("ELIMINADAS CON EXITO!\n");
-    logger(1,usuario,"ELIMINADO TODAS LAS ACTIVIDADES DE LA BD ");  
+    logger(1,admin,"ELIMINADO TODAS LAS ACTIVIDADES DE LA BD ");  
 
     sqlite3_finalize(stmt);
     cerrarConexion();

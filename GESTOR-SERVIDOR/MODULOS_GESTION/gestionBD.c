@@ -186,13 +186,13 @@ void insertarAdmin(char *admin,Administrador* admininistrador) {
 
     abrirConexion();
     sqlite3_stmt *stmt;
-    char* sql = "INSERT INTO ADMIN (NOMBRE_ADMIN, APELLIDO_ADMIN, USUARIO_ADMIN, CONTRASENYA_ADMIN) VALUES (?, ?, ?, ?)";
+    char* sql = "INSERT INTO USUARIO (NOMBRE_ADMIN, APELLIDO_ADMIN, USUARIO_ADMIN, CONTRASENYA_ADMIN) VALUES (?, ?, ?, ?)";
 
     rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
 
     if (rc != SQLITE_OK) {
         printf("Error al preparar la consulta\n");
-        logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
+        //logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
         return;
     }
 
@@ -206,17 +206,16 @@ void insertarAdmin(char *admin,Administrador* admininistrador) {
     //ERROR AL INSERTAR
     if (rc != SQLITE_DONE) {
         printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
-        logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
+        //logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
         sqlite3_finalize(stmt);
         sqlite3_close(db);
         return;
     }
      //TODO HA IDO BIEN, INSERTADO.
     //VA TODO BIEN 
-    printf("VALORES INSERTADOS!!\n");
-    logger(1,admin, "HA INSERTADO UN NUEVO ADMIN");
+    printf("USUARIO INSERTADO!!\n");
+    //logger(1,admin, "HA INSERTADO UN NUEVO ADMIN");
     //LIBERAMOS ESPACIO EN MEMORIA DEL ADMIN!
-    liberarAdmin(admininistrador);
     sqlite3_finalize(stmt);
     cerrarConexion();
     return;
@@ -443,8 +442,65 @@ int comprobarActividad(int id, char * nombreUsuario){
     return result;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////
 
-//NUEVOS METODOS
+
+
+void registrarUsuario(Usuario u ) {
+    int rc;
+
+    abrirConexion();
+    sqlite3_stmt *stmt;
+    char* sql = "INSERT INTO USUARIO (NOMBRE_USU, APELLIDO_USU, USUARIO_USU, CONTRASENYA_USU) VALUES (?, ?, ?, ?)";
+
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+
+    if (rc != SQLITE_OK) {
+        printf("Error al preparar la consulta\n");
+        //logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
+        return;
+    }
+
+    sqlite3_bind_text(stmt, 1, u.nombre, strlen(u.nombre), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, u.apellido, strlen(u.apellido), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, u.nombre_usu, strlen(u.nombre_usu), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 4, u.contrasenya, strlen(u.contrasenya), SQLITE_STATIC);
+    
+    //EJECUTAMOS SENTENCIA.
+     rc = sqlite3_step(stmt);
+    //ERROR AL INSERTAR
+    if (rc != SQLITE_DONE) {
+        printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
+        //logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
+        sqlite3_finalize(stmt);
+        sqlite3_close(db);
+        return;
+    }
+     //TODO HA IDO BIEN, INSERTADO.
+    //VA TODO BIEN 
+    printf("VALORES INSERTADOS!!\n");
+    //logger(1,admin, "HA INSERTADO UN NUEVO ADMIN");
+    //LIBERAMOS ESPACIO EN MEMORIA DEL ADMIN!
+    //liberarAdmin(admininistrador);
+    sqlite3_finalize(stmt);
+    cerrarConexion();
+    return;
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
 
 Usuario* loginUsuario(char* usuario, char* contrasena){
     abrirConexion();
@@ -501,5 +557,48 @@ Usuario* loginUsuario(char* usuario, char* contrasena){
     }
 
 
+}
+
+//FUNCION PARA INSERTAR VALORACION ACTIVIDAD EN BASE DE DATOS
+void insertarInscrSipcionActividad(int idAct, int idUsu){
+
+    int rc;
+
+    abrirConexion();
+    sqlite3_stmt *stmt;
+    char* sql = "INSERT INTO INSCRIPCION (ID_USU,ID_ACT) VALUES (?, ?)";
+
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+
+    if (rc != SQLITE_OK) {
+        printf("Error al preparar la consulta\n");
+        //logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
+        return;
+    }
+
+    sqlite3_bind_int(stmt, 1,idUsu);
+    sqlite3_bind_int(stmt, 2,idAct);
+    //EJECUTAMOS SENTENCIA.
+     rc = sqlite3_step(stmt);
+    //ERROR AL INSERTAR
+    if (rc != SQLITE_DONE) {
+        printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
+        //logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
+        sqlite3_finalize(stmt);
+        sqlite3_close(db);
+        return;
+    }
+     //TODO HA IDO BIEN, INSERTADO.
+    //VA TODO BIEN 
+    printf("INSCRIPCION INSERTADO!!\n");
+    //logger(1,admin, "HA INSERTADO UN NUEVO ADMIN");
+    //LIBERAMOS ESPACIO EN MEMORIA DEL ADMIN!
+    sqlite3_finalize(stmt);
+    cerrarConexion();
+    return;
+
+
+
 
 }
+

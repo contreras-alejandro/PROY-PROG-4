@@ -13,15 +13,17 @@ void menuInicio();
 //FUNCION PARA IMPRIMIR EL MENU PRINCIPAL
 int printMenuPrincipal();
 //FUNCION PARA GESTION DEL MENU PRINCIPAL
-void menuPrincipal(char *usuario);
+void menuPrincipal();
 
 //FUNCION PARA MOSTRAR OPCIONES DE PERFIL
 int printMenuPerfil();
 //FUNCION PARA GESTION DEL MENU DE PERFIL
 void menuPerfil();
 
-void printMenuVerAct();
-
+//FUNCION PARA MOSTRAR OPCIONES DE VER ACTIVIDADE
+int printMenuVerAct();
+//FUNCION PARA GESTION DEL MENU DE VER ACTIVIDADES
+void menuVerActividades();
 
 //FUNCION PARA MOSTRAR OPCIONES DE PERFIL
 int printMenuLogin();

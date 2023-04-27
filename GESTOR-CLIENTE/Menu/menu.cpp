@@ -79,7 +79,7 @@ void menuInicio() {
                 break;
         }else if(opcion==2) {
                         
-               printf("Has seleccionado la opcion 1: INICIAR SESION.\n");
+               printf("Has seleccionado la opcion 2: INICIAR SESION.\n");
                 salir=1;
                 menuLogin();
                 break;
@@ -186,7 +186,67 @@ void menuPrincipal(char *usuario) {
 }
 
 //falta
-void printMenuVerAct();
+int printMenuVerAct() {
+
+    int numOpciones=4;
+
+
+    printf("\n||VER ACTIVIDADES||\n");
+    printf("_________________________________________________________\n");
+    printf("1.FILTRAR POR FECHA\n");
+    printf("2.FILTRAR POR PUBLICO\n");
+    printf("3.FILTRAR POR MEJOR VALORADAS\n");
+    printf("4.Volver\n");
+
+    printf("_________________________________________________________\n");
+    return numOpciones;
+
+}
+
+
+//FUNCION PARA GESTION DEL MENU DE INICIO
+void menuVerActividadesInicio() {
+     int salir=0;   
+    while (salir==0)
+    {
+        int opcionesPosibles=printMenuVerAct (); 
+        //obtenemos la opcion seleccionada
+        int opcion = selectOpcion(opcionesPosibles);
+        //dependiendo la seleccionada, entramos en INICIO DE SESION o SALIMOS
+        if(opcion==1) {
+
+                printf("Has seleccionado la opcion 1: FILTRAR POR FECHA.\n");
+                salir=1;
+                //FUNCION DE MENU DE REGISTRO
+                salir=1;
+                break;
+        }else if(opcion==2) {
+                        
+               printf("Has seleccionado la opcion 2: FILTRAR POR PUBLICO.\n");
+                salir=1;
+                break;
+        } 
+        else if(opcion==3) {
+                        
+                printf("Has seleccionado la opcion 3: FILTRAR POR MEJOR VALORADAS\n");
+                salir=1;
+                break;
+        }
+
+         else if(opcion==4) {
+                        
+                printf("Volver...\n");
+                salir=1;
+                break;
+        }  
+
+        
+        else {
+            printf("¡ERROR, SELECCIONE UN NUMERO!\n");
+        }
+        }
+
+}
 
 
 
@@ -218,7 +278,7 @@ void menuPerfil() {
     while (salir==0)
     {
         //OBTENEMOS LA OPCION SELECIONADA
-        int opcion = selectOpcion(printMenuPrincipal()); 
+        int opcion = selectOpcion(printMenuPerfil()); 
         //DEPENDIENDO LA OPCION, ENTRAMOS EN LA FUNCION CORRESPONDIENTE.
 
         if(opcion==1) {
@@ -285,15 +345,7 @@ void menuLogin() {
             printf("Introduce un usuario y contrasena correctos\n");
         }
     }
-    
-
-
-
-
-
-
-
-
+ 
 
 }
 

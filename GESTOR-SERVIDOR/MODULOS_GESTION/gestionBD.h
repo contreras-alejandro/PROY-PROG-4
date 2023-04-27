@@ -31,27 +31,22 @@ int comprobarActividad(int id,char * nombreUsuario);
 ////////////////////////////////////// CLIENTES /////////////////////////////////////////////////////////////
 
 //REGISTRAR USUARIO
+void registrarUsuario(Usuario u);
 //LOG IN DE USUARIO (QUE DEVUELVA EL USUARIO COMO OBJETO)
 Usuario* loginUsuario(char* usuario, char* contrasena);
 
 //VER ACTIVIDADES CON FILTR0 (RECIBE UN INT, QUE DEPENDE CUAL SEA SERA UNA CONSULTA O OTRA)
 
-// INSCIRBIR ACTIVIDAD (INT ID_USU, INT ID_ACT)
-
+// INSCIRBIR A ACTIVIDAD (INT ID_USU, INT ID_ACT)
+//FUNCION PARA INSERTAR VALORACION ACTIVIDAD EN BASE DE DATOS
+void insertarInscripcionActividad(int idAct, int idUsu);
 //COMPROBAR INSCRIPCION (INT ID_USU, INT ID_ACT) PARA COMPRAR SI ESTABA SUSCRITO
 //ELIMINAR INSCR (INT ID_USU, INT ID_ACT)
 
 
 //COMPROBAR PARTICIPACION(INT ID_USU, INT ID_ACT)  PARA COMPROBAR SI PUEDE VALORAR ESA ACTIVIDAD , SOLO SI HA PARTICIPADO
 //VALORACION INSCR (INT ID_USU, INT ID_ACT , INT NOTA)
-
-
-
-
-
-
-
-
+void insertarValoracionActividad(int idAct, int idUsu);
 
 
 #endif

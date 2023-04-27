@@ -32,7 +32,7 @@ typedef struct{
 
 
 typedef struct{
-      char* nombre;
+    char* nombre;
     char* apellido;
     char* nombre_usu;  // CLAVE UNICA NO SE PODRA REPETIR
     char* contrasenya;

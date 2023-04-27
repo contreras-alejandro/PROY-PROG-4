@@ -419,7 +419,7 @@ void eliminarTablaActividades(char *admin){
 
 }
 
-int comprobarActividad(int id, char * nombreUsuario){
+int comprobarActividad(int id, char * admin){
     abrirConexion();
     sqlite3_stmt *stmt;
     int resulQ;

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "gestionAdmin.h"
+#include "gestionServer.h"
 #include "../sqlite/sqlite3.h"
 #include "gestionBD.h"
 #include <time.h>

@@ -1,6 +1,6 @@
 #ifndef GESTION_BD
 #define GESTION_BD
-#include "gestionAdmin.h"
+#include "gestionServer.h"
 
 
 //FUNCION PARA ABRIR BASE DE DATOS
@@ -38,15 +38,17 @@ Usuario* loginUsuario(char* usuario, char* contrasena);
 //VER ACTIVIDADES CON FILTR0 (RECIBE UN INT, QUE DEPENDE CUAL SEA SERA UNA CONSULTA O OTRA)
 
 // INSCIRBIR A ACTIVIDAD (INT ID_USU, INT ID_ACT)
-//FUNCION PARA INSERTAR VALORACION ACTIVIDAD EN BASE DE DATOS
 void insertarInscripcionActividad(int idAct, int idUsu);
 //COMPROBAR INSCRIPCION (INT ID_USU, INT ID_ACT) PARA COMPRAR SI ESTABA SUSCRITO
-//ELIMINAR INSCR (INT ID_USU, INT ID_ACT)
+////// IMPORTANTE, MIRAR SI YA HA PASADO O NO
 
+//ELIMINAR INSCRIPCION
+void eliminarInscripcion(int idAct, int id_usu);
 
 //COMPROBAR PARTICIPACION(INT ID_USU, INT ID_ACT)  PARA COMPROBAR SI PUEDE VALORAR ESA ACTIVIDAD , SOLO SI HA PARTICIPADO
+int comprobarInscripcionValorar(int id_act, int id_usu);
 //VALORACION INSCR (INT ID_USU, INT ID_ACT , INT NOTA)
-void insertarValoracionActividad(int idAct, int idUsu);
+void insertarValoracionActividad(int idAct, int idUsu, float valoracion);
 
 
 #endif

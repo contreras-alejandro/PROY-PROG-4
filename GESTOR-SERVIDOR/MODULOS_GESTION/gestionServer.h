@@ -1,5 +1,5 @@
-#ifndef GESTION_ADMIN
-#define GESTION_ADMIN
+#ifndef GESTION_SERVER
+#define GESTION_SERVER
 
 //creamos la estrucutra para almacenar los datos del administrador
 //la usaremos para  la funcion crearAdmin, de modo que insertara un admin en VD

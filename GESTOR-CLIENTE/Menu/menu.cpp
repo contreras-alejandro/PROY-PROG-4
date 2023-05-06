@@ -1,129 +1,134 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <iostream>
 #include "menu.h"
 
-
+#define const int MAX_CHARACTERS_FOR_OPTIONS = 50;
 
 //FUNCION PARA DEVOLVER LA OPCION SELECCIONADA
-int selectOpcion(int numOpciones){
-   int opcion = 0;
-   int valido =0;
-    char str[MAX_CHARACTERS_FOR_OPTIONS];
-    fflush(stdin);
+int selectOpcion(int numOpciones)
+{
+    int opcion = 0;
+    bool valido = false;
+    std::string str;
+
     do {
-        fflush(stdout);
-        printf("Seleccione una opcion: (CTRL + C para salir)\n ");
-        fgets(str, MAX_CHARACTERS_FOR_OPTIONS, stdin);
-         if (sscanf(str, "%d", &opcion) == 1) {
-            //SI ES VALIDA LA DEVOLVEMOS
+        std::cout << "Seleccione una opcion: (CTRL + C para salir)" << std::endl;
+        std::getline(std::cin, str);
+
+        if (std::sscanf(str.c_str(), "%d", &opcion) == 1) {
+            // SI ES VALIDA LA DEVOLVEMOS
             if (comprobarOpcionValida(opcion, numOpciones)) {
-                valido=1;
+                valido = true;
                 return opcion;
             }
-               }
-               else if(strlen(str) == 1){
-                printf("Error, no se ha introducido ningun valor.\n");
+        }
+        else if (str.length() == 0) {
+            std::cout << "Error, no se ha introducido ningun valor." << std::endl;
+        }
+        else {
+            std::cout << "Error, introduce una opcion valida." << std::endl;
+        }
+    } while (!valido);
 
-               }
-               else{
-                 printf("Error, introduce una opcion valida.\n");
-
-               }
-}while(valido==0);
-
+    return opcion;
 }
 
 
 //FUNCION PARA COMPROBAR SI LA OPCION INTRODUCIDA ES VALIDA
-int comprobarOpcionValida(int opcion, int numOpciones){
-    //TIENE QUE SER MAYOR QUE CERO, Y MENOR O IGUAL AL TOTAL DE NUMERO DE OPCIONES
-	if (opcion > 0 && opcion <= numOpciones){
-		return 1;
-	}else{
-		printf("\nError, introduce una opcion valida.\n\n");
-		return 0;
-	}
+int comprobarOpcionValida(int opcion, int numOpciones) {
+    if (opcion > 0 && opcion <= numOpciones) {
+        return 1;
+    } else {
+        std::cout << "\nError, introduce una opcion valida.\n\n";
+        return 0;
+    }
 }
 
 
 //FUNCION PARA IMPRIMIR EL MENU DE INICIO
 
-int printMenuInicio(){
-    int numOpciones=3;
-    printf("\n||MENU||\n");
-    printf("_________________________________________________________\n");
-    printf("**Bienvenido al programa del usuario**\n");
-    printf("1. Registrar\n");
-    printf("2. Iniciar sesion\n");
-    printf("3. Salir\n");
-    printf("_________________________________________________________\n");
+int printMenuInicio()
+{
+    int numOpciones = 3;
+
+    std::cout << "\n||MENU||" << std::endl;
+    std::cout << "_________________________________________________________" << std::endl;
+    std::cout << "**Bienvenido al programa del usuario**" << std::endl;
+    std::cout << "1. Registrar" << std::endl;
+    std::cout << "2. Iniciar sesion" << std::endl;
+    std::cout << "3. Salir" << std::endl;
+    std::cout << "_________________________________________________________" << std::endl;
+
     return numOpciones;
 }
 
 //FUNCION PARA GESTION DEL MENU DE INICIO
-void menuInicio() {
-     int salir=0;   
-    while (salir==0)
+void menuInicio(SOCKET s, char sendBuff[512], char recvBuff[512]) 
+{
+    int salir = 0;   
+    while (salir == 0)
     {
-        int opcionesPosibles=printMenuInicio (); 
+        int opcionesPosibles = printMenuInicio (); 
         //obtenemos la opcion seleccionada
         int opcion = selectOpcion(opcionesPosibles);
         //dependiendo la seleccionada, entramos en INICIO DE SESION o SALIMOS
-        if(opcion==1) {
-
-                printf("Has seleccionado la opcion 1: REGISTRAR.\n");
-                salir=1;
-                //FUNCION DE MENU DE REGISTRO
-                salir=1;
-                break;
-        }else if(opcion==2) {
-                        
-               printf("Has seleccionado la opcion 2: INICIAR SESION.\n");
-                salir=1;
-                menuLogin();
-                break;
-        } 
-        else if(opcion==3) {
-                        
-                printf("Saliendo del programa...GRACIAS POR USAR NUESTRO PROGRAMA!\n");
-                salir=1;
-                break;
-        } 
-        else {
-            printf("¡ERROR, SELECCIONE UN NUMERO!\n");
+        if (opcion == 1) 
+        {
+            std::cout << "Has seleccionado la opcion 1: REGISTRAR." << std::endl;
+            salir = 1;
+            //FUNCION DE MENU DE REGISTRO
+            salir = 1;
+            break;
         }
+        else if (opcion == 2) 
+        {
+            std::cout << "Has seleccionado la opcion 2: INICIAR SESION." << std::endl;
+            salir = 1;
+            menuLogin();
+            break;
+        } 
+        else if (opcion == 3) 
+        {
+            std::cout << "Saliendo del programa...GRACIAS POR USAR NUESTRO PROGRAMA!" << std::endl;
+            salir = 1;
+            break;
+        } 
+        else 
+        {
+            std::cout << "¡ERROR, SELECCIONE UN NUMERO!" << std::endl;
         }
-
-
+    }
 }
 
 
 
 
 //FUNCION PARA IMPRIMIR EL MENU PRINCIPAL
-int printMenuPrincipal(){
-    int numOpciones=6;
+int printMenuPrincipal() {
+    int numOpciones = 6;
 
-    printf("\n||MENU USUARIO||\n");
-    printf("_________________________________________________________\n");
-    printf("**Bienvenido al menu del usuario**\n");
-    printf("1. Ver ACTIVIDADES\n");
-    printf("2. Inscribirse\n");
-    printf("3. Borrar inscripcion\n");
-    printf("4. VALORAR ACTIVIDAD\n");
-    printf("5. Perfil\n");
-    printf("6. Volver\n");
+    std::cout << "\n||MENU USUARIO||\n";
+    std::cout << "_________________________________________________________\n";
+    std::cout << "**Bienvenido al menu del usuario**\n";
+    std::cout << "1. Ver ACTIVIDADES\n";
+    std::cout << "2. Inscribirse\n";
+    std::cout << "3. Borrar inscripcion\n";
+    std::cout << "4. VALORAR ACTIVIDAD\n";
+    std::cout << "5. Perfil\n";
+    std::cout << "6. Volver\n";
+    std::cout << "_________________________________________________________\n";
 
-    printf("_________________________________________________________\n");
     return numOpciones;
 }
 
 //FUNCION PARA GESTION DEL MENU PRINCIPAL
-void menuPrincipal(char *usuario) {
+void menuPrincipal(std::string usuario) {
 
     int salir=0;   
-      printf("Sesion iniciada por: %s\n", usuario);
+    std::cout << "Sesion iniciada por: " << usuario << std::endl;
+
     while (salir==0)
     {
         //OBTENEMOS LA OPCION SELECIONADA
@@ -131,77 +136,68 @@ void menuPrincipal(char *usuario) {
         //DEPENDIENDO LA OPCION, ENTRAMOS EN LA FUNCION CORRESPONDIENTE.
 
         if(opcion==1) {
-            printf("Has seleccionado la opcion 1: Ver actividades.\n");
+            std::cout << "Has seleccionado la opcion 1: Ver actividades." << std::endl;
             //menuGestionAct(usuario);
             salir=1;
             break;
         } else if(opcion==2) {
-            printf("Has seleccionado la opcion 2:  INSCRIBIR a ACTICIDAD.\n");
+            std::cout << "Has seleccionado la opcion 2: INSCRIBIR a ACTICIDAD." << std::endl;
             //menuPrincipal(usuario);
             salir=1;
-             break;
+            break;
         } else if(opcion==3) {
-            printf("Has seleccionado la opcion 3: BORRAR INSCRIPCION a ACTICIDAD.\n");
+            std::cout << "Has seleccionado la opcion 3: BORRAR INSCRIPCION a ACTICIDAD." << std::endl;
             //logger(0,usuario,"ACCEDIENDO A CREAR ADMINISTRADOR");
             //crearAdmin(usuario); 
             menuPrincipal(usuario);       
             salir=1;
             break;
         } else if(opcion==4) {
-            printf("Has seleccionado la opcion 4: Valorar ACTIVIDAD.\n");
+            std::cout << "Has seleccionado la opcion 4: Valorar ACTIVIDAD." << std::endl;
             //menuInicio(usuario);
             salir=1;
             break;
-        
-        } 
-        else if(opcion==5) {
-            printf("Has seleccionado la opcion 5:  PERFIL.\n");
+        } else if(opcion==5) {
+            std::cout << "Has seleccionado la opcion 5: PERFIL." << std::endl;
             //menuInicio(usuario);
             salir=1;
             break;
-        
-        } 
-        
-          else if(opcion==6) {
-            printf("Has seleccionado la opcion 6: VOLVER\n");
+        } else if(opcion==6) {
+            std::cout << "Has seleccionado la opcion 6: VOLVER" << std::endl;
             //menuInicio(usuario);
             salir=1;
             break;
-        
-        } 
-          else if(opcion==7) {
-            printf("VOLVER...\n");
+        } else if(opcion==7) {
+            std::cout << "VOLVER..." << std::endl;
             //menuInicio(usuario);
             salir=1;
             break;
-        
-        } 
-         
-        else  {
+        } else {
             //SI LA OPCION NO ES VALIDA, ERROR.
-            printf("¡ERROR, SELECCIONE UN NUMERO VALIDO!\n");
+            std::cout << "¡ERROR, SELECCIONE UN NUMERO VALIDO!" << std::endl;
             break;
         }
     }
 }
+
 
 //falta
 int printMenuVerAct() {
 
     int numOpciones=4;
 
+    std::cout << "\n||VER ACTIVIDADES||" << std::endl;
+    std::cout << "_________________________________________________________" << std::endl;
+    std::cout << "1.FILTRAR POR FECHA" << std::endl;
+    std::cout << "2.FILTRAR POR PUBLICO" << std::endl;
+    std::cout << "3.FILTRAR POR MEJOR VALORADAS" << std::endl;
+    std::cout << "4.Volver" << std::endl;
 
-    printf("\n||VER ACTIVIDADES||\n");
-    printf("_________________________________________________________\n");
-    printf("1.FILTRAR POR FECHA\n");
-    printf("2.FILTRAR POR PUBLICO\n");
-    printf("3.FILTRAR POR MEJOR VALORADAS\n");
-    printf("4.Volver\n");
-
-    printf("_________________________________________________________\n");
+    std::cout << "_________________________________________________________" << std::endl;
     return numOpciones;
 
 }
+
 
 
 //FUNCION PARA GESTION DEL MENU DE INICIO
@@ -215,38 +211,38 @@ void menuVerActividadesInicio() {
         //dependiendo la seleccionada, entramos en INICIO DE SESION o SALIMOS
         if(opcion==1) {
 
-                printf("Has seleccionado la opcion 1: FILTRAR POR FECHA.\n");
+                std::cout << "Has seleccionado la opcion 1: FILTRAR POR FECHA." << std::endl;
                 salir=1;
                 //FUNCION DE MENU DE REGISTRO
                 salir=1;
                 break;
         }else if(opcion==2) {
                         
-               printf("Has seleccionado la opcion 2: FILTRAR POR PUBLICO.\n");
+               std::cout << "Has seleccionado la opcion 2: FILTRAR POR PUBLICO." << std::endl;
                 salir=1;
                 break;
         } 
         else if(opcion==3) {
                         
-                printf("Has seleccionado la opcion 3: FILTRAR POR MEJOR VALORADAS\n");
+                std::cout << "Has seleccionado la opcion 3: FILTRAR POR MEJOR VALORADAS" << std::endl;
                 salir=1;
                 break;
         }
 
          else if(opcion==4) {
                         
-                printf("Volver...\n");
+                std::cout << "Volver..." << std::endl;
                 salir=1;
                 break;
         }  
 
         
         else {
-            printf("¡ERROR, SELECCIONE UN NUMERO!\n");
+            std::cout << "¡ERROR, SELECCIONE UN NUMERO!" << std::endl;
         }
-        }
-
+    }
 }
+
 
 
 
@@ -259,94 +255,76 @@ void menuVerActividadesInicio() {
 
 //FUNCION PARA MOSTRAR OPCIONES DE PERFIL
 int printMenuPerfil() {
-     int numOpciones=2;
-
-
-     
-    printf("\n||PERFIL||\n");
-    printf("_________________________________________________________\n");
-    printf("1. Ver INSCRIPCIONES\n");
-    printf("2. Cambiar CONTRANSEYA\n");
-    printf("_________________________________________________________\n");
+    int numOpciones = 2;
+    std::cout << "\n||PERFIL||\n";
+    std::cout << "_________________________________________________________\n";
+    std::cout << "1. Ver INSCRIPCIONES\n";
+    std::cout << "2. Cambiar CONTRANSEYA\n";
+    std::cout << "_________________________________________________________\n";
     return numOpciones;
 }
 
 //FUNCION PARA GESTION DEL MENU DE PERFIL
 void menuPerfil() {
-     int salir=0;   
+    int salir = 0;
 
-    while (salir==0)
-    {
+    while (salir == 0) {
         //OBTENEMOS LA OPCION SELECIONADA
-        int opcion = selectOpcion(printMenuPerfil()); 
+        int opcion = selectOpcion(printMenuPerfil());
         //DEPENDIENDO LA OPCION, ENTRAMOS EN LA FUNCION CORRESPONDIENTE.
 
-        if(opcion==1) {
-            printf("Has seleccionado la opcion 1: Ver INSCRIPCIONES\n");
+        if (opcion == 1) {
+            std::cout << "Has seleccionado la opcion 1: Ver INSCRIPCIONES" << std::endl;
             //funcion
-            salir=1;
+            salir = 1;
             break;
-        } else if(opcion==2) {
-            printf("Has seleccionado la opcion 2: Cambiar CONTRASENYA.\n");
+        } else if (opcion == 2) {
+            std::cout << "Has seleccionado la opcion 2: Cambiar CONTRASENYA." << std::endl;
             //funcion
-            salir=1;
-             break;
-        }
-         
-        else  {
+            salir = 1;
+            break;
+        } else {
             //SI LA OPCION NO ES VALIDA, ERROR.
-            printf("¡ERROR, SELECCIONE UN NUMERO VALIDO!\n");
+            std::cout << "¡ERROR, SELECCIONE UN NUMERO VALIDO!" << std::endl;
             break;
         }
     }
-
-
-
-
 }
 
 
 
 
 //FUNCION PARA GESTION DEL MENU DE LOGIN
+
+
 void menuLogin() {
     //guardamos espacio en memoria, ya que el usuario lo pasaremos por las funciones para el log
     int resultado;
-    int salir=0;
+    int salir = 0;
 
     //PEDIMOS LOS VALORES MIENTRAS NO SEAN CORRECTO
 
-    while (salir==0)
-    {
+    while (salir == 0) {
+        std::string nombre_usu;
+        std::string usu_contra;
 
-        char nombre_usu [20];
-        char usu_contra [20];
+        std::cout << "Ingrese su nombre de usuario: ";
+        std::getline(std::cin, nombre_usu);
 
-        fflush(stdin);
-        printf("Ingrese su nombre de usuario: ");
-        fgets(nombre_usu,20,stdin);
-        nombre_usu[strcspn(nombre_usu, "\n")] = 0;
+        std::cout << "Ingrese su contrasena: ";
+        std::getline(std::cin, usu_contra);
 
-
-        fflush(stdin);
-        printf("Ingrese su contrasena: ");
-        fgets(usu_contra,20,stdin);
-        usu_contra[strcspn(usu_contra, "\n")] = 0;
-
-        
-        //resultado = login(nombre_usu, usu_contra);
+        //resultado = login(nombre_usu.c_str(), usu_contra.c_str());
 
         if (resultado == 1) {
             //si son correctos, se inicia sesion
-            printf("Iniciando sesion...\n");
-            salir=1;
-            menuPrincipal(nombre_usu);
+            std::cout << "Iniciando sesion..." << std::endl;
+            salir = 1;
+            menuPrincipal(usu_contra);
         } else {
-            printf("Introduce un usuario y contrasena correctos\n");
+            std::cout << "Introduce un usuario y contrasena correctos" << std::endl;
         }
     }
- 
-
 }
 
 

@@ -70,6 +70,27 @@ int main(){
 
     closesocket(conn_socket);
 
+    do {
+		int bytes = recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+        if(bytes > 0){
+            printf("Code received: %s \n", recvBuff);
+            if (strncmp(recvBuff, "00",BYTES) == 0) { 
+				break;
+
+			} else if (strncmp(recvBuff, "01",BYTES) == 0){ 
+                send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+            } else if (strncmp(recvBuff, "02",2) == 0){ 
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+                
+			} 
+
+        }
+    }while (1);
+    closesocket(comm_socket);
+	WSACleanup();
+
+	return 0;
+
 
 
 }

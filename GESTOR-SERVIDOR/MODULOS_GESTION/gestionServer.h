@@ -34,7 +34,7 @@ typedef struct{
 typedef struct{
     char* nombre;
     char* apellido;
-    char* nombre_usu;  // CLAVE UNICA NO SE PODRA REPETIR
+    char* nusuario;  // CLAVE UNICA NO SE PODRA REPETIR
     char* contrasenya;
 }Usuario;
 
@@ -44,16 +44,16 @@ char* hash_string(char* str);
 void logger(int severity, char* usuario, char* info);
 //FUNCION PARA OBTENER LA RUTA DEL FICHERO PROPERTIES
 char * leerProperties(int);
-//FUNCION PARA CREAR ADMINISTRADOR
-void crearAdmin();
+
+
+//FUNCION PARA CREAR USUARIO!
+void crearUsuario();
+
+
 //FUNCION PARA IMPRIMIR POR CONSOLA UNA ACTIVIDAD
 void imprimirActividad(Actividad act);
 //FUNCION PARA CREAR UNA ACTIVIDAD
 void crearActividad(char*usuario);
-//FUNCION PARA MODIFICAR UNA ACTIVIDAD
-void modificarActividad(int id,char *usuario);
-//FUNCION PARA LIBERAR ESPACIO DE MEMORIA PARA ADMINISTRADOR
-void liberarAdmin(Administrador* admin);
 
 //////////////////////////////////////////////////////
 //        NUEVO METODOS   

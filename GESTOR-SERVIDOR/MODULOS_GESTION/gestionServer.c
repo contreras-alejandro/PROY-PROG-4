@@ -107,10 +107,10 @@ int comprobarLongitud(char *palabra, int minimo){
 
 
 //FUNCION PARA CREAR ADMINISTRADOR
-void crearAdmin(char*usuario){
+void crearUsuario(){
 
-    Administrador* admin;
-    admin = (Administrador*) malloc(sizeof(Administrador));
+    Usuario* usuario;
+    usuario = (Usuario*) malloc(sizeof(Usuario));
     //QUE ATRIBUTOS SON NECESARIOS?
     // nombre, apellido nombreUsuario, contraseña
      char nombre[MAX_LINE_ADMIN], apellido[MAX_LINE_ADMIN], n_usuario[MAX_LINE_ADMIN],
@@ -129,8 +129,8 @@ void crearAdmin(char*usuario){
 	char *nombre_aux = malloc((MAX_LINE_ADMIN) * sizeof(char));
 	sscanf(nombre, "%s", nombre_aux); 
 	int tamanyo = strlen(nombre_aux);
-	admin->nombre = malloc((tamanyo + 1) * sizeof(char));
-	strcpy(admin->nombre, nombre_aux);
+	usuario->nombre = malloc((tamanyo + 1) * sizeof(char));
+	strcpy(usuario->nombre, nombre_aux);
 	free(nombre_aux);
 
     //APELLIDO
@@ -142,8 +142,8 @@ void crearAdmin(char*usuario){
     char *apellido_aux = malloc((MAX_LINE_ADMIN) * sizeof(char));
 	sscanf(apellido, "%s", apellido_aux); 
 	 tamanyo = strlen(apellido_aux);
-	admin->apellido = malloc((tamanyo + 1) * sizeof(char));
-	strcpy(admin->apellido, apellido_aux);
+	usuario->apellido = malloc((tamanyo + 1) * sizeof(char));
+	strcpy(usuario->apellido, apellido_aux);
 	free(apellido_aux);
 
 
@@ -167,8 +167,8 @@ void crearAdmin(char*usuario){
          char *nombre_usu_aux = malloc((MAX_LINE_ADMIN) * sizeof(char));
          sscanf(n_usuario, "%s", nombre_usu_aux); 
         tamanyo = strlen(nombre_usu_aux);
-	    admin->nusuario = malloc((tamanyo + 1) * sizeof(char));
-	    strcpy(admin->nusuario, nombre_usu_aux);
+	    usuario->nusuario = malloc((tamanyo + 1) * sizeof(char));
+	    strcpy(usuario->nusuario, nombre_usu_aux);
 	    free(nombre_usu_aux);
 
         break;
@@ -201,23 +201,17 @@ void crearAdmin(char*usuario){
     //UNA VEZ COFIRMADO QUE LAS CONTRASEÑAS COINCIDEN HASHEAMOS LA CONTRASEÑA ANTES DE PASARLA A LA BD
     char* contrasenya_hasheada = hash_string(contrasena);
     tamanyo = strlen(contrasenya_hasheada);
-    admin->contrasenya = malloc((tamanyo + 1) * sizeof(char));
-    strcpy(admin->contrasenya, contrasenya_hasheada);
+    usuario->contrasenya = malloc((tamanyo + 1) * sizeof(char));
+    strcpy(usuario->contrasenya, contrasenya_hasheada);
 
   
-    printf("\nDatos introducido del NUEVO ADMINs:\n");
-    printf("Nombre: %s\n", admin->nombre);
-    printf("Apellido: %s\n", admin->apellido);
-    printf("Nombre de usuario: %s\n",  admin->nusuario);
-
-     //strcpy(admin.nombre, nombre);
-     //strcpy(admin.apellido, apellido);
-    // strcpy(admin.nusuario, n_usuario);
-    // strcpy(admin.contrasenya, contrasenya_hasheada);
-
+    printf("\nDatos introducido del NUEVO USUARIO:\n");
+    printf("Nombre: %s\n", usuario->nombre);
+    printf("Apellido: %s\n", usuario->apellido);
+    printf("Nombre de usuario: %s\n",  usuario->nusuario);
 
     //LLAMAMOS A METODO DE BD, QUE INTRODUCE UN ADMIN EN BD
-    insertarAdmin(usuario,admin);
+    registrarUsuario(*usuario);
     return;
 }
 
@@ -233,153 +227,6 @@ void imprimirActividad(Actividad act) {
     printf("Fecha: %s\n", act.fecha);
 }
 
-
-
-//FUNCION PARA CREAR UNA ACTIVIDAD
-
-void crearActividad(char*usuario){
-
-    //CREAMOS LOS CHAR [] PARA ALMACENAR LOS RESULTADOS
-
-    char nombre[50], descripcion[250], tipo[50], publico[50], municipio[50], direccion[50], encargado[50], fecha[50];
-    
-    //PEDIMOS POR TECLADO LOS VALORES.
-    
-    printf("Introduzca el nombre de la actividad: ");
-    fgets(nombre, 50, stdin);
-    nombre[strcspn(nombre, "\n")] = '\0';
-
-    printf("Introduzca una descrpcion: ");
-    fgets(descripcion, 250, stdin);
-    descripcion[strcspn(descripcion, "\n")] = '\0';
-    
-    printf("Introduzca el tipo de actividad: ");
-    fgets(tipo, 50, stdin);
-    tipo[strcspn(tipo, "\n")] = '\0';
-    
-    printf("Introduzca a que publico esta dirigido: ");
-    fgets(publico, 50, stdin);
-    publico[strcspn(publico, "\n")] = '\0';
-
-    printf("Introduzca el municipio: ");
-    fgets(municipio, 50, stdin);
-    municipio[strcspn(municipio, "\n")] = '\0';
-
-    printf("Introduzca la direccion: ");
-    fgets(direccion, 50, stdin);
-    direccion[strcspn(direccion, "\n")] = '\0';
-
-    printf("Introduzca el encargado: ");
-    fgets(encargado, 50, stdin);
-    encargado[strcspn(encargado, "\n")] = '\0';
-
-    printf("Introduzca la fecha: ");
-    fgets(fecha, 50, stdin);
-    fecha[strcspn(fecha, "\n")] = '\0';
-
-
-
-    printf("\nDatos introducido de la NUEVA ACTIVIDAD:\n");
-
-
-    //CREAMOS LA ACTIVIDAD Y ASIGNAMOS LOS VALORES DE CADA ATRIBUTO
-
-    Actividad act;
-    strcpy(act.nombre, nombre);
-    strcpy(act.descripcion, descripcion);
-    strcpy(act.tipo, tipo);
-    strcpy(act.publico, publico);
-    strcpy(act.municipio, municipio);
-    strcpy(act.direccion, direccion);
-    strcpy(act.encargado, encargado);
-    strcpy(act.fecha, fecha);
-
-    //SACAMOS POR CONSOLA, A MODO DE RESUMEN,
-
-    imprimirActividad(act);
-
-    //INSERTAMOS ACTIVIDAD EN BD
-    insertarActividad(usuario,act);
-    return;
-}
-
-
-//FUNCION PARA MODIFICAR UNA ACTIVIDAD
-void modificarActividad(int id,char *usuario){
-    //PEDIMOS LOS VALORES DE ESA ACTIVIDAD
-    fflush(stdin);
-    char nombre[50], descripcion[250], tipo[50], publico[50], municipio[50], direccion[50], encargado[50], fecha[50];
-    printf("Introduzca el nombre de la actividad: ");
-    fgets(nombre, 50, stdin);
-    nombre[strcspn(nombre, "\n")] = '\0';
-    fflush(stdin);
-
-    printf("Introduzca una descrpcion: ");
-    fgets(descripcion, 250, stdin);
-    descripcion[strcspn(descripcion, "\n")] = '\0';
-    fflush(stdin);
-    
-    printf("Introduzca el tipo de actividad: ");
-    fgets(tipo, 50, stdin);
-    tipo[strcspn(tipo, "\n")] = '\0';
-    
-    printf("Introduzca a que publico esta dirigido: ");
-    fgets(publico, 50, stdin);
-    publico[strcspn(publico, "\n")] = '\0';
-
-    printf("Introduzca el municipio: ");
-    fgets(municipio, 50, stdin);
-    municipio[strcspn(municipio, "\n")] = '\0';
-
-    printf("Introduzca la direccion: ");
-    fgets(direccion, 50, stdin);
-    direccion[strcspn(direccion, "\n")] = '\0';
-
-    printf("Introduzca el encargado: ");
-    fgets(encargado, 50, stdin);
-    encargado[strcspn(encargado, "\n")] = '\0';
-
-    printf("Introduzca la fecha: ");
-    fgets(fecha, 50, stdin);
-    fecha[strcspn(fecha, "\n")] = '\0';
-
-
-
-    printf("\nMODIFICACION de la ACTIVIDAD:\n");
-
-    Actividad act;
-    strcpy(act.nombre, nombre);
-    strcpy(act.descripcion, descripcion);
-    strcpy(act.tipo, tipo);
-    strcpy(act.publico, publico);
-    strcpy(act.municipio, municipio);
-    strcpy(act.direccion, direccion);
-    strcpy(act.encargado, encargado);
-    strcpy(act.fecha, fecha);
-
-    imprimirActividad(act);
-    //MODIFICAMOS ACTIVIDAD, DADO UN ID
-    subirActModificada(id,act,usuario);
-    return;
-}
-
-char* hash_string(char* str) {
-    int hash = 0;
-    int len = strlen(str);
-     // Reservamos suficiente espacio para almacenar el hash en formato hexadecimal
-    char* hash_str = malloc(len * 2 + 1);
-    hash_str[0] = '\0';
-
-    for (int i = 0; i < len; i++) {
-        hash = (hash * 31 + str[i]) % 127;  //DIVIDIMOS POR NUMEROS PRIMOS
-        char hex_str[3]; 
-        snprintf(hex_str, 3, "%02x", hash); // Convertimos el valor del hash a formato hexadecimal
-        strcat(hash_str, hex_str); // Concatenamos 
-    }
-    
-    return hash_str;
-    
-     }
 
 //FUNCION PARA LIBERAR ESPACIO DE MEMORIA PARA ADMINISTRADOR
 void liberarAdmin(Administrador* admin) {

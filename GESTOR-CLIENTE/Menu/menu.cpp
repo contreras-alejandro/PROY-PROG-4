@@ -213,18 +213,20 @@ void menuVerActividadesInicio() {
 
                 std::cout << "Has seleccionado la opcion 1: FILTRAR POR FECHA." << std::endl;
                 salir=1;
-                //FUNCION DE MENU DE REGISTRO
-                salir=1;
+                //PEDIMOS LAS ACTIVIDADES FILTRADAS POR FECHA (ORDENAR)
                 break;
         }else if(opcion==2) {
                         
                std::cout << "Has seleccionado la opcion 2: FILTRAR POR PUBLICO." << std::endl;
+               //PEDIMOS LAS ACTIVIDADES FILTRADAS POR PUBLICO (ORDENAR)
                 salir=1;
                 break;
         } 
         else if(opcion==3) {
                         
                 std::cout << "Has seleccionado la opcion 3: FILTRAR POR MEJOR VALORADAS" << std::endl;
+                //PEDIMOS LAS ACTIVIDADES MEJOR VALORADAS (PRIMERO ACCEDER A TABLA DE VALORACION
+                // Y LAS ORDENAMOS, Y POR CADA UNA OBTENEMOS SU ID Y VAMOS A LA TABLA DE ACTVIDADES Y IMPRIMIMOS)
                 salir=1;
                 break;
         }
@@ -242,14 +244,6 @@ void menuVerActividadesInicio() {
         }
     }
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -275,12 +269,12 @@ void menuPerfil() {
 
         if (opcion == 1) {
             std::cout << "Has seleccionado la opcion 1: Ver INSCRIPCIONES" << std::endl;
-            //funcion
+            //PEDIMOS INSCRIPCIONES DE ESE USUARIO 
             salir = 1;
             break;
         } else if (opcion == 2) {
             std::cout << "Has seleccionado la opcion 2: Cambiar CONTRASENYA." << std::endl;
-            //funcion
+            //FUNCION PARA CAMBIAR LA CONTRASENYA! (SI ES VALIDA, LLAMADA A SERVER PA INTRODUCRIR!)
             salir = 1;
             break;
         } else {

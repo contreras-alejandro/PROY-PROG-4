@@ -2,8 +2,8 @@
 #define MENU_H
 #define MAX_CHARACTERS_FOR_OPTIONS 3
 
-#include <winsock2.h>
 #include <iostream>
+#include <winsock2.h>
 
 //FUNCION PARA DEVOLVER LA OPCION SELECCIONADA
 int selectOpcion();

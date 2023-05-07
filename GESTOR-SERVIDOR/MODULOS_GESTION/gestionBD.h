@@ -7,26 +7,14 @@
 int abrirConexion();
 //FUNCION PARA CERRAR LA BASE DE DATOS
 int cerrarConexion();
-//FUNCION PARA LOGIN DEL ADMIN
-int loginAdmin(char* admin, char* contrasena);
-//FUNCION PARA INSERTAR ADMIN EN BASE DE DATOS
-void insertarAdmin(char *admin,Administrador* admininistrador);
 //FUNCION PARA BUSCAR ACTIVIDD POR ID EN BASE DE DATOS
 Actividad buscarActividadPorId(int id,char *admin);
-//FUNCION PARA INSERTAR ACTIVIDAD EN BASE DE DATOS
-void insertarActividad(char *admin, Actividad act);
 //FUNCION PARA MOSTRAR LAS ACTIVIDADES DE LA BASE DE DATOS
 void verActividades(char *admin);
-//FUNCION PARA ELIMINAR ACTIVIDAD DE BASE DE DATOS
-void eliminarAct(int id,char *admin);
-//FUNCION PARA SUBIR UNA ACTIVIDAD MODIFICADA A BASE DE DATOS
-void subirActModificada(int id, Actividad act,char *admin);
-//FUNCION PARA ELIMINAR TODAS LAS ACTIVIDADES DE BASE DE DATOS (NO LA TABLA!)
-void eliminarTablaActividades(char *admin);
 //FUNCION PARA COMBROBAR QUE UN NOMBRE DE USUARIO NO EXISTE EN BASE DE DATOS (EVITAR REPETIDOS)
-int comprobarUsuarioAdmin(char * usrAdmin);
-//FUNCION PARA COMPROBAR QUE LA ACTIVIDAD A ELIMINAR EXISTE EN BASE DE DATOS
-int comprobarActividad(int id,char * admin);
+int comprobarUsuario(char * usr);
+//FUNCION PARA COMPROBAR QUE LA ACTIVIDAD A EXISTE EN BASE DE DATOS
+int comprobarActividad(int id,char * usu);
 
 ////////////////////////////////////// CLIENTES /////////////////////////////////////////////////////////////
 

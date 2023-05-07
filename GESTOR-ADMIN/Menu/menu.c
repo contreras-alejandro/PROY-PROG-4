@@ -64,15 +64,14 @@ int printMenuInicio(){
 
 //FUNCION PARA IMPRIMIR EL MENU PRINCIPAL
 int printMenuPrincipal(){
-    int numOpciones=4;
+    int numOpciones=3;
 
     printf("\n||MENU ADMINISTRADOR||\n");
     printf("_________________________________________________________\n");
     printf("**Bienvenido al menu de administrador**\n");
     printf("1. Gestionar ACTIVIDADES\n");
-    printf("2. Gestionar PROPUESTAS\n");
-    printf("3. Crear ADMINISTRADOR\n");
-    printf("4. Cerrar sesion\n");
+    printf("2. Crear ADMINISTRADOR\n");
+    printf("3. Cerrar sesion\n");
     printf("_________________________________________________________\n");
     return numOpciones;
 }
@@ -139,20 +138,14 @@ void menuPrincipal(char *usuario){
             menuGestionAct(usuario);
             salir=1;
             break;
-        } else if(opcion==2) {
-            printf("Has seleccionado la opcion 2: Gestionar PROPUESTAS.\n");
-            printf("ESTA SECCION AUN NO ESTA DISPONIBLE, ESTARA HABILITADA CUANDO REALICEMOS EL CLIENTE\n");
-            menuPrincipal(usuario);
-            salir=1;
-             break;
-        } else if(opcion==3) {
-            printf("Has seleccionado la opcion 3: Crear ADMINISTRADOR.\n");
+         } else if(opcion==2) {
+            printf("Has seleccionado la opcion 2: Crear ADMINISTRADOR.\n");
             logger(0,usuario,"ACCEDIENDO A CREAR ADMINISTRADOR");
             crearAdmin(usuario); 
             menuPrincipal(usuario);       
             salir=1;
             break;
-        } else if(opcion==4) {
+        } else if(opcion==3) {
             printf("CERRANDO SESION\n");
             menuInicio(usuario);
             salir=1;

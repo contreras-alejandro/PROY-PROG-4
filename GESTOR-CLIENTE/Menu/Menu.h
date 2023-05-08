@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <winsock2.h>
+#include "../Clases/Usuario.h"
+
 
 //FUNCION PARA DEVOLVER LA OPCION SELECCIONADA
 int selectOpcion();
@@ -34,6 +36,9 @@ int printMenuLogin();
 void menuLogin();
 //FUNCION PARA COMPROBAR SI LA OPCION INTRODUCIDA ES VALIDA
 int comprobarOpcionValida(int opcion, int numOpciones);
+
+void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]);
+
 
 
 #endif

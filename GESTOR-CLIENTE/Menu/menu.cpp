@@ -77,9 +77,7 @@ void menuInicio(SOCKET s, char sendBuff[512], char recvBuff[512])
         if (opcion == 1) 
         {
             std::cout << "Has seleccionado la opcion 1: REGISTRAR." << std::endl;
-            salir = 1;
-            //FUNCION DE MENU DE REGISTRO
-            salir = 1;
+            menuRegistrar(s,sendBuff,recvBuff);
             break;
         }
         else if (opcion == 2) 
@@ -320,6 +318,39 @@ void menuLogin() {
         }
     }
 }
+
+
+void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
+    Usuario u;
+
+    std::cout << "Ingrese su nombre: ";
+    char nombre[100];
+    std::cin.getline(nombre, 100);
+    u.setNombre(nombre);
+
+    std::cout << "Ingrese su apellido: ";
+    char apellido[100];
+    std::cin.getline(apellido, 100);
+    u.setApellido(apellido);
+
+    std::cout << "Ingrese su nombre de usuario: ";
+    char nombre_usu[100];
+    std::cin.getline(nombre_usu, 100);
+    u.setNombreUsuario(nombre_usu);
+
+    std::cout << "Ingrese su contrasena: ";
+    char contrasenya[100];
+    std::cin.getline(contrasenya, 100);
+    u.setContrasenya(contrasenya);
+
+    char* str = u.toString();
+
+
+    
+    delete[] str;
+
+}
+
 
 
 

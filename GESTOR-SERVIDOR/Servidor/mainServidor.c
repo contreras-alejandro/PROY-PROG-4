@@ -1,6 +1,8 @@
 #include <string.h>
 #include <winsock2.h>
 #include <stdio.h>
+#include "../MODULOS_GESTION/gestionBD.h"
+#include "servidor.h"
 
 #define SERVER_IP "127.0.0.1"
 #define SERVER_PORT 6000
@@ -78,7 +80,11 @@ int main(){
 				break;
 
 			} else if (strncmp(recvBuff, "01",BYTES) == 0){ 
-                send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+                recv(comm_socket, recvBuff, 1024, 0);
+				Usuario u=strAUsuario(recvBuff);
+				registrarUsuario(u);
+				strcpy(sendBuff, "1");
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
             } else if (strncmp(recvBuff, "02",2) == 0){ 
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
                 

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include  <string.h>
 #include <stdlib.h>
+#include <string>
 
 Usuario::Usuario()
 {
@@ -41,10 +42,44 @@ char* Usuario::getNombreUsuario()
 {
     return this->nombre_usu;
 }
+
+
+void Usuario::setNombre(char* nombre)
+{
+    if (this->nombre != NULL) delete[] this->nombre;
+    this->nombre = new char[strlen(nombre) + 1];
+    strcpy(this->nombre, nombre);
+}
+
+void Usuario::setApellido(char* apellido)
+{
+    if (this->apellido != NULL) delete[] this->apellido;
+    this->apellido = new char[strlen(apellido) + 1];
+    strcpy(this->apellido, apellido);
+}
+
+void Usuario::setNombreUsuario(char* nombre_usu)
+{
+    if (this->nombre_usu != NULL) delete[] this->nombre_usu;
+    this->nombre_usu = new char[strlen(nombre_usu) + 1];
+    strcpy(this->nombre_usu, nombre_usu);
+}
+
+void Usuario::setContrasenya(char* contrasenya)
+{
+    if (this->contrasenya != NULL) delete[] this->contrasenya;
+    this->contrasenya = new char[strlen(contrasenya) + 1];
+    strcpy(this->contrasenya, contrasenya);
+}
+
+
+
 Usuario Usuario::convertirEstructuraAClase(Estructura_Usuario::Usuario u)
 {
     return Usuario(u.nombre, u.apellido, u.nombre_usu, u.contrasenya);
 }
+
+
 
 Estructura_Usuario::Usuario Usuario::convertirClaseAEstructura()
 {
@@ -64,6 +99,21 @@ Estructura_Usuario::Usuario Usuario::convertirClaseAEstructura()
     strcpy(us.contrasenya, this->contrasenya);
 
     return us;
+}
+
+char* Usuario::toString() const
+{
+    std::string str;
+    str.append(nombre);
+    str.append("$");
+    str.append(apellido);
+    str.append("$");
+    str.append(nombre_usu);
+    str.append("$");
+    str.append(contrasenya);
+    char* char_str = new char[str.length() + 1];
+    strcpy(char_str, str.c_str());
+    return char_str;
 }
 
 Usuario::~Usuario()

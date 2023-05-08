@@ -25,8 +25,14 @@ public:
     char* getNombre();
     char* getApellido();
     char* getNombreUsuario();
+    void setNombre(char* nombre);
+    void setNombreUsuario(char* nombre_usu);
+    void setApellido(char* apellido);
+    void setContrasenya(char* contrasenya);
+
     Usuario convertirEstructuraAClase(Estructura_Usuario::Usuario u);
     Estructura_Usuario::Usuario convertirClaseAEstructura();
+    char* toString() const;
     ~Usuario();
 
 };

@@ -276,7 +276,6 @@ Usuario* loginUsuario(char* usuario, char* contrasena){
     //OBTENEMOS EL VALOR DE LA CONTRASENYA HASHEADA
     char* contrasenya_hasheada = hash_string(contrasena);
    
-
     resultado_consulta = sqlite3_prepare_v2(db, consulta, -1, &stmt, 0);
 
     if (resultado_consulta != SQLITE_OK) {
@@ -294,34 +293,34 @@ Usuario* loginUsuario(char* usuario, char* contrasena){
 
     //SI EL USUARIO EXISTE, DEVOLVEMOS UN 1, SINO, OTRO VALOR
 
-    Usuario usr = {0};
+    Usuario* usr = malloc(sizeof(Usuario)); // Aquí creamos un puntero a Usuario y asignamos memoria dinámica
 
     if (resultado_consulta == SQLITE_ROW) {
         printf("Nombre de usuario y contrasena correctas\n");
         
-        strcpy(usr.nombre, sqlite3_column_text(stmt, 2));
-        strcpy(usr.apellido, sqlite3_column_text(stmt, 3));
-        strcpy(usr.nusuario, sqlite3_column_text(stmt, 4));
-        strcpy(usr.contrasenya, sqlite3_column_text(stmt, 5));
+        strcpy(usr->nombre, sqlite3_column_text(stmt, 2));
+        strcpy(usr->apellido, sqlite3_column_text(stmt, 3));
+        strcpy(usr->nusuario, sqlite3_column_text(stmt, 4));
+        strcpy(usr->contrasenya, sqlite3_column_text(stmt, 5));
 
         
         sqlite3_finalize(stmt);
         cerrarConexion();
-        return &usr;
+        return usr; // Devolvemos el puntero que hemos creado
     } else if (resultado_consulta == SQLITE_ERROR) {
         //EN CASO DE ERROR, DEVUELVE -1
         printf("Error en la consulta: %s\n", sqlite3_errmsg(db));
         sqlite3_finalize(stmt);
         cerrarConexion();
+        free(usr); // En caso de error, liberamos la memoria dinámica
         return NULL;
     } else {
         printf("Credenciales incorrectas\n");
         sqlite3_finalize(stmt);
         cerrarConexion();
+        free(usr); // Si las credenciales son incorrectas, liberamos la memoria dinámica
         return NULL;
     }
-
-
 }
 
 //FUNCION PARA INSERTAR VALORACION ACTIVIDAD EN BASE DE DATOS

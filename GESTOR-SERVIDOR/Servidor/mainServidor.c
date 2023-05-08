@@ -10,6 +10,8 @@
 #define TAMAINO_RECVBUFF 512
 #define BYTES 2
 
+//gcc Servidor/mainServidor.c Servidor/servidor.c sqlite/sqlite3.c -o server.exe -lws2_32
+
 
 int main(){
 

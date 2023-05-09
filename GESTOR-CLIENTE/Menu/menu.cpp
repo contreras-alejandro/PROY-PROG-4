@@ -345,10 +345,19 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
 
     char* str = u.toString();
 
+    char mensaje[512];
+    sprintf(mensaje, "01$%s", str);
+    send(s, mensaje, strlen(mensaje), 0);
 
-    
     delete[] str;
 
+    // esperar confirmación del servidor
+    recv(s, recvBuff, sizeof(recvBuff), 0);
+    if (recvBuff[0] == '1') {
+        std::cout << "Usuario registrado con éxito.\n";
+    } else {
+        std::cout << "No se pudo registrar al usuario.\n";
+    }
 }
 
 

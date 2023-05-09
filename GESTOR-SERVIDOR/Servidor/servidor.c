@@ -12,25 +12,17 @@
 
 
 
-Usuario strAUsuario(char* str){
-
+Usuario strAUsuario(char* codigo) {
     Usuario u;
-    char* token = strtok(str, "$");
-    u.nombre = (char*) malloc(strlen(token) + 1);
-    strcpy(u.nombre, token);
-
-    token = strtok(NULL, "$");
-    u.apellido = (char*) malloc(strlen(token) + 1);
-    strcpy(u.apellido, token);
-
-    token = strtok(NULL, "$");
-    u.nusuario = (char*) malloc(strlen(token) + 1);
-    strcpy(u.nusuario, token);
-
-    token = strtok(NULL, "$");
-    u.contrasenya = (char*) malloc(strlen(token) + 1);
-    strcpy(u.contrasenya, token);
-
+    char* token = strtok(codigo, "$"); // primer token (código "01")
+    token = strtok(NULL, "$"); // segundo token (nombre)
+    u.nombre = strdup(token);
+    token = strtok(NULL, "$"); // tercer token (apellido)
+    u.apellido = strdup(token);
+    token = strtok(NULL, "$"); // cuarto token (nombre de usuario)
+    u.nusuario = strdup(token);
+    token = strtok(NULL, "$"); // quinto token (contraseña)
+    printf(strdup(token));
+    u.contrasenya = strdup(token);
     return u;
-
 }

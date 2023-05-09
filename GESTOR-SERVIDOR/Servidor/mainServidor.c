@@ -76,24 +76,25 @@ int main(){
 
     do {
 		int bytes = recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-        if(bytes > 0){
-            printf("Code received: %s \n", recvBuff);
-            if (strncmp(recvBuff, "00",BYTES) == 0) { 
-				break;
+		if(bytes > 0){
+			printf("Code received: %s \n", recvBuff);
 
-			} else if (strncmp(recvBuff, "01",BYTES) == 0){ 
-                recv(comm_socket, recvBuff, 1024, 0);
+			char codigo[3];
+			strncpy(codigo, recvBuff, 2);
+			codigo[2] = '\0';  // Agregar caracter nulo al final
+
+			if (strcmp(codigo, "00") == 0) {
+				break;
+			} else if (strcmp(codigo, "01") == 0) {
 				Usuario u=strAUsuario(recvBuff);
 				registrarUsuario(u);
 				strcpy(sendBuff, "1");
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-            } else if (strncmp(recvBuff, "02",2) == 0){ 
+			} else if (strcmp(codigo, "02") == 0) {
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-                
-			} 
-
-        }
-    }while (1);
+			}
+		}
+	} while (1);
     closesocket(comm_socket);
 	WSACleanup();
 

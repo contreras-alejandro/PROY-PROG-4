@@ -1,8 +1,9 @@
-#ifndef SERVIDOR_H
-#define SERVIDOR_H
+#ifndef gestion_Codigos
+#define gestion_Codigos
 #include "../MODULOS_GESTION/gestionServer.h"
 
 
 Usuario strAUsuario(char* str);
+char* usuarioAStr(Usuario* u);
 
 #endif

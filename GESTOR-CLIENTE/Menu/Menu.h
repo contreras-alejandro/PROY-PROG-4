@@ -5,6 +5,7 @@
 #include <iostream>
 #include <winsock2.h>
 #include "../Clases/Usuario.h"
+#include "../Codigos/gestionCodigos.h"
 
 
 //FUNCION PARA DEVOLVER LA OPCION SELECCIONADA
@@ -33,7 +34,7 @@ void menuVerActividades();
 //FUNCION PARA MOSTRAR OPCIONES DE PERFIL
 int printMenuLogin();
 //FUNCION PARA GESTION DEL MENU DE LOGIN
-void menuLogin();
+void menuLogin(SOCKET s, char sendBuff[512], char recvBuff[512]);
 //FUNCION PARA COMPROBAR SI LA OPCION INTRODUCIDA ES VALIDA
 int comprobarOpcionValida(int opcion, int numOpciones);
 

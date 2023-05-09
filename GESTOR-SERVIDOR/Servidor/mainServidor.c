@@ -2,7 +2,7 @@
 #include <winsock2.h>
 #include <stdio.h>
 #include "../MODULOS_GESTION/gestionBD.h"
-#include "servidor.h"
+#include "gestionCodigos.h"
 
 #define SERVER_IP "127.0.0.1"
 #define SERVER_PORT 6000
@@ -10,7 +10,7 @@
 #define TAMAINO_RECVBUFF 512
 #define BYTES 2
 
-//gcc Servidor/mainServidor.c Servidor/servidor.c sqlite/sqlite3.c -o server.exe -lws2_32
+//gcc Servidor/mainServidor.c Servidor/gestionCodigos.c sqlite/sqlite3.c MODULOS_GESTION/gestionBD.c MODULOS_GESTION/gestionServer.c -o server.exe -lws2_32
 
 
 int main(){
@@ -85,14 +85,28 @@ int main(){
 
 			if (strcmp(codigo, "00") == 0) {
 				break;
-			} else if (strcmp(codigo, "01") == 0) {
+			} else if (strcmp(codigo, "01") == 0) { //Registro
 				Usuario u=strAUsuario(recvBuff);
 				registrarUsuario(u);
 				strcpy(sendBuff, "1");
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			} else if (strcmp(codigo, "02") == 0) {
-				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			}
+			} else if (strcmp(codigo, "02") == 0) { //Login
+				Usuario* usr=NULL;
+			    char* token = strtok(recvBuff, "$");
+				token = strtok(NULL, "$"); // Obtener segundo token (usuario)
+				char* usuario = token;
+				token = strtok(NULL, "$"); // Obtener tercer token (contraseña)
+				char* contrasena = token;
+				usr = loginUsuario(usuario, contrasena);
+
+				if (usr != NULL) {
+					strcpy(sendBuff, "1");
+					send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				} else {
+					strcpy(sendBuff, "0");
+					send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				}
+						}
 		}
 	} while (1);
     closesocket(comm_socket);

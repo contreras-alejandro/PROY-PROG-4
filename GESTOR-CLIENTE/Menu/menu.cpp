@@ -83,8 +83,7 @@ void menuInicio(SOCKET s, char sendBuff[512], char recvBuff[512])
         else if (opcion == 2) 
         {
             std::cout << "Has seleccionado la opcion 2: INICIAR SESION." << std::endl;
-            salir = 1;
-            menuLogin();
+            menuLogin(s,sendBuff,recvBuff);
             break;
         } 
         else if (opcion == 3) 
@@ -289,7 +288,7 @@ void menuPerfil() {
 //FUNCION PARA GESTION DEL MENU DE LOGIN
 
 
-void menuLogin() {
+void menuLogin(SOCKET s, char sendBuff[512], char recvBuff[512]) {
     //guardamos espacio en memoria, ya que el usuario lo pasaremos por las funciones para el log
     int resultado;
     int salir = 0;
@@ -308,13 +307,25 @@ void menuLogin() {
 
         //resultado = login(nombre_usu.c_str(), usu_contra.c_str());
 
-        if (resultado == 1) {
+        char mensaje[512];
+        sprintf(mensaje, "02$%s$%s", nombre_usu.c_str(), usu_contra.c_str());
+
+        // Enviamos el mensaje al servidor
+        send(s, mensaje, strlen(mensaje), 0);
+
+        // Recibimos la respuesta del servidor
+        recv(s, recvBuff, 512, 0);
+
+
+        if (recvBuff[0] == '1') {
             //si son correctos, se inicia sesion
+            
             std::cout << "Iniciando sesion..." << std::endl;
             salir = 1;
-            menuPrincipal(usu_contra);
+            menuPrincipal(nombre_usu);
+        
         } else {
-            std::cout << "Introduce un usuario y contrasena correctos" << std::endl;
+                std::cout << "Introduce un usuario y contrasena correctos" << std::endl;;
         }
     }
 }
@@ -352,7 +363,7 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
     delete[] str;
 
     // esperar confirmación del servidor
-    recv(s, recvBuff, sizeof(recvBuff), 0);
+    recv(s, recvBuff, 512, 0);
     if (recvBuff[0] == '1') {
         std::cout << "Usuario registrado con éxito.\n";
         menuInicio(s,sendBuff,recvBuff);

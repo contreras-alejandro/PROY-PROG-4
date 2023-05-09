@@ -8,7 +8,7 @@
 #define SERVER_IP "127.0.0.1"
 #define SERVER_PORT 6000
 
-//g++ Menu/menu.cpp Cliente/mainCliente.c Clases/Usuario.cpp -o cliente.exe -lws2_32
+//g++ Menu/menu.cpp Cliente/mainCliente.cpp Clases/Usuario.cpp -o cliente.exe -lws2_32
 
 int main(){
     WSADATA wsaData;

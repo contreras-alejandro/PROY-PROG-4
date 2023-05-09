@@ -274,7 +274,7 @@ Usuario* loginUsuario(char* usuario, char* contrasena){
     char* consulta = "SELECT * FROM USUARIO WHERE USUARIO_USU = ? AND CONTRASENYA_USU = ?;";
 
     //OBTENEMOS EL VALOR DE LA CONTRASENYA HASHEADA
-    char* contrasenya_hasheada = hash_string(contrasena);
+    char* contrasenya_hasheada = contrasena;
    
     resultado_consulta = sqlite3_prepare_v2(db, consulta, -1, &stmt, 0);
 

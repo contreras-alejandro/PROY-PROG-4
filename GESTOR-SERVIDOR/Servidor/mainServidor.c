@@ -99,6 +99,7 @@ int main(){
 				char* contrasena = token;
 				usr = loginUsuario(usuario, contrasena);
 
+				
 				if (usr != NULL) {
 					strcpy(sendBuff, "1");
 					send(comm_socket, sendBuff, sizeof(sendBuff), 0);

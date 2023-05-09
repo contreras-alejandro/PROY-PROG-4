@@ -5,7 +5,6 @@
 #include <iostream>
 #include <winsock2.h>
 #include "../Clases/Usuario.h"
-#include "../Codigos/gestionCodigos.h"
 
 
 //FUNCION PARA DEVOLVER LA OPCION SELECCIONADA

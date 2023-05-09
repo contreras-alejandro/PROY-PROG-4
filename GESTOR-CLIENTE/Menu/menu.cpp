@@ -307,11 +307,13 @@ void menuLogin(SOCKET s, char sendBuff[512], char recvBuff[512]) {
 
         //resultado = login(nombre_usu.c_str(), usu_contra.c_str());
 
-        char mensaje[512];
+        char mensaje[512]= {0};
         sprintf(mensaje, "02$%s$%s", nombre_usu.c_str(), usu_contra.c_str());
+        mensaje[strlen(mensaje)] = '$';
 
         // Enviamos el mensaje al servidor
         send(s, mensaje, strlen(mensaje), 0);
+
 
         // Recibimos la respuesta del servidor
         recv(s, recvBuff, 512, 0);
@@ -321,7 +323,6 @@ void menuLogin(SOCKET s, char sendBuff[512], char recvBuff[512]) {
             //si son correctos, se inicia sesion
             
             std::cout << "Iniciando sesion..." << std::endl;
-            salir = 1;
             menuPrincipal(nombre_usu);
         
         } else {

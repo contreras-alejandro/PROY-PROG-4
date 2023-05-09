@@ -242,4 +242,22 @@ void liberarAdmin(Administrador* admin) {
 
 }
 
+char* hash_string(char* str) {
+    int hash = 0;
+    int len = strlen(str);
+     // Reservamos suficiente espacio para almacenar el hash en formato hexadecimal
+    char* hash_str = malloc(len * 2 + 1);
+    hash_str[0] = '\0';
+
+    for (int i = 0; i < len; i++) {
+        hash = (hash * 31 + str[i]) % 127;  //DIVIDIMOS POR NUMEROS PRIMOS
+        char hex_str[3]; 
+        snprintf(hex_str, 3, "%02x", hash); // Convertimos el valor del hash a formato hexadecimal
+        strcat(hash_str, hex_str); // Concatenamos 
+    }
+    
+    return hash_str;
+    
+     }
+
 

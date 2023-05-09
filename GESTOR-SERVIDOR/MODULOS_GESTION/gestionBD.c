@@ -4,7 +4,7 @@
 #include "gestionServer.h"
 #include "../sqlite/sqlite3.h"
 #include "gestionBD.h"
-#include <time.h>
+
 
 sqlite3* db;
 
@@ -470,7 +470,7 @@ void eliminarInscripcion(int idAct, int id_usu) {
 
 //DEVUELVE 1, SI SE PUEDE VALORAR, 0 EN CUALQUIER OTRO CASO QUE INDIQUE QUE NO.
 
-int comprobarInscripcionValorar(int id_act, int id_usu) {
+/* int comprobarInscripcionValorar(int id_act, int id_usu) {
 
  abrirConexion();
     sqlite3_stmt *stmt;
@@ -531,9 +531,7 @@ int comprobarInscripcionValorar(int id_act, int id_usu) {
     cerrarConexion();
     return result;
 
-
-
-}
+} */
 
 
 

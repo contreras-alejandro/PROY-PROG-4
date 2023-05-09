@@ -1,6 +1,7 @@
 #ifndef GESTION_BD
 #define GESTION_BD
 #include "gestionServer.h"
+#include <time.h>
 
 
 //FUNCION PARA ABRIR BASE DE DATOS

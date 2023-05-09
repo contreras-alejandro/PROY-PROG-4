@@ -355,8 +355,10 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
     recv(s, recvBuff, sizeof(recvBuff), 0);
     if (recvBuff[0] == '1') {
         std::cout << "Usuario registrado con éxito.\n";
+        menuInicio(s,sendBuff,recvBuff);
     } else {
         std::cout << "No se pudo registrar al usuario.\n";
+        menuRegistrar(s,sendBuff,recvBuff);
     }
 }
 

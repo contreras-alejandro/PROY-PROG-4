@@ -318,12 +318,15 @@ void menuLogin(SOCKET s, char sendBuff[512], char recvBuff[512]) {
         // Recibimos la respuesta del servidor
         recv(s, recvBuff, 512, 0);
 
+        printf("RESPUESTA:%c", recvBuff[0]);
+
 
         if (recvBuff[0] == '1') {
             //si son correctos, se inicia sesion
             
             std::cout << "Iniciando sesion..." << std::endl;
             menuPrincipal(nombre_usu);
+            salir=1;
         
         } else {
                 std::cout << "Introduce un usuario y contrasena correctos" << std::endl;;

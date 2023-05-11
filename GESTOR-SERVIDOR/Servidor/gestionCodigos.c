@@ -22,8 +22,7 @@ Usuario strAUsuario(char* codigo) {
     u.apellido = strdup(token);
     token = strtok(NULL, "$"); // cuarto token (nombre de usuario)
     u.nusuario = strdup(token);
-    token = strtok(NULL, "$"); // quinto token (contraseña)
-    printf(strdup(token));
+    token = strtok(NULL, "$"); // quinto token (contraseña)s
     u.contrasenya = strdup(token);
     return u;
 }

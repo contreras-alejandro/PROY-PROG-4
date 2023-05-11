@@ -52,8 +52,6 @@ int main(){
 
     system("cls");
     menuInicio(s, sendBuff, recvBuff);
-
-    send(s, "00", 512, 0);
 	closesocket(s);
 	WSACleanup();
 

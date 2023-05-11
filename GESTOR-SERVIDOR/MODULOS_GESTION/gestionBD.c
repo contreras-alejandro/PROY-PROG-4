@@ -274,7 +274,6 @@ Usuario* loginUsuario(char* usuario, char* contrasena){
     char* consulta = "SELECT * FROM USUARIO WHERE USUARIO_USU = ? AND CONTRASENYA_USU = ?;";
 
     //OBTENEMOS EL VALOR DE LA CONTRASENYA HASHEADA
-    char* contrasenya_hasheada = contrasena;
    
     resultado_consulta = sqlite3_prepare_v2(db, consulta, -1, &stmt, 0);
 
@@ -285,7 +284,7 @@ Usuario* loginUsuario(char* usuario, char* contrasena){
     }
 
     sqlite3_bind_text(stmt, 1, usuario, strlen(usuario), SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 2, contrasenya_hasheada, strlen(contrasenya_hasheada), SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, contrasena, strlen(contrasena), SQLITE_STATIC);
 
     //EJECUTAMOS SENTENCIA SQL
 
@@ -293,17 +292,34 @@ Usuario* loginUsuario(char* usuario, char* contrasena){
 
     //SI EL USUARIO EXISTE, DEVOLVEMOS UN 1, SINO, OTRO VALOR
 
-    Usuario* usr = malloc(sizeof(Usuario)); // Aquí creamos un puntero a Usuario y asignamos memoria dinámica
+    Usuario* usr = (Usuario*) malloc(sizeof(Usuario)); // Aquí creamos un puntero a Usuario y asignamos memoria dinámica
 
     if (resultado_consulta == SQLITE_ROW) {
         printf("Nombre de usuario y contrasena correctas\n");
-        
-        strcpy(usr->nombre, sqlite3_column_text(stmt, 2));
-        strcpy(usr->apellido, sqlite3_column_text(stmt, 3));
-        strcpy(usr->nusuario, sqlite3_column_text(stmt, 4));
-        strcpy(usr->contrasenya, sqlite3_column_text(stmt, 5));
+        //LOS MALLOC
 
+        const unsigned char*  nombreA = sqlite3_column_text(stmt, 2);
+
+        usr->nombre = malloc(strlen(nombreA)+1);
+        strcpy(  usr->nombre, nombreA );
+
+       
+
+
+        const unsigned char*  apellidoA = sqlite3_column_text(stmt, 3);
+        usr->apellido = malloc(strlen(apellidoA)+1);
+        strcpy(  usr->apellido, apellidoA );
+
+        const unsigned char*  usuarioA = sqlite3_column_text(stmt, 4);
+        usr->nusuario = malloc(strlen(usuarioA)+1);
+        strcpy(  usr->nusuario, usuarioA );
         
+       
+
+        usr->contrasenya = malloc(strlen(contrasena)+1);
+        strcpy(usr->contrasenya, contrasena );
+
+ 
         sqlite3_finalize(stmt);
         cerrarConexion();
         return usr; // Devolvemos el puntero que hemos creado

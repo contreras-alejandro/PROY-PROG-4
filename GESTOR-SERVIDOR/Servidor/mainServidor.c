@@ -97,15 +97,20 @@ int main(){
 				char* usuario = token;
 				token = strtok(NULL, "$"); // Obtener tercer token (contraseña)
 				char* contrasena = token;
+				printf("El nombre de usuario es: %s,y la contra: %s", usuario, contrasena);
 				usr = loginUsuario(usuario, contrasena);
 
 				
 				if (usr != NULL) {
+					printf("Mando un 1");
+					memset(sendBuff, 0, strlen(sendBuff)); // limpiar buffer
 					strcpy(sendBuff, "1");
-					send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 				} else {
+					printf("Mando un 0");
+					memset(sendBuff, 0, strlen(sendBuff)); // limpiar buffer
 					strcpy(sendBuff, "0");
-					send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 				}
 						}
 		}

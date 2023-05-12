@@ -5,6 +5,7 @@
 #include <iostream>
 #include <winsock2.h>
 #include "../Clases/Usuario.h"
+//#include "gestionCodigos.h"
 
 
 //FUNCION PARA DEVOLVER LA OPCION SELECCIONADA
@@ -18,7 +19,7 @@ void menuInicio(SOCKET s, char sendBuff[512], char recvBuff[512]);
 //FUNCION PARA IMPRIMIR EL MENU PRINCIPAL
 int printMenuPrincipal();
 //FUNCION PARA GESTION DEL MENU PRINCIPAL
-void menuPrincipal(std::string usuario);
+void menuPrincipal(Usuario usuario);
 
 //FUNCION PARA MOSTRAR OPCIONES DE PERFIL
 int printMenuPerfil();
@@ -39,6 +40,6 @@ int comprobarOpcionValida(int opcion, int numOpciones);
 
 void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]);
 
-
+Usuario strAUsuario( char mensaje[512]);
 
 #endif

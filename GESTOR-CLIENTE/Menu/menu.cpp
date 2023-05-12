@@ -3,6 +3,8 @@
 #include <string.h>
 #include <iostream>
 #include "menu.h"
+//#include "gestionCodigos.h"
+
 
 #define const int MAX_CHARACTERS_FOR_OPTIONS = 50;
 
@@ -121,10 +123,10 @@ int printMenuPrincipal() {
 }
 
 //FUNCION PARA GESTION DEL MENU PRINCIPAL
-void menuPrincipal(std::string usuario) {
+void menuPrincipal(Usuario usuario) {
 
     int salir=0;   
-    std::cout << "Sesion iniciada por: " << usuario << std::endl;
+    std::cout << "Sesion iniciada por: " << usuario.getNombreUsuario() << std::endl;
 
     while (salir==0)
     {
@@ -308,7 +310,7 @@ void menuLogin(SOCKET s, char sendBuff[512], char recvBuff[512]) {
         //resultado = login(nombre_usu.c_str(), usu_contra.c_str());
 
         char mensaje[512]= {0};
-        sprintf(mensaje, "02$%s$%s", nombre_usu.c_str(), usu_contra.c_str());
+        sprintf(mensaje, "02$%s$%s$", nombre_usu.c_str(), usu_contra.c_str());
         mensaje[strlen(mensaje)] = '$';
 
         // Enviamos el mensaje al servidor
@@ -317,15 +319,17 @@ void menuLogin(SOCKET s, char sendBuff[512], char recvBuff[512]) {
 
         // Recibimos la respuesta del servidor
         recv(s, recvBuff, 512, 0);
+        
 
+        
         printf("RESPUESTA:%c", recvBuff[0]);
 
 
         if (recvBuff[0] == '1') {
             //si son correctos, se inicia sesion
-            
+            Usuario usr = strAUsuario(recvBuff);
             std::cout << "Iniciando sesion..." << std::endl;
-            menuPrincipal(nombre_usu);
+            menuPrincipal(usr);
             salir=1;
         
         } else {
@@ -361,7 +365,7 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
     char* str = u.toString();
 
     char mensaje[512];
-    sprintf(mensaje, "01$%s", str);
+    sprintf(mensaje, "01$%s$", str);
     send(s, mensaje, strlen(mensaje), 0);
 
     delete[] str;
@@ -376,6 +380,36 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
         menuRegistrar(s,sendBuff,recvBuff);
     }
 }
+
+Usuario strAUsuario(char mensaje[512]) {
+    Usuario usr;
+    
+    char copiaMensaje[512];
+    strncpy(copiaMensaje, mensaje, sizeof(copiaMensaje));
+    
+    char* token = strtok(copiaMensaje, "$");
+
+    token = strtok(nullptr, "$");
+
+    char* nombre = const_cast<char*>(token ? token : "");
+    token = strtok(nullptr, "$");
+
+    char* apellido = const_cast<char*>(token ? token : "");
+    token = strtok(nullptr, "$");
+
+    char* nombre_usu = const_cast<char*>(token ? token : "");
+    token = strtok(nullptr, "$");
+
+    char* contrasenya = const_cast<char*>(token ? token : "");
+
+    usr.setApellido(apellido);
+    usr.setNombre(nombre);
+    usr.setNombreUsuario(nombre_usu);
+    usr.setContrasenya(contrasenya);
+    
+    return usr;
+} 
+
 
 
 

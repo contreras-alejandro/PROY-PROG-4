@@ -99,16 +99,17 @@ int main(){
 				char* contrasena = token;
 				printf("El nombre de usuario es: %s,y la contra: %s", usuario, contrasena);
 				usr = loginUsuario(usuario, contrasena);
+				char* strUsr=usuarioAStr(usr);
 
 				
 				if (usr != NULL) {
 					printf("Mando un 1");
-					memset(sendBuff, 0, strlen(sendBuff)); // limpiar buffer
-					strcpy(sendBuff, "1");
+					memset(sendBuff, 0, strlen(sendBuff)); 
+					strcpy(sendBuff, strUsr);
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 				} else {
 					printf("Mando un 0");
-					memset(sendBuff, 0, strlen(sendBuff)); // limpiar buffer
+					memset(sendBuff, 0, strlen(sendBuff)); 
 					strcpy(sendBuff, "0");
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 				}

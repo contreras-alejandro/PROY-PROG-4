@@ -29,6 +29,6 @@ Usuario strAUsuario(char* codigo) {
 
 char* usuarioAStr(Usuario* u) {
     char* codigo = malloc(sizeof(char) * 200); // Reservamos espacio suficiente para la cadena de salida
-    sprintf(codigo, "02$%s$%s$%s$%s", u->nombre, u->apellido, u->nusuario, u->contrasenya);
+    sprintf(codigo, "1$%s$%s$%s$%s$", u->nombre, u->apellido, u->nusuario, u->contrasenya);
     return codigo;
 }

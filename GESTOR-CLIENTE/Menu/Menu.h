@@ -5,6 +5,8 @@
 #include <iostream>
 #include <winsock2.h>
 #include "../Clases/Usuario.h"
+#include "../Clases/Actividad.h"
+#include <vector>
 //#include "gestionCodigos.h"
 
 
@@ -19,17 +21,17 @@ void menuInicio(SOCKET s, char sendBuff[512], char recvBuff[512]);
 //FUNCION PARA IMPRIMIR EL MENU PRINCIPAL
 int printMenuPrincipal();
 //FUNCION PARA GESTION DEL MENU PRINCIPAL
-void menuPrincipal(Usuario usuario);
+void menuPrincipal(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario);
 
 //FUNCION PARA MOSTRAR OPCIONES DE PERFIL
 int printMenuPerfil();
 //FUNCION PARA GESTION DEL MENU DE PERFIL
-void menuPerfil();
+void menuPerfil(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario);
 
 //FUNCION PARA MOSTRAR OPCIONES DE VER ACTIVIDADE
 int printMenuVerAct();
 //FUNCION PARA GESTION DEL MENU DE VER ACTIVIDADES
-void menuVerActividades();
+void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario);
 
 //FUNCION PARA MOSTRAR OPCIONES DE PERFIL
 int printMenuLogin();
@@ -41,5 +43,7 @@ int comprobarOpcionValida(int opcion, int numOpciones);
 void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]);
 
 Usuario strAUsuario( char mensaje[512]);
+
+std::vector<Actividad> strAActividades( char* actividadesString);
 
 #endif

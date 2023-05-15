@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <iostream>
+#include <vector>
+#include <cstring>
 #include "menu.h"
 //#include "gestionCodigos.h"
 
@@ -123,7 +125,7 @@ int printMenuPrincipal() {
 }
 
 //FUNCION PARA GESTION DEL MENU PRINCIPAL
-void menuPrincipal(Usuario usuario) {
+void menuPrincipal(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario) {
 
     int salir=0;   
     std::cout << "Sesion iniciada por: " << usuario.getNombreUsuario() << std::endl;
@@ -136,7 +138,8 @@ void menuPrincipal(Usuario usuario) {
 
         if(opcion==1) {
             std::cout << "Has seleccionado la opcion 1: Ver actividades." << std::endl;
-            //menuGestionAct(usuario);
+            menuVerActividadesInicio(s,sendBuff,recvBuff,usuario);
+            
             salir=1;
             break;
         } else if(opcion==2) {
@@ -148,7 +151,7 @@ void menuPrincipal(Usuario usuario) {
             std::cout << "Has seleccionado la opcion 3: BORRAR INSCRIPCION a ACTICIDAD." << std::endl;
             //logger(0,usuario,"ACCEDIENDO A CREAR ADMINISTRADOR");
             //crearAdmin(usuario); 
-            menuPrincipal(usuario);       
+            menuPrincipal(s,sendBuff,recvBuff,usuario);       
             salir=1;
             break;
         } else if(opcion==4) {
@@ -158,17 +161,17 @@ void menuPrincipal(Usuario usuario) {
             break;
         } else if(opcion==5) {
             std::cout << "Has seleccionado la opcion 5: PERFIL." << std::endl;
-            //menuInicio(usuario);
+            menuPerfil(s,sendBuff,recvBuff,usuario);
             salir=1;
             break;
         } else if(opcion==6) {
             std::cout << "Has seleccionado la opcion 6: VOLVER" << std::endl;
-            //menuInicio(usuario);
+            menuInicio(s,sendBuff,recvBuff);
             salir=1;
             break;
         } else if(opcion==7) {
             std::cout << "VOLVER..." << std::endl;
-            //menuInicio(usuario);
+            menuInicio(s,sendBuff,recvBuff);
             salir=1;
             break;
         } else {
@@ -200,7 +203,7 @@ int printMenuVerAct() {
 
 
 //FUNCION PARA GESTION DEL MENU DE INICIO
-void menuVerActividadesInicio() {
+void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario) {
      int salir=0;   
     while (salir==0)
     {
@@ -211,13 +214,29 @@ void menuVerActividadesInicio() {
         if(opcion==1) {
 
                 std::cout << "Has seleccionado la opcion 1: FILTRAR POR FECHA." << std::endl;
+
+                char mensaje[512];
+                sprintf(mensaje, "03$");
+                send(s, mensaje, strlen(mensaje), 0);
+                recv(s, recvBuff, 512, 0);
+                std::vector<Actividad> actividades = strAActividades(recvBuff);
+                for ( auto& actividad : actividades) {
+                    std::cout << "Nombre: " << actividad.getNombreAct() << std::endl;
+
+                }
+                menuVerActividadesInicio(s,sendBuff,recvBuff,usuario);
                 salir=1;
-                //PEDIMOS LAS ACTIVIDADES FILTRADAS POR FECHA (ORDENAR)
                 break;
+                //PEDIMOS LAS ACTIVIDADES FILTRADAS POR FECHA (ORDENAR)
+                
         }else if(opcion==2) {
                         
                std::cout << "Has seleccionado la opcion 2: FILTRAR POR PUBLICO." << std::endl;
                //PEDIMOS LAS ACTIVIDADES FILTRADAS POR PUBLICO (ORDENAR)
+                char mensaje[512];
+                sprintf(mensaje, "04$");
+                send(s, mensaje, strlen(mensaje), 0);
+                recv(s, recvBuff, 512, 0);
                 salir=1;
                 break;
         } 
@@ -226,8 +245,13 @@ void menuVerActividadesInicio() {
                 std::cout << "Has seleccionado la opcion 3: FILTRAR POR MEJOR VALORADAS" << std::endl;
                 //PEDIMOS LAS ACTIVIDADES MEJOR VALORADAS (PRIMERO ACCEDER A TABLA DE VALORACION
                 // Y LAS ORDENAMOS, Y POR CADA UNA OBTENEMOS SU ID Y VAMOS A LA TABLA DE ACTVIDADES Y IMPRIMIMOS)
+                char mensaje[512];
+                sprintf(mensaje, "05$");
+                send(s, mensaje, strlen(mensaje), 0);
+                recv(s, recvBuff, 512, 0);
                 salir=1;
                 break;
+                
         }
 
          else if(opcion==4) {
@@ -258,7 +282,7 @@ int printMenuPerfil() {
 }
 
 //FUNCION PARA GESTION DEL MENU DE PERFIL
-void menuPerfil() {
+void menuPerfil(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario) {
     int salir = 0;
 
     while (salir == 0) {
@@ -269,17 +293,24 @@ void menuPerfil() {
         if (opcion == 1) {
             std::cout << "Has seleccionado la opcion 1: Ver INSCRIPCIONES" << std::endl;
             //PEDIMOS INSCRIPCIONES DE ESE USUARIO 
+            char mensaje[512];
+            sprintf(mensaje, "0$");
+            send(s, mensaje, strlen(mensaje), 0);
+            recv(s, recvBuff, 512, 0);
             salir = 1;
             break;
         } else if (opcion == 2) {
             std::cout << "Has seleccionado la opcion 2: Cambiar CONTRASENYA." << std::endl;
             //FUNCION PARA CAMBIAR LA CONTRASENYA! (SI ES VALIDA, LLAMADA A SERVER PA INTRODUCRIR!)
+            char mensaje[512];
+            sprintf(mensaje, "0$");
+            send(s, mensaje, strlen(mensaje), 0);
+            recv(s, recvBuff, 512, 0);
             salir = 1;
             break;
         } else {
             //SI LA OPCION NO ES VALIDA, ERROR.
             std::cout << "¡ERROR, SELECCIONE UN NUMERO VALIDO!" << std::endl;
-            break;
         }
     }
 }
@@ -329,7 +360,7 @@ void menuLogin(SOCKET s, char sendBuff[512], char recvBuff[512]) {
             //si son correctos, se inicia sesion
             Usuario usr = strAUsuario(recvBuff);
             std::cout << "Iniciando sesion..." << std::endl;
-            menuPrincipal(usr);
+            menuPrincipal(s,sendBuff,recvBuff,usr);
             salir=1;
         
         } else {
@@ -381,6 +412,13 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
     }
 }
 
+
+
+
+
+
+//////////////////////////////////////////////////CODIGOS//////////////////////////////////////////////////////////////////////////////////////////////////
+
 Usuario strAUsuario(char mensaje[512]) {
     Usuario usr;
     
@@ -411,6 +449,34 @@ Usuario strAUsuario(char mensaje[512]) {
 } 
 
 
+std::vector<Actividad> strAActividades( char* actividadesString) {
+    std::vector<Actividad> listaActividades;
+    char* copiaString = strdup(actividadesString); // Duplicar la cadena para evitar modificar la original
+
+    // Tokenizar la cadena utilizando el delimitador "$"
+    char* token = strtok(copiaString, "$");
+    while (token != nullptr) {
+        // Obtener cada atributo de la actividad
+        char* nombre = token;
+        char* descripcion = strtok(nullptr, "$");
+        char* tipo = strtok(nullptr, "$");
+        char* publico = strtok(nullptr, "$");
+        char* municipio = strtok(nullptr, "$");
+        char* direccion = strtok(nullptr, "$");
+        char* encargado = strtok(nullptr, "$");
+        char* fecha = strtok(nullptr, "$");
+
+        // Crear un objeto Actividad con los atributos obtenidos y agregarlo a la lista
+        Actividad actividad(nombre, descripcion, tipo, publico, municipio, direccion, encargado, fecha);
+        listaActividades.push_back(actividad);
+
+        // Obtener el siguiente token
+        token = strtok(nullptr, "$");
+    }
+
+    free(copiaString); // Liberar la memoria asignada por strdup
+    return listaActividades;
+}
 
 
 

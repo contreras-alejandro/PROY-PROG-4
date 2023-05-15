@@ -3,7 +3,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <windows.h>
-#include "../Menu/Menu.h"
+#include "../Menu/menu.h"
+#include <vector>
+
 
 #define SERVER_IP "127.0.0.1"
 #define SERVER_PORT 6000

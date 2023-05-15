@@ -478,6 +478,60 @@ void eliminarInscripcion(int idAct, int id_usu) {
 
 }
 
+
+//FUNCION PARA MOSTRAR LAS ACTIVIDADES DE LA BASE DE DATOS
+// FUNCION PARA OBTENER LAS ACTIVIDADES DE LA BASE DE DATOS COMO UNA CADENA DE CARACTERES SEPARADA POR '$'
+char* obtenerActividadesFecha() {
+    int rc;
+    abrirConexion();
+    sqlite3_stmt *stmt;
+    char* sql = "SELECT * FROM ACTIVIDAD ORDER BY FECHA_ACT";
+
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+
+    if (rc != SQLITE_OK) {
+        printf("Error al preparar la consulta\n");
+        return NULL;
+    }
+
+    // NOMBRES DE COLUMNAS
+    char* actividades = malloc(sizeof(char) * 10000);
+    sprintf(actividades, "%-7s %-30s %-30s %-30s %-30s %-40s %-30s %-30s\n-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n", "ID_ACT", "NOMBRE_ACT", "TIPO_DE_ACTIVIDAD", "PUBLICO", "MUNICIPIO", "DIRECCION", "ENCARGADO", "FECHA_ACT");
+
+    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+        int id_act = sqlite3_column_int(stmt, 0);
+        const unsigned char* nombre_act = sqlite3_column_text(stmt, 1);
+        const unsigned char* tipo_de_actividad = sqlite3_column_text(stmt, 3);
+        const unsigned char* publico = sqlite3_column_text(stmt, 4);
+        const unsigned char* municipio = sqlite3_column_text(stmt, 5);
+        const unsigned char* direccion = sqlite3_column_text(stmt, 6);
+        const unsigned char* encargado = sqlite3_column_text(stmt, 7);
+        const unsigned char* fecha_act = sqlite3_column_text(stmt, 8);
+
+        // CONCATENAR LOS ATRIBUTOS DE CADA ACTIVIDAD A LA CADENA DE ACTIVIDADES
+        char temp[1000];
+        sprintf(temp, "%-7d %-30s %-30s %-30s %-30s %-40s %-30s %-30s\n\n", id_act, nombre_act, tipo_de_actividad, publico, municipio, direccion, encargado, fecha_act);
+        strcat(actividades, temp);
+    }
+
+    if (rc != SQLITE_DONE) {
+        printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
+        sqlite3_finalize(stmt);
+        sqlite3_close(db);
+        return NULL;
+    }
+
+    sqlite3_finalize(stmt);
+    cerrarConexion();
+    return actividades;
+}
+
+
+
+
+
+
+
 //FUNCION PREVIA A VALORAR UNA ACTIVIDAD
 
 // - TIENE QUE HABERSE REALIZADO LA ACTIVIDAD

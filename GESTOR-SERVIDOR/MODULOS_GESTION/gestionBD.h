@@ -25,6 +25,7 @@ void registrarUsuario(Usuario u);
 Usuario* loginUsuario(char* usuario, char* contrasena);
 
 //VER ACTIVIDADES CON FILTR0 (RECIBE UN INT, QUE DEPENDE CUAL SEA SERA UNA CONSULTA O OTRA)
+void verActividadesFecha();
 
 // INSCIRBIR A ACTIVIDAD (INT ID_USU, INT ID_ACT)
 void insertarInscripcionActividad(int idAct, int idUsu);
@@ -38,6 +39,8 @@ void eliminarInscripcion(int idAct, int id_usu);
 int comprobarInscripcionValorar(int id_act, int id_usu);
 //VALORACION INSCR (INT ID_USU, INT ID_ACT , INT NOTA)
 void insertarValoracionActividad(int idAct, int idUsu, float valoracion);
+
+char* obtenerActividadesFecha();
 
 
 #endif

@@ -113,7 +113,20 @@ int main(){
 					strcpy(sendBuff, "0");
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 				}
-						}
+			}else if (strcmp(codigo, "03") == 0) { //Actividades por fecha
+				char* act = obtenerActividadesFecha();
+				memset(sendBuff, 0, strlen(sendBuff));				
+				strcpy(sendBuff, act);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			}else if (strcmp(codigo, "04") == 0) { //Registro
+				
+				strcpy(sendBuff, "1");
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			}else if (strcmp(codigo, "05") == 0) { //Registro
+				
+				strcpy(sendBuff, "1");
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			}
 		}
 	} while (1);
     closesocket(comm_socket);

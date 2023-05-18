@@ -267,13 +267,13 @@ void registrarUsuario(Usuario u ) {
 
 
 
-Usuario* loginUsuario(char* usuario, char* contrasena){
+Usuario* loginUsuario(char* usuario, char* contrasena) {
     abrirConexion();
     int resultado_consulta;
     sqlite3_stmt *stmt;
     char* consulta = "SELECT * FROM USUARIO WHERE USUARIO_USU = ? AND CONTRASENYA_USU = ?;";
 
-    //OBTENEMOS EL VALOR DE LA CONTRASENYA HASHEADA
+    // OBTENEMOS EL VALOR DE LA CONTRASEÑA HASHEADA
    
     resultado_consulta = sqlite3_prepare_v2(db, consulta, -1, &stmt, 0);
 
@@ -286,44 +286,44 @@ Usuario* loginUsuario(char* usuario, char* contrasena){
     sqlite3_bind_text(stmt, 1, usuario, strlen(usuario), SQLITE_STATIC);
     sqlite3_bind_text(stmt, 2, contrasena, strlen(contrasena), SQLITE_STATIC);
 
-    //EJECUTAMOS SENTENCIA SQL
+    // EJECUTAMOS SENTENCIA SQL
 
     resultado_consulta = sqlite3_step(stmt);
 
-    //SI EL USUARIO EXISTE, DEVOLVEMOS UN 1, SINO, OTRO VALOR
+    // SI EL USUARIO EXISTE, DEVOLVEMOS UN 1, SINO, OTRO VALOR
 
     Usuario* usr = (Usuario*) malloc(sizeof(Usuario)); // Aquí creamos un puntero a Usuario y asignamos memoria dinámica
 
     if (resultado_consulta == SQLITE_ROW) {
-        printf("Nombre de usuario y contrasena correctas\n");
-        //LOS MALLOC
+        printf("Nombre de usuario y contraseña correctas\n");
 
-        const unsigned char*  nombreA = sqlite3_column_text(stmt, 1);
-
-        usr->nombre = malloc(strlen(nombreA)+1);
-        strcpy(  usr->nombre, nombreA );
-
-       
-
-
-        const unsigned char*  apellidoA = sqlite3_column_text(stmt, 2);
-        usr->apellido = malloc(strlen(apellidoA)+1);
-        strcpy(  usr->apellido, apellidoA );
-
-        usr->nusuario = malloc(strlen(usuario)+1);
-        strcpy(  usr->nusuario, usuario );
+        // OBTENEMOS EL VALOR DEL ID
+        const unsigned char* id = sqlite3_column_text(stmt, 0);
+        usr->id = id;
+        printf("id:%s\n",usr->id);
         
-       
 
-        usr->contrasenya = malloc(strlen(contrasena)+1);
-        strcpy(usr->contrasenya, contrasena );
+        // ASIGNAMOS LOS DEMÁS CAMPOS
 
- 
+        const unsigned char* nombreA = sqlite3_column_text(stmt, 1);
+        usr->nombre = malloc(strlen(nombreA) + 1);
+        strcpy(usr->nombre, nombreA);
+
+        const unsigned char* apellidoA = sqlite3_column_text(stmt, 2);
+        usr->apellido = malloc(strlen(apellidoA) + 1);
+        strcpy(usr->apellido, apellidoA);
+
+        usr->nusuario = malloc(strlen(usuario) + 1);
+        strcpy(usr->nusuario, usuario);
+
+        usr->contrasenya = malloc(strlen(contrasena) + 1);
+        strcpy(usr->contrasenya, contrasena);
+
         sqlite3_finalize(stmt);
         cerrarConexion();
         return usr; // Devolvemos el puntero que hemos creado
     } else if (resultado_consulta == SQLITE_ERROR) {
-        //EN CASO DE ERROR, DEVUELVE -1
+        // EN CASO DE ERROR, DEVUELVE -1
         printf("Error en la consulta: %s\n", sqlite3_errmsg(db));
         sqlite3_finalize(stmt);
         cerrarConexion();
@@ -337,6 +337,7 @@ Usuario* loginUsuario(char* usuario, char* contrasena){
         return NULL;
     }
 }
+
 
 //FUNCION PARA INSERTAR VALORACION ACTIVIDAD EN BASE DE DATOS
 void insertarInscrSipcionActividad(int idAct, int idUsu){

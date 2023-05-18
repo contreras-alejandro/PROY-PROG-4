@@ -152,9 +152,7 @@ void menuPrincipal(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usua
             break;
         } else if(opcion==3) {
             std::cout << "Has seleccionado la opcion 3: BORRAR INSCRIPCION a ACTICIDAD." << std::endl;
-            //logger(0,usuario,"ACCEDIENDO A CREAR ADMINISTRADOR");
-            //crearAdmin(usuario); 
-            menuPrincipal(s,sendBuff,recvBuff,usuario);       
+            menuIncrbirse(s,sendBuff,recvBuff,usuario);     
             salir=1;
             break;
         } else if(opcion==4) {
@@ -164,6 +162,7 @@ void menuPrincipal(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usua
             break;
         } else if(opcion==5) {
             std::cout << "Has seleccionado la opcion 5: PERFIL." << std::endl;
+            std::cout << "Sesion iniciada por: " << usuario.toString() << std::endl;
             menuPerfil(s,sendBuff,recvBuff,usuario);
             salir=1;
             break;
@@ -419,6 +418,17 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
 }
 
 
+void menuIncrbirse(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usuario) {
+    std::cout << "Introduzca el id de la actividad a la que quieras inscribirte\n";
+    char idAct[100];
+    std::cin.getline(idAct, 100);
+
+
+    char mensaje[512];
+    sprintf(mensaje, "06$%s$%s$", idAct, usuario.getId());
+    send(s, mensaje, strlen(mensaje), 0);
+
+}
 
 
 
@@ -432,6 +442,11 @@ Usuario strAUsuario(char mensaje[512]) {
     strncpy(copiaMensaje, mensaje, sizeof(copiaMensaje));
     
     char* token = strtok(copiaMensaje, "$");
+
+    token = strtok(nullptr, "$");
+
+    int id = token ? atoi(token) : 0;
+    usr.setId(id);
 
     token = strtok(nullptr, "$");
 
@@ -452,7 +467,7 @@ Usuario strAUsuario(char mensaje[512]) {
     usr.setContrasenya(contrasenya);
     
     return usr;
-} 
+}
 
 
 std::vector<Actividad> strAActividades( char* actividadesString) {

@@ -4,6 +4,7 @@
 namespace Estructura_Usuario
 {
     typedef struct{
+        int id;
         char* nombre;
         char* apellido;
         char* nombre_usu;
@@ -11,9 +12,11 @@ namespace Estructura_Usuario
         char* contrasenya;
     }Usuario;
 }
+
 class Usuario
 {
 private:
+    int id;
     char* nombre;
     char* apellido;
     char* nombre_usu;  // CLAVE UNICA NO SE PODRA REPETIR
@@ -21,10 +24,12 @@ private:
     
 public:
     Usuario();
-    Usuario(char* nombre, char* apellido, char* nombre_usu, char* contrasenya);
+    Usuario(int id, char* nombre, char* apellido, char* nombre_usu, char* contrasenya);
+    int getId();
     char* getNombre();
     char* getApellido();
     char* getNombreUsuario();
+    void setId(int id);
     void setNombre(char* nombre);
     void setNombreUsuario(char* nombre_usu);
     void setApellido(char* apellido);
@@ -34,8 +39,6 @@ public:
     Estructura_Usuario::Usuario convertirClaseAEstructura();
     char* toString() const;
     ~Usuario();
-
 };
-
 
 #endif

@@ -16,6 +16,11 @@ Usuario strAUsuario(char mensaje[512]) {
 
     token = strtok(nullptr, "$");
 
+    int id = token ? atoi(token) : 0;
+    usr.setId(id);
+
+    token = strtok(nullptr, "$");
+
     char* nombre = const_cast<char*>(token ? token : "");
     token = strtok(nullptr, "$");
 
@@ -34,5 +39,6 @@ Usuario strAUsuario(char mensaje[512]) {
     
     return usr;
 }
+
 
 

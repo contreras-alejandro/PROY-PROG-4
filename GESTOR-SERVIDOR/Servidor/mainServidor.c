@@ -93,12 +93,13 @@ int main(){
 			} else if (strcmp(codigo, "02") == 0) { //Login
 				Usuario* usr=NULL;
 			    char* token = strtok(recvBuff, "$");
-				token = strtok(NULL, "$"); // Obtener segundo token (usuario)
+				token = strtok(NULL, "$"); // Obtener segundo token (usr)
 				char* usuario = token;
 				token = strtok(NULL, "$"); // Obtener tercer token (contraseña)
 				char* contrasena = token;
 				printf("El nombre de usuario es: %s,y la contra: %s", usuario, contrasena);
 				usr = loginUsuario(usuario, contrasena);
+				
 
 				
 
@@ -129,6 +130,20 @@ int main(){
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			}else if (strcmp(codigo, "05") == 0) { //Registro
 				
+				strcpy(sendBuff, "1");
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			}  else if (strcmp(codigo, "06") == 0) { // Eliminar inscripción por ID
+				char* token = strtok(recvBuff, "$");
+				token = strtok(NULL, "$"); // Obtener segundo token (ID de actividad)
+				int idActividad = atoi(token);
+				token = strtok(NULL, "$"); // Obtener tercer token (ID de usuario)
+				int idUsuario = atoi(token);
+				printf("ID de actividad a eliminar: %d\n", idActividad);
+				printf("ID de usuario a eliminar: %d\n", idUsuario);
+
+				eliminarInscripcion(idActividad, idUsuario); // Llama a la función para eliminar la inscripción
+
+				memset(sendBuff, 0, strlen(sendBuff));
 				strcpy(sendBuff, "1");
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			}

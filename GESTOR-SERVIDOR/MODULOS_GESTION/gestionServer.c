@@ -15,7 +15,7 @@
 
 #define MAX_LINE_ADMIN 50
 //funcion para realizar el log
-void logger(int severity, char* usuario, char* info) {
+void logger(int severity, char* info) {
     //APERTURA
     char *ruta =leerProperties(3);
     time_t tiempo = time(NULL);
@@ -27,15 +27,15 @@ void logger(int severity, char* usuario, char* info) {
     if (ficheroLog != NULL) {
         //DEPENDIENDO DE LA SEVERIDAD INTRODUCIDA, SE ESCRIBE UN MENSAJE O OTRO
         if (severity == INFO) {
-            fprintf(ficheroLog, " {%s} {%02d:%02d:%02d} [INFO] Usuario:%s -> %s \n",fecha,
-             tm->tm_hour, tm->tm_min, tm->tm_sec,usuario,info);
+            fprintf(ficheroLog, " {%s} {%02d:%02d:%02d} [INFO] -> %s \n",fecha,
+             tm->tm_hour, tm->tm_min, tm->tm_sec,info);
 
         } else if (severity == WARNING) {
-               fprintf(ficheroLog, " {%s} {%02d:%02d:%02d} [WARNING] Usuario:%s -> %s \n",fecha,
-               tm->tm_hour, tm->tm_min, tm->tm_sec,usuario,info);
+               fprintf(ficheroLog, " {%s} {%02d:%02d:%02d} [WARNING]-> %s \n",fecha,
+               tm->tm_hour, tm->tm_min, tm->tm_sec,info);
         } else if (severity == ERROR) {
-            fprintf(ficheroLog, "{%s} {%02d:%02d:%02d} [ERROR] Usuario:%s -> %s \n",fecha, tm->tm_hour, tm->tm_min, tm->tm_sec,
-            usuario,info);
+            fprintf(ficheroLog, "{%s} {%02d:%02d:%02d} [ERROR] -> %s \n",fecha, tm->tm_hour, tm->tm_min, tm->tm_sec,
+            info);
         }
         fclose(ficheroLog);
     }

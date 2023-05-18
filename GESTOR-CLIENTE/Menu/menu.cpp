@@ -128,7 +128,6 @@ int printMenuPrincipal() {
 //FUNCION PARA GESTION DEL MENU PRINCIPAL
 void menuPrincipal(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario) {
     logger(0,usuario.getNombreUsuario(),"ACCEDIENDO AL MENU PRINCIPAL");
-    printf("LOG HECHOO");
 
     int salir=0;   
     std::cout << "Sesion iniciada por: " << usuario.getNombreUsuario() << std::endl;
@@ -280,7 +279,7 @@ int printMenuPerfil() {
     std::cout << "\n||PERFIL||\n";
     std::cout << "_________________________________________________________\n";
     std::cout << "1. Ver INSCRIPCIONES\n";
-    std::cout << "2. Cambiar CONTRANSEYA\n";
+    std::cout << "2. Ver datos de perfil\n";
     std::cout << "_________________________________________________________\n";
     return numOpciones;
 }
@@ -304,12 +303,10 @@ void menuPerfil(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario
             salir = 1;
             break;
         } else if (opcion == 2) {
-            std::cout << "Has seleccionado la opcion 2: Cambiar CONTRASENYA." << std::endl;
-            //FUNCION PARA CAMBIAR LA CONTRASENYA! (SI ES VALIDA, LLAMADA A SERVER PA INTRODUCRIR!)
-            char mensaje[512];
-            sprintf(mensaje, "0$");
-            send(s, mensaje, strlen(mensaje), 0);
-            recv(s, recvBuff, 512, 0);
+            std::cout << "Has seleccionado la opcion 2: Ver datos de perfil" << std::endl;
+            //LLAMAMOS AL FUNCION FRIEND, DE LA SOBRECARGA DEL OPERADOR >> CON EL USUARIO
+            cout << usuario;
+            menuPrincipal(s,sendBuff,recvBuff,usuario);
             salir = 1;
             break;
         } else {

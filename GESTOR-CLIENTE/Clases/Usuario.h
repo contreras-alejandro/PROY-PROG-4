@@ -1,6 +1,7 @@
 #ifndef _USUARIO_H
 #define _USUARIO_H
-
+#include <iostream>
+using namespace std;
 namespace Estructura_Usuario
 {
     typedef struct{
@@ -39,6 +40,7 @@ public:
     Estructura_Usuario::Usuario convertirClaseAEstructura();
     char* toString() const;
     ~Usuario();
+    friend ostream& operator<<(ostream& out, const Usuario& p);
 };
 
 #endif

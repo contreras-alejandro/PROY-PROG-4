@@ -42,7 +42,7 @@ typedef struct{
 //FUNCION QUE DEVUELVE EL VALOR INTRODUCIDO HASHEADO! (PARA LA CONTRASENYA)
 char* hash_string(char* str);
 //funcion para realizar el log
-void logger(int severity, char* usuario, char* info);
+void logger(int severity, char* info);
 //FUNCION PARA OBTENER LA RUTA DEL FICHERO PROPERTIES
 char * leerProperties(int);
 

@@ -84,13 +84,18 @@ int main(){
 			codigo[2] = '\0';  // Agregar caracter nulo al final
 
 			if (strcmp(codigo, "00") == 0) {
+				logger(0,"Recibido el codigo 00, CERRAR");
 				break;
 			} else if (strcmp(codigo, "01") == 0) { //Registro
+			logger(0,"Recibido el codigo 01, REGISTRO");
 				Usuario u=strAUsuario(recvBuff);
 				registrarUsuario(u);
 				strcpy(sendBuff, "1");
+				logger(0,"USUARIO REGISTRADO");
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				
 			} else if (strcmp(codigo, "02") == 0) { //Login
+			logger(0,"Recibido codigo 02: Log In");
 				Usuario* usr=NULL;
 			    char* token = strtok(recvBuff, "$");
 				token = strtok(NULL, "$"); // Obtener segundo token (usr)
@@ -98,29 +103,27 @@ int main(){
 				token = strtok(NULL, "$"); // Obtener tercer token (contraseña)
 				char* contrasena = token;
 				printf("El nombre de usuario es: %s,y la contra: %s", usuario, contrasena);
-				usr = loginUsuario(usuario, contrasena);
-				
-
-				
-
-				
+				usr = loginUsuario(usuario, contrasena);			
 				if (usr != NULL) {
+					logger(0,"LOG IN con exito");
 					char* strUsr=usuarioAStr(usr);
 					printf("Mando un 1");
 					memset(sendBuff, 0, strlen(sendBuff)); 
 					strcpy(sendBuff, strUsr);
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
+					
 				} else {
 					printf("Mando un 0");
+					logger(1,"LOG IN fallido");
 					memset(sendBuff, 0, strlen(sendBuff)); 
 					strcpy(sendBuff, "0");
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 				}
 			}else if (strcmp(codigo, "03") == 0) {
 				 //Actividades por fecha
+				logger(0,"Recibido el codigo 03, MOSTRAR ACTIVIDADES");
 				char* act = malloc(strlen(obtenerActividadesFecha()));
 				strcpy(act,obtenerActividadesFecha());
-				printf("ARRAY: %s",act);
 				memset(sendBuff, 0, strlen(sendBuff));				
 				strcpy(sendBuff, act);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);

@@ -76,7 +76,7 @@ Actividad buscarActividadPorId(int id,char *admin) {
 
     char mensaje[50];
     sprintf(mensaje, "ACTIVIDAD ENCONTRDA CON ID %i", id);
-    logger(0,admin,mensaje);
+    //logger(0,admin,mensaje);
     sqlite3_finalize(stmt);
     cerrarConexion();
 

@@ -137,3 +137,14 @@ Usuario::~Usuario()
     delete[] nombre_usu;
     delete[] contrasenya;
 }
+
+
+
+ostream& operator<<(ostream& out, const Usuario& u)
+{
+    out << "Nombre: " << u.nombre << endl;
+    out << "Apellido: " << u.apellido << endl;
+    out << "Nombre de usuario: " << u.nombre_usu << endl;
+    out << "Contrasenya: " << u.contrasenya << endl;
+    return out;
+}

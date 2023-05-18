@@ -1,0 +1,7 @@
+
+ {2023-05-18} {22:46:31} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-18} {22:46:31} [INFO] -> LOG IN con exito 
+ {2023-05-18} {22:58:12} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-18} {22:58:12} [INFO] -> LOG IN con exito 
+ {2023-05-18} {23:01:38} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-18} {23:01:38} [INFO] -> LOG IN con exito 

@@ -10,13 +10,13 @@
 #define SERVER_IP "127.0.0.1"
 #define SERVER_PORT 6000
 
-//g++ Menu/menu.cpp Cliente/mainCliente.cpp Clases/Usuario.cpp -o cliente.exe -lws2_32
+//g++ Menu/menu.cpp Cliente/mainCliente.cpp Clases/Usuario.cpp Clases/Actividad.cpp Menu/gestionLog.cpp -o cliente.exe -lws2_32
 
 int main(){
     WSADATA wsaData;
 	SOCKET s;
 	struct sockaddr_in server;
-	char sendBuff[512], recvBuff[1024];
+	char sendBuff[100000], recvBuff[100000];
 
     printf("\nInitialising Winsock...\n");
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {

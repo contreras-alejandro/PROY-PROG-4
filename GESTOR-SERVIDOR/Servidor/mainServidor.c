@@ -6,8 +6,8 @@
 
 #define SERVER_IP "127.0.0.1"
 #define SERVER_PORT 6000
-#define TAMAINO_SENDBUFF 1024
-#define TAMAINO_RECVBUFF 512
+#define TAMAINO_SENDBUFF 100000
+#define TAMAINO_RECVBUFF 100000
 #define BYTES 2
 
 //gcc Servidor/mainServidor.c Servidor/gestionCodigos.c sqlite/sqlite3.c MODULOS_GESTION/gestionBD.c MODULOS_GESTION/gestionServer.c -o server.exe -lws2_32
@@ -99,10 +99,12 @@ int main(){
 				char* contrasena = token;
 				printf("El nombre de usuario es: %s,y la contra: %s", usuario, contrasena);
 				usr = loginUsuario(usuario, contrasena);
-				char* strUsr=usuarioAStr(usr);
+
+				
 
 				
 				if (usr != NULL) {
+					char* strUsr=usuarioAStr(usr);
 					printf("Mando un 1");
 					memset(sendBuff, 0, strlen(sendBuff)); 
 					strcpy(sendBuff, strUsr);
@@ -113,8 +115,11 @@ int main(){
 					strcpy(sendBuff, "0");
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 				}
-			}else if (strcmp(codigo, "03") == 0) { //Actividades por fecha
-				char* act = obtenerActividadesFecha();
+			}else if (strcmp(codigo, "03") == 0) {
+				 //Actividades por fecha
+				char* act = malloc(strlen(obtenerActividadesFecha()));
+				strcpy(act,obtenerActividadesFecha());
+				printf("ARRAY: %s",act);
 				memset(sendBuff, 0, strlen(sendBuff));				
 				strcpy(sendBuff, act);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);

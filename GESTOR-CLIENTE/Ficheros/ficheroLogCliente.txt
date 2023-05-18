@@ -1,0 +1,1 @@
+ {2023-05-18} {17:30:57} [INFO] Usuario:contreras -> ACCEDIENDO AL MENU PRINCIPAL 

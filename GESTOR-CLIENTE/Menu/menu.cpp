@@ -5,6 +5,7 @@
 #include <vector>
 #include <cstring>
 #include "menu.h"
+#include "gestionLog.h"
 //#include "gestionCodigos.h"
 
 
@@ -126,6 +127,8 @@ int printMenuPrincipal() {
 
 //FUNCION PARA GESTION DEL MENU PRINCIPAL
 void menuPrincipal(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario) {
+    logger(0,usuario.getNombreUsuario(),"ACCEDIENDO AL MENU PRINCIPAL");
+    printf("LOG HECHOO");
 
     int salir=0;   
     std::cout << "Sesion iniciada por: " << usuario.getNombreUsuario() << std::endl;
@@ -218,12 +221,14 @@ void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],U
                 char mensaje[512];
                 sprintf(mensaje, "03$");
                 send(s, mensaje, strlen(mensaje), 0);
-                recv(s, recvBuff, 512, 0);
-                std::vector<Actividad> actividades = strAActividades(recvBuff);
-                for ( auto& actividad : actividades) {
-                    std::cout << "Nombre: " << actividad.getNombreAct() << std::endl;
+                recv(s, recvBuff, 100000, 0);
+                
+                printf("ACTIVIDADES:\n %s", recvBuff);
+                //std::vector<Actividad> actividades = strAActividades(recvBuff);
+                //for ( auto& actividad : actividades) {
+                   // std::cout << "Nombre: " << actividad.getNombreAct() << std::endl;
 
-                }
+                //}
                 menuVerActividadesInicio(s,sendBuff,recvBuff,usuario);
                 salir=1;
                 break;
@@ -359,6 +364,7 @@ void menuLogin(SOCKET s, char sendBuff[512], char recvBuff[512]) {
         if (recvBuff[0] == '1') {
             //si son correctos, se inicia sesion
             Usuario usr = strAUsuario(recvBuff);
+            printf("DATOS:  %s", recvBuff);
             std::cout << "Iniciando sesion..." << std::endl;
             menuPrincipal(s,sendBuff,recvBuff,usr);
             salir=1;

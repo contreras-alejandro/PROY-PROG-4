@@ -42,7 +42,9 @@ int comprobarOpcionValida(int opcion, int numOpciones);
 
 void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]);
 
-void menuIncrbirse(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usuario);
+void menuBorrarInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usuario);
+
+void menuInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usuario);
 
 Usuario strAUsuario( char mensaje[512]);
 

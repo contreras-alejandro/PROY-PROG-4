@@ -28,7 +28,7 @@ Usuario* loginUsuario(char* usuario, char* contrasena);
 void verActividadesFecha();
 
 // INSCIRBIR A ACTIVIDAD (INT ID_USU, INT ID_ACT)
-void insertarInscripcionActividad(int idAct, int idUsu);
+int insertarInscrSipcionActividad(char* idAct, char* id_usu);
 //COMPROBAR INSCRIPCION (INT ID_USU, INT ID_ACT) PARA COMPRAR SI ESTABA SUSCRITO
 ////// IMPORTANTE, MIRAR SI YA HA PASADO O NO
 

@@ -146,12 +146,12 @@ void menuPrincipal(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usua
             break;
         } else if(opcion==2) {
             std::cout << "Has seleccionado la opcion 2: INSCRIBIR a ACTICIDAD." << std::endl;
-            //menuPrincipal(usuario);
+            menuInscripcion(s,sendBuff,recvBuff,usuario);
             salir=1;
             break;
         } else if(opcion==3) {
             std::cout << "Has seleccionado la opcion 3: BORRAR INSCRIPCION a ACTICIDAD." << std::endl;
-            menuIncrbirse(s,sendBuff,recvBuff,usuario);     
+            menuBorrarInscripcion(s,sendBuff,recvBuff,usuario);     
             salir=1;
             break;
         } else if(opcion==4) {
@@ -415,8 +415,8 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
 }
 
 
-void menuIncrbirse(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usuario) {
-    std::cout << "Introduzca el id de la actividad a la que quieras inscribirte\n";
+void menuBorrarInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usuario) {
+    std::cout << "Introduzca el id de la actividad que quieras des-inscribirte\n";
     char idAct[100];
     std::cin.getline(idAct, 100);
 
@@ -424,18 +424,40 @@ void menuIncrbirse(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usu
     char mensaje[512];
     //SE CIERRA EL PROGRAMA CON EL getID()
     sprintf(mensaje, "06$%s$%s$", idAct, std::to_string(usuario.getId()).c_str());
-    printf("menuInscribirse//el codigo que se manda:%s\n",mensaje);
+
     send(s, mensaje, strlen(mensaje), 0);
     recv(s,recvBuff,512,0);
     if (recvBuff[0] == '1') {
         std::cout << "Inscripcion borrada\n";
         menuPrincipal(s,sendBuff,recvBuff,usuario);
     } else {
-        std::cout << "No se pudo registrar al usuario.\n";
+        std::cout << "No se pudo borrar la inscripcion\n";
         menuPrincipal(s,sendBuff,recvBuff,usuario);
     }
 
 }
+
+void menuInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usuario){
+    std::cout << "Introduzca el id de la actividad que quieras inscribirte\n";
+    char idAct[100];
+    std::cin.getline(idAct, 100);
+
+
+    char mensaje[512];
+
+    sprintf(mensaje, "07$%s$%s$", idAct, std::to_string(usuario.getId()).c_str());
+    printf("menuInscribirse//el codigo que se manda:%s\n",mensaje);
+    send(s, mensaje, strlen(mensaje), 0);
+    recv(s,recvBuff,512,0);
+    if (recvBuff[0] == '1') {
+        std::cout << "Inscripcion exitosa\n";
+        menuPrincipal(s,sendBuff,recvBuff,usuario);
+    } else {
+        std::cout << "No se pudo inscribir en la actividad.\n";
+        menuPrincipal(s,sendBuff,recvBuff,usuario);
+    }
+}
+
 
 
 

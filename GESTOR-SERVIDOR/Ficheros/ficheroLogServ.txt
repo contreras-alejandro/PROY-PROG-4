@@ -65,3 +65,10 @@
  {2023-05-19} {13:21:00} [INFO] -> Inscripcion eliminada con exito 
  {2023-05-19} {13:21:56} [INFO] -> Inscripcion eliminada con exito 
  {2023-05-19} {13:22:08} [INFO] -> Inscripcion eliminada con exito 
+ {2023-05-19} {13:44:31} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {13:44:31} [INFO] -> LOG IN con exito 
+ {2023-05-19} {13:44:36} [INFO] -> Inscripcion eliminada con exito 
+ {2023-05-19} {13:45:05} [INFO] -> Inscripcion eliminada con exito 
+ {2023-05-19} {13:46:06} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {13:46:06} [INFO] -> LOG IN con exito 
+ {2023-05-19} {13:46:08} [INFO] -> Inscripcion eliminada con exito 

@@ -163,6 +163,34 @@ int main(){
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 
 				}
+			}else if (strcmp(codigo, "07") == 0) { //  inscripción por ID
+				char* token = strtok(recvBuff, "$");
+				token = strtok(NULL, "$"); // Obtener segundo token (ID de actividad)
+				int idActividad = atoi(token); // Convertir a entero utilizando atoi
+				token = strtok(NULL, "$"); // Obtener tercer token (ID de usuario)
+				int idUsuario = atoi(token); // Convertir a entero utilizando atoi
+
+				char idActStr[100];
+				char idUsuStr[100];
+				sprintf(idActStr, "%d", idActividad);
+				sprintf(idUsuStr, "%d", idUsuario);
+
+				int resultado = insertarInscrSipcionActividad(idActStr, idUsuStr); // Llama a la función para eliminar la inscripción
+				if(resultado = 1){
+					logger(0,"Inscripcion eliminada con exito");
+					printf("Mando un 1");
+					memset(sendBuff, 0, strlen(sendBuff)); 
+					strcpy(sendBuff, "1");
+					send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+				}else{
+					logger(0,"No se pudo eliminar la inscrpcion");
+					printf("Mando un 1");
+					memset(sendBuff, 0, strlen(sendBuff)); 
+					strcpy(sendBuff, "0");
+					send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+				}
 			}
 		}
 	} while (1);

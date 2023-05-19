@@ -341,42 +341,40 @@ Usuario* loginUsuario(char* usuario, char* contrasena) {
 
 
 //FUNCION PARA INSERTAR VALORACION ACTIVIDAD EN BASE DE DATOS
-void insertarInscrSipcionActividad(int idAct, int idUsu){
+int insertarInscrSipcionActividad(char* idAct, char* id_usu){
 
     int rc;
-
     abrirConexion();
     sqlite3_stmt *stmt;
-    char* sql = "INSERT INTO INSCRIPCION (ID_USU,ID_ACT) VALUES (?, ?)";
+    const char* sql = "INSERT INTO INSCRIPCION (ID_USU,ID_ACT) VALUES (?, ?)";
 
     rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
 
     if (rc != SQLITE_OK) {
         printf("Error al preparar la consulta\n");
         //logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
-        return;
+        return 0;
     }
 
-    sqlite3_bind_int(stmt, 1,idUsu);
-    sqlite3_bind_int(stmt, 2,idAct);
-    //EJECUTAMOS SENTENCIA.
-     rc = sqlite3_step(stmt);
-    //ERROR AL INSERTAR
+    sqlite3_bind_text(stmt, 1, id_usu, -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, idAct, -1, SQLITE_STATIC);
+    // EJECUTAMOS SENTENCIA.
+    rc = sqlite3_step(stmt);
+    // ERROR AL INSERTAR
     if (rc != SQLITE_DONE) {
         printf("Error al ejecutar la consulta: %s\n", sqlite3_errmsg(db));
         //logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
         sqlite3_finalize(stmt);
         sqlite3_close(db);
-        return;
+        return 0;
     }
-     //TODO HA IDO BIEN, INSERTADO.
-    //VA TODO BIEN 
-    printf("INSCRIPCION INSERTADO!!\n");
+    // TODO HA IDO BIEN, INSERTADO.
+    // VA TODO BIEN 
+    printf("INSCRIPCION AÑADIDA!!\n");
     //logger(1,admin, "HA INSERTADO UN NUEVO ADMIN");
-    //LIBERAMOS ESPACIO EN MEMORIA DEL ADMIN!
     sqlite3_finalize(stmt);
     cerrarConexion();
-    return;
+    return 1;
 
 
 

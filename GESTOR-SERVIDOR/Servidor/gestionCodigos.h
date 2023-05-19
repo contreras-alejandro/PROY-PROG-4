@@ -5,5 +5,6 @@
 
 Usuario strAUsuario(char* str);
 char* usuarioAStr(Usuario* u);
+char* actividadAStr(Actividad* act);
 
 #endif

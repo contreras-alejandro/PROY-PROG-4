@@ -1,5 +1,7 @@
 #ifndef _ACTIVIDAD_H
 #define _ACTIVIDAD_H
+#include <iostream>
+using namespace std;
 
 namespace Estructura_Actividad
 {
@@ -34,6 +36,7 @@ public:
     Actividad convertirEstructuraAClase(Estructura_Actividad::Actividad a);
     Estructura_Actividad::Actividad convertirClaseAEstructura();
     ~Actividad();
+    friend ostream& operator<<(ostream& out, const Actividad& p);
 };
 
 

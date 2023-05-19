@@ -157,6 +157,7 @@ void menuPrincipal(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usua
         } else if(opcion==4) {
             std::cout << "Has seleccionado la opcion 4: Valorar ACTIVIDAD." << std::endl;
             //menuInicio(usuario);
+            menuValoracion(s,sendBuff,recvBuff,usuario);
             salir=1;
             break;
         } else if(opcion==5) {
@@ -459,6 +460,49 @@ void menuInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario u
 }
 
 
+//MENU PARA VALORAR ACTIVIDAD
+
+void menuValoracion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usuario){
+    std::cout << "Introduzca el id de la actividad que quieras valorar\n";
+    char idAct[100];
+    std::cin.getline(idAct, 100);
+    char mensaje[512];
+
+    sprintf(mensaje, "09$%s$%s$", idAct, std::to_string(usuario.getId()).c_str());
+    printf("menuInscribirse//el codigo que se manda:%s\n",mensaje);
+    send(s, mensaje, strlen(mensaje), 0);
+    //ESPERAMOS A LA RESPUESTA! SI EXISTE DEVOLVERA LA ACTIVDAD, SINO, DECIMOS QUE NO EXISTE Y VOLVEMOS AL MENU
+    
+    recv(s,recvBuff,3000,0);
+    if(recvBuff[0]=='0'){
+        std::cout <<"No existe la actividad\n";
+        std::cout <<"Volviendo al menu.....\n";
+        menuPrincipal(s,sendBuff,recvBuff,usuario);
+
+    }
+    else {
+        printf("BUSCADA CON  EXITO");
+        Actividad actividad = strAActividad(recvBuff);
+        //LLAMAMOS A LA FUNCION FRIEND DEFINIDA
+        cout << actividad;
+
+
+
+    }
+    //AQUI METER QUE MUESTRE ESA ACTIVIDAD
+
+    //LUEGO, SI INTRODUCE LA VALORACION, ESTO
+    //if (recvBuff[0] == '1') {
+       // std::cout << "Valoracion exitosa\n";
+       // menuPrincipal(s,sendBuff,recvBuff,usuario);
+   // } else {
+        //std::cout << "No se pudo valorar en la actividad.\n";
+        //menuPrincipal(s,sendBuff,recvBuff,usuario);
+    //}
+}
+
+
+
 
 
 
@@ -528,6 +572,45 @@ std::vector<Actividad> strAActividades( char* actividadesString) {
     return listaActividades;
 }
 
+
+
+Actividad strAActividad(char* actividadString) {
+    char copiaString[2000];
+    strncpy(copiaString, actividadString, sizeof(copiaString));
+
+    // Tokenizar la cadena utilizando el delimitador "$"
+    char* token = strtok(copiaString, "$");
+
+    token = strtok(nullptr, "$");
+
+    char* nombre = const_cast<char*>(token ? token : "");
+    token = strtok(nullptr, "$");
+
+    char* descripcion = const_cast<char*>(token ? token : "");
+    token = strtok(nullptr, "$");
+
+    char* tipo = const_cast<char*>(token ? token : "");
+    token = strtok(nullptr, "$");
+
+    char* publico = const_cast<char*>(token ? token : "");
+    token = strtok(nullptr, "$");
+
+    char* municipio = const_cast<char*>(token ? token : "");
+    token = strtok(nullptr, "$");
+
+    char* direccion = const_cast<char*>(token ? token : "");
+    token = strtok(nullptr, "$");
+
+    char* encargado = const_cast<char*>(token ? token : "");
+    token = strtok(nullptr, "$");
+
+    char* fecha = const_cast<char*>(token ? token : "");
+
+    // Crear un objeto Actividad con los atributos obtenidos
+    Actividad actividad(nombre, descripcion, tipo, publico, municipio, direccion, encargado, fecha);
+
+    return actividad;
+}
 
 
 

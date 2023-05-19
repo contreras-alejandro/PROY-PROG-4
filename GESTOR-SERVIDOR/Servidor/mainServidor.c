@@ -191,6 +191,44 @@ int main(){
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 
 				}
+			}else if (strcmp(codigo, "09") == 0) { //  valorar ACTIVIDAD por ID
+				char* token = strtok(recvBuff, "$");
+				token = strtok(NULL, "$"); // Obtener segundo token (ID de actividad)
+				int idActividad = atoi(token); // Convertir a entero utilizando atoi
+				token = strtok(NULL, "$"); // Obtener tercer token (ID de usuario)
+				int idUsuario = atoi(token); // Convertir a entero utilizando atoi
+
+				char idActStr[100];
+				char idUsuStr[100];
+				sprintf(idActStr, "%d", idActividad);
+				sprintf(idUsuStr, "%d", idUsuario);
+				printf("ID ACT: %s",idActStr);
+				printf("ID USU: %s",idUsuStr);
+
+
+				Actividad* act=NULL;
+				//EJECUTAMOS SQL OPERACION
+				int idAct = atoi(idActStr);
+				act = buscarActividadPorId(idAct);
+				if(act!=NULL){
+					logger(0,"ACTIVIDAD BUSCADA con exito");
+					char* strAct=actividadAStr(act);
+					printf("Mando un actividad");
+					memset(sendBuff, 0, strlen(sendBuff)); 
+					strcpy(sendBuff, strAct);
+					send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+
+				}
+				else{
+					printf("NO EXISTE!!");
+					printf("Mando un 0");
+					logger(1,"LOG IN fallido");
+					memset(sendBuff, 0, strlen(sendBuff)); 
+					strcpy(sendBuff, "0");
+					send(comm_socket, sendBuff, strlen(sendBuff), 0);
+				}
+
 			}
 		}
 	} while (1);

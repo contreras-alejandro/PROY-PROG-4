@@ -9,7 +9,7 @@ int abrirConexion();
 //FUNCION PARA CERRAR LA BASE DE DATOS
 int cerrarConexion();
 //FUNCION PARA BUSCAR ACTIVIDD POR ID EN BASE DE DATOS
-Actividad buscarActividadPorId(int id,char *admin);
+Actividad* buscarActividadPorId(int id);
 //FUNCION PARA MOSTRAR LAS ACTIVIDADES DE LA BASE DE DATOS
 void verActividades(char *admin);
 //FUNCION PARA COMBROBAR QUE UN NOMBRE DE USUARIO NO EXISTE EN BASE DE DATOS (EVITAR REPETIDOS)

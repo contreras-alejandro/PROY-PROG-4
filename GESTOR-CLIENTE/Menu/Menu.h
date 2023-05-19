@@ -46,8 +46,12 @@ void menuBorrarInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usu
 
 void menuInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usuario);
 
+void menuValoracion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usuario);
+
 Usuario strAUsuario( char mensaje[512]);
 
 std::vector<Actividad> strAActividades( char* actividadesString);
+
+Actividad strAActividad(char* actividadString);
 
 #endif

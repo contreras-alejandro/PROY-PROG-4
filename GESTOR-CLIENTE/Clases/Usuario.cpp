@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string>
 
+
+
 Usuario::Usuario()
 {
     this->id = 0;

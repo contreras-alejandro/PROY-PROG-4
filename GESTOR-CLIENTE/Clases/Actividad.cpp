@@ -3,6 +3,7 @@
 #include  <string.h>
 #include <stdlib.h>
 
+
 Actividad::Actividad()
 {
     this->nombre=NULL;
@@ -94,4 +95,18 @@ Actividad::~Actividad()
     delete [] direccion;
     delete [] encargado;
     delete [] fecha;
+}
+
+
+ostream& operator<<(ostream& out, const Actividad& a)
+{
+    out << "Nombre: " << a.nombre << endl;
+    out << "Descripcion: " << a.descripcion << endl;
+    out << "Tipo: " << a.tipo << endl;
+    out << "Publico: " << a.publico << endl;
+    out << "Municipio: " << a.municipio << endl;
+    out << "Direccion: " << a.direccion << endl;
+    out << "Encargado: " << a.encargado << endl;
+    out << "Fecha: " << a.fecha << endl;
+    return out;
 }

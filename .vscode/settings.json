@@ -43,6 +43,7 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "stdio.h": "c",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "gestioncodigos.h": "c"
     }
 }

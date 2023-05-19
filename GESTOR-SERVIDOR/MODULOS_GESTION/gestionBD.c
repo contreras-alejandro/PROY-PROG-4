@@ -43,35 +43,39 @@ int cerrarConexion()  {
 }
 
 
-//FUNCION PARA BUSCAR ACTIVIDD POR ID EN BASE DE DATOS
-Actividad buscarActividadPorId(int id,char *admin) {
+//FUNCION PARA BUSCAR ACTIVIDAD POR ID EN BASE DE DATOS
+Actividad* buscarActividadPorId(int id) {
     abrirConexion();
     sqlite3_stmt *stmt;
     char sql[100];
     int rc;
 
-    Actividad actividad = {0};
+     Actividad* actividad = (Actividad*) malloc(sizeof(Actividad));
 
     sprintf(sql, "SELECT * FROM ACTIVIDAD WHERE ID_ACT=%d", id);
     rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
 
     if (rc != SQLITE_OK) {
         printf("Error al preparar la consulta\n");
-        return actividad;
+        return NULL;
     }
 
     //EJECUTAMOS SENTENCIA
     rc = sqlite3_step(stmt);
     //SI EXISTE, CREAMOS ACTIVIDAD
     if (rc == SQLITE_ROW) {
-        strcpy(actividad.nombre, sqlite3_column_text(stmt, 1));
-        strcpy(actividad.descripcion, sqlite3_column_text(stmt, 2));
-        strcpy(actividad.tipo, sqlite3_column_text(stmt, 3));
-        strcpy(actividad.publico, sqlite3_column_text(stmt, 4));
-        strcpy(actividad.municipio, sqlite3_column_text(stmt, 5));
-        strcpy(actividad.direccion, sqlite3_column_text(stmt, 6));
-        strcpy(actividad.encargado, sqlite3_column_text(stmt, 7));
-        strcpy(actividad.fecha, sqlite3_column_text(stmt, 8));
+        strcpy(actividad->nombre, sqlite3_column_text(stmt, 1));
+        strcpy(actividad->descripcion, sqlite3_column_text(stmt, 2));
+        strcpy(actividad->tipo, sqlite3_column_text(stmt, 3));
+        strcpy(actividad->publico, sqlite3_column_text(stmt, 4));
+        strcpy(actividad->municipio, sqlite3_column_text(stmt, 5));
+        strcpy(actividad->direccion, sqlite3_column_text(stmt, 6));
+        strcpy(actividad->encargado, sqlite3_column_text(stmt, 7));
+        strcpy(actividad->fecha, sqlite3_column_text(stmt, 8));
+    }
+    else{
+        //NO EXISTE!
+        return NULL;
     }
 
     char mensaje[50];
@@ -79,10 +83,6 @@ Actividad buscarActividadPorId(int id,char *admin) {
     //logger(0,admin,mensaje);
     sqlite3_finalize(stmt);
     cerrarConexion();
-
-    printf("La actividad buscada es:\n");
-    //IMPRIMIMOS LA ACTIVIDAD ( A MODO DE RESUMEN)
-    imprimirActividad(actividad);
     return actividad;
 }
 

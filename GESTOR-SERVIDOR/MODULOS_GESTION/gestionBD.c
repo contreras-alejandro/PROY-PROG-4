@@ -298,10 +298,11 @@ Usuario* loginUsuario(char* usuario, char* contrasena) {
         printf("Nombre de usuario y contraseña correctas\n");
 
         // OBTENEMOS EL VALOR DEL ID
-        const unsigned char* id = sqlite3_column_text(stmt, 0);
-        usr->id = id;
-        printf("id:%s\n",usr->id);
+
         
+        const unsigned char* idU = sqlite3_column_text(stmt, 0);
+        usr->id = malloc(strlen(idU) + 1);
+        strcpy(usr->id, idU);
 
         // ASIGNAMOS LOS DEMÁS CAMPOS
 

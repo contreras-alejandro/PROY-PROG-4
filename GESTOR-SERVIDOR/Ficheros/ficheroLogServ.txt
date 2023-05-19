@@ -45,3 +45,23 @@
  {2023-05-19} {12:29:37} [INFO] -> LOG IN con exito 
  {2023-05-19} {12:31:37} [INFO] -> Recibido codigo 02: Log In 
  {2023-05-19} {12:31:37} [INFO] -> LOG IN con exito 
+ {2023-05-19} {12:35:54} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {12:35:54} [INFO] -> LOG IN con exito 
+ {2023-05-19} {12:45:19} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {12:45:19} [INFO] -> LOG IN con exito 
+ {2023-05-19} {12:50:24} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {12:50:24} [INFO] -> LOG IN con exito 
+ {2023-05-19} {12:52:24} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {12:52:24} [INFO] -> LOG IN con exito 
+ {2023-05-19} {12:53:35} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {12:53:35} [INFO] -> LOG IN con exito 
+ {2023-05-19} {12:55:00} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {12:55:00} [INFO] -> LOG IN con exito 
+ {2023-05-19} {13:10:42} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {13:10:42} [INFO] -> LOG IN con exito 
+ {2023-05-19} {13:20:29} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {13:20:29} [INFO] -> LOG IN con exito 
+ {2023-05-19} {13:20:33} [INFO] -> Inscripcion eliminada con exito 
+ {2023-05-19} {13:21:00} [INFO] -> Inscripcion eliminada con exito 
+ {2023-05-19} {13:21:56} [INFO] -> Inscripcion eliminada con exito 
+ {2023-05-19} {13:22:08} [INFO] -> Inscripcion eliminada con exito 

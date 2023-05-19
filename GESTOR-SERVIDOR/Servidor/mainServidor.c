@@ -138,17 +138,31 @@ int main(){
 			}  else if (strcmp(codigo, "06") == 0) { // Eliminar inscripción por ID
 				char* token = strtok(recvBuff, "$");
 				token = strtok(NULL, "$"); // Obtener segundo token (ID de actividad)
-				int idActividad = atoi(token);
+				int idActividad = atoi(token); // Convertir a entero utilizando atoi
 				token = strtok(NULL, "$"); // Obtener tercer token (ID de usuario)
-				int idUsuario = atoi(token);
-				printf("ID de actividad a eliminar: %d\n", idActividad);
-				printf("ID de usuario a eliminar: %d\n", idUsuario);
+				int idUsuario = atoi(token); // Convertir a entero utilizando atoi
 
-				eliminarInscripcion(idActividad, idUsuario); // Llama a la función para eliminar la inscripción
+				char idActStr[100];
+				char idUsuStr[100];
+				sprintf(idActStr, "%d", idActividad);
+				sprintf(idUsuStr, "%d", idUsuario);
 
-				/* memset(sendBuff, 0, strlen(sendBuff));
-				strcpy(sendBuff, "1");
-				send(comm_socket, sendBuff, sizeof(sendBuff), 0); */
+				int resultado = eliminarInscripcion(idActStr, idUsuStr); // Llama a la función para eliminar la inscripción
+				if(resultado = 1){
+					logger(0,"Inscripcion eliminada con exito");
+					printf("Mando un 1");
+					memset(sendBuff, 0, strlen(sendBuff)); 
+					strcpy(sendBuff, "1");
+					send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+				}else{
+					logger(0,"No se pudo eliminar la inscrpcion");
+					printf("Mando un 1");
+					memset(sendBuff, 0, strlen(sendBuff)); 
+					strcpy(sendBuff, "0");
+					send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+				}
 			}
 		}
 	} while (1);

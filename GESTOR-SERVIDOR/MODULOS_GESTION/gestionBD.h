@@ -33,7 +33,7 @@ void insertarInscripcionActividad(int idAct, int idUsu);
 ////// IMPORTANTE, MIRAR SI YA HA PASADO O NO
 
 //ELIMINAR INSCRIPCION
-void eliminarInscripcion(int idAct, int id_usu);
+int eliminarInscripcion(char* idAct, char* id_usu);
 
 //COMPROBAR PARTICIPACION(INT ID_USU, INT ID_ACT)  PARA COMPROBAR SI PUEDE VALORAR ESA ACTIVIDAD , SOLO SI HA PARTICIPADO
 int comprobarInscripcionValorar(int id_act, int id_usu);

@@ -142,6 +142,7 @@ Usuario::~Usuario()
 
 ostream& operator<<(ostream& out, const Usuario& u)
 {
+    out << "Id: " << u.id << endl;
     out << "Nombre: " << u.nombre << endl;
     out << "Apellido: " << u.apellido << endl;
     out << "Nombre de usuario: " << u.nombre_usu << endl;

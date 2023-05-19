@@ -422,8 +422,18 @@ void menuIncrbirse(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usu
 
 
     char mensaje[512];
-    sprintf(mensaje, "06$%s$%s$", idAct, usuario.getId());
+    //SE CIERRA EL PROGRAMA CON EL getID()
+    sprintf(mensaje, "06$%s$%s$", idAct, std::to_string(usuario.getId()).c_str());
+    printf("menuInscribirse//el codigo que se manda:%s\n",mensaje);
     send(s, mensaje, strlen(mensaje), 0);
+    recv(s,recvBuff,512,0);
+    if (recvBuff[0] == '1') {
+        std::cout << "Inscripcion borrada\n";
+        menuPrincipal(s,sendBuff,recvBuff,usuario);
+    } else {
+        std::cout << "No se pudo registrar al usuario.\n";
+        menuPrincipal(s,sendBuff,recvBuff,usuario);
+    }
 
 }
 

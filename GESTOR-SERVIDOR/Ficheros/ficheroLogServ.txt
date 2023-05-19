@@ -21,3 +21,27 @@
  {2023-05-19} {11:07:16} [INFO] -> LOG IN con exito 
  {2023-05-19} {11:07:42} [INFO] -> Recibido codigo 02: Log In 
  {2023-05-19} {11:07:42} [INFO] -> LOG IN con exito 
+ {2023-05-19} {11:24:59} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {11:24:59} [INFO] -> LOG IN con exito 
+ {2023-05-19} {11:27:22} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {11:27:22} [INFO] -> LOG IN con exito 
+ {2023-05-19} {11:28:51} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {11:28:51} [INFO] -> LOG IN con exito 
+ {2023-05-19} {11:33:48} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {11:33:48} [INFO] -> LOG IN con exito 
+ {2023-05-19} {11:35:02} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {11:35:02} [INFO] -> LOG IN con exito 
+ {2023-05-19} {11:42:52} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {11:42:52} [INFO] -> LOG IN con exito 
+ {2023-05-19} {11:45:12} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {11:45:12} [INFO] -> LOG IN con exito 
+ {2023-05-19} {11:47:48} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {11:47:48} [INFO] -> LOG IN con exito 
+ {2023-05-19} {12:10:23} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {12:10:23} [INFO] -> LOG IN con exito 
+ {2023-05-19} {12:11:09} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {12:11:09} [INFO] -> LOG IN con exito 
+ {2023-05-19} {12:29:37} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {12:29:37} [INFO] -> LOG IN con exito 
+ {2023-05-19} {12:31:37} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-19} {12:31:37} [INFO] -> LOG IN con exito 

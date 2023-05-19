@@ -146,9 +146,9 @@ int main(){
 
 				eliminarInscripcion(idActividad, idUsuario); // Llama a la función para eliminar la inscripción
 
-				memset(sendBuff, 0, strlen(sendBuff));
+				/* memset(sendBuff, 0, strlen(sendBuff));
 				strcpy(sendBuff, "1");
-				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0); */
 			}
 		}
 	} while (1);

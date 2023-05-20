@@ -11,7 +11,7 @@
 
 
 //FUNCION PARA DEVOLVER LA OPCION SELECCIONADA
-int selectOpcion();
+int selectOpcion(int numOpciones);
 
 //FUNCION PARA IMPRIMIR EL MENU DE INICIO
 int printMenuInicio();
@@ -41,6 +41,8 @@ void menuLogin(SOCKET s, char sendBuff[512], char recvBuff[512]);
 int comprobarOpcionValida(int opcion, int numOpciones);
 
 void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]);
+
+int printMenuSiNo();
 
 void menuBorrarInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usuario);
 

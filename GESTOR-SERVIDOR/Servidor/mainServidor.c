@@ -146,23 +146,60 @@ int main(){
 				char idUsuStr[100];
 				sprintf(idActStr, "%d", idActividad);
 				sprintf(idUsuStr, "%d", idUsuario);
+				Actividad* act=NULL;
+				//EJECUTAMOS SQL OPERACION
+				int idAct = atoi(idActStr);
+				act = buscarActividadPorId(idAct);
 
-				int resultado = eliminarInscripcion(idActStr, idUsuStr); // Llama a la función para eliminar la inscripción
-				if(resultado = 1){
-					logger(0,"Inscripcion eliminada con exito");
-					printf("Mando un 1");
+				if(act!=NULL){
+					int resultado = eliminarInscripcion(idActStr, idUsuStr); // Llama a la función para eliminar la inscripción
+					logger(0,"ACTIVIDAD BUSCADA con exito");
+					char* strAct=actividadAStr(act);
+					printf("Mando un actividad");
 					memset(sendBuff, 0, strlen(sendBuff)); 
-					strcpy(sendBuff, "1");
+					strcpy(sendBuff, strAct);
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
+					recv(comm_socket,recvBuff,512,0);
+					if (recvBuff[0] == '1')
+					{
+						if (resultado=1)
+						{
+							logger(0,"Inscripcion eliminada con exito");
+							printf("Mando un 1");
+							memset(sendBuff, 0, strlen(sendBuff)); 
+							strcpy(sendBuff, "1");
+							send(comm_socket, sendBuff, strlen(sendBuff), 0);
+							
+						}else{
+							logger(0,"No se pudo eliminar la inscrpcion");
+							printf("Mando un 0");
+							memset(sendBuff, 0, strlen(sendBuff)); 
+							strcpy(sendBuff, "0");
+							send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+						}
+						
+					}else
+					{
+						logger(0,"Se cancelo la des-inscripcion");
+						printf("Mando un 0");
+						memset(sendBuff, 0, strlen(sendBuff)); 
+						strcpy(sendBuff, "0");
+						send(comm_socket, sendBuff, strlen(sendBuff), 0);
+						
+					}
+					
 
 				}else{
-					logger(0,"No se pudo eliminar la inscrpcion");
-					printf("Mando un 1");
+					printf("NO EXISTE!!");
+					printf("Mando un 0");
+					logger(1,"LOG IN fallido");
 					memset(sendBuff, 0, strlen(sendBuff)); 
 					strcpy(sendBuff, "0");
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 
 				}
+
 			}else if (strcmp(codigo, "07") == 0) { //  inscripción por ID
 				char* token = strtok(recvBuff, "$");
 				token = strtok(NULL, "$"); // Obtener segundo token (ID de actividad)
@@ -174,18 +211,54 @@ int main(){
 				char idUsuStr[100];
 				sprintf(idActStr, "%d", idActividad);
 				sprintf(idUsuStr, "%d", idUsuario);
+				Actividad* act=NULL;
+				//EJECUTAMOS SQL OPERACION
+				int idAct = atoi(idActStr);
+				act = buscarActividadPorId(idAct);
 
-				int resultado = insertarInscrSipcionActividad(idActStr, idUsuStr); // Llama a la función para eliminar la inscripción
-				if(resultado = 1){
-					logger(0,"Inscripcion eliminada con exito");
-					printf("Mando un 1");
+				if(act!=NULL){
+					int resultado = insertarInscrSipcionActividad(idActStr, idUsuStr); // Llama a la función para eliminar la inscripción
+					logger(0,"ACTIVIDAD BUSCADA con exito");
+					char* strAct=actividadAStr(act);
+					printf("Mando un actividad");
 					memset(sendBuff, 0, strlen(sendBuff)); 
-					strcpy(sendBuff, "1");
+					strcpy(sendBuff, strAct);
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
+					recv(comm_socket,recvBuff,512,0);
+					if (recvBuff[0] == '1')
+					{
+						if (resultado=1)
+						{
+							logger(0,"Inscripcion anadida con exito");
+							printf("Mando un 1");
+							memset(sendBuff, 0, strlen(sendBuff)); 
+							strcpy(sendBuff, "1");
+							send(comm_socket, sendBuff, strlen(sendBuff), 0);
+							
+						}else{
+							logger(0,"No se pudo realizar la inscrpcion");
+							printf("Mando un 0");
+							memset(sendBuff, 0, strlen(sendBuff)); 
+							strcpy(sendBuff, "0");
+							send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+						}
+						
+					}else
+					{
+						logger(0,"Se cancelo la inscripcion");
+						printf("Mando un 0");
+						memset(sendBuff, 0, strlen(sendBuff)); 
+						strcpy(sendBuff, "0");
+						send(comm_socket, sendBuff, strlen(sendBuff), 0);
+						
+					}
+					
 
 				}else{
-					logger(0,"No se pudo eliminar la inscrpcion");
-					printf("Mando un 1");
+					printf("NO EXISTE!!");
+					printf("Mando un 0");
+					logger(1,"LOG IN fallido");
 					memset(sendBuff, 0, strlen(sendBuff)); 
 					strcpy(sendBuff, "0");
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);

@@ -415,26 +415,64 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
     }
 }
 
+int printMenuSiNo(){
+    int numOpciones = 2;
+    std::cout << "1.Si\n";
+    std::cout << "2.No\n";
+    return numOpciones;
+}
+
+
+
 
 void menuBorrarInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario usuario) {
+
+
+
     std::cout << "Introduzca el id de la actividad que quieras des-inscribirte\n";
     char idAct[100];
     std::cin.getline(idAct, 100);
 
 
     char mensaje[512];
-    //SE CIERRA EL PROGRAMA CON EL getID()
+
     sprintf(mensaje, "06$%s$%s$", idAct, std::to_string(usuario.getId()).c_str());
 
     send(s, mensaje, strlen(mensaje), 0);
-    recv(s,recvBuff,512,0);
-    if (recvBuff[0] == '1') {
-        std::cout << "Inscripcion borrada\n";
+    recv(s,recvBuff,3000,0);
+    if(recvBuff[0]=='0'){
+        std::cout <<"No existe la actividad\n";
+        std::cout <<"Volviendo al menu.....\n";
         menuPrincipal(s,sendBuff,recvBuff,usuario);
-    } else {
-        std::cout << "No se pudo borrar la inscripcion\n";
-        menuPrincipal(s,sendBuff,recvBuff,usuario);
+
     }
+    else {
+        printf("BUSCADA CON  EXITO");
+        Actividad actividad = strAActividad(recvBuff);
+        //LLAMAMOS A LA FUNCION FRIEND DEFINIDA
+        cout << actividad << endl;
+        int opcion = selectOpcion(printMenuSiNo());
+        if (opcion==1)
+        {
+            memset(sendBuff, 0, strlen(sendBuff)); 
+			strcpy(sendBuff, "1");
+			send(s, sendBuff, strlen(sendBuff), 0);
+            recv(s,recvBuff,512,0);
+                if (recvBuff[0] == '1') {
+                    std::cout << "Inscripcion borrada\n";
+                    menuPrincipal(s,sendBuff,recvBuff,usuario);
+                } else {
+                    std::cout << "No se pudo borrar la inscripcion\n";
+                    menuPrincipal(s,sendBuff,recvBuff,usuario);
+                }       
+        }else if (opcion==2)
+        {
+            std::cout << "Cancelando des-inscribir en la actividad.\n";
+            menuPrincipal(s,sendBuff,recvBuff,usuario);
+           
+        }
+    }
+
 
 }
 
@@ -449,13 +487,38 @@ void menuInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario u
     sprintf(mensaje, "07$%s$%s$", idAct, std::to_string(usuario.getId()).c_str());
     printf("menuInscribirse//el codigo que se manda:%s\n",mensaje);
     send(s, mensaje, strlen(mensaje), 0);
-    recv(s,recvBuff,512,0);
-    if (recvBuff[0] == '1') {
-        std::cout << "Inscripcion exitosa\n";
+    recv(s,recvBuff,3000,0);
+    if(recvBuff[0]=='0'){
+        std::cout <<"No existe la actividad\n";
+        std::cout <<"Volviendo al menu.....\n";
         menuPrincipal(s,sendBuff,recvBuff,usuario);
-    } else {
-        std::cout << "No se pudo inscribir en la actividad.\n";
-        menuPrincipal(s,sendBuff,recvBuff,usuario);
+
+    }
+    else {
+        printf("BUSCADA CON  EXITO");
+        Actividad actividad = strAActividad(recvBuff);
+        //LLAMAMOS A LA FUNCION FRIEND DEFINIDA
+        cout << actividad << endl;
+        int opcion = selectOpcion(printMenuSiNo());
+        if (opcion==1)
+        {
+            memset(sendBuff, 0, strlen(sendBuff)); 
+			strcpy(sendBuff, "1");
+			send(s, sendBuff, strlen(sendBuff), 0);
+            recv(s,recvBuff,512,0);
+                if (recvBuff[0] == '1') {
+                    std::cout << "Inscripcion exitosa\n";
+                    menuPrincipal(s,sendBuff,recvBuff,usuario);
+                } else {
+                    std::cout << "No se pudo inscribir en la actividad.\n";
+                    menuPrincipal(s,sendBuff,recvBuff,usuario);
+                }       
+        }else if (opcion==2)
+        {
+            std::cout << "Cancelando inscribir en la actividad.\n";
+            menuPrincipal(s,sendBuff,recvBuff,usuario);
+           
+        }
     }
 }
 

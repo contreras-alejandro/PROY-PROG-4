@@ -294,21 +294,27 @@ int main(){
 					{
 						token = strtok(recvBuff, "$");
 						token = strtok(NULL, "$");
-						char nt = token[0];
-						sprintf(nota, "%d", nt);
+						char * nt = token;
 
-						//int comprobacion = comprobarInscripcionValorar(idActStr, idUsuStr);
-						int resultado = insertarValoracionActividad(idActStr, idUsuStr,nota);
-						if (resultado==1 /* && comprobacion==1 */)
+						 double valoracionDouble = strtod(nt, NULL);
+
+
+						int comprobacion = comprobarInscripcionValorar(idActStr, idUsuStr);
+						
+						if (comprobacion==1)
 						{
+							int resultado = insertarValoracionActividad(idActStr, idUsuStr,valoracionDouble);
+							if(resultado==1){
 							logger(0,"Valoracion anadida con exito");
 							printf("Mando un 1");
 							memset(sendBuff, 0, strlen(sendBuff)); 
 							strcpy(sendBuff, "1");
 							send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+							}
 							
 						}else{
-							logger(0,"No se pudo realizar la valoracion");
+							logger(0,"No se pudo realizar la valoracion, no inscrito en esa actividad");
 							printf("Mando un 0");
 							memset(sendBuff, 0, strlen(sendBuff)); 
 							strcpy(sendBuff, "0");
@@ -316,6 +322,10 @@ int main(){
 
 						}
 						
+					}
+					else{
+						//NO QUIERE VALORARLA!
+						printf("RECHAZADA LA PETICION DE VALORAR");
 					}
 
 

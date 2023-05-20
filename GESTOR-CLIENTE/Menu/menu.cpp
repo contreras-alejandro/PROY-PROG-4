@@ -551,9 +551,22 @@ void menuValoracion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario us
         int opcion = selectOpcion(printMenuSiNo());
         if (opcion==1)
         {
-            std::cout << "Introduzca una nota del 1 al 10\n";
+            double valoracionDouble=-1;
             char nota[100];
-            std::cin.getline(nota, 100);
+
+            do {
+
+                 std::cout << "Introduzca una nota del 1 al 10\n";
+                 char nota[100];
+                 std::cin.getline(nota, 100);
+                 valoracionDouble = strtod(nota, NULL);
+                 if (valoracionDouble < 0 || valoracionDouble > 10) {
+            std::cout << "Nota inválida. Por favor, ingrese una nota entre 1 y 10.\n";
+            }
+            
+            }while(valoracionDouble<0 || valoracionDouble>10);
+
+
             memset(sendBuff, 0, strlen(sendBuff)); 
 			strcpy(sendBuff, "1$");
             strcat(sendBuff, nota);
@@ -569,6 +582,8 @@ void menuValoracion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario us
                 }       
         }else if (opcion==2)
         {
+            strcpy(sendBuff, "0$");
+            send(s, sendBuff, strlen(sendBuff), 0);
             std::cout << "Cancelando valorar en la actividad.\n";
             menuPrincipal(s,sendBuff,recvBuff,usuario);
            

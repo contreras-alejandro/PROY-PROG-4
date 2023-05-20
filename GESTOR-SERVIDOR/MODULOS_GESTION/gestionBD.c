@@ -382,7 +382,7 @@ int insertarInscrSipcionActividad(char* idAct, char* id_usu){
 }
 
 
-int insertarValoracionActividad(char* idAct, char* idUsu, char* valoracion) {
+int insertarValoracionActividad(char* idAct, char* idUsu, double valoracion) {
 
 
 
@@ -402,8 +402,8 @@ int insertarValoracionActividad(char* idAct, char* idUsu, char* valoracion) {
 
     sqlite3_bind_text(stmt, 1,idUsu,-1, SQLITE_STATIC);
     sqlite3_bind_text(stmt, 2,idAct,-1, SQLITE_STATIC);
-    double valoracionDouble = strtod(valoracion, NULL); 
-    sqlite3_bind_double(stmt, 3, valoracionDouble);
+
+    sqlite3_bind_double(stmt, 3, valoracion);
     //EJECUTAMOS SENTENCIA.
      rc = sqlite3_step(stmt);
     //ERROR AL INSERTAR
@@ -528,17 +528,18 @@ int comprobarInscripcionValorar(char* id_act, char* id_usu) {
     int result = 0;
 
     // Primero, comprobamos si la actividad ya se ha realizado
-    char* sql_act = "SELECT FECHA_ACT FROM ACTIVIDAD WHERE ID_ACT = ?";
-    resulQ = sqlite3_prepare_v2(db, sql_act, -1, &stmt, NULL);
-    if (resulQ != SQLITE_OK) {
-        printf("No se puede preparar la consulta");
-        cerrarConexion();
-        return 0;
-    }
-    sqlite3_bind_text(stmt, 1, id_act, -1, SQLITE_STATIC);
+    //char* sql_act = "SELECT FECHA_ACT FROM ACTIVIDAD WHERE ID_ACT = ?";
+    //resulQ = sqlite3_prepare_v2(db, sql_act, -1, &stmt, NULL);
+    //if (resulQ != SQLITE_OK) {
+        //printf("No se puede preparar la consulta");
+        //sqlite3_finalize(stmt);
+        //cerrarConexion();
+        //return 0;
+   // }
+    //sqlite3_bind_text(stmt, 1, id_act, -1, SQLITE_STATIC);
     //EJECUTAMOS SENTENCIA
-    resulQ = sqlite3_step(stmt);
-    if (resulQ == SQLITE_ROW) {
+    //resulQ = sqlite3_step(stmt);
+
         //EXISTE ESA ACTIVIDAD
         //BUSCAMOS SI EXISTE ESA INSCRIPCION
         char* sql_ins = "SELECT ID_USU FROM INSCRIPCION WHERE ID_USU = ? AND ID_ACT = ?";
@@ -555,20 +556,22 @@ int comprobarInscripcionValorar(char* id_act, char* id_usu) {
         if (resulQ == SQLITE_ROW) {
             //EXISTE, DEVOLVEMOS 1
             result = 1;
+            sqlite3_finalize(stmt);
+            cerrarConexion();
+            return result;
         }
         else {
 
             //NO EXISTE INSCRIPCION DE ESE USUARIO
             printf("NO EXISTE INSCRIPCION DEL USUARIO A ESA ACTIVIDAD:\n");
+            sqlite3_finalize(stmt);
+            cerrarConexion();
             return 0;
         }
-        sqlite3_finalize(stmt);
  
     }
-    cerrarConexion();
-    return result;
 
-} 
+
 
 
 

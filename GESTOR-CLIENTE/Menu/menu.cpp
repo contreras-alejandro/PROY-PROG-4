@@ -532,7 +532,7 @@ void menuValoracion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario us
     char mensaje[512];
 
     sprintf(mensaje, "09$%s$%s$", idAct, std::to_string(usuario.getId()).c_str());
-    printf("menuInscribirse//el codigo que se manda:%s\n",mensaje);
+    printf("menuValorar//el codigo que se manda:%s\n",mensaje);
     send(s, mensaje, strlen(mensaje), 0);
     //ESPERAMOS A LA RESPUESTA! SI EXISTE DEVOLVERA LA ACTIVDAD, SINO, DECIMOS QUE NO EXISTE Y VOLVEMOS AL MENU
     
@@ -547,11 +547,37 @@ void menuValoracion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario us
         printf("BUSCADA CON  EXITO");
         Actividad actividad = strAActividad(recvBuff);
         //LLAMAMOS A LA FUNCION FRIEND DEFINIDA
-        cout << actividad;
-
-
-
+        cout << actividad << endl;
+        int opcion = selectOpcion(printMenuSiNo());
+        if (opcion==1)
+        {
+            std::cout << "Introduzca una nota del 1 al 10\n";
+            char nota[100];
+            std::cin.getline(nota, 100);
+            memset(sendBuff, 0, strlen(sendBuff)); 
+			strcpy(sendBuff, "1$");
+            strcat(sendBuff, nota);
+            strcat(sendBuff,"$");
+			send(s, sendBuff, strlen(sendBuff), 0);
+            recv(s,recvBuff,512,0);
+                if (recvBuff[0] == '1') {
+                    std::cout << "Valoracion exitosa\n";
+                    menuPrincipal(s,sendBuff,recvBuff,usuario);
+                } else {
+                    std::cout << "No se pudo valorar en la actividad.\n";
+                    menuPrincipal(s,sendBuff,recvBuff,usuario);
+                }       
+        }else if (opcion==2)
+        {
+            std::cout << "Cancelando valorar en la actividad.\n";
+            menuPrincipal(s,sendBuff,recvBuff,usuario);
+           
+        }
     }
+
+
+
+
     //AQUI METER QUE MUESTRE ESA ACTIVIDAD
 
     //LUEGO, SI INTRODUCE LA VALORACION, ESTO

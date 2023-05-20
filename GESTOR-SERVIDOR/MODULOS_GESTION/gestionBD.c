@@ -382,7 +382,7 @@ int insertarInscrSipcionActividad(char* idAct, char* id_usu){
 }
 
 
-void insertarValoracionActividad(int idAct, int idUsu, float valoracion) {
+int insertarValoracionActividad(char* idAct, char* idUsu, char* valoracion) {
 
 
 
@@ -397,12 +397,13 @@ void insertarValoracionActividad(int idAct, int idUsu, float valoracion) {
     if (rc != SQLITE_OK) {
         printf("Error al preparar la consulta\n");
         //logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
-        return;
+        return 0;
     }
 
-    sqlite3_bind_int(stmt, 1,idUsu);
-    sqlite3_bind_int(stmt, 2,idAct);
-     sqlite3_bind_int(stmt, 3,valoracion);
+    sqlite3_bind_text(stmt, 1,idUsu,-1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2,idAct,-1, SQLITE_STATIC);
+    double valoracionDouble = strtod(valoracion, NULL); 
+    sqlite3_bind_double(stmt, 3, valoracionDouble);
     //EJECUTAMOS SENTENCIA.
      rc = sqlite3_step(stmt);
     //ERROR AL INSERTAR
@@ -411,7 +412,7 @@ void insertarValoracionActividad(int idAct, int idUsu, float valoracion) {
         //logger(2,admin,"ERROR AL PREPARAR CONSULTA");  
         sqlite3_finalize(stmt);
         sqlite3_close(db);
-        return;
+        return 0;
     }
      //TODO HA IDO BIEN, INSERTADO.
     //VA TODO BIEN 
@@ -419,16 +420,7 @@ void insertarValoracionActividad(int idAct, int idUsu, float valoracion) {
     //logger(1,admin, "HA INSERTADO UN NUEVO ADMIN");
     sqlite3_finalize(stmt);
     cerrarConexion();
-    return;
-
-
-
-
-
-
-
-
-
+    return 1;
 
 }
 
@@ -528,7 +520,7 @@ char* obtenerActividadesFecha() {
 
 //DEVUELVE 1, SI SE PUEDE VALORAR, 0 EN CUALQUIER OTRO CASO QUE INDIQUE QUE NO.
 
-/* int comprobarInscripcionValorar(int id_act, int id_usu) {
+int comprobarInscripcionValorar(char* id_act, char* id_usu) {
 
  abrirConexion();
     sqlite3_stmt *stmt;
@@ -543,53 +535,40 @@ char* obtenerActividadesFecha() {
         cerrarConexion();
         return 0;
     }
-    sqlite3_bind_int(stmt, 1, id_act);
+    sqlite3_bind_text(stmt, 1, id_act, -1, SQLITE_STATIC);
     //EJECUTAMOS SENTENCIA
     resulQ = sqlite3_step(stmt);
     if (resulQ == SQLITE_ROW) {
         //EXISTE ESA ACTIVIDAD
-
-        // Comprobamos si la fecha de la actividad es anterior a la fecha actual
-        const char* fecha_str = (const char*) sqlite3_column_text(stmt, 0);
-        time_t fecha_act = strtotime(fecha_str);
-        //obtenemos la actual
-        time_t fecha_actual = time(NULL);
-        //comparamos
-        if (fecha_act < fecha_actual) {
-            // La actividad ya se ha realizado,
-            //BUSCAMOS SI EXISTE ESA INSCRIPCION
-            char* sql_ins = "SELECT ID_USU FROM INSCRIPCION WHERE ID_USU = ? AND ID_ACT = ?";
-            resulQ = sqlite3_prepare_v2(db, sql_ins, -1, &stmt, NULL);
-            if (resulQ != SQLITE_OK) {
-                printf("No se puede preparar la consulta");
-                sqlite3_finalize(stmt);
-                cerrarConexion();
-                return 0;
-            }
-            sqlite3_bind_int(stmt, 1, id_usu);
-            sqlite3_bind_int(stmt, 2, id_act);
-            resulQ = sqlite3_step(stmt);
-            if (resulQ == SQLITE_ROW) {
-                //EXISTE, DEVOLVEMOS 1
-                result = 1;
-            }
-            else {
-
-                //NO EXISTE INSCRIPCION DE ESE USUARIO
-                printf("NO EXISTE INSCRIPCION DEL USUARIO A ESA ACTIVIDAD:\n");
-                return 0;
-            }
+        //BUSCAMOS SI EXISTE ESA INSCRIPCION
+        char* sql_ins = "SELECT ID_USU FROM INSCRIPCION WHERE ID_USU = ? AND ID_ACT = ?";
+        resulQ = sqlite3_prepare_v2(db, sql_ins, -1, &stmt, NULL);
+        if (resulQ != SQLITE_OK) {
+            printf("No se puede preparar la consulta");
             sqlite3_finalize(stmt);
-        }else {
-            //LA FECHA INDICA, QUE TODAVIA NO SE HA REALIZADO
-             printf(" LA ACTIVIDAD AUN NO SE HA REALIZADO:\n");
-             return 0;
+            cerrarConexion();
+            return 0;
         }
+        sqlite3_bind_text(stmt, 1, id_usu, -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 2, id_act, -1, SQLITE_STATIC);
+        resulQ = sqlite3_step(stmt);
+        if (resulQ == SQLITE_ROW) {
+            //EXISTE, DEVOLVEMOS 1
+            result = 1;
+        }
+        else {
+
+            //NO EXISTE INSCRIPCION DE ESE USUARIO
+            printf("NO EXISTE INSCRIPCION DEL USUARIO A ESA ACTIVIDAD:\n");
+            return 0;
+        }
+        sqlite3_finalize(stmt);
+ 
     }
     cerrarConexion();
     return result;
 
-} */
+} 
 
 
 

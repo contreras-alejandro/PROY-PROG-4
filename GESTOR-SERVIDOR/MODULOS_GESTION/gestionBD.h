@@ -36,11 +36,13 @@ int insertarInscrSipcionActividad(char* idAct, char* id_usu);
 int eliminarInscripcion(char* idAct, char* id_usu);
 
 //COMPROBAR PARTICIPACION(INT ID_USU, INT ID_ACT)  PARA COMPROBAR SI PUEDE VALORAR ESA ACTIVIDAD , SOLO SI HA PARTICIPADO
-int comprobarInscripcionValorar(int id_act, int id_usu);
+int comprobarInscripcionValorar(char* id_act, char* id_usu);
 //VALORACION INSCR (INT ID_USU, INT ID_ACT , INT NOTA)
-void insertarValoracionActividad(int idAct, int idUsu, float valoracion);
+int insertarValoracionActividad(char* idAct, char* idUsu, char* valoracion);
 
 char* obtenerActividadesFecha();
+
+
 
 
 #endif

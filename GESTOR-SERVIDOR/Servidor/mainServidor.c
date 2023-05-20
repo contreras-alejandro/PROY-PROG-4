@@ -217,7 +217,6 @@ int main(){
 				act = buscarActividadPorId(idAct);
 
 				if(act!=NULL){
-					int resultado = insertarInscrSipcionActividad(idActStr, idUsuStr); // Llama a la función para eliminar la inscripción
 					logger(0,"ACTIVIDAD BUSCADA con exito");
 					char* strAct=actividadAStr(act);
 					printf("Mando un actividad");
@@ -227,6 +226,7 @@ int main(){
 					recv(comm_socket,recvBuff,512,0);
 					if (recvBuff[0] == '1')
 					{
+						int resultado = insertarInscrSipcionActividad(idActStr, idUsuStr); // Llama a la función para eliminar la inscripción
 						if (resultado=1)
 						{
 							logger(0,"Inscripcion anadida con exito");
@@ -273,23 +273,50 @@ int main(){
 
 				char idActStr[100];
 				char idUsuStr[100];
+				char nota[100];
 				sprintf(idActStr, "%d", idActividad);
 				sprintf(idUsuStr, "%d", idUsuario);
-				printf("ID ACT: %s",idActStr);
-				printf("ID USU: %s",idUsuStr);
+
 
 
 				Actividad* act=NULL;
 				//EJECUTAMOS SQL OPERACION
-				int idAct = atoi(idActStr);
-				act = buscarActividadPorId(idAct);
+				act = buscarActividadPorId(idActividad);
 				if(act!=NULL){
 					logger(0,"ACTIVIDAD BUSCADA con exito");
 					char* strAct=actividadAStr(act);
-					printf("Mando un actividad");
+					printf("Mando una actividad");
 					memset(sendBuff, 0, strlen(sendBuff)); 
 					strcpy(sendBuff, strAct);
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
+					recv(comm_socket,recvBuff,512,0);
+					if (recvBuff[0] == '1')
+					{
+						token = strtok(recvBuff, "$");
+						token = strtok(NULL, "$");
+						char nt = token[0];
+						sprintf(nota, "%d", nt);
+
+						//int comprobacion = comprobarInscripcionValorar(idActStr, idUsuStr);
+						int resultado = insertarValoracionActividad(idActStr, idUsuStr,nota);
+						if (resultado==1 /* && comprobacion==1 */)
+						{
+							logger(0,"Valoracion anadida con exito");
+							printf("Mando un 1");
+							memset(sendBuff, 0, strlen(sendBuff)); 
+							strcpy(sendBuff, "1");
+							send(comm_socket, sendBuff, strlen(sendBuff), 0);
+							
+						}else{
+							logger(0,"No se pudo realizar la valoracion");
+							printf("Mando un 0");
+							memset(sendBuff, 0, strlen(sendBuff)); 
+							strcpy(sendBuff, "0");
+							send(comm_socket, sendBuff, strlen(sendBuff), 0);
+
+						}
+						
+					}
 
 
 				}

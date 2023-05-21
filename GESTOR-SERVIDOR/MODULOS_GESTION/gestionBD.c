@@ -243,7 +243,6 @@ void registrarUsuario(Usuario u ) {
     }
      //TODO HA IDO BIEN, INSERTADO.
     //VA TODO BIEN 
-    printf("VALORES INSERTADOS!!\n");
     //logger(1,admin, "HA INSERTADO UN NUEVO ADMIN");
     //LIBERAMOS ESPACIO EN MEMORIA DEL ADMIN!
     //liberarAdmin(admininistrador);

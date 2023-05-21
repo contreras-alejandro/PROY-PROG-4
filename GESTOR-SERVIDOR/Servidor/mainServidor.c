@@ -92,7 +92,7 @@ int main(){
 				registrarUsuario(u);
 				strcpy(sendBuff, "1");
 				logger(0,"USUARIO REGISTRADO");
-				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				send(comm_socket, sendBuff, strlen(sendBuff), 0);
 				
 			} else if (strcmp(codigo, "02") == 0) { //Login
 			logger(0,"Recibido codigo 02: Log In");
@@ -102,18 +102,15 @@ int main(){
 				char* usuario = token;
 				token = strtok(NULL, "$"); // Obtener tercer token (contraseña)
 				char* contrasena = token;
-				printf("El nombre de usuario es: %s,y la contra: %s", usuario, contrasena);
 				usr = loginUsuario(usuario, contrasena);			
 				if (usr != NULL) {
 					logger(0,"LOG IN con exito");
 					char* strUsr=usuarioAStr(usr);
-					printf("Mando un 1");
 					memset(sendBuff, 0, strlen(sendBuff)); 
 					strcpy(sendBuff, strUsr);
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 					
 				} else {
-					printf("Mando un 0");
 					logger(1,"LOG IN fallido");
 					memset(sendBuff, 0, strlen(sendBuff)); 
 					strcpy(sendBuff, "0");

@@ -34,19 +34,17 @@ Usuario strAUsuario(char* codigo) {
 
 char* usuarioAStr(Usuario* u) {
     char* codigo = malloc(sizeof(char) * 500); // Reservamos espacio suficiente para la cadena de salida
-    printf("metodo usuarioAStr// el id es:%s\n",u->id);
     sprintf(codigo, "1$%s$%s$%s$%s$%s$", u->id, u->nombre, u->apellido, u->nusuario, u->contrasenya);
-    printf("metodo usuarioAStr//Se va a enviar este codigo:%s\n",codigo);
+    printf("Se va a enviar este codigo:%s\n",codigo);
     return codigo;
 }
 
 
 char* actividadAStr(Actividad* act) {
     char* codigo = malloc(sizeof(char) * 2000); // Reservamos espacio suficiente para la cadena de salida
-    printf("metodo actividadAStr// el nombre es:%s\n",act->nombre);
     sprintf(codigo, "1$%s$%s$%s$%s$%s$%s$%s$%s$", act->nombre, act->descripcion, act->tipo,
      act->publico, act->municipio, act->direccion, act->encargado, act->fecha);
-    printf("metodo usuarioAStr//Se va a enviar este codigo:%s\n",codigo);
+    printf("Se va a enviar este codigo:%s\n",codigo);
     return codigo;
 }
 

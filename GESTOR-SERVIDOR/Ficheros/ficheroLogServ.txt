@@ -267,3 +267,95 @@
  {2023-05-21} {19:53:40} [INFO] -> Recibido codigo 02: Log In 
  {2023-05-21} {19:53:40} [INFO] -> LOG IN con exito 
  {2023-05-21} {19:53:46} [INFO] -> Recibido el codigo 04, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {21:31:44} [INFO] -> Recibido el codigo 01, REGISTRO 
+ {2023-05-21} {21:31:44} [INFO] -> USUARIO REGISTRADO 
+ {2023-05-21} {21:31:55} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:31:55} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:32:17} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:32:17} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:32:26} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:32:26} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:32:55} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:32:55} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:33:38} [INFO] -> Recibido el codigo 01, REGISTRO 
+ {2023-05-21} {21:33:38} [INFO] -> USUARIO REGISTRADO 
+ {2023-05-21} {21:33:43} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:33:43} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:39:24} [INFO] -> Recibido el codigo 01, REGISTRO 
+ {2023-05-21} {21:39:24} [INFO] -> USUARIO REGISTRADO 
+ {2023-05-21} {21:39:28} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:39:28} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:43:03} [INFO] -> Recibido el codigo 01, REGISTRO 
+ {2023-05-21} {21:43:03} [INFO] -> USUARIO REGISTRADO 
+ {2023-05-21} {21:43:07} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:43:07} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:50:38} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:50:38} [WARNING]-> LOG IN fallido 
+ {2023-05-21} {21:50:47} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:50:47} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:50:55} [INFO] -> Recibido el codigo 01, REGISTRO 
+ {2023-05-21} {21:50:55} [INFO] -> USUARIO REGISTRADO 
+ {2023-05-21} {21:51:00} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:51:00} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:57:47} [INFO] -> Recibido el codigo 01, REGISTRO 
+ {2023-05-21} {21:57:47} [INFO] -> USUARIO REGISTRADO 
+ {2023-05-21} {21:57:56} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:57:56} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:58:04} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:04} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:58:09} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:09} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:58:10} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:10} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:58:11} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:11} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:58:12} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:12} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:58:13} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:13} [WARNING]-> LOG IN fallido 
+ {2023-05-21} {21:58:14} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:14} [WARNING]-> LOG IN fallido 
+ {2023-05-21} {21:58:14} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:14} [WARNING]-> LOG IN fallido 
+ {2023-05-21} {21:58:14} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:14} [WARNING]-> LOG IN fallido 
+ {2023-05-21} {21:58:15} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:15} [WARNING]-> LOG IN fallido 
+ {2023-05-21} {21:58:15} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:15} [WARNING]-> LOG IN fallido 
+ {2023-05-21} {21:58:16} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:16} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:58:16} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:16} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:58:16} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:16} [WARNING]-> LOG IN fallido 
+ {2023-05-21} {21:58:17} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:17} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:58:17} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:17} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:58:17} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:17} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:58:22} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:22} [INFO] -> LOG IN con exito 
+ {2023-05-21} {21:58:23} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {21:58:23} [INFO] -> LOG IN con exito 
+ {2023-05-21} {22:01:50} [INFO] -> Recibido el codigo 01, REGISTRO 
+ {2023-05-21} {22:01:50} [INFO] -> USUARIO REGISTRADO 
+ {2023-05-21} {22:01:55} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {22:01:55} [INFO] -> LOG IN con exito 
+ {2023-05-21} {22:02:46} [INFO] -> Recibido el codigo 01, REGISTRO 
+ {2023-05-21} {22:02:46} [INFO] -> USUARIO REGISTRADO 
+ {2023-05-21} {22:02:49} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {22:02:49} [INFO] -> LOG IN con exito 
+ {2023-05-21} {22:09:56} [INFO] -> Recibido el codigo 01, REGISTRO 
+ {2023-05-21} {22:09:56} [INFO] -> USUARIO REGISTRADO 
+ {2023-05-21} {22:10:04} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {22:10:04} [INFO] -> LOG IN con exito 
+ {2023-05-21} {22:10:15} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {22:31:21} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {22:31:21} [INFO] -> LOG IN con exito 
+ {2023-05-21} {22:31:35} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {22:34:09} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {22:34:09} [WARNING]-> LOG IN fallido 
+ {2023-05-21} {22:34:15} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {22:34:15} [INFO] -> LOG IN con exito 

@@ -1,3 +1,3 @@
 Ficheros/actividades.csv
-Base_Datos/Base_Datos.db
+../BASE_DATOS/Base_Datos.db
 Ficheros/ficheroLogServ.txt

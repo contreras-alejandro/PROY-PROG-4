@@ -140,29 +140,34 @@ void menuPrincipal(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usua
 
         if(opcion==1) {
             std::cout << "Has seleccionado la opcion 1: Ver actividades." << std::endl;
+             logger(0,usuario.getNombreUsuario(),"ACCEDIENDO a VER ACTIVIDADES");
             menuVerActividadesInicio(s,sendBuff,recvBuff,usuario);
             
             salir=1;
             break;
         } else if(opcion==2) {
             std::cout << "Has seleccionado la opcion 2: INSCRIBIR a ACTICIDAD." << std::endl;
+            logger(0,usuario.getNombreUsuario(),"ACCEDIENDO a INSCRIBIR EN ACTVIDAD");
             menuInscripcion(s,sendBuff,recvBuff,usuario);
             salir=1;
             break;
         } else if(opcion==3) {
             std::cout << "Has seleccionado la opcion 3: BORRAR INSCRIPCION a ACTICIDAD." << std::endl;
+            logger(0,usuario.getNombreUsuario(),"ACCEDIENDO a BORRAR INSCRIPCION EN ACTVIDAD");
             menuBorrarInscripcion(s,sendBuff,recvBuff,usuario);     
             salir=1;
             break;
         } else if(opcion==4) {
             std::cout << "Has seleccionado la opcion 4: Valorar ACTIVIDAD." << std::endl;
             //menuInicio(usuario);
+              logger(0,usuario.getNombreUsuario(),"ACCEDIENDO a VALORAR  ACTVIDAD");
             menuValoracion(s,sendBuff,recvBuff,usuario);
             salir=1;
             break;
         } else if(opcion==5) {
             std::cout << "Has seleccionado la opcion 5: PERFIL." << std::endl;
             std::cout << "Sesion iniciada por: " << usuario.toString() << std::endl;
+            logger(0,usuario.getNombreUsuario(),"ACCEDIENDO a PERFIL");
             menuPerfil(s,sendBuff,recvBuff,usuario);
             salir=1;
             break;
@@ -216,6 +221,7 @@ void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],U
         if(opcion==2) {
 
                 std::cout << "Has seleccionado la opcion 1: FILTRAR POR FECHA." << std::endl;
+                  logger(0,usuario.getNombreUsuario(),"FILTRANDO ACTVIDADES POR FECHA");
 
                 char mensaje[512];
                 sprintf(mensaje, "03$");
@@ -237,6 +243,7 @@ void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],U
                         
                std::cout << "Has seleccionado la opcion 2: FILTRAR POR PUBLICO." << std::endl;
                //PEDIMOS LAS ACTIVIDADES FILTRADAS POR PUBLICO (ORDENAR)
+                 logger(0,usuario.getNombreUsuario(),"FILTRANDO ACTVIDADES POR PUBLICO");
                 char mensaje[512];
                 sprintf(mensaje, "04$");
                 send(s, mensaje, strlen(mensaje), 0);
@@ -251,6 +258,7 @@ void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],U
                 std::cout << "Has seleccionado la opcion 3: FILTRAR POR MEJOR VALORADAS" << std::endl;
                 //PEDIMOS LAS ACTIVIDADES MEJOR VALORADAS (PRIMERO ACCEDER A TABLA DE VALORACION
                 // Y LAS ORDENAMOS, Y POR CADA UNA OBTENEMOS SU ID Y VAMOS A LA TABLA DE ACTVIDADES Y IMPRIMIMOS)
+                  logger(0,usuario.getNombreUsuario(),"FILTRANDO ACTVIDADES MEJOR VALORADAS");
                 char mensaje[512];
                 sprintf(mensaje, "05$");
                 send(s, mensaje, strlen(mensaje), 0);
@@ -306,7 +314,7 @@ void menuPerfil(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario
             send(s, mensaje, strlen(mensaje), 0);
             recv(s, recvBuff, 10000, 0);
             printf("ACTIVIDADES:\n %s", recvBuff);
-            menuVerActividadesInicio(s,sendBuff,recvBuff,usuario);
+            menuPrincipal(s,sendBuff,recvBuff,usuario);
             salir=1;
             break;
         } else if (opcion == 2) {
@@ -352,22 +360,15 @@ void menuLogin(SOCKET s, char sendBuff[512], char recvBuff[512]) {
         sprintf(mensaje, "02$%s$%s$", nombre_usu.c_str(), usu_contra.c_str());
         mensaje[strlen(mensaje)] = '$';
 
+
         // Enviamos el mensaje al servidor
         send(s, mensaje, strlen(mensaje), 0);
-
-
         // Recibimos la respuesta del servidor
         recv(s, recvBuff, 512, 0);
-        
-
-        
-        printf("RESPUESTA:%c", recvBuff[0]);
-
-
+    
         if (recvBuff[0] == '1') {
             //si son correctos, se inicia sesion
             Usuario usr = strAUsuario(recvBuff);
-            printf("DATOS:  %s", recvBuff);
             std::cout << "Iniciando sesion..." << std::endl;
             menuPrincipal(s,sendBuff,recvBuff,usr);
             salir=1;
@@ -392,15 +393,38 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
     std::cin.getline(apellido, 100);
     u.setApellido(apellido);
 
-    std::cout << "Ingrese su nombre de usuario: ";
     char nombre_usu[100];
-    std::cin.getline(nombre_usu, 100);
-    u.setNombreUsuario(nombre_usu);
+    while (true) {
+        std::cout << "Ingrese su nombre de usuario: ";
+        std::cin.getline(nombre_usu, 100);
+        if (std::strlen(nombre_usu) >= 7){
+            u.setNombreUsuario(nombre_usu);
+            break;
+        }
+           
+        std::cout << "El nombre de usuario debe tener al menos 7 caracteres.\n";
+    }
 
-    std::cout << "Ingrese su contrasena: ";
+    //std::cout << "Ingrese su nombre de usuario: ";
+    //char nombre_usu[100];
+    //std::cin.getline(nombre_usu, 100);
+    //u.setNombreUsuario(nombre_usu);
+
     char contrasenya[100];
-    std::cin.getline(contrasenya, 100);
-    u.setContrasenya(contrasenya);
+    while (true) {
+        std::cout << "Ingrese su contraseña: ";
+        std::cin.getline(contrasenya, 100);
+        if (std::strlen(contrasenya) >= 7){
+            u.setContrasenya(contrasenya);
+             break;
+        }
+           
+        std::cout << "La contraseña debe tener al menos 7 caracteres.\n";
+    }
+
+    //std::cout << "Ingrese su contrasena: ";
+    //std::cin.getline(contrasenya, 100);
+    //u.setContrasenya(contrasenya);
 
     char* str = u.toString();
 
@@ -413,7 +437,7 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
     // esperar confirmación del servidor
     recv(s, recvBuff, 512, 0);
     if (recvBuff[0] == '1') {
-        std::cout << "Usuario registrado con éxito.\n";
+        std::cout << "Usuario registrado con exito.\n";
         menuInicio(s,sendBuff,recvBuff);
     } else {
         std::cout << "No se pudo registrar al usuario.\n";

@@ -83,10 +83,10 @@ int main(){
 			strncpy(codigo, recvBuff, 2);
 			codigo[2] = '\0';  // Agregar caracter nulo al final
 
-			if (strcmp(codigo, "00") == 0) {
+			if (strcmp(codigo, "00") == 0) { ////////////////////////////////// Cerrar = 00
 				logger(0,"Recibido el codigo 00, CERRAR");
 				break;
-			} else if (strcmp(codigo, "01") == 0) { //Registro
+			} else if (strcmp(codigo, "01") == 0) { /////////////////////////// Registro = 01
 			logger(0,"Recibido el codigo 01, REGISTRO");
 				Usuario u=strAUsuario(recvBuff);
 				registrarUsuario(u);
@@ -94,7 +94,7 @@ int main(){
 				logger(0,"USUARIO REGISTRADO");
 				send(comm_socket, sendBuff, strlen(sendBuff), 0);
 				
-			} else if (strcmp(codigo, "02") == 0) { //Login
+			} else if (strcmp(codigo, "02") == 0) { ////////////////////////// Login = 02
 			logger(0,"Recibido codigo 02: Log In");
 				Usuario* usr=NULL;
 			    char* token = strtok(recvBuff, "$");
@@ -116,7 +116,7 @@ int main(){
 					strcpy(sendBuff, "0");
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 				}
-			}else if (strcmp(codigo, "03") == 0) {
+			}else if (strcmp(codigo, "03") == 0) { //////////////////// Actividades/Fecha = 03
 				 //Actividades por fecha
 				logger(0,"Recibido el codigo 03, MOSTRAR ACTIVIDADES");
 				char* act = malloc(strlen(obtenerActividadesFecha()));
@@ -124,21 +124,21 @@ int main(){
 				memset(sendBuff, 0, strlen(sendBuff));				
 				strcpy(sendBuff, act);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			}else if (strcmp(codigo, "04") == 0) { //Publico
+			}else if (strcmp(codigo, "04") == 0) { ////////////////////// Actividades/Publico = 04
 				logger(0,"Recibido el codigo 04, MOSTRAR ACTIVIDADES");
 				char* act = malloc(strlen(obtenerActividadesTodas()));
 				strcpy(act,obtenerActividadesTodas());
 				memset(sendBuff, 0, strlen(sendBuff));				
 				strcpy(sendBuff, act);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			}else if (strcmp(codigo, "05") == 0) { //Top 10 valoradas
+			}else if (strcmp(codigo, "05") == 0) { /////////////////////// Actividades/Top 10 valoradas = 05
 				logger(0,"Recibido el codigo 03, MOSTRAR ACTIVIDADES");
 				char* act = malloc(strlen(obtenerActividadesFecha()));
 				strcpy(act,obtenerActividadesMejor());
 				memset(sendBuff, 0, strlen(sendBuff));				
 				strcpy(sendBuff, act);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			}  else if (strcmp(codigo, "06") == 0) { // Eliminar inscripción por ID
+			}  else if (strcmp(codigo, "06") == 0) { //////////////////// Eliminar inscripción por ID = 06
 				char* token = strtok(recvBuff, "$");
 				token = strtok(NULL, "$"); // Obtener segundo token (ID de actividad)
 				int idActividad = atoi(token); // Convertir a entero utilizando atoi
@@ -203,15 +203,15 @@ int main(){
 
 				}
 
-			}else if (strcmp(codigo, "07") == 0) { //  inscripción por ID
+			}else if (strcmp(codigo, "07") == 0) { /////////////////////////  Inscripción por ID = 07
 				char* token = strtok(recvBuff, "$");
 				token = strtok(NULL, "$"); // Obtener segundo token (ID de actividad)
 				int idActividad = atoi(token); // Convertir a entero utilizando atoi
 				token = strtok(NULL, "$"); // Obtener tercer token (ID de usuario)
 				int idUsuario = atoi(token); // Convertir a entero utilizando atoi
 
-				char idActStr[100];
-				char idUsuStr[100];
+				char idActStr[150];
+				char idUsuStr[150];
 				sprintf(idActStr, "%d", idActividad);
 				sprintf(idUsuStr, "%d", idUsuario);
 				Actividad* act=NULL;
@@ -267,16 +267,16 @@ int main(){
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 
 				}
-			}else if (strcmp(codigo, "09") == 0) { //  valorar ACTIVIDAD por ID
+			}else if (strcmp(codigo, "09") == 0) { /////////////////////////////  Valorar ACTIVIDAD por ID 0 09
 				char* token = strtok(recvBuff, "$");
 				token = strtok(NULL, "$"); // Obtener segundo token (ID de actividad)
 				int idActividad = atoi(token); // Convertir a entero utilizando atoi
 				token = strtok(NULL, "$"); // Obtener tercer token (ID de usuario)
 				int idUsuario = atoi(token); // Convertir a entero utilizando atoi
 
-				char idActStr[100];
-				char idUsuStr[100];
-				char nota[100];
+				char idActStr[150];
+				char idUsuStr[150];
+				char nota[150];
 				sprintf(idActStr, "%d", idActividad);
 				sprintf(idUsuStr, "%d", idUsuario);
 
@@ -342,7 +342,7 @@ int main(){
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 				}
 
-			}else if (strcmp(codigo, "10") == 0) { //Ver inscripciones
+			}else if (strcmp(codigo, "10") == 0) { ////////////////////// Ver inscripciones = 10
 				char* token = strtok(recvBuff, "$");
 				token = strtok(NULL, "$"); // Obtener segundo token
 				int idUsr = atoi(token);

@@ -509,12 +509,12 @@ char* obtenerActividadesFecha() {
 
 
 
-char* obtenerActividadesPublico() {
+char* obtenerActividadesTodas() {
     printf("ENTRO");
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;
-    char* sql = "SELECT * FROM ACTIVIDAD ORDER BY FECHA_ACT";
+    char* sql = "SELECT * FROM ACTIVIDAD";
 
     rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
 
@@ -591,6 +591,51 @@ char* obtenerActividadesMejor() {
     cerrarConexion();    
     return actividades;
 }
+
+char* obtenerInscripciones(char* id_usu) {
+    printf("ENTRO");
+    int rc;
+    abrirConexion();
+    sqlite3_stmt *stmt;
+    char* sql = "SELECT ACTIVIDAD.* FROM ACTIVIDAD INNER JOIN INSCRIPCION ON ACTIVIDAD.ID_ACT = INSCRIPCION.ID_ACT WHERE INSCRIPCION.ID_USU = ?";
+
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
+
+    if (rc != SQLITE_OK) {
+        printf("Error al preparar la consulta\n");
+        return NULL;
+    }
+
+    // Bind el parámetro de ID_USU a la consulta preparada
+    sqlite3_bind_text(stmt, 1, id_usu, -1, SQLITE_STATIC);
+
+    // NOMBRES DE COLUMNAS
+    
+    char* actividades = malloc(sizeof(char) * 1000000);
+    sprintf(actividades, "%-7s %-30s %-30s %-30s %-30s %-40s %-30s %-30s\n-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n", "ID_ACT", "NOMBRE_ACT", "TIPO_DE_ACTIVIDAD", "PUBLICO", "MUNICIPIO", "DIRECCION", "ENCARGADO", "FECHA_ACT");
+    int contador=0;
+    while ((rc = sqlite3_step(stmt)) == SQLITE_ROW && contador <50) {
+        int id_act = sqlite3_column_int(stmt, 0);
+        const unsigned char* nombre_act = sqlite3_column_text(stmt, 1);
+        const unsigned char* tipo_de_actividad = sqlite3_column_text(stmt, 3);
+        const unsigned char* publico = sqlite3_column_text(stmt, 4);
+        const unsigned char* municipio = sqlite3_column_text(stmt, 5);
+        const unsigned char* direccion = sqlite3_column_text(stmt, 6);
+        const unsigned char* encargado = sqlite3_column_text(stmt, 7);
+        const unsigned char* fecha_act = sqlite3_column_text(stmt, 8);
+
+        // CONCATENAR LOS ATRIBUTOS DE CADA ACTIVIDAD A LA CADENA DE ACTIVIDADES
+        char temp[5000];
+        sprintf(temp, "%-7d %-30s %-30s %-30s %-30s %-40s %-30s %-30s\n\n", id_act, nombre_act, tipo_de_actividad, publico, municipio, direccion, encargado, fecha_act);
+        strcat(actividades, temp);
+        contador++;
+    }
+
+    sqlite3_finalize(stmt);
+    cerrarConexion();    
+    return actividades;
+}
+
 
 
 

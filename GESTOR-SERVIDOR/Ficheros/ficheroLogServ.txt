@@ -238,3 +238,32 @@
  {2023-05-21} {17:48:06} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
  {2023-05-21} {17:48:14} [INFO] -> ACTIVIDAD BUSCADA con exito 
  {2023-05-21} {17:50:44} [INFO] -> Se cancelo la inscripcion 
+ {2023-05-21} {17:58:42} [INFO] -> Recibido el codigo 01, REGISTRO 
+ {2023-05-21} {17:58:42} [INFO] -> USUARIO REGISTRADO 
+ {2023-05-21} {17:59:00} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {17:59:00} [INFO] -> LOG IN con exito 
+ {2023-05-21} {17:59:48} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {17:59:48} [WARNING]-> LOG IN fallido 
+ {2023-05-21} {18:00:03} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {18:00:03} [INFO] -> LOG IN con exito 
+ {2023-05-21} {18:03:19} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {18:03:19} [INFO] -> LOG IN con exito 
+ {2023-05-21} {18:03:55} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {18:03:55} [INFO] -> LOG IN con exito 
+ {2023-05-21} {19:25:20} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {19:25:20} [INFO] -> LOG IN con exito 
+ {2023-05-21} {19:37:03} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {19:37:03} [INFO] -> LOG IN con exito 
+ {2023-05-21} {19:37:10} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {19:38:21} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {19:38:21} [INFO] -> LOG IN con exito 
+ {2023-05-21} {19:38:27} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {19:39:06} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {19:39:06} [INFO] -> LOG IN con exito 
+ {2023-05-21} {19:39:22} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {19:48:45} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {19:48:45} [INFO] -> LOG IN con exito 
+ {2023-05-21} {19:49:08} [INFO] -> Recibido el codigo 04, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {19:53:40} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {19:53:40} [INFO] -> LOG IN con exito 
+ {2023-05-21} {19:53:46} [INFO] -> Recibido el codigo 04, MOSTRAR ACTIVIDADES 

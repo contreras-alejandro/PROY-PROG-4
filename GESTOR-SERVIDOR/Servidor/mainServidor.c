@@ -127,11 +127,14 @@ int main(){
 				memset(sendBuff, 0, strlen(sendBuff));				
 				strcpy(sendBuff, act);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			}else if (strcmp(codigo, "04") == 0) { //Registro
-				
-				strcpy(sendBuff, "1");
+			}else if (strcmp(codigo, "04") == 0) { //Publico
+				logger(0,"Recibido el codigo 04, MOSTRAR ACTIVIDADES");
+				char* act = malloc(strlen(obtenerActividadesTodas()));
+				strcpy(act,obtenerActividadesTodas());
+				memset(sendBuff, 0, strlen(sendBuff));				
+				strcpy(sendBuff, act);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			}else if (strcmp(codigo, "05") == 0) { //Registro
+			}else if (strcmp(codigo, "05") == 0) { //Top 10 valoradas
 				logger(0,"Recibido el codigo 03, MOSTRAR ACTIVIDADES");
 				char* act = malloc(strlen(obtenerActividadesFecha()));
 				strcpy(act,obtenerActividadesMejor());
@@ -342,6 +345,21 @@ int main(){
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
 				}
 
+			}else if (strcmp(codigo, "10") == 0) { //Ver inscripciones
+				char* token = strtok(recvBuff, "$");
+				token = strtok(NULL, "$"); // Obtener segundo token
+				int idUsr = atoi(token);
+
+				char idUsrStr[100];
+				sprintf(idUsrStr, "%d", idUsr);
+
+
+				logger(0,"Recibido el codigo 03, MOSTRAR ACTIVIDADES");
+				char* ins = malloc(strlen(obtenerInscripciones(idUsrStr)));
+				strcpy(ins,obtenerInscripciones(idUsrStr));
+				memset(sendBuff, 0, strlen(sendBuff));				
+				strcpy(sendBuff, ins);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			}
 		}
 	} while (1);

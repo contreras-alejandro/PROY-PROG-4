@@ -45,9 +45,11 @@ int insertarValoracionActividad(char* idAct, char* idUsu, double valoracion);
 
 char* obtenerActividadesFecha();
 
-char* obtenerActividadesPublico();
+char* obtenerActividadesTodas();
 
 char* obtenerActividadesMejor();
+
+char* obtenerInscripciones(char* id_usu);
 
 
 

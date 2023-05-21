@@ -192,8 +192,8 @@ int printMenuVerAct() {
 
     std::cout << "\n||VER ACTIVIDADES||" << std::endl;
     std::cout << "_________________________________________________________" << std::endl;
-    std::cout << "1.FILTRAR POR FECHA" << std::endl;
-    std::cout << "2.FILTRAR POR PUBLICO" << std::endl;
+    std::cout << "1.VER TODAS LAS ACTIVIDADES" << std::endl;
+    std::cout << "2.FILTRAR POR FECHA" << std::endl;
     std::cout << "3.FILTRAR POR MEJOR VALORADAS" << std::endl;
     std::cout << "4.Volver" << std::endl;
 
@@ -213,7 +213,7 @@ void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],U
         //obtenemos la opcion seleccionada
         int opcion = selectOpcion(opcionesPosibles);
         //dependiendo la seleccionada, entramos en INICIO DE SESION o SALIMOS
-        if(opcion==1) {
+        if(opcion==2) {
 
                 std::cout << "Has seleccionado la opcion 1: FILTRAR POR FECHA." << std::endl;
 
@@ -233,7 +233,7 @@ void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],U
                 break;
                 //PEDIMOS LAS ACTIVIDADES FILTRADAS POR FECHA (ORDENAR)
                 
-        }else if(opcion==2) {
+        }else if(opcion==1) {
                         
                std::cout << "Has seleccionado la opcion 2: FILTRAR POR PUBLICO." << std::endl;
                //PEDIMOS LAS ACTIVIDADES FILTRADAS POR PUBLICO (ORDENAR)
@@ -300,13 +300,14 @@ void menuPerfil(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario
         //DEPENDIENDO LA OPCION, ENTRAMOS EN LA FUNCION CORRESPONDIENTE.
 
         if (opcion == 1) {
-            std::cout << "Has seleccionado la opcion 1: Ver INSCRIPCIONES" << std::endl;
-            //PEDIMOS INSCRIPCIONES DE ESE USUARIO 
+            std::cout << "Has seleccionado la opcion 1: Ver actividades inscritas" << std::endl;
             char mensaje[512];
-            sprintf(mensaje, "0$");
+            sprintf(mensaje, "10$%s$",std::to_string(usuario.getId()).c_str());
             send(s, mensaje, strlen(mensaje), 0);
-            recv(s, recvBuff, 512, 0);
-            salir = 1;
+            recv(s, recvBuff, 10000, 0);
+            printf("ACTIVIDADES:\n %s", recvBuff);
+            menuVerActividadesInicio(s,sendBuff,recvBuff,usuario);
+            salir=1;
             break;
         } else if (opcion == 2) {
             std::cout << "Has seleccionado la opcion 2: Ver datos de perfil" << std::endl;

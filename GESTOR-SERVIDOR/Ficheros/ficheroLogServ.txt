@@ -195,3 +195,46 @@
  {2023-05-20} {22:14:37} [INFO] -> No se pudo realizar la valoracion, no inscrito en esa actividad 
  {2023-05-20} {22:14:44} [INFO] -> ACTIVIDAD BUSCADA con exito 
  {2023-05-20} {22:14:46} [INFO] -> Valoracion anadida con exito 
+ {2023-05-21} {10:45:42} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {10:45:42} [INFO] -> LOG IN con exito 
+ {2023-05-21} {17:16:35} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {17:16:35} [INFO] -> LOG IN con exito 
+ {2023-05-21} {17:17:57} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:20:26} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {17:20:26} [INFO] -> LOG IN con exito 
+ {2023-05-21} {17:20:37} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:22:33} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {17:22:33} [INFO] -> LOG IN con exito 
+ {2023-05-21} {17:23:18} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {17:23:18} [INFO] -> LOG IN con exito 
+ {2023-05-21} {17:23:20} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:23:22} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:24:00} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {17:24:00} [INFO] -> LOG IN con exito 
+ {2023-05-21} {17:24:02} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:24:21} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:24:28} [INFO] -> ACTIVIDAD BUSCADA con exito 
+ {2023-05-21} {17:24:51} [INFO] -> Se cancelo la inscripcion 
+ {2023-05-21} {17:25:11} [INFO] -> ACTIVIDAD BUSCADA con exito 
+ {2023-05-21} {17:25:13} [INFO] -> Inscripcion eliminada con exito 
+ {2023-05-21} {17:25:32} [INFO] -> ACTIVIDAD BUSCADA con exito 
+ {2023-05-21} {17:25:33} [INFO] -> Inscripcion anadida con exito 
+ {2023-05-21} {17:25:45} [INFO] -> ACTIVIDAD BUSCADA con exito 
+ {2023-05-21} {17:25:46} [INFO] -> Inscripcion eliminada con exito 
+ {2023-05-21} {17:25:54} [INFO] -> ACTIVIDAD BUSCADA con exito 
+ {2023-05-21} {17:26:12} [INFO] -> Valoracion anadida con exito 
+ {2023-05-21} {17:47:09} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-21} {17:47:09} [INFO] -> LOG IN con exito 
+ {2023-05-21} {17:47:15} [INFO] -> ACTIVIDAD BUSCADA con exito 
+ {2023-05-21} {17:47:22} [INFO] -> Se cancelo la inscripcion 
+ {2023-05-21} {17:47:32} [INFO] -> ACTIVIDAD BUSCADA con exito 
+ {2023-05-21} {17:47:39} [INFO] -> Se cancelo la inscripcion 
+ {2023-05-21} {17:47:51} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:47:54} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:47:58} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:48:00} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:48:01} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:48:02} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:48:06} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
+ {2023-05-21} {17:48:14} [INFO] -> ACTIVIDAD BUSCADA con exito 
+ {2023-05-21} {17:50:44} [INFO] -> Se cancelo la inscripcion 

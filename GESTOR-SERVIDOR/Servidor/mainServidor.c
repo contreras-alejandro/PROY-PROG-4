@@ -132,8 +132,11 @@ int main(){
 				strcpy(sendBuff, "1");
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			}else if (strcmp(codigo, "05") == 0) { //Registro
-				
-				strcpy(sendBuff, "1");
+				logger(0,"Recibido el codigo 03, MOSTRAR ACTIVIDADES");
+				char* act = malloc(strlen(obtenerActividadesFecha()));
+				strcpy(act,obtenerActividadesMejor());
+				memset(sendBuff, 0, strlen(sendBuff));				
+				strcpy(sendBuff, act);
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			}  else if (strcmp(codigo, "06") == 0) { // Eliminar inscripción por ID
 				char* token = strtok(recvBuff, "$");

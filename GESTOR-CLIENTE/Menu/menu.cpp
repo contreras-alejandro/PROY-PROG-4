@@ -240,7 +240,9 @@ void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],U
                 char mensaje[512];
                 sprintf(mensaje, "04$");
                 send(s, mensaje, strlen(mensaje), 0);
-                recv(s, recvBuff, 512, 0);
+                recv(s, recvBuff, 100000, 0);
+                printf("ACTIVIDADES:\n %s", recvBuff);
+                menuVerActividadesInicio(s,sendBuff,recvBuff,usuario);
                 salir=1;
                 break;
         } 
@@ -252,7 +254,9 @@ void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],U
                 char mensaje[512];
                 sprintf(mensaje, "05$");
                 send(s, mensaje, strlen(mensaje), 0);
-                recv(s, recvBuff, 512, 0);
+                recv(s, recvBuff, 10000, 0);
+                printf("ACTIVIDADES:\n %s", recvBuff);
+                menuVerActividadesInicio(s,sendBuff,recvBuff,usuario);
                 salir=1;
                 break;
                 
@@ -261,6 +265,7 @@ void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],U
          else if(opcion==4) {
                         
                 std::cout << "Volver..." << std::endl;
+                menuPrincipal(s,sendBuff,recvBuff,usuario);
                 salir=1;
                 break;
         }  

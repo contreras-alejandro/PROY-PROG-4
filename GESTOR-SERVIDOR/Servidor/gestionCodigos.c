@@ -25,7 +25,7 @@ Usuario strAUsuario(char* codigo) {
     u.apellido = strdup(token);
     token = strtok(NULL, "$"); // cuarto token (nombre de usuario)
     u.nusuario = strdup(token);
-    token = strtok(NULL, "$"); // quinto token (contraseña)s
+    token = strtok(NULL, "$"); // quinto token (contraseña)
     u.contrasenya = strdup(token);
     
     return u;
@@ -41,7 +41,7 @@ char* usuarioAStr(Usuario* u) {
 
 
 char* actividadAStr(Actividad* act) {
-    char* codigo = malloc(sizeof(char) * 2000); // Reservamos espacio suficiente para la cadena de salida
+    char* codigo = malloc(sizeof(char) * 2500); // Reservamos espacio suficiente para la cadena de salida
     sprintf(codigo, "1$%s$%s$%s$%s$%s$%s$%s$%s$", act->nombre, act->descripcion, act->tipo,
      act->publico, act->municipio, act->direccion, act->encargado, act->fecha);
     printf("Se va a enviar este codigo:%s\n",codigo);

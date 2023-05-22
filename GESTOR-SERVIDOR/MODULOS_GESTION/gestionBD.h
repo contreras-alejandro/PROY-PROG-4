@@ -40,6 +40,7 @@ int eliminarInscripcion(char* idAct, char* id_usu);
 
 //COMPROBAR PARTICIPACION(INT ID_USU, INT ID_ACT)  PARA COMPROBAR SI PUEDE VALORAR ESA ACTIVIDAD , SOLO SI HA PARTICIPADO
 int comprobarInscripcionValorar(char* id_act, char* id_usu);
+
 //VALORACION INSCR (INT ID_USU, INT ID_ACT , INT NOTA)
 int insertarValoracionActividad(char* idAct, char* idUsu, double valoracion);
 

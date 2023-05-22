@@ -123,6 +123,7 @@ int main(){
 				strcpy(act,obtenerActividadesFecha());
 				memset(sendBuff, 0, strlen(sendBuff));				
 				strcpy(sendBuff, act);
+				logger(0,"Mandando actividades");
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			}else if (strcmp(codigo, "04") == 0) { ////////////////////// Actividades/Publico = 04
 				logger(0,"Recibido el codigo 04, MOSTRAR ACTIVIDADES");
@@ -130,6 +131,7 @@ int main(){
 				strcpy(act,obtenerActividadesTodas());
 				memset(sendBuff, 0, strlen(sendBuff));				
 				strcpy(sendBuff, act);
+				logger(0,"Mandando actividades");
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			}else if (strcmp(codigo, "05") == 0) { /////////////////////// Actividades/Top 10 valoradas = 05
 				logger(0,"Recibido el codigo 03, MOSTRAR ACTIVIDADES");
@@ -137,6 +139,7 @@ int main(){
 				strcpy(act,obtenerActividadesMejor());
 				memset(sendBuff, 0, strlen(sendBuff));				
 				strcpy(sendBuff, act);
+				logger(0,"Mandando actividades");
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			}  else if (strcmp(codigo, "06") == 0) { //////////////////// Eliminar inscripción por ID = 06
 				char* token = strtok(recvBuff, "$");
@@ -158,7 +161,6 @@ int main(){
 					int resultado = eliminarInscripcion(idActStr, idUsuStr); // Llama a la función para eliminar la inscripción
 					logger(0,"ACTIVIDAD BUSCADA con exito");
 					char* strAct=actividadAStr(act);
-					printf("Mando un actividad");
 					memset(sendBuff, 0, strlen(sendBuff)); 
 					strcpy(sendBuff, strAct);
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
@@ -174,7 +176,7 @@ int main(){
 							send(comm_socket, sendBuff, strlen(sendBuff), 0);
 							
 						}else{
-							logger(0,"No se pudo eliminar la inscrpcion");
+							logger(1,"No se pudo eliminar la inscrpcion");
 							printf("Mando un 0");
 							memset(sendBuff, 0, strlen(sendBuff)); 
 							strcpy(sendBuff, "0");
@@ -194,7 +196,7 @@ int main(){
 					
 
 				}else{
-					printf("NO EXISTE!!");
+					
 					printf("Mando un 0");
 					logger(1,"LOG IN fallido");
 					memset(sendBuff, 0, strlen(sendBuff)); 
@@ -222,7 +224,6 @@ int main(){
 				if(act!=NULL){
 					logger(0,"ACTIVIDAD BUSCADA con exito");
 					char* strAct=actividadAStr(act);
-					printf("Mando un actividad");
 					memset(sendBuff, 0, strlen(sendBuff)); 
 					strcpy(sendBuff, strAct);
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
@@ -239,7 +240,7 @@ int main(){
 							send(comm_socket, sendBuff, strlen(sendBuff), 0);
 							
 						}else{
-							logger(0,"No se pudo realizar la inscrpcion");
+							logger(1,"No se pudo realizar la inscrpcion");
 							printf("Mando un 0");
 							memset(sendBuff, 0, strlen(sendBuff)); 
 							strcpy(sendBuff, "0");
@@ -259,7 +260,7 @@ int main(){
 					
 
 				}else{
-					printf("NO EXISTE!!");
+					
 					printf("Mando un 0");
 					logger(1,"LOG IN fallido");
 					memset(sendBuff, 0, strlen(sendBuff)); 
@@ -288,7 +289,7 @@ int main(){
 				if(act!=NULL){
 					logger(0,"ACTIVIDAD BUSCADA con exito");
 					char* strAct=actividadAStr(act);
-					printf("Mando una actividad");
+					
 					memset(sendBuff, 0, strlen(sendBuff)); 
 					strcpy(sendBuff, strAct);
 					send(comm_socket, sendBuff, strlen(sendBuff), 0);
@@ -328,13 +329,13 @@ int main(){
 					}
 					else{
 						//NO QUIERE VALORARLA!
-						printf("RECHAZADA LA PETICION DE VALORAR");
+						
 					}
 
 
 				}
 				else{
-					printf("NO EXISTE!!");
+					
 					printf("Mando un 0");
 					logger(1,"LOG IN fallido");
 					memset(sendBuff, 0, strlen(sendBuff)); 
@@ -351,7 +352,7 @@ int main(){
 				sprintf(idUsrStr, "%d", idUsr);
 
 
-				logger(0,"Recibido el codigo 03, MOSTRAR ACTIVIDADES");
+				logger(0,"Recibido el codigo 10, MOSTRAR INSCRIPCIONES DE UN USUARIO");
 				char* ins = malloc(strlen(obtenerInscripciones(idUsrStr)));
 				strcpy(ins,obtenerInscripciones(idUsrStr));
 				memset(sendBuff, 0, strlen(sendBuff));				

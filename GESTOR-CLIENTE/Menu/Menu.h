@@ -56,4 +56,9 @@ std::vector<Actividad> strAActividades( char* actividadesString);
 
 Actividad strAActividad(char* actividadString);
 
+
+
+//FUNCION QUE DEVUELVE EL VALOR INTRODUCIDO HASHEADO! (PARA LA CONTRASENYA)
+char* hash_string(char* str);
+
 #endif

@@ -11,6 +11,26 @@
 
 #define const int MAX_CHARACTERS_FOR_OPTIONS = 50;
 
+char* hash_string(char* str) {
+    int hash = 0;
+    int len = strlen(str);
+     // Reservamos suficiente espacio para almacenar el hash en formato hexadecimal
+    char* hash_str = new char [len * 2 + 1];
+    hash_str[0] = '\0';
+
+    for (int i = 0; i < len; i++) {
+        hash = (hash * 31 + str[i]) % 127;  //DIVIDIMOS POR NUMEROS PRIMOS
+        char hex_str[3]; 
+        snprintf(hex_str, 3, "%02x", hash); // Convertimos el valor del hash a formato hexadecimal
+        strcat(hash_str, hex_str); // Concatenamos 
+    }
+    
+    return hash_str;
+    
+     }
+
+
+
 //FUNCION PARA DEVOLVER LA OPCION SELECCIONADA
 int selectOpcion(int numOpciones)
 {
@@ -94,6 +114,10 @@ void menuInicio(SOCKET s, char sendBuff[512], char recvBuff[512])
         else if (opcion == 3) 
         {
             std::cout << "Saliendo del programa...GRACIAS POR USAR NUESTRO PROGRAMA!" << std::endl;
+             char mensaje[512];
+             //SI QUEREMOS CERRAR EL SERVIDOR TAMBIEN, DESCOMENTAMOS LO SIGUIENTE
+           // sprintf(mensaje, "00$");
+           // send(s, mensaje, strlen(mensaje), 0);
             salir = 1;
             break;
         } 
@@ -241,9 +265,9 @@ void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],U
                 
         }else if(opcion==1) {
                         
-               std::cout << "Has seleccionado la opcion 2: FILTRAR POR PUBLICO." << std::endl;
+               std::cout << "Has seleccionado la opcion 1: VER TODAS LAS ACTIVIDADES." << std::endl;
                //PEDIMOS LAS ACTIVIDADES FILTRADAS POR PUBLICO (ORDENAR)
-                 logger(0,usuario.getNombreUsuario(),"FILTRANDO ACTVIDADES POR PUBLICO");
+                 logger(0,usuario.getNombreUsuario(),"ACCEDIENDO A VER TODAS LAS ACTIVIDADES");
                 char mensaje[512];
                 sprintf(mensaje, "04$");
                 send(s, mensaje, strlen(mensaje), 0);
@@ -258,7 +282,7 @@ void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],U
                 std::cout << "Has seleccionado la opcion 3: FILTRAR POR MEJOR VALORADAS" << std::endl;
                 //PEDIMOS LAS ACTIVIDADES MEJOR VALORADAS (PRIMERO ACCEDER A TABLA DE VALORACION
                 // Y LAS ORDENAMOS, Y POR CADA UNA OBTENEMOS SU ID Y VAMOS A LA TABLA DE ACTVIDADES Y IMPRIMIMOS)
-                  logger(0,usuario.getNombreUsuario(),"FILTRANDO ACTVIDADES MEJOR VALORADAS");
+                logger(0,usuario.getNombreUsuario(),"FILTRANDO ACTVIDADES MEJOR VALORADAS");
                 char mensaje[512];
                 sprintf(mensaje, "05$");
                 send(s, mensaje, strlen(mensaje), 0);
@@ -309,6 +333,7 @@ void menuPerfil(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario
 
         if (opcion == 1) {
             std::cout << "Has seleccionado la opcion 1: Ver actividades inscritas" << std::endl;
+            logger(0,usuario.getNombreUsuario(),"ACCEDIENDO AL VER ACTIVIDADES INSCRITAS");
             char mensaje[512];
             sprintf(mensaje, "10$%s$",std::to_string(usuario.getId()).c_str());
             send(s, mensaje, strlen(mensaje), 0);
@@ -319,6 +344,7 @@ void menuPerfil(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario
             break;
         } else if (opcion == 2) {
             std::cout << "Has seleccionado la opcion 2: Ver datos de perfil" << std::endl;
+            logger(0,usuario.getNombreUsuario(),"ACCEDIENDO AL VER DATOS DE PERFIL");
             //LLAMAMOS AL FUNCION FRIEND, DE LA SOBRECARGA DEL OPERADOR >> CON EL USUARIO
             cout << usuario;
             menuPrincipal(s,sendBuff,recvBuff,usuario);
@@ -345,19 +371,22 @@ void menuLogin(SOCKET s, char sendBuff[512], char recvBuff[512]) {
     //PEDIMOS LOS VALORES MIENTRAS NO SEAN CORRECTO
 
     while (salir == 0) {
+       
         std::string nombre_usu;
-        std::string usu_contra;
 
         std::cout << "Ingrese su nombre de usuario: ";
         std::getline(std::cin, nombre_usu);
 
+
+        char contra[512];
         std::cout << "Ingrese su contrasena: ";
-        std::getline(std::cin, usu_contra);
+        std::cin.getline(contra, 100);
+        std::string contra_has = hash_string(contra);
 
         //resultado = login(nombre_usu.c_str(), usu_contra.c_str());
 
         char mensaje[512]= {0};
-        sprintf(mensaje, "02$%s$%s$", nombre_usu.c_str(), usu_contra.c_str());
+        sprintf(mensaje, "02$%s$%s$", nombre_usu.c_str(), contra_has.c_str());
         mensaje[strlen(mensaje)] = '$';
 
 
@@ -422,9 +451,9 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
         std::cout << "La contraseña debe tener al menos 7 caracteres.\n";
     }
 
-    //std::cout << "Ingrese su contrasena: ";
-    //std::cin.getline(contrasenya, 100);
-    //u.setContrasenya(contrasenya);
+    //hasheamos contraseña
+    char * contrasenyaHash = hash_string(u.getContrasenya());
+    u.setContrasenya(contrasenyaHash);
 
     char* str = u.toString();
 
@@ -477,7 +506,7 @@ void menuBorrarInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usu
 
     }
     else {
-        printf("BUSCADA CON  EXITO");
+        printf("BUSCADA CON EXITO");
         Actividad actividad = strAActividad(recvBuff);
         //LLAMAMOS A LA FUNCION FRIEND DEFINIDA
         cout << actividad << endl;
@@ -490,9 +519,11 @@ void menuBorrarInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usu
             recv(s,recvBuff,512,0);
                 if (recvBuff[0] == '1') {
                     std::cout << "Inscripcion borrada\n";
+                    logger(0,usuario.getNombreUsuario(),"INSCRIPCION BORRADA");
                     menuPrincipal(s,sendBuff,recvBuff,usuario);
                 } else {
                     std::cout << "No se pudo borrar la inscripcion\n";
+                    logger(1,usuario.getNombreUsuario(),"ERROR AL ELIMINAR INSCRIPCION");
                     menuPrincipal(s,sendBuff,recvBuff,usuario);
                 }       
         }else if (opcion==2)
@@ -538,9 +569,11 @@ void menuInscripcion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario u
             recv(s,recvBuff,512,0);
                 if (recvBuff[0] == '1') {
                     std::cout << "Inscripcion exitosa\n";
+                    logger(0,usuario.getNombreUsuario(),"INSCRIPCION CON EXITO");
                     menuPrincipal(s,sendBuff,recvBuff,usuario);
                 } else {
                     std::cout << "No se pudo inscribir en la actividad.\n";
+                    logger(1,usuario.getNombreUsuario(),"NO SE HA PODIDO INSCRIBIR");
                     menuPrincipal(s,sendBuff,recvBuff,usuario);
                 }       
         }else if (opcion==2)
@@ -574,7 +607,7 @@ void menuValoracion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario us
 
     }
     else {
-        printf("BUSCADA CON  EXITO");
+        printf("BUSCADA CON EXITO");
         Actividad actividad = strAActividad(recvBuff);
         //LLAMAMOS A LA FUNCION FRIEND DEFINIDA
         cout << actividad << endl;
@@ -605,9 +638,11 @@ void menuValoracion(SOCKET s, char sendBuff[512], char recvBuff[512], Usuario us
             recv(s,recvBuff,512,0);
                 if (recvBuff[0] == '1') {
                     std::cout << "Valoracion exitosa\n";
+                    logger(0,usuario.getNombreUsuario(),"VALORACION REALIZADA");
                     menuPrincipal(s,sendBuff,recvBuff,usuario);
                 } else {
                     std::cout << "No se pudo valorar en la actividad.\n";
+                    logger(1,usuario.getNombreUsuario(),"ERROR AL VALORAR ACTVIDAD");
                     menuPrincipal(s,sendBuff,recvBuff,usuario);
                 }       
         }else if (opcion==2)

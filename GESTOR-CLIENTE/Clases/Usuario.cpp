@@ -89,6 +89,14 @@ void Usuario::setContrasenya(char* contrasenya)
     strcpy(this->contrasenya, contrasenya);
 }
 
+ char * Usuario::getContrasenya() {
+    
+    return this->contrasenya;
+
+ }
+
+
+
 Usuario Usuario::convertirEstructuraAClase(Estructura_Usuario::Usuario u)
 {
     return Usuario(u.id, u.nombre, u.apellido, u.nombre_usu, u.contrasenya);
@@ -148,6 +156,6 @@ ostream& operator<<(ostream& out, const Usuario& u)
     out << "Nombre: " << u.nombre << endl;
     out << "Apellido: " << u.apellido << endl;
     out << "Nombre de usuario: " << u.nombre_usu << endl;
-    out << "Contrasenya: " << u.contrasenya << endl;
+    
     return out;
 }

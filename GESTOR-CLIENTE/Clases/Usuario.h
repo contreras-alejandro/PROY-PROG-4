@@ -35,6 +35,7 @@ public:
     void setNombreUsuario(char* nombre_usu);
     void setApellido(char* apellido);
     void setContrasenya(char* contrasenya);
+    char * getContrasenya();
 
     Usuario convertirEstructuraAClase(Estructura_Usuario::Usuario u);
     Estructura_Usuario::Usuario convertirClaseAEstructura();

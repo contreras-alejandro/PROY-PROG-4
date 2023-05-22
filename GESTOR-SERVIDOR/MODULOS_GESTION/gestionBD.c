@@ -294,7 +294,7 @@ Usuario* loginUsuario(char* usuario, char* contrasena) {
     Usuario* usr = (Usuario*) malloc(sizeof(Usuario)); // Aquí creamos un puntero a Usuario y asignamos memoria dinámica
 
     if (resultado_consulta == SQLITE_ROW) {
-        printf("Nombre de usuario y contraseña correctas\n");
+       
 
         // OBTENEMOS EL VALOR DEL ID
 
@@ -369,7 +369,7 @@ int insertarInscrSipcionActividad(char* idAct, char* id_usu){
     }
     // TODO HA IDO BIEN, INSERTADO.
     // VA TODO BIEN 
-    printf("INSCRIPCION AÑADIDA!!\n");
+    
     //logger(1,admin, "HA INSERTADO UN NUEVO ADMIN");
     sqlite3_finalize(stmt);
     cerrarConexion();
@@ -415,7 +415,7 @@ int insertarValoracionActividad(char* idAct, char* idUsu, double valoracion) {
     }
      //TODO HA IDO BIEN, INSERTADO.
     //VA TODO BIEN 
-    printf("VALORACION INSERTADA!!\n");
+    
     //logger(1,admin, "HA INSERTADO UN NUEVO ADMIN");
     sqlite3_finalize(stmt);
     cerrarConexion();
@@ -453,7 +453,7 @@ int eliminarInscripcion(char* idAct, char* id_usu) {
     }
     // TODO HA IDO BIEN, INSERTADO.
     // VA TODO BIEN 
-    printf("INSCRIPCION ELIMINADA!!\n");
+    
     //logger(1,admin, "HA INSERTADO UN NUEVO ADMIN");
     sqlite3_finalize(stmt);
     cerrarConexion();
@@ -465,7 +465,7 @@ int eliminarInscripcion(char* idAct, char* id_usu) {
 //FUNCION PARA MOSTRAR LAS ACTIVIDADES DE LA BASE DE DATOS
 // FUNCION PARA OBTENER LAS ACTIVIDADES DE LA BASE DE DATOS COMO UNA CADENA DE CARACTERES SEPARADA POR '$'
 char* obtenerActividadesFecha() {
-    printf("ENTRO");
+    
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;
@@ -509,7 +509,7 @@ char* obtenerActividadesFecha() {
 
 
 char* obtenerActividadesTodas() {
-    printf("ENTRO");
+    
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;
@@ -551,7 +551,7 @@ char* obtenerActividadesTodas() {
 
 
 char* obtenerActividadesMejor() {
-    printf("ENTRO");
+   
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;
@@ -592,7 +592,7 @@ char* obtenerActividadesMejor() {
 }
 
 char* obtenerInscripciones(char* id_usu) {
-    printf("ENTRO");
+    
     int rc;
     abrirConexion();
     sqlite3_stmt *stmt;
@@ -693,7 +693,7 @@ int comprobarInscripcionValorar(char* id_act, char* id_usu) {
         else {
 
             //NO EXISTE INSCRIPCION DE ESE USUARIO
-            printf("NO EXISTE INSCRIPCION DEL USUARIO A ESA ACTIVIDAD:\n");
+            
             sqlite3_finalize(stmt);
             cerrarConexion();
             return 0;

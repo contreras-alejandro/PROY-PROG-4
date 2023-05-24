@@ -459,3 +459,4 @@
  {2023-04-25} {20:25:24} [INFO] Usuario:administrador -> SESION INICIADA 
  {2023-05-22} {11:33:20} [INFO] Usuario:administrador -> SESION INICIADA 
  {2023-05-22} {15:35:13} [INFO] Usuario:administrador -> SESION INICIADA 
+ {2023-05-24} {18:36:52} [INFO] Usuario:administrador -> SESION INICIADA 

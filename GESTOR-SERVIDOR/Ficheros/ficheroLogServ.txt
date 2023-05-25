@@ -12,3 +12,9 @@
  {2023-05-22} {15:56:46} [INFO] -> Recibido el codigo 03, MOSTRAR ACTIVIDADES 
  {2023-05-22} {15:56:46} [INFO] -> Mandando actividades 
  {2023-05-22} {15:56:56} [INFO] -> Recibido el codigo 10, MOSTRAR INSCRIPCIONES DE UN USUARIO 
+ {2023-05-25} {16:43:52} [INFO] -> Recibido el codigo 01, REGISTRO 
+ {2023-05-25} {16:43:52} [INFO] -> USUARIO REGISTRADO 
+ {2023-05-25} {16:44:01} [INFO] -> Recibido codigo 02: Log In 
+ {2023-05-25} {16:44:01} [INFO] -> LOG IN con exito 
+ {2023-05-25} {16:44:05} [INFO] -> Recibido el codigo 04, MOSTRAR ACTIVIDADES 
+ {2023-05-25} {16:44:05} [INFO] -> Mandando actividades 

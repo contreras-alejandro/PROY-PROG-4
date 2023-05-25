@@ -313,11 +313,12 @@ void menuVerActividadesInicio(SOCKET s, char sendBuff[512], char recvBuff[512],U
 
 //FUNCION PARA MOSTRAR OPCIONES DE PERFIL
 int printMenuPerfil() {
-    int numOpciones = 2;
+    int numOpciones = 3;
     std::cout << "\n||PERFIL||\n";
     std::cout << "_________________________________________________________\n";
     std::cout << "1. Ver INSCRIPCIONES\n";
     std::cout << "2. Ver datos de perfil\n";
+    std::cout << "3. Volver\n";
     std::cout << "_________________________________________________________\n";
     return numOpciones;
 }
@@ -350,7 +351,15 @@ void menuPerfil(SOCKET s, char sendBuff[512], char recvBuff[512],Usuario usuario
             menuPrincipal(s,sendBuff,recvBuff,usuario);
             salir = 1;
             break;
-        } else {
+            
+        }else if (opcion == 3) {
+            std::cout << "Volver..." << std::endl;
+            menuPrincipal(s,sendBuff,recvBuff,usuario);
+            salir=1;
+            break;
+            
+        }  
+        else {
             //SI LA OPCION NO ES VALIDA, ERROR.
             std::cout << "¡ERROR, SELECCIONE UN NUMERO VALIDO!" << std::endl;
         }
@@ -441,7 +450,7 @@ void menuRegistrar(SOCKET s, char sendBuff[512], char recvBuff[512]) {
 
     char contrasenya[100];
     while (true) {
-        std::cout << "Ingrese su contraseña: ";
+        std::cout << "Ingrese su contrasena: ";
         std::cin.getline(contrasenya, 100);
         if (std::strlen(contrasenya) >= 7){
             u.setContrasenya(contrasenya);
